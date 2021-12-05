@@ -17,7 +17,7 @@ export default function NavLinks({ hidden }) {
 	return (
 		<div
 			className={`${
-				hidden ? 'md:right-0 -right-60' : ''
+				hidden ? 'opacity-0 md:pointer-events-auto pointer-events-none md:opacity-100' : ''
 			} transition-all duration-300 absolute cursor-pointer bg-gray-50 top-16 right-0 shadow-md flex flex-col w-52 items-center md:relative md:flex-row md:w-[40rem] md:gap-3 md:top-0 md:bg-transparent font-medium md:border`}
 		>
 			<NavItem>Home</NavItem>
