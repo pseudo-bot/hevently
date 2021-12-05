@@ -1,12 +1,49 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Caveat:regular,500,600,700);
+@import url(https://fonts.googleapis.com/css?family=Dancing+Script:regular,500,600,700);
 
 body {
-  overflow: hidden;
+	overflow: hidden;
 }
 
-*, *::after, *::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Poppins;
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Poppins;
 }
+
+.dancing {
+  font-family: 'dancing script';
+}
+
+/* Navbar */
+
+.services > * {
+	font-size: 15px;
+	text-transform: capitalize;
+	color: #666;
+	text-align: left;
+	padding-left: 1rem;
+	border-bottom: 1px solid #ddd;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+.spacer {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: fixed;
+  z-index: -1;
+}
+
+.layer {
+  background-image: url('/navbar2.svg');
+}
+
+/* Navbar end */
