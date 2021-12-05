@@ -33,6 +33,13 @@ body {
   align-items: center;
 }
 
+.services > *:hover {
+  background-image: linear-gradient(to right, #6366f1, #581c87);
+  background-clip: text;
+  color: transparent;
+  
+}
+
 .spacer {
   width: 100%;
   background-repeat: no-repeat;
@@ -43,7 +50,7 @@ body {
 }
 
 .layer {
-  background-image: url('/navbar2.svg');
+  background-image: url('/navbar.svg');
 }
 
 /* Navbar end */

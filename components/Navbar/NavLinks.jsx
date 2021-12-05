@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const NavItem = ({ children }) => {
 	return (
-		<div className="p-3 md:p-0 md:py-2 border md:border-none w-full text-gray-500 uppercase tracking-wide md:text-gray-200 md:text-center hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-indigo-500 hover:to-purple-800 md:hover:from-indigo-800 md:hover:to-purple-800 transition-all duration-150">
+		<div className="p-3 md:p-0 md:py-2 border md:border-none w-full text-gray-500 uppercase tracking-wider md:text-gray-200 md:hover:text-gray-50 md:text-center md:hover: transition-all duration-150 hover:bg-clip-text hover:bg-gradient-to-r hover:from-indigo-500 hover:to-purple-900 hover:text-transparent">
 			{children}
 		</div>
 	);
@@ -18,7 +18,7 @@ export default function NavLinks({ hidden }) {
 		<div
 			className={`${
 				hidden ? 'opacity-0 md:pointer-events-auto pointer-events-none md:opacity-100' : ''
-			} transition-all duration-300 absolute cursor-pointer bg-gray-50 top-16 right-0 shadow-md flex flex-col w-52 items-center md:relative md:flex-row md:w-[40rem] md:gap-3 md:top-0 md:bg-transparent font-medium md:border`}
+			} transition-all duration-300 absolute cursor-pointer bg-gray-50 top-16 right-0 shadow-md flex flex-col w-52 items-center md:relative md:flex-row md:w-[40rem] md:gap-3 md:top-0 md:bg-transparent font-medium md:shadow-none`}
 		>
 			<NavItem>Home</NavItem>
 
