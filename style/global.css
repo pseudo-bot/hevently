@@ -34,10 +34,7 @@ body {
 }
 
 .services > *:hover {
-  background-image: linear-gradient(to right, #6366f1, #581c87);
-  background-clip: text;
-  color: transparent;
-  
+  color: rgb(99, 102, 241);
 }
 
 .spacer {
