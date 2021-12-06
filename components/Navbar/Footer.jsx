@@ -7,8 +7,8 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 const Footer = () => {
   return (
     <footer className="text-gray-50">
-      <div className="container px-6 pt-24 pb-8 md:pb-0 mx-auto">
-        <div className="flex flex-wrap md:text-left text-center order-first">
+      <div className="container px-12 pt-24 pb-8 md:pb-0 mx-auto">
+        <div className="flex flex-wrap text-center order-first items-center">
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">
             <div className="text-5xl font-bold text-blue-600 uppercas tracking-wider dancing text-center">
               hevently
