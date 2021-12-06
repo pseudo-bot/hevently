@@ -1,7 +1,8 @@
 import Navbar from '../components/Navbar/Navbar';
 
 import 'tailwindcss/tailwind.css';
-import '../style/global.css'
+import '../style/global.css';
+import 'swiper/css/bundle';
 
 function App({ Component, pageProps }) {
 	return (

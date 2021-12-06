@@ -4,7 +4,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 const NavItem = ({ children }) => {
 	return (
-		<div className="p-3 md:p-0 md:py-2 border md:border-none w-full text-gray-500 uppercase tracking-wider md:text-gray-200 md:hover:text-gray-50 md:text-center transition-all duration-150 hover:text-indigo-500">
+		<div className="p-3 lg:p-0 lg:py-2 border lg:border-none w-full text-gray-500 uppercase tracking-wider lg:text-gray-600 lg:text-center transition-all duration-150 hover:text-indigo-500 lg:bg-gray-200 lg:rounded-full">
 			{children}
 		</div>
 	);
@@ -16,27 +16,27 @@ export default function NavLinks({ hidden }) {
 		<div
 			className={`${
 				hidden
-					? 'opacity-0 md:pointer-events-auto pointer-events-none md:opacity-100'
+					? 'opacity-0 lg:pointer-events-auto pointer-events-none lg:opacity-100'
 					: ''
-			} transition-all duration-300 absolute cursor-pointer bg-gray-50 top-16 right-0 shadow-md flex flex-col w-52 items-center md:relative md:flex-row md:w-[40rem] md:gap-3 md:top-0 md:bg-transparent font-medium md:shadow-none`}
+			} transition-all duration-300 absolute cursor-pointer bg-gray-50 top-16 right-0 shadow-lg flex flex-col w-56 items-center lg:relative lg:flex-row lg:w-[40rem] lg:gap-3 lg:top-0 lg:bg-transparent font-medium lg:shadow-none`}
 		>
 			<NavItem>Home</NavItem>
 
-			<NavItem>About Us</NavItem>
+			<NavItem>About</NavItem>
 			<div onClick={() => setServices(!services)} className="w-full relative">
 				<NavItem>Services</NavItem>
-				<div className="absolute top-3 right-4 md:hidden">
+				<div className="absolute top-3 right-4 lg:hidden">
 					{services ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
 				</div>
 				<div
 					className={`${
 						services ? 'h-[12rem]' : 'h-0'
-					} md:absolute md:w-52 overflow-hidden transition-all duration-300 w-full bg-gray-100 font-normal services `}
+					} lg:fixed lg:top-16 lg:w-56 overflow-hidden transition-all duration-500 w-full bg-gray-100 font-normal services `}
 				>
-					<NavItem>Weddings</NavItem>
-					<NavItem>Social Gathering</NavItem>
-					<NavItem>Birthdays</NavItem>
-					<NavItem>House Warming</NavItem>
+					<NavItem><img src="/icons/wedding.png"></img>Weddings</NavItem>
+					<NavItem><img src="/icons/gathering.png"></img>Social Gathering</NavItem>
+					<NavItem><img src="/icons/cake.png"></img>Birthdays</NavItem>
+					<NavItem><img src="/icons/corporate.png"></img>Corporate Events</NavItem>
 				</div>
 			</div>
 
