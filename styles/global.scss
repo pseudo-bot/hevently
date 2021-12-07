@@ -24,57 +24,56 @@ body {
 /* Navbar */
 
 @media screen and (min-width: 1024px) {
-	.nav-links > div,
-	.services-div {
+	.nav-links > div{
 		position: relative;
 		overflow: hidden;
 		transition: all 0.3s ease-in;
 		border-radius: 100vw;
-	}
 
-	.nav-links > div::after,
-	.services-div::after {
-		content: '';
-		width: 0;
-		height: 5px;
-		position: absolute;
-		background-image: linear-gradient(
-			to left,
-			rgb(167, 219, 248),
-			rgb(116, 161, 245)
-		);
-		bottom: 0px;
-		left: 0;
-		transition: all 0.3s ease-in;
-	}
-
-	.nav-links > div::before,
-	.services-div::before {
-		content: '';
-		width: 0;
-		height: 5px;
-		position: absolute;
-		background-image: linear-gradient(
-			to left,
-			rgb(167, 219, 248),
-			rgb(116, 161, 245)
-		);
-		top: 0px;
-		right: 0;
-		transition: all 0.3s ease-in;
-		border-radius: 100vw;
-	}
-
-	.nav-links > div:hover,
-	.services-div:hover {
-		.nav-links > div::after,
-		.services-div::after {
-			width: 90%;
+		&::after {
+			content: '';
+			width: 0;
+			height: 5px;
+			position: absolute;
+			background-image: linear-gradient(
+				to left,
+				rgb(167, 219, 248),
+				rgb(116, 161, 245)
+			);
+			bottom: 0px;
+			left: 0;
+			transition: all 0.3s ease-in;
 		}
-		.nav-links > div::before,
-		.services-div::before {
-			width: 90%;
+
+		&::before {
+			content: '';
+			width: 0;
+			height: 5px;
+			position: absolute;
+			background-image: linear-gradient(
+				to left,
+				rgb(167, 219, 248),
+				rgb(116, 161, 245)
+			);
+			top: 0px;
+			right: 0;
+			transition: all 0.3s ease-in;
+			border-radius: 100vw;
 		}
+
+		&:hover {
+			color: #fff;
+			&::after {
+				width: 90%;
+			}
+			&::before {
+				width: 90%;
+			}
+		}
+	}
+
+	.services-div > div:hover {
+		color: #fff;
 	}
 }
 
