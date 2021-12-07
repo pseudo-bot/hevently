@@ -108,13 +108,12 @@ body {
 .swiper-slide {
 	display: flex;
 	justify-content: center;
-	border-raidus: 10px;
+	border-radius: 10px;
 }
 
 .swiper-slide div {
 	opacity: 0.9;
 	filter: blur(1px);
-	border-raidus: 10px;
 }
 
 .swiper-slide-active div {
