@@ -6,25 +6,25 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 const Footer = () => {
   return (
-    <footer className="text-gray-50">
-      <div className="container px-12 pt-24 pb-8 md:pb-0 mx-auto">
+    <footer className="text-gray-50 bg-wgray-100 mt-6">
+      <div className="container px-12 pt-12 pb-8 md:pb-0 mx-auto">
         <div className="sm:flex flex-wrap justify-evenly order-first items-center">
           <div className="">
             <div className="text-7xl font-extrabold text-blue-600 uppercas tracking-wider dancing text-center">
               hevently
             </div>
-            <div className="py-2 text-center mr-4">
+            <div className="py-2 text-center mr-6">
               <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-                <a className="text-gray-500 cursor-pointer hover:text-gray-600">
+                <a className="text-gray-500 cursor-pointer hover:text-gray-800 mr-4">
                   <FacebookIcon />
                 </a>
-                <a className="ml-3 text-gray-500 cursor-pointer hover:text-gray-600">
+                <a className="ml-3 text-gray-500 cursor-pointer hover:text-gray-800 mr-4">
                   <TwitterIcon />
                 </a>
-                <a className="ml-3 text-gray-500 cursor-pointer hover:text-gray-600">
+                <a className="ml-3 text-gray-500 cursor-pointer hover:text-gray-800 mr-4">
                   <InstagramIcon />
                 </a>
-                <a className="ml-3 text-gray-500 cursor-pointer hover:text-gray-600">
+                <a className="ml-3 text-gray-500 cursor-pointer hover:text-gray-800 mr-4">
                   <LinkedInIcon />
                 </a>
               </span>
@@ -109,7 +109,7 @@ const Footer = () => {
                 <input
                   type="text"
                   placeholder="Email..."
-                  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 focus:border-blue-500 outline-none text-gray-700 py-1 px-2 leading-8 transition-colors duration-200 ease-in-out text-base"
+                  className="w-full bg-cgray-50 bg-opacity-50 rounded border-gray-400 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 focus:border-blue-500 outline-none text-gray-600 py-1 px-2 leading-8 transition-colors duration-200 ease-in-out text-base border-2"
                 />
               </div>
               <button className="flex-shrink-0 inline-flex bg-blue-500 border-0 py-2 px-4 focus:outline-none hover:bg-blue-600 rounded mt-2">
@@ -119,9 +119,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-gray-100 mt-2">
+      <div className="bg-blue-600 mt-2">
         <div className="container py-4 mx-auto flex items-center justify-center">
-          <p className="text-sm font-semibold text-gray-600">
+          <p className="text-sm font-semibold text-gray-50">
             Copyright © 2021 TheLogicTech
           </p>
         </div>
