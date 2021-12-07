@@ -25,7 +25,7 @@ const Event = ({ image, title, desc }) => {
 function Events() {
 	return (
 		<div className="px-4 bg-cgray-100 py-1 pb-10">
-			<div className="dancing capitalize text-7xl text-gray-700 font-bold text-center my-10">
+			<div className="dancing text-5xl capitalize md:text-7xl text-gray-700 font-bold text-center my-10">
 				events
 			</div>
 			<div className="flex flex-col gap-10 lg:flex-row lg:flex-wrap lg:justify-center lg:gap-20 items-center">

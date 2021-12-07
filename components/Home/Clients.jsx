@@ -11,16 +11,17 @@ SwiperCore.use([EffectCoverflow, Autoplay]);
 
 const Review = ({ review, profile, name, work }) => {
 	return (
-		<div className="bg-[#fff] rounded w-[24rem] h-[22rem] review-card shadow-xl pt-16 px-4 items-center flex flex-col gap-10 relative">
+		<div className="bg-[#fff] rounded w-[24rem] h-[22rem] review-card shadow-xl pt-20 px-4 items-center flex flex-col gap-10 relative">
 			<div className="right-10 absolute top-2">
-				<Quote color="action" sx={{ fontSize: 56 }} />
+				{/* <Quote color="action" sx={{ fontSize: 56 }} /> */}
+				<img src="/icons/quote.png" alt="quote" />
 			</div>
 			<div className="text-justify">{review}</div>
-			<div className="absolute border bottom-4 rounded-full flex w-4/5 gap-6">
+			<div className="absolute border-2 bottom-4 rounded-full flex w-4/5 gap-6">
 				<img src={profile} alt="profile" className="h-20 w-20 rounded-full" />
-				<div className="font-medium text-gray-800 pt-3">
+				<div className="font-medium text-gray-800 pt-3 text-[15px] md:text-base">
 					{name}
-					<div className="text-gray-600 text-[14px]">{work}</div>
+					<div className="text-gray-600 text-[12px] md:text-sm">{work}</div>
 				</div>
 			</div>
 		</div>
@@ -31,7 +32,7 @@ export default function App() {
 	return (
 		<>
 			<div className="bg-gradient-to-r from-blue-500 to-blue-700 p-10 pt-2">
-				<div className="dancing capitalize text-7xl text-gray-200 font-bold text-center my-10">
+				<div className="dancing capitalize text-5xl md:text-7xl text-gray-200 font-bold text-center my-10">
 					Our Clients
 				</div>
 				<Swiper

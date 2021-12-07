@@ -12,6 +12,7 @@ body {
 	padding: 0;
 	box-sizing: border-box;
 	font-family: Poppins;
+	-webkit-tap-highlight-color: transparent;
 }
 
 /* fonts */
@@ -79,4 +80,3 @@ body {
 	opacity: 1;
 	background: white;
 }
-
