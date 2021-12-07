@@ -23,6 +23,47 @@ body {
 
 /* Navbar */
 
+@media screen and (min-width: 1024px) {
+	.nav-links > div, .services-div {
+		position: relative;
+		overflow: hidden;
+		transition: all 0.3s ease-in;
+		border-radius: 100vw;
+	
+		&::after {
+			content: '';
+			width: 0;
+			height: 5px;
+			position: absolute;
+			background-image: linear-gradient(to left, rgb(167, 219, 248), rgb(116, 161, 245));
+			bottom: 0px;
+			left: 0;
+			transition: all 0.3s ease-in;
+		}
+	
+		&::before {
+			content: '';
+			width: 0;
+			height: 5px;
+			position: absolute;
+			background-image: linear-gradient(to left, rgb(167, 219, 248), rgb(116, 161, 245));
+			top: 0px;
+			right: 0;
+			transition: all 0.3s ease-in;
+			border-radius: 100vw;
+		}
+	
+		&:hover {
+			&::after {
+				width: 90%;
+			}
+			&::before {
+				width: 90%;
+			}
+		}
+	}
+}
+
 .services > * {
 	font-size: 14px;
 	text-transform: capitalize;
@@ -56,6 +97,7 @@ body {
 /* Navbar end */
 
 /* Home page */
+
 .swiper {
 	width: 100%;
 	padding-top: 50px;

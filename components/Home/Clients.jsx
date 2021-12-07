@@ -16,7 +16,7 @@ const Review = ({ review, profile, name, work }) => {
 				{/* <Quote color="action" sx={{ fontSize: 56 }} /> */}
 				<img src="/icons/quote.png" alt="quote" />
 			</div>
-			<div className="text-justify">{review}</div>
+			<div className="text-justify text-gray-700">{review}</div>
 			<div className="absolute border-2 bottom-4 rounded-full flex w-4/5 gap-6">
 				<img src={profile} alt="profile" className="h-20 w-20 rounded-full" />
 				<div className="font-medium text-gray-800 pt-3 text-[15px] md:text-base">
@@ -74,7 +74,7 @@ export default function App() {
 					<SwiperSlide>
 						<Review
 							review="Best website very helpful in managing events i the best one yet. The bestest feature my wedding great because this site exits wow"
-							name="Tinus Lorvalds"
+							name="Tinus Lorva"
 							profile="/clients/tinus.jpg"
 							work="NVIDIA Enthusiast"
 						/>
@@ -83,8 +83,8 @@ export default function App() {
 						<Review
 							review="Best website very helpful in managing events i the best one yet. The bestest feature my wedding great because this site exits wow"
 							name="Alicia"
-							profile="/clients/will.jpg"
-							work="CEO TikTok"
+							profile="/clients/alicia.jpg"
+							work="CEO Moueser"
 						/>
 					</SwiperSlide>
 				</Swiper>
