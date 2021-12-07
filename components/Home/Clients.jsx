@@ -31,7 +31,7 @@ const Review = ({ review, profile, name, work }) => {
 export default function App() {
 	return (
 		<>
-			<div className="bg-gradient-to-r from-blue-500 to-blue-700 p-10 pt-2">
+			<div className="bg-gradient-to-r from-blue-500 to-blue-700 p-10 pt-2 pb-20">
 				<div className="dancing capitalize text-5xl md:text-7xl text-gray-200 font-bold text-center my-10">
 					Our Clients
 				</div>
