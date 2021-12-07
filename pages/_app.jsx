@@ -2,7 +2,7 @@ import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
 
 import 'tailwindcss/tailwind.css';
-import '../style/global.scss';
+import '../style/global.css';
 import 'swiper/css/bundle';
 
 function App({ Component, pageProps }) {
