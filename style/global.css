@@ -59,16 +59,24 @@ body {
 	width: 100%;
 	padding-top: 50px;
 	padding-bottom: 50px;
-	max-width: 60rem;
+	max-width: 70rem;
 }
 
 .swiper-slide {
 	display: flex;
 	justify-content: center;
-	filter: blur(.2rem);
+	border-raidus: 10px;
 }
 
-.swiper-slide-active {
+.swiper-slide div {
+	opacity: 0.9;
+	filter: blur(1px);
+	border-raidus: 10px;
+}
+
+.swiper-slide-active div {
 	filter: blur(0px);
+	opacity: 1;
+	background: white;
 }
 

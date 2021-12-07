@@ -5,22 +5,22 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
-import SwiperCore, { EffectCoverflow, Pagination, A11y } from 'swiper';
+import SwiperCore, { EffectCoverflow, Pagination, Autoplay } from 'swiper';
 
-SwiperCore.use([EffectCoverflow, A11y]);
+SwiperCore.use([EffectCoverflow, Autoplay]);
 
 const Review = ({ review, profile, name, work }) => {
 	return (
-		<div className="bg-[#fff] rounded w-[24rem] h-[22rem] review-card shadow-xl pt-16 px-5 flex flex-col gap-10 relative">
+		<div className="bg-[#fff] rounded w-[24rem] h-[22rem] review-card shadow-xl pt-16 px-4 items-center flex flex-col gap-10 relative">
 			<div className="right-10 absolute top-2">
 				<Quote color="action" sx={{ fontSize: 56 }} />
 			</div>
 			<div className="text-justify">{review}</div>
-			<div className="absolute bottom-4 rounded-full flex w-full gap-16">
+			<div className="absolute border bottom-4 rounded-full flex w-4/5 gap-6">
 				<img src={profile} alt="profile" className="h-20 w-20 rounded-full" />
-				<div className="font-medium text-lg text-gray-800">
+				<div className="font-medium text-gray-800 pt-3">
 					{name}
-					<div className="text-gray-600 text-sm">{work}</div>
+					<div className="text-gray-600 text-[14px]">{work}</div>
 				</div>
 			</div>
 		</div>
@@ -39,6 +39,10 @@ export default function App() {
 					grabCursor={true}
 					centeredSlides={true}
 					slidesPerView={1}
+					autoplay={{
+						delay: 4000,
+						disableOnInteraction: false,
+					}}
 					breakpoints={{
 						720: {
 							slidesPerView: 2,
