@@ -120,9 +120,9 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="bg-blue-600 mt-2">
+      <div className="bg-gray-300 mt-2">
         <div className="container py-4 mx-auto flex items-center justify-center">
-          <p className="text-sm font-semibold text-gray-50">
+          <p className="text-sm font-semibold text-gray-600">
             Copyright © 2021 TheLogicTech
           </p>
         </div>

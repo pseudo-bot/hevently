@@ -35,7 +35,7 @@ body {
 		width: 0;
 		height: 5px;
 		position: absolute;
-		background-image: linear-gradient(to left, #a7dbf8, #74a1f5);
+		background-color: #ddd;
 		bottom: 0px;
 		left: 0;
 		transition: all 0.3s ease-in;
@@ -45,7 +45,7 @@ body {
 		width: 0;
 		height: 5px;
 		position: absolute;
-		background-image: linear-gradient(to left, #a7dbf8, #74a1f5);
+		background-color: white;
 		top: 0px;
 		right: 0;
 		transition: all 0.3s ease-in;
@@ -100,9 +100,21 @@ body {
 	background-image: url('/navbar.svg');
 }
 
+.trans-navbg {
+	opacity: 0;
+}
+
 /* Navbar end */
 
 /* Home page */
+
+.cover {
+	background-image: url('/events/cover6.jpg');
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
 
 .swiper {
 	width: 100%;
