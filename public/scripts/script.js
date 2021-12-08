@@ -17,9 +17,3 @@ let intersection = new IntersectionObserver((entries) => {
 
 intersection.observe(cover)
 
-// Parallax 
-
-window.addEventListener('scroll', () => {
-	let offset = window.scrollY;
-	cover.style.backgroundPositionY = offset * 0.72 + "px";
-})
