@@ -21,5 +21,5 @@ intersection.observe(cover)
 
 window.addEventListener('scroll', () => {
 	let offset = window.scrollY;
-	cover.style.backgroundPositionY = -offset * 0.4 + "px";
+	cover.style.backgroundPositionY = offset * 0.72 + "px";
 })
