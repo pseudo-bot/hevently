@@ -27,20 +27,21 @@ body {
 	.nav-links > div {
 		position: relative;
 		overflow: hidden;
-		transition: all 0.3s ease-in;
-		border-radius: 100vw;
+		transition: all 0.2s ease-in;
 	}
 	.nav-links > div::after {
 		content: '';
 		width: 0;
-		height: 5px;
+		height: 3px;
 		position: absolute;
 		background-color: #ddd;
-		bottom: 0px;
-		left: 0;
-		transition: all 0.3s ease-in;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		transition: all 0.25s ease-in;
+		border-radius: 100vw;
 	}
-	.nav-links > div::before {
+	/* .nav-links > div::before {
 		content: '';
 		width: 0;
 		height: 5px;
@@ -50,16 +51,17 @@ body {
 		right: 0;
 		transition: all 0.3s ease-in;
 		border-radius: 100vw;
-	}
+	} */
 	.nav-links > div:hover {
 		color: #fff;
 	}
 	.nav-links > div:hover::after {
-		width: 90%;
+		width: 70%;
 	}
-	.nav-links > div:hover::before {
+
+	/* .nav-links > div:hover::before {
 		width: 90%;
-	}
+	} */
 
 	.services-div > div:hover {
 		color: #fff;
@@ -68,25 +70,6 @@ body {
 	.services > * {
 		color: #666;
 	}
-}
-
-.services > * {
-	font-size: 14px;
-	text-transform: capitalize;
-	color: #666;
-	text-align: left;
-	padding-left: 1rem;
-	border-bottom: 1px solid #ddd;
-	height: 3rem;
-	display: flex;
-	align-items: center;
-	display: flex;
-	gap: 1rem;
-	border-radius: 0;
-}
-
-.services > *:hover {
-	color: rgb(99, 102, 241);
 }
 
 .spacer {
