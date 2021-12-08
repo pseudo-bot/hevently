@@ -64,6 +64,10 @@ body {
 	.services-div > div:hover {
 		color: #fff;
 	}
+
+	.services > * {
+		color: #666;
+	}
 }
 
 .services > * {
