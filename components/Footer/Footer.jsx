@@ -6,9 +6,9 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 const Footer = () => {
   return (
-    <footer className="text-gray-50 bg-wgray-100 mt-6">
-      <div className="container px-12 pt-12 pb-8 md:pb-0 mx-auto">
-        <div className="sm:flex flex-wrap justify-evenly order-first items-center">
+    <footer className="text-gray-50 bg-wgray-100 mt-24">
+      <div className="container px-12 pt-8 pb-8 md:pb-0 mx-auto">
+        <div className="sm:flex flex-wrap justify-evenly order-first items-center gap-5">
           <div className="">
             <div className="text-7xl font-extrabold text-blue-600 uppercas tracking-wider dancing text-center">
               hevently
