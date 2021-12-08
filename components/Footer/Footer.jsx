@@ -70,7 +70,7 @@ const Footer = () => {
             </div>
             <div className="">
               <h2 className="text-gray-900 font-semibold tracking-wider text-lg mb-2">
-                services
+                Services
               </h2>
               <nav className="list-none mb-5">
                 <li className="text-blue-600 my-1">
@@ -102,7 +102,6 @@ const Footer = () => {
           </div>
           <div className="">
             <h2 className="font-semibold text-gray-900 tracking-wider text-lg mb-3 text-center">
-
               Subscribe To Our Newsletter
             </h2>
             <div className="flex xl:flex-nowrap md:flex-nowrap lg:flex-wrap flex-wrap justify-center items-end md:justify-start">
