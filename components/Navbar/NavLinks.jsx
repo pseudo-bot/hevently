@@ -4,7 +4,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 const NavItem = ({ children, services=0 }) => {
 	return (
-		<div className={`p-3 lg:p-0 lg:py-2 border lg:border-none w-full text-gray-500 uppercase tracking-wider lg:text-gray-200 lg:text-center transition-all duration-150 hover:text-[blue] ${services ? 'h-[3rem] flex items-center gap-4' : ''}`}>
+		<div className={`p-3 lg:p-0 lg:py-2 border lg:border-none w-full text-gray-500 uppercase tracking-wider lg:text-gray-200 lg:text-center transition-all duration-150 hover:text-[blue] ${services ? 'h-[3rem] flex items-center gap-4 lg:text-gray-600' : ''}`}>
 			{children}
 		</div>
 	);
