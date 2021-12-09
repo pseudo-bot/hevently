@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Calender from "../components/Calender/Calender";
 
 import Home from "../components/Home/Home";
 export default function Index() {
