@@ -22,8 +22,7 @@ const Contact = () => {
                 ADDRESS
               </h2>
               <p className="mt-1 text-gray-900">
-                Photo booth tattooed prism, portland taiyaki hoodie neutra
-                typewriter
+                414,Ratu Road Ranchi,Jharkhand
               </p>
             </div>
             <div className="lg:w-1/2 px-6 mt-4 lg:mt-0">
@@ -31,12 +30,12 @@ const Contact = () => {
                 EMAIL
               </h2>
               <a className="text-indigo-500 leading-relaxed">
-                example@email.com
+                contact@hevently.com
               </a>
               <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">
                 PHONE
               </h2>
-              <p className="leading-relaxed text-gray-900">123-456-7890</p>
+              <p className="leading-relaxed text-gray-900">9999999999</p>
             </div>
           </div>
         </div>
@@ -64,7 +63,10 @@ const Contact = () => {
             />
           </div>
           <div className="relative mb-4">
-            <label htmlFor="message" className="leading-7 text-sm text-gray-600">
+            <label
+              htmlFor="message"
+              className="leading-7 text-sm text-gray-600"
+            >
               Message
             </label>
             <textarea
