@@ -1,11 +1,11 @@
-let navBg = document.querySelector('.navbar-bg');
-let cover = document.querySelector('.cover');
+var navBg = document.querySelector('.navbar-bg');
+var cover = document.querySelector('.cover');
 
-let options = {
+var options = {
 	rootMargin: "-64px 0px 0px 0px"
 };
 
-let intersection = new IntersectionObserver((entries) => {
+var intersection = new IntersectionObserver((entries) => {
 	entries.forEach((e) => {
 		if (e.isIntersecting) {
 			navBg.classList.add('trans-navbg');

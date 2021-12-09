@@ -41,27 +41,12 @@ body {
 		transition: all 0.25s ease-in;
 		border-radius: 100vw;
 	}
-	/* .nav-links > div::before {
-		content: '';
-		width: 0;
-		height: 5px;
-		position: absolute;
-		background-color: white;
-		top: 0px;
-		right: 0;
-		transition: all 0.3s ease-in;
-		border-radius: 100vw;
-	} */
 	.nav-links > div:hover {
 		color: #fff;
 	}
 	.nav-links > div:hover::after {
 		width: 70%;
 	}
-
-	/* .nav-links > div:hover::before {
-		width: 90%;
-	} */
 
 	.services-div > div:hover {
 		color: #fff;
@@ -84,7 +69,8 @@ body {
 }
 
 .trans-navbg {
-	opacity: 0;
+	background-image: none;
+	backdrop-filter: blur(10px);
 }
 
 /* Navbar end */
@@ -122,4 +108,14 @@ body {
 	filter: blur(0px);
 	opacity: 1;
 	background: white;
+}
+
+
+/* Form */
+
+.formbg {
+	background-image: url('/form/formbg.svg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
 }
