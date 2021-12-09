@@ -1,4 +1,5 @@
 import Arrow from '@mui/icons-material/ArrowForwardIosRounded';
+import Image from 'next/image'
 
 const Event = ({ image, title, desc }) => {
 	return (
@@ -7,10 +8,12 @@ const Event = ({ image, title, desc }) => {
 				{title}
 			</div>
 			<div className="w-72 h-72 overflow-hidden relative rounded-full group cursor-pointer hover:shadow-2xl transition-all duration-500">
-				<img
-					className="absolute border bg-center -top-10 transition-all duration-500 cursor-pointer group-hover:scale-110"
+				<Image
+					className="absolute border bg-center transition-all duration-500 cursor-pointer group-hover:scale-110"
 					src={image}
 					alt={title}
+					layout="fill"
+					objectFit="cover"
 				/>
 				<div className="bg-[#000] w-full h-0 absolute opacity-60 group-hover:h-full transition-all duration-500"></div>
 				<div className="bg-gray-200 absolute w-14 h-14 opacity-0 transition-all duration-500 group-hover:opacity-80 rounded-full top-28 left-1/2 -translate-x-1/2 flex justify-center items-center">
