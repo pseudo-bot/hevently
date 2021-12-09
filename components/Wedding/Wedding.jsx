@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 import Venue from './Venue';
+import Schedule from './Schedule'
 
 const Question = ({ children, next, prev }) => {
 	return (
@@ -93,7 +94,7 @@ const Event = () => {
 					<Venue />
 				</Question>
 				<Question next={nextPosition} prev={prevPosition}>
-					<Venue />
+					<Schedule />
 				</Question>
 				<Question next={nextPosition} prev={prevPosition}>
 					<Venue />
