@@ -4,20 +4,14 @@ import Autocomplete from '@mui/material/Autocomplete';
 const Venue = () => {
   return (
     <div>
-      <Autocomplete
-					disablePortal
-					id="combo-box-demo"
-					options={top100Films}
-					sx={{ width: 300 }}
-					renderInput={(params) => <TextField {...params} label="Venue" />}
-				/>
+      <TextField label="Venue" variant="filled"/>
     </div>
   )
 }
 
 export default Venue
 
-const top100Films = [
+const venues = [
 	{ label: 'The Shawshank Redemption', year: 1994 },
 	{ label: 'The Godfather', year: 1972 },
 	{ label: 'The Godfather: Part II', year: 1974 },
