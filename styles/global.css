@@ -78,7 +78,7 @@ body {
 /* Home page */
 
 .cover {
-	background-image: url('/events/cover.jpg');
+	background-image: url('/events/cover4.jpg');
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -118,4 +118,10 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
+	background-attachment: fixed;
+}
+
+.form-footer {
+	backdrop-filter: blur(.625rem);
+	background-image: none;
 }
