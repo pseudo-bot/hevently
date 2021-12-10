@@ -7,7 +7,6 @@ import 'swiper/css/bundle';
 function App({ Component, pageProps }) {
 	return (
 		<>
-
 			<Navbar />
 			<Component {...pageProps} />
 		</>
