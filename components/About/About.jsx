@@ -6,8 +6,9 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 const Card = ({ name }) => {
   return (
     <div className="">
-      <div className="max-w-sm rounded overflow-hidden shadow-lg py-10">
-        <div className="flex justify-center w-20 h-20 overflow-hidden relative rounded-full mx-auto">
+      <div className="max-w-sm rounded overflow-hidden shadow-lg pb-10">
+        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 h-24"></div>
+        <div className="flex justify-center w-20 h-20 overflow-hidden relative rounded-full mx-auto z-10 -mt-12">
           <Image
             className="w-full"
             src="/about/user.jpg"
@@ -48,7 +49,18 @@ function About() {
           About Hevently
         </h1>
         <p className="text-center text-bookmark-grey mt-4 py-10">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, laudantium. Cumque laudantium vel pariatur corrupti, animi debitis obcaecati perspiciatis non hic porro corporis natus deserunt voluptates magnam vero provident, exercitationem excepturi cum quos nostrum rerum? Laudantium, dolores consectetur suscipit iste porro maxime id fugit recusandae! Suscipit repellat libero cumque debitis, sunt, saepe perspiciatis vitae rerum odit voluptates sint possimus laboriosam quam, veritatis consequatur? Molestias dolorem omnis at. Totam ab nihil quisquam aspernatur iusto, laboriosam vitae! Earum, hic? Obcaecati perferendis provident voluptate in placeat ducimus blanditiis eum? Libero ad nulla in tempora sequi error doloribus. Laboriosam placeat in porro temporibus quas.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
+          laudantium. Cumque laudantium vel pariatur corrupti, animi debitis
+          obcaecati perspiciatis non hic porro corporis natus deserunt
+          voluptates magnam vero provident, exercitationem excepturi cum quos
+          nostrum rerum? Laudantium, dolores consectetur suscipit iste porro
+          maxime id fugit recusandae! Suscipit repellat libero cumque debitis,
+          sunt, saepe perspiciatis vitae rerum odit voluptates sint possimus
+          laboriosam quam, veritatis consequatur? Molestias dolorem omnis at.
+          Totam ab nihil quisquam aspernatur iusto, laboriosam vitae! Earum,
+          hic? Obcaecati perferendis provident voluptate in placeat ducimus
+          blanditiis eum? Libero ad nulla in tempora sequi error doloribus.
+          Laboriosam placeat in porro temporibus quas.
         </p>
       </div>
 
@@ -98,10 +110,7 @@ function About() {
       <div className="relative py-20 bg-black text-white">
         <div className="container mx-auto px-4">
           <div className="items-center flex flex-wrap-reverse">
-            <div
-              className="w-full md:w-5/12 ml-auto px-4"
-              data-aos="fade-left"
-            >
+            <div className="w-full md:w-5/12 ml-auto px-4" data-aos="fade-left">
               <div className="md:pr-5">
                 <h3 className="text-4xl md:text-5xl capitalise font-bold dancing text-center">
                   Our Solutions
