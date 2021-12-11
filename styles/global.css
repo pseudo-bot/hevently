@@ -83,11 +83,27 @@ body {
 /* Home page */
 
 .cover {
-	background-image: url('/events/cover.jpg');
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+	transition-duration: 3s;
+}
+
+.cover1 {
+	background-image: url('/events/cover.jpg');
+}
+
+.cover2 {
+	background-image: url('/events/cover2.jpg');
+}
+
+.cover3 {
+	background-image: url('/events/cover3.jpg');
+}
+
+.cover4 {
+	background-image: url('/events/cover4.jpg');
 }
 
 
