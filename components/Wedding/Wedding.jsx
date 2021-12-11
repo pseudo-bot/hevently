@@ -1,18 +1,12 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { Button } from '@mui/material';
+import ArrowRight from '@mui/icons-material/ArrowRightRounded';
+import ArrowLeft from '@mui/icons-material/ArrowLeftRounded';
 
 import Venue from './Venue';
 import Schedule from './Schedule';
 import DotsMobileStepper from '../Misc/Dot';
-
-// const Question = ({ children }) => {
-// 	return (
-// 		<div className="w-full relative formbg">
-// 			<div className='relative flex justify-center top-32 px-10'>{children}</div>
-// 		</div>
-// 	);
-// };
 
 const QImage = ({ src }) => {
 	return (
@@ -30,6 +24,12 @@ const QImage = ({ src }) => {
 
 const Event = () => {
 	const [position, setPosition] = useState(0);
+	const [eventData, setEventData] = useState({
+		venue: '',
+		startDate: '',
+		endDate: '',
+		catering: '',
+	});
 
 	const nextPosition = () => {
 		position++;
@@ -58,8 +58,8 @@ const Event = () => {
 					<QImage src="/form/wedding.jpg" />
 				</div>
 			</div>
-			<div className="md:w-3/5 w-full relative flex items-center justify-center pt-40 right-0">
-				<div className='formbg h-full md:w-3/5 w-full fixed top-0 z-0'></div>
+			<div className="md:w-3/5 w-full relative flex items-center justify-center pt-32 right-0">
+				<div className="formbg h-full md:w-3/5 w-full fixed top-0 z-0"></div>
 
 				{position === 0 ? <Venue /> : null}
 				{position === 1 ? <Schedule /> : null}
@@ -83,14 +83,15 @@ const FormFooter = ({ nextPosition, prevPosition, position }) => {
 		<>
 			<div className="fixed bottom-0 h-20 md:w-3/5 w-full form-footer border border-blue-300 z-40"></div>
 
-			<div className="fixed bottom-0 h-20 md:w-3/5 w-full flex justify-center gap-8 items-center border-gray-800 z-50">
+			<div className="fixed bottom-0 h-20 md:w-3/5 w-full flex justify-between px-10 gap-8 items-center border-gray-800 z-50">
 				<Button
 					onClick={prevPosition}
 					variant="contained"
 					disabled={position === 0}
 					size="large"
+					startIcon={<ArrowLeft />}
 				>
-					Previous
+					<span className="capitalize">Previous</span>
 				</Button>
 				<DotsMobileStepper activeStep={position} />
 				<Button
@@ -98,8 +99,9 @@ const FormFooter = ({ nextPosition, prevPosition, position }) => {
 					variant="contained"
 					disabled={position === 3}
 					size="large"
+					endIcon={<ArrowRight />}
 				>
-					Next
+					<span className="capitalize">Next</span>
 				</Button>
 			</div>
 		</>

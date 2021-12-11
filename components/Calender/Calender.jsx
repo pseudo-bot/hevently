@@ -18,7 +18,7 @@ const Calender = () => {
     console.log(ranges.selection.endDate);
   };
   return (
-    <>
+    <div className="relative">
       <div className="flex justify-center py-8 lg:hidden">
         <DateRange
           ranges={[selectionRange]}
@@ -33,7 +33,7 @@ const Calender = () => {
           onChange={handleSelect}
         />
       </div>
-    </>
+    </div>
   );
 };
 

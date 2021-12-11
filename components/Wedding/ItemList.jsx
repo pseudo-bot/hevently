@@ -5,21 +5,20 @@ import ItemCard from './ItemCard';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
-const ItemList = ({ list, city, venue }) => {
+const ItemList = ({ list, venue }) => {
 	useEffect(() => {
 		Aos.init({
 			duration: 600,
 		});
 	}, []);
-	console.log(city);
 	return (
-		<div className="flex flex-col gap-6 z-10">
+		<div className="flex flex-col gap-6 z-10 w-full">
 			{list
-				.filter(
-					(e) =>
-						(e.city.toLowerCase().includes(city) && city != '') ||
-						(e.venue.toLowerCase().includes(venue) && city != '')
-				)
+				.filter((e) => {
+					if (venue === "") return true;
+					let s = e.venue.toLowerCase() + ' ' + e.city.toLowerCase();
+					return venue && s.includes(venue);
+				})
 				.map(({ venue, city, ratings, capacity }) => {
 					return (
 						<ItemCard
