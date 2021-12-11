@@ -44,26 +44,24 @@ const Card = ({ name }) => {
 function About() {
   return (
     <>
-      <div className="relative aboutbg h-screen flex items-center justify-center">
-        <div className="sm:w-3/4 lg:w-5/12 mx-auto px-2 py-20 mt-20">
-          <h1 className="text-5xl md:text-7xl text-center text-bookmark-blue capitalize font-extrabold dancing text-gray-50">
-            About Hevently
-          </h1>
-          <p className="md:text-[20px] text-center text-bookmark-grey mt-4 py-10 text-gray-50">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
-            laudantium. Cumque laudantium vel pariatur corrupti, animi debitis
-            obcaecati perspiciatis non hic porro corporis natus deserunt
-            voluptates magnam vero provident, exercitationem excepturi cum quos
-            nostrum rerum? Laudantium, dolores consectetur suscipit iste porro
-            maxime id fugit recusandae! Suscipit repellat libero cumque debitis,
-            sunt, saepe perspiciatis vitae rerum odit voluptates sint possimus
-            laboriosam quam, veritatis consequatur? Molestias dolorem omnis at.
-            Totam ab nihil quisquam aspernatur iusto, laboriosam vitae! Earum,
-            hic? Obcaecati perferendis provident voluptate in placeat ducimus
-            blanditiis eum? Libero ad nulla in tempora sequi error doloribus.
-            Laboriosam placeat in porro temporibus quas.
-          </p>
-        </div>
+      <div className="sm:w-3/4 lg:w-5/12 mx-auto px-2 py-20 mt-10">
+        <h1 className="text-5xl md:text-7xl text-center text-bookmark-blue capitalize font-extrabold dancing">
+          About Hevently
+        </h1>
+        <p className="text-center text-bookmark-grey mt-4 py-10">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
+          laudantium. Cumque laudantium vel pariatur corrupti, animi debitis
+          obcaecati perspiciatis non hic porro corporis natus deserunt
+          voluptates magnam vero provident, exercitationem excepturi cum quos
+          nostrum rerum? Laudantium, dolores consectetur suscipit iste porro
+          maxime id fugit recusandae! Suscipit repellat libero cumque debitis,
+          sunt, saepe perspiciatis vitae rerum odit voluptates sint possimus
+          laboriosam quam, veritatis consequatur? Molestias dolorem omnis at.
+          Totam ab nihil quisquam aspernatur iusto, laboriosam vitae! Earum,
+          hic? Obcaecati perferendis provident voluptate in placeat ducimus
+          blanditiis eum? Libero ad nulla in tempora sequi error doloribus.
+          Laboriosam placeat in porro temporibus quas.
+        </p>
       </div>
 
       <div className="relative py-20 bg-black text-white">
