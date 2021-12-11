@@ -5,7 +5,7 @@ import ItemCard from './ItemCard';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
-const ItemList = ({ list, venue }) => {
+const ItemList = ({ list, value }) => {
 	useEffect(() => {
 		Aos.init({
 			duration: 600,
@@ -15,14 +15,14 @@ const ItemList = ({ list, venue }) => {
 		<div className="flex flex-col gap-6 z-10 w-full">
 			{list
 				.filter((e) => {
-					if (venue === "") return true;
-					let s = e.venue.toLowerCase() + ' ' + e.city.toLowerCase();
-					return venue && s.includes(venue);
+					if (value === "") return true;
+					let s = e.value.toLowerCase() + ' ' + e.city.toLowerCase();
+					return value && s.includes(value);
 				})
-				.map(({ venue, city, ratings, capacity }) => {
+				.map(({ value, city, ratings, capacity }) => {
 					return (
 						<ItemCard
-							venue={venue}
+							value={value}
 							city={city}
 							ratings={ratings}
 							capacity={capacity}
