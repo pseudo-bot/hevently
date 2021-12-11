@@ -83,7 +83,7 @@ const FormFooter = ({ nextPosition, prevPosition, position }) => {
 		<>
 			<div className="fixed bottom-0 h-20 md:w-3/5 w-full form-footer border border-blue-300 z-40"></div>
 
-			<div className="fixed bottom-0 h-20 md:w-3/5 w-full flex justify-between px-10 gap-8 items-center border-gray-800 z-50">
+			<div className="fixed bottom-0 h-20 md:w-3/5 w-full flex justify-between px-10 gap-4 items-center border-gray-800 z-50">
 				<Button
 					onClick={prevPosition}
 					variant="contained"
@@ -91,7 +91,7 @@ const FormFooter = ({ nextPosition, prevPosition, position }) => {
 					size="large"
 					startIcon={<ArrowLeft />}
 				>
-					<span className="capitalize">Previous</span>
+					<span className="capitalize text-[12px] sm:text-base">Previous</span>
 				</Button>
 				<DotsMobileStepper activeStep={position} />
 				<Button
@@ -101,7 +101,7 @@ const FormFooter = ({ nextPosition, prevPosition, position }) => {
 					size="large"
 					endIcon={<ArrowRight />}
 				>
-					<span className="capitalize">Next</span>
+					<span className="capitalize text-[12px] sm:text-base">Next</span>
 				</Button>
 			</div>
 		</>
