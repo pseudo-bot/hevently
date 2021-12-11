@@ -1,0 +1,7 @@
+.aboutbg {
+	background-image: url('/about/aboutbg.jpg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
