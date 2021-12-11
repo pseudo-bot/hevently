@@ -2,7 +2,7 @@ import Image from "next/image";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-
+import Calender from "../Calender/Calender";
 const Card = ({ name }) => {
   return (
     <div className="">
