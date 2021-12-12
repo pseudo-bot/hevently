@@ -83,7 +83,6 @@ body {
 /* Home page */
 
 .cover {
-	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -105,7 +104,6 @@ body {
 .cover4 {
 	background-image: url('/events/cover4.jpg');
 }
-
 
 .swiper {
 	width: 100%;

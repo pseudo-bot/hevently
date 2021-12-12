@@ -53,8 +53,8 @@ const Event = () => {
 					}}
 					className="relative h-screen w-[400%] hidden md:flex transition-all duration-300"
 				>
-					<QImage src="/form/wedding.jpg" />
-					<QImage src="/form/wedding.jpg" />
+					<QImage src="/form/venue.jpg" />
+					<QImage src="/form/calender.jpg" />
 					<QImage src="/form/catering.jpg" />
 					<QImage src="/form/wedding.jpg" />
 				</div>
