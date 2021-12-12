@@ -1,6 +1,5 @@
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
-import { DateRangePicker } from "react-date-range";
 import { DateRange } from "react-date-range";
 import { useState } from "react";
 const Calender = () => {
@@ -19,15 +18,8 @@ const Calender = () => {
   };
   return (
     <div className="relative">
-      <div className="flex justify-center py-8 lg:hidden">
+      <div className="flex justify-center py-8">
         <DateRange
-          ranges={[selectionRange]}
-          minDate={new Date()}
-          onChange={handleSelect}
-        />
-      </div>
-      <div className="lg:flex justify-center py-8 hidden">
-        <DateRangePicker
           ranges={[selectionRange]}
           minDate={new Date()}
           onChange={handleSelect}
