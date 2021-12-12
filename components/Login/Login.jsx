@@ -14,7 +14,7 @@ export default function Modal({ showLogin, setShowLogin }) {
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
             <div className="flex items-center justify-between p-5  rounded-t text-center">
               <h3 className=" capitalize font-semibold text-[18px] tracking-wide z-10 mx-auto">
-                Sign in with
+                Login
               </h3>
               <button
                 className="text-gray-900 absolute right-6"
@@ -25,22 +25,30 @@ export default function Modal({ showLogin, setShowLogin }) {
             </div>
             <div className="flex flex-col px-16 py-10 space-y-6">
               <button
-                className="bg-gray-50 active:bg-gray-100 text-gray-800 px-8 py-2 rounded outline-none focus:outline-none  shadow hover:shadow-lg inline-flex items-center font-semibold text-md transition-all duration-500 "
+                className="bg-gray-50 active:bg-gray-100 text-gray-800 px-8 py-2 rounded outline-none focus:outline-none capitalize  shadow hover:shadow-lg inline-flex items-center font-semibold text-md transition-all duration-500 "
                 type="button"
                 onClick={() => setShowLogin(false)}
               >
                 <FcGoogle className=" text-3xl mr-2" />
-                Google
+                <p className="hidden sm:flex">sign in with Google</p>
+                <p className="inline sm:hidden">google</p>
               </button>
               <button
-                className="bg-gray-50 active:bg-gray-100 text-gray-800 px-8 py-2 rounded outline-none focus:outline-none  shadow hover:shadow-lg inline-flex items-center font-semibold text-md transition-all duration-500  "
+                className="bg-gray-50 active:bg-gray-100 text-gray-800 px-8 py-2 rounded outline-none focus:outline-none capitalize  shadow hover:shadow-lg inline-flex items-center font-semibold text-md transition-all duration-500  "
                 type="button"
                 onClick={() => setShowLogin(false)}
               >
                 <AiFillFacebook className=" text-3xl text-blue-800 mr-2" />
-                Facebook
+                <p className="hidden sm:inline">sign in with facebook</p>
+                <p className="inline sm:hidden">facebook</p>
               </button>
             </div>
+            <p className="text-center text-gray-600 text-sm mb-4 -mt-4">
+              <a href="" className="text-blue-600 underline">
+                click here
+              </a>{" "}
+              to read terms and conditions
+            </p>
           </div>
         </div>
       </div>
