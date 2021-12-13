@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import 'animate.css';
 
 function Cover() {
@@ -12,6 +14,15 @@ function Cover() {
 			</div>
 
 			<Explore />
+
+			<div className="absolute bottom-10 animate-bounce cursor-pointer">
+				<Image
+					src="/events/scroll-bar.png"
+					height={56}
+					width={56}
+					alt="Scroll Down"
+				/>
+			</div>
 		</div>
 	);
 }

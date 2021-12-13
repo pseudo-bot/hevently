@@ -37,32 +37,32 @@ const Event = () => {
 
 	return (
 		<div className="w-screen">
-			<div className="fixed w-2/5 left-0 h-screen">
+			<div className="fixed w-2/5 left-0 h-screen bg-gray-800">
 				<div
 					className={`${
 						position == 0 ? 'opacity-100' : 'opacity-0'
-					} h-full w-full transition-all duration-500`}
+					} h-full w-full transition-all duration-1000 absolute inset-0`}
 				>
 					<QImage src="/form/venue.jpg" />
 				</div>
 				<div
 					className={`${
 						position == 1 ? 'opacity-100' : 'opacity-0'
-					} h-full w-full transition-all duration-500`}
+					} h-full w-full transition-all duration-1000 absolute inset-0`}
 				>
 					<QImage src="/form/calender.jpg" />
 				</div>
 				<div
 					className={`${
 						position == 2 ? 'opacity-100' : 'opacity-0'
-					} h-full w-full transition-all duration-500`}
+					} h-full w-full transition-all duration-1000 absolute inset-0`}
 				>
 					<QImage src="/form/catering.jpg" />
 				</div>
 				<div
 					className={`${
 						position == 3 ? 'opacity-100' : 'opacity-0'
-					} h-full w-full transition-all duration-500`}
+					} h-full w-full transition-all duration-1000 absolute inset-0`}
 				>
 					<QImage src="/form/venue.jpg" />
 				</div>
