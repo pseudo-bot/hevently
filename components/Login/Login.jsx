@@ -1,5 +1,5 @@
 import React from "react";
-import CancelIcon from "@mui/icons-material/Cancel";
+import CloseIcon from "@mui/icons-material/Close";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillFacebook } from "react-icons/ai";
 export default function Modal({ showLogin, setShowLogin }) {
@@ -13,19 +13,19 @@ export default function Modal({ showLogin, setShowLogin }) {
         <div className="relative o myw-aut-6 mx-auto max-w-3xl bg-bgray-50 rounded-lg">
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
             <div className="flex items-center justify-between p-5  rounded-t text-center">
-              <h3 className=" capitalize font-semibold text-[18px] tracking-wide z-10 mx-auto">
+              <h3 className=" capitalize font-semibold text-xl  tracking-wide z-10 mx-auto">
                 Login
               </h3>
               <button
                 className="text-gray-900 absolute right-6"
                 onClick={() => setShowLogin(false)}
               >
-                <CancelIcon fontSize="medium" />
+                <CloseIcon fontSize="large" className="text-gray-700" />
               </button>
             </div>
             <div className="flex flex-col px-16 py-10 space-y-6">
               <button
-                className="bg-gray-50 active:bg-gray-100 text-gray-800 px-8 py-2 rounded outline-none focus:outline-none capitalize  shadow hover:shadow-lg inline-flex items-center font-semibold text-md transition-all duration-500 "
+                className="bg-gray-50 active:bg-gray-100 text-gray-700 px-8 py-2 rounded outline-none focus:outline-none capitalize  shadow hover:shadow-lg inline-flex items-center font-semibold text-md transition-all duration-500 "
                 type="button"
                 onClick={() => setShowLogin(false)}
               >
@@ -34,7 +34,7 @@ export default function Modal({ showLogin, setShowLogin }) {
                 <p className="inline sm:hidden">google</p>
               </button>
               <button
-                className="bg-gray-50 active:bg-gray-100 text-gray-800 px-8 py-2 rounded outline-none focus:outline-none capitalize  shadow hover:shadow-lg inline-flex items-center font-semibold text-md transition-all duration-500  "
+                className="bg-gray-50 active:bg-gray-100 text-gray-700 px-8 py-2 rounded outline-none focus:outline-none capitalize  shadow hover:shadow-lg inline-flex items-center font-semibold text-md transition-all duration-500  "
                 type="button"
                 onClick={() => setShowLogin(false)}
               >
