@@ -4,18 +4,12 @@ import { useState } from 'react';
 import Venue from './Venue';
 import Schedule from './Schedule';
 import Caterer from './Caterer';
-import FormFooter from '../Misc/FormFooter'
+import FormFooter from '../Misc/FormFooter';
 
 const QImage = ({ src }) => {
 	return (
-		<div className="relative h-screen w-1/4 hidden md:block cover-img">
-			<Image
-				src={src}
-				layout="fill"
-				objectFit="cover"
-				priority={true}
-				objectPosition={'right'}
-			/>
+		<div className="relative h-full w-full hidden md:block">
+			<Image src={src} layout="fill" objectFit="cover" priority={true} />
 		</div>
 	);
 };
@@ -42,23 +36,38 @@ const Event = () => {
 	};
 
 	return (
-		<div className="relative flex w-full mb-32 border justify-end">
-			<div className="fixed left-0 h-screen w-2/5 hidden md:block">
+		<div className="w-screen">
+			<div className="fixed w-2/5 left-0 h-screen">
 				<div
-					style={{
-						left: `-${position * 100}%`,
-					}}
-					className="relative h-screen w-[400%] hidden md:flex transition-all duration-300"
+					className={`${
+						position == 0 ? 'opacity-100' : 'opacity-0'
+					} h-full w-full transition-all duration-500`}
 				>
 					<QImage src="/form/venue.jpg" />
+				</div>
+				<div
+					className={`${
+						position == 1 ? 'opacity-100' : 'opacity-0'
+					} h-full w-full transition-all duration-500`}
+				>
 					<QImage src="/form/calender.jpg" />
+				</div>
+				<div
+					className={`${
+						position == 2 ? 'opacity-100' : 'opacity-0'
+					} h-full w-full transition-all duration-500`}
+				>
 					<QImage src="/form/catering.jpg" />
-					<QImage src="/form/wedding.jpg" />
+				</div>
+				<div
+					className={`${
+						position == 3 ? 'opacity-100' : 'opacity-0'
+					} h-full w-full transition-all duration-500`}
+				>
+					<QImage src="/form/venue.jpg" />
 				</div>
 			</div>
-			<div className="md:w-3/5 w-full relative flex items-center justify-center pt-32 right-0">
-				<div className="formbg h-full md:w-3/5 w-full fixed top-0 z-0"></div>
-
+			<div className="absolute w-3/5 right-0 formbg py-32 flex items-center justify-center">
 				{position === 0 ? <Venue /> : null}
 				{position === 1 ? <Schedule /> : null}
 				{position === 2 ? <Caterer /> : null}
