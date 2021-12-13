@@ -37,7 +37,7 @@ const Event = () => {
 
 	return (
 		<div className="w-screen">
-			<div className="fixed w-2/5 left-0 h-screen bg-gray-800">
+			<div className="fixed w-2/5 hidden md:block left-0 h-screen bg-gray-800">
 				<div
 					className={`${
 						position == 0 ? 'opacity-100' : 'opacity-0'
@@ -67,7 +67,7 @@ const Event = () => {
 					<QImage src="/form/venue.jpg" />
 				</div>
 			</div>
-			<div className="absolute w-3/5 right-0 formbg py-32 flex items-center justify-center">
+			<div className="absolute w-full md:w-3/5 right-0 formbg py-32 flex items-center justify-center">
 				{position === 0 ? <Venue /> : null}
 				{position === 1 ? <Schedule /> : null}
 				{position === 2 ? <Caterer /> : null}
