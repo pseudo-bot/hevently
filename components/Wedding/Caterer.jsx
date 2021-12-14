@@ -5,7 +5,10 @@ let caterer = [
 		value: 'Ram caterer',
 		city: 'Ranchi',
 		ratings: 4.8,
-		capacity: 1000,
+		capacity: '400-500',
+		veg: '10000 / plate',
+		nonveg: '100000 / plate',
+		display: '/form/ven'
 	},
 	{
 		value: 'Himadiro',
