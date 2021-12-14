@@ -1,8 +1,9 @@
 import Image from "next/image";
+import { useEffect } from "react";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import Calender from "../Calender/Calender";
+
 const Card = ({ name }) => {
   return (
     <div className="">
@@ -44,7 +45,7 @@ const Card = ({ name }) => {
 function About() {
   return (
     <>
-      <div className="relative aboutbg h-screen flex items-center justify-center">
+      <div className="relative cover aboutbg h-screen flex items-center justify-center">
         <div className="sm:w-3/4 lg:w-5/12 mx-auto px-2 py-20 mt-20">
           <h1 className="text-5xl md:text-7xl text-center text-bookmark-blue capitalize font-extrabold dancing text-gray-50">
             About Hevently
