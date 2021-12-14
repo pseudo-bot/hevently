@@ -15,20 +15,35 @@ const ItemList = ({ list, value }) => {
 		<div className="flex flex-col gap-6 z-10 w-full">
 			{list
 				.filter((e) => {
-					if (value === "") return true;
+					if (value === '') return true;
 					let s = e.value.toLowerCase() + ' ' + e.city.toLowerCase();
 					return value && s.includes(value);
 				})
-				.map(({ value, city, ratings, capacity }) => {
-					return (
-						<ItemCard
-							value={value}
-							city={city}
-							ratings={ratings}
-							capacity={capacity}
-						/>
-					);
-				})}
+				.map(
+					({
+						value,
+						address,
+						city,
+						ratings,
+						capacity,
+						veg,
+						nonveg,
+						display,
+					}) => {
+						return (
+							<ItemCard
+								value={value}
+								city={city}
+								ratings={ratings}
+								capacity={capacity}
+								address={address}
+								veg={veg}
+								nonveg={nonveg}
+								display={display}
+							/>
+						);
+					}
+				)}
 		</div>
 	);
 };
