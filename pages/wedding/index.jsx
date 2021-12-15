@@ -1,4 +1,6 @@
 import Wedding from '../../components/Wedding/Wedding';
+import dbConnect from '../../db/utils/dbConnect.js';
+import Venue from '../../db/model/Venue';
 
 export default ({ venues }) => {
 	return (
@@ -8,24 +10,13 @@ export default ({ venues }) => {
 	);
 };
 
-export async function getStaticProps(context) {
-	const url =
-		process.env.NODE_ENV === 'development'
-			? 'http://localhost:3000/api/wedding/venues'
-			: 'https://hevently.vercel.app/api/wedding/venues';
-
-	let data = await fetch(url);
-	let venues = await data.json();
-
-	if (!venues) {
-		return {
-			notFound: true,
-		};
-	}
-
+export async function getStaticProps() {
+	dbConnect();
+	let data = await Venue.find({});
+	let venues = JSON.parse(JSON.stringify(data))
 	return {
 		props: {
-			venues: venues.data,
+			venues,
 		},
 	};
 }

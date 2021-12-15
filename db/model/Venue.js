@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import { Schema, model, models } from 'mongoose';
 
-const VenueSchema = new mongoose.Schema({
+const VenueSchema = new Schema({
 	value: {
 		type: String,
 		required: [true, 'No value'],
@@ -33,10 +33,18 @@ const VenueSchema = new mongoose.Schema({
 		type: String,
 		required: [true, 'No display'],
 	},
-  bookings: {
-    type: mongoose.Schema.Types.Mixed,
-    required: [true, 'No bookings']
-  }
+	bookings: {
+		type: Schema.Types.Mixed,
+		required: [true, 'No bookings'],
+	},
 });
 
-module.exports = mongoose.model.Venue || mongoose.model('Venue', VenueSchema);
+let Venue;
+
+if (models.Venue) {
+	Venue = model('Venue');
+} else {
+	Venue = model('Venue', VenueSchema);
+}
+
+export default Venue;
