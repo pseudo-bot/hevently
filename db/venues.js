@@ -8,6 +8,7 @@ let venues = [
 		veg: 1200,
 		nonveg: 1600,
 		display: "/form/venues/celebration.jpg",
+		bookings: [],
 	},
 	{
 		value: "Swagatam Banquet Hall",
@@ -18,6 +19,7 @@ let venues = [
 		veg: 1000,
 		nonveg: 1400,
 		display: "/form/venues/swagatam.jpg",
+		bookings: [],
 	},
 	{
 		value: "Manya Palace",
@@ -28,6 +30,7 @@ let venues = [
 		veg: 900,
 		nonveg: 1200,
 		display: "/form/venues/manya.jpg",
+		bookings: [],
 	},
 	{
 		value: "Amaltash Banquet Hall",
@@ -38,6 +41,7 @@ let venues = [
 		veg: 1000,
 		nonveg: 1500,
 		display: "/form/venues/amaltash.jpg",
+		bookings: [],
 	},
 	{
 		value: "Krishna Palace",
@@ -48,6 +52,7 @@ let venues = [
 		veg: 500,
 		nonveg: 800,
 		display: "/form/venues/krishna.jpg",
+		bookings: [],
 	},
 	{
 		value: "Aangan Palace",
@@ -58,6 +63,7 @@ let venues = [
 		veg: 800,
 		nonveg: 1300,
 		display: "/form/venues/aangan.jpg",
+		bookings: [],
 	},
 	{
 		value: "Paahi Palace",
@@ -68,6 +74,7 @@ let venues = [
 		veg: 1000,
 		nonveg: 1400,
 		display: "/form/venues/paahi.jpg",
+		bookings: [],
 	},
 	{
 		value: "Raj Mahal Marriage Home",
@@ -78,6 +85,7 @@ let venues = [
 		veg: 800,
 		nonveg: 1300,
 		display: "/form/venues/rajmahal.jpg",
+		bookings: [],
 	},
 	{
 		value: "Sohrai Bhawan",
@@ -88,6 +96,7 @@ let venues = [
 		veg: 800,
 		nonveg: 1300,
 		display: "/form/venues/soharibhawan.jpg",
+		bookings: [],
 	},
 	{
 		value: "Dharamsala Marriage Hall",
@@ -98,6 +107,7 @@ let venues = [
 		veg: 600,
 		nonveg: 900,
 		display: "/form/venues/dharmshala.jpg",
+		bookings: [],
 	},
 ];
 

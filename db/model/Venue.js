@@ -33,6 +33,10 @@ const VenueSchema = new mongoose.Schema({
 		type: String,
 		required: [true, 'No display'],
 	},
+  bookings: {
+    type: mongoose.Schema.Types.Mixed,
+    required: [true, 'No bookings']
+  }
 });
 
 module.exports = mongoose.model.Venue || mongoose.model('Venue', VenueSchema);

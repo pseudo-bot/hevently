@@ -56,7 +56,7 @@ export default function NavLinks({ hidden }) {
               services ? "h-[12rem]" : "h-0"
             } lg:fixed lg:top-16 lg:w-56 lg:pl-4 overflow-hidden transition-all duration-500 w-full bg-gray-100 font-normal services text-sm`}
           >
-            <NavItem services={1} href="/wedding/create">
+            <NavItem services={1} href="/wedding">
               <Flower />
               Weddings
             </NavItem>

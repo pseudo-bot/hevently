@@ -26,6 +26,7 @@ const ItemList = ({ list, value }) => {
 				})
 				.map(
 					({
+						_id,
 						value,
 						address,
 						city,
@@ -37,6 +38,7 @@ const ItemList = ({ list, value }) => {
 					}) => {
 						return (
 							<ItemCard
+								key={_id}
 								value={value}
 								city={city}
 								ratings={ratings}
