@@ -1,6 +1,12 @@
 import { useState } from "react";
+
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import Bar from '@mui/icons-material/LocalBar';
+import CakeIcon from '@mui/icons-material/Cake';
+import EventIcon from '@mui/icons-material/Event';
+import Flower from '@mui/icons-material/LocalFlorist';
+
 import Link from "next/link";
 import Image from "next/image";
 import Login from "../Login/Login";
@@ -51,19 +57,19 @@ export default function NavLinks({ hidden }) {
             } lg:fixed lg:top-16 lg:w-56 lg:pl-4 overflow-hidden transition-all duration-500 w-full bg-gray-100 font-normal services text-sm`}
           >
             <NavItem services={1} href="/wedding/create">
-              <Image height={20} width={20} src="/icons/wedding.png" />
+              <Flower />
               Weddings
             </NavItem>
             <NavItem services={1}>
-              <Image height={20} width={20} src="/icons/gathering.png" />
+              <Bar />
               Social Gathering
             </NavItem>
             <NavItem services={1}>
-              <Image height={20} width={20} src="/icons/cake.png" />
+              <CakeIcon />
               Birthdays
             </NavItem>
             <NavItem services={1}>
-              <Image height={20} width={20} src="/icons/corporate.png" />
+              <EventIcon />
               Corporate Events
             </NavItem>
           </div>

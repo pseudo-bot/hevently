@@ -16,7 +16,12 @@ const ItemList = ({ list, value }) => {
 			{list
 				.filter((e) => {
 					if (value === '') return true;
-					let s = e.value.toLowerCase() + ' ' + e.city.toLowerCase();
+					let s =
+						e.value.toLowerCase() +
+						' ' +
+						e.address.toLowerCase() +
+						' ' +
+						e.city.toLowerCase();
 					return value && s.includes(value);
 				})
 				.map(
