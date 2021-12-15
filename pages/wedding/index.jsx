@@ -1,7 +1,6 @@
 import Wedding from '../../components/Wedding/Wedding';
 
 export default ({ venues }) => {
-	console.log(venues);
 	return (
 		<div>
 			<Wedding venues={venues} />
@@ -9,22 +8,19 @@ export default ({ venues }) => {
 	);
 };
 
-export async function getServerSideProps() {
-	let data;
-	let venues;
-	try {
-		data = await fetch('http://localhost:3000/api/wedding/venues');
-		venues = await data.json();
-		if (!venues.status) {
-			console.log('Error fetching venues for wedding');
+export async function getStaticProps(context) {
+	let data = await fetch('http://localhost:3000/api/wedding/venues')
+	let venues = await data.json()
+	
+	if (!venues) {
+		return {
+			notFound: true,
 		}
-	} catch (e) {
-		console.log(e);
-		console.log('Error fetching venues for wedding');
 	}
+
 	return {
 		props: {
-			venues: venues.data,
+			venues: venues.data
 		},
 	};
 }
