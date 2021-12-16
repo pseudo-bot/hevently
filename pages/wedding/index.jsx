@@ -13,7 +13,13 @@ export default ({ venues }) => {
 export async function getStaticProps() {
 	dbConnect();
 	let data = await Venue.find({});
-	let venues = JSON.parse(JSON.stringify(data))
+	let venues = JSON.parse(JSON.stringify(data));
+
+	if (!venues) {
+		return {
+			notFound: true,
+		};
+	}
 	return {
 		props: {
 			venues,

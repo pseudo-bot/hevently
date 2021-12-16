@@ -47,4 +47,4 @@ if (models.Venue) {
 	Venue = model('Venue', VenueSchema);
 }
 
-export default Venue;
+export default models.Venue || model.Venue('Venue', VenueSchema);
