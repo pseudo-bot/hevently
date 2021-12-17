@@ -1,18 +1,24 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { WeddingContext } from '../../../context/Wedding';
 
 import ItemCard from './ItemCard';
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
-const ItemList = ({ list, value }) => {
+const ItemList = ({ list, value, weddingVenue }) => {
+	const {
+		eventData: { venue },
+		setVenue,
+	} = useContext(WeddingContext);
+
 	useEffect(() => {
 		Aos.init({
 			duration: 600,
 		});
 	}, []);
 	return (
-		<div className="flex flex-col gap-6 z-10 w-full">
+		<div className="flex flex-col gap-10 z-10 w-full">
 			{list
 				.filter((e) => {
 					if (value === '') return true;
@@ -36,6 +42,8 @@ const ItemList = ({ list, value }) => {
 						nonveg,
 						display,
 					}) => {
+						let selected = false;
+						if (venue === _id) selected = true;
 						return (
 							<ItemCard
 								key={_id}
@@ -47,6 +55,10 @@ const ItemList = ({ list, value }) => {
 								veg={veg}
 								nonveg={nonveg}
 								display={display}
+								handleBooking={() => {
+									setVenue(_id);
+								}}
+								booked={selected}
 							/>
 						);
 					}

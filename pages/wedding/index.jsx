@@ -1,12 +1,15 @@
 import Wedding from '../../components/Wedding/Wedding';
 import dbConnect from '../../db/utils/dbConnect.js';
 import Venue from '../../db/model/Venue';
+import { WeddingProvider } from '../../context/Wedding';
 
 export default ({ venues }) => {
 	return (
-		<div>
-			<Wedding venues={venues} />
-		</div>
+		<WeddingProvider>
+			<div>
+				<Wedding venues={venues} />
+			</div>
+		</WeddingProvider>
 	);
 };
 

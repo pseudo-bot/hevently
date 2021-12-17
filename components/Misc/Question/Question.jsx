@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { TextField } from '@mui/material';
 import ItemList from './ItemList';
 
-const Question = ({ list, heading, label}) => {
+const Question = ({ list, heading, label, search, weddingVenue }) => {
 	const [value, setValue] = useState('');
 
 	const handleVenueChange = (e) => {
@@ -14,8 +14,16 @@ const Question = ({ list, heading, label}) => {
 			<div className="text-3xl relative montserrat font-semibold text-center text-gradient capitalize md:text-4xl">
 				{heading}
 			</div>
-			<TextField label={label} variant="filled" onChange={handleVenueChange} />
-			<ItemList list={list} value={value} />
+			{search ? (
+				<>
+					<TextField
+						label={label}
+						variant="filled"
+						onChange={handleVenueChange}
+					/>
+					<ItemList list={list} value={value} weddingVenue={weddingVenue}/>
+				</>
+			) : null}
 		</div>
 	);
 };
