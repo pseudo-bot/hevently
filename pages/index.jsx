@@ -21,7 +21,7 @@ const useScript = (url) => {
 
 export default function Index() {
   useScript("/scripts/script.js");
-
+  
   return (
     <>
       <Home />

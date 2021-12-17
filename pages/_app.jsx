@@ -1,4 +1,5 @@
 import Navbar from '../components/Navbar/Navbar';
+import { UserProvider } from '../context/Users';
 
 import 'tailwindcss/tailwind.css';
 import '../styles/global.css';
@@ -8,8 +9,10 @@ import 'swiper/css/bundle';
 function App({ Component, pageProps }) {
 	return (
 		<>
-			<Navbar />
-			<Component {...pageProps} />
+			<UserProvider>
+				<Navbar />
+				<Component {...pageProps} />
+			</UserProvider>
 		</>
 	);
 }

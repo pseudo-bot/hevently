@@ -28,7 +28,7 @@ body {
 
 @media screen and (max-width: 30rem) {
 	html {
-		font-size: 14px;
+		font-size: 13px;
 	}
 }
 
@@ -89,10 +89,11 @@ body {
 /* Home page */
 
 .cover {
-	background-image: url('/events/cover3.jpg');
+	background-image: url('/events/cover2.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+	filter: brightness(0.5);
 }
 
 
