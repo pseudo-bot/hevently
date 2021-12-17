@@ -36,7 +36,6 @@ export default function NavLinks({ hidden }) {
 		setShowLogin((prev) => !prev);
 	};
 	const user = useContext(UserContext);
-  console.log(user);
 	return (
 		<>
 			<div
