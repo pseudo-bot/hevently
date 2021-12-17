@@ -5,6 +5,6 @@ import { auth } from '../lib/firebase/firebase';
 export const UserContext = createContext([]);
 
 export const UserProvider = ({ children }) => {
-	const [user] = useAuthState(auth);
+	const [ user ] = useAuthState(auth);
 	return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
 };
