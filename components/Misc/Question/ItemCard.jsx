@@ -59,7 +59,7 @@ const ItemCard = ({
 						/>
 					</div>
 
-					<div className="flex gap-10">
+					<div className="flex gap-16">
 						<div className="text-md text-gray-600 my-2">
 							<PeopleAltIcon
 								sx={{
@@ -69,35 +69,37 @@ const ItemCard = ({
 							/>
 							{capacity}
 						</div>
-						<div className="text-md text-gray-600 my-2">
-							<Dot
-								sx={{
-									fontSize: 20,
-									marginRight: '6px',
-									color: 'green',
-								}}
-							/>
-							<Rupee
-								sx={{
-									fontSize: 20,
-								}}
-							/>
-							{veg}
-						</div>
-						<div className="text-md text-gray-600 my-2">
-							<Dot
-								sx={{
-									fontSize: 20,
-									marginRight: '6px',
-									color: 'red',
-								}}
-							/>
-							<Rupee
-								sx={{
-									fontSize: 20,
-								}}
-							/>
-							{nonveg}
+						<div className='flex flex-col sm:flex-row sm:gap-10'>
+							<div className="text-md text-gray-600 my-2">
+								<Dot
+									sx={{
+										fontSize: 20,
+										marginRight: '6px',
+										color: 'green',
+									}}
+								/>
+								<Rupee
+									sx={{
+										fontSize: 20,
+									}}
+								/>
+								{veg}
+							</div>
+							<div className="text-md text-gray-600 my-2">
+								<Dot
+									sx={{
+										fontSize: 20,
+										marginRight: '6px',
+										color: 'red',
+									}}
+								/>
+								<Rupee
+									sx={{
+										fontSize: 20,
+									}}
+								/>
+								{nonveg}
+							</div>
 						</div>
 					</div>
 
