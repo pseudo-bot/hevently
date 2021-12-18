@@ -45,8 +45,9 @@ const Card = ({ name }) => {
 function About() {
   return (
     <>
-      <div className="relative cover aboutbg h-screen flex items-center justify-center">
-        <div className="sm:w-3/4 lg:w-5/12 mx-auto px-2 py-20 mt-20">
+      <div className="relative h-screen flex items-center justify-center ">
+        <div className="cover aboutbg h-full w-full absolute"></div>
+        <div className="sm:w-3/4 lg:w-5/12 mx-auto px-2 py-20 mt-20 z-20">
           <h1 className="text-5xl md:text-7xl text-center text-bookmark-blue capitalize font-extrabold dancing text-gray-50">
             About Hevently
           </h1>
@@ -64,89 +65,6 @@ function About() {
             blanditiis eum? Libero ad nulla in tempora sequi error doloribus.
             Laboriosam placeat in porro temporibus quas.
           </p>
-        </div>
-      </div>
-
-      <div className="relative py-20 bg-black text-white">
-        <div className="container mx-auto px-4">
-          <div className="items-center flex flex-wrap">
-            <div
-              className="w-full md:w-4/12 ml-auto  px-4"
-              data-aos="fade-right"
-            >
-              <Image src="/about/image1.jpg" height="500" width="600" />
-            </div>
-            <div
-              className="w-full md:w-5/12 ml-auto mr-auto px-4"
-              data-aos="fade-left"
-            >
-              <div className="md:pr-5">
-                <h3 className="text-4xl md:text-5xl capitalise font-bold dancing text-center">
-                  Problems
-                </h3>
-                <p className="mt-4 text-lg leading-relaxed">
-                  The extension comes with three pre-built pages to help you get
-                  started faster. You can change the text and images and you're
-                  good to go.
-                </p>
-                <p className="mt-4 text-lg leading-relaxed">
-                  The extension comes with three pre-built pages to help you get
-                  started faster. You can change the text and images and you're
-                  good to go.
-                </p>
-                <p className="mt-4 text-lg leading-relaxed">
-                  The extension comes with three pre-built pages to help you get
-                  started faster. You can change the text and images and you're
-                  good to go.
-                </p>
-                <p className="mt-4 text-lg leading-relaxed">
-                  The extension comes with three pre-built pages to help you get
-                  started faster. You can change the text and images and you're
-                  good to go.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="relative py-20 bg-wgray-100 text-white">
-        <div className="container mx-auto px-4">
-          <div className="items-center flex flex-wrap-reverse">
-            <div className="w-full md:w-5/12 ml-auto px-4" data-aos="fade-left">
-              <div className="md:pr-5">
-                <h3 className="text-4xl md:text-5xl capitalise font-bold dancing text-center">
-                  Our Solutions
-                </h3>
-                <p className="mt-4 text-lg leading-relaxed">
-                  The extension comes with three pre-built pages to help you get
-                  started faster. You can change the text and images and you're
-                  good to go.
-                </p>
-                <p className="mt-4 text-lg leading-relaxed">
-                  The extension comes with three pre-built pages to help you get
-                  started faster. You can change the text and images and you're
-                  good to go.
-                </p>
-                <p className="mt-4 text-lg leading-relaxed">
-                  The extension comes with three pre-built pages to help you get
-                  started faster. You can change the text and images and you're
-                  good to go.
-                </p>
-                <p className="mt-4 text-lg leading-relaxed">
-                  The extension comes with three pre-built pages to help you get
-                  started faster. You can change the text and images and you're
-                  good to go.
-                </p>
-              </div>
-            </div>
-            <div
-              className="w-full md:w-4/12 ml-auto mr-auto px-4"
-              data-aos="fade-right"
-            >
-              <Image src="/about/image2.jpg" height="500" width="600" />
-            </div>
-          </div>
         </div>
       </div>
 
