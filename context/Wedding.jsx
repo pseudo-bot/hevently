@@ -5,10 +5,9 @@ export const WeddingContext = createContext([]);
 export const WeddingProvider = ({ children }) => {
 	const [eventData, setEventData] = useState({
 		venue: null,
-		startDate: null,
-		endDate: null,
+		startDate: '',
+		endDate: '',
 	});
-
 	const setVenue = (venue) => {
 		let newVenue = Object.assign({}, eventData);
 		newVenue.venue = venue;

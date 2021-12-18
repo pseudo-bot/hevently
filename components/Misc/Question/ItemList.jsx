@@ -17,6 +17,7 @@ const ItemList = ({ list, value, weddingVenue }) => {
 			duration: 600,
 		});
 	}, []);
+	
 	return (
 		<div className="flex flex-col gap-10 z-10 w-full">
 			{list
