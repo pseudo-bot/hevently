@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { CSSTransition } from 'react-transition-group';
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -17,7 +18,6 @@ const NavItem = ({
 	children,
 	services = 0,
 	href = '',
-	setShowLogin,
 	setOpen,
 }) => {
 	const router = useRouter();
@@ -120,10 +120,17 @@ export default function NavLinks({ hidden }) {
 					</div>
 				</div>
 				<NavItem>Contact</NavItem>
-
 				{auth.currentUser ? <Logout /> : <Login openLogin={openLogin} />}
 			</div>
-			<LoginInterface showLogin={showLogin} setShowLogin={setShowLogin} />
+
+			<CSSTransition
+				unmountOnExit
+				in={showLogin}
+				timeout={300}
+				classNames="modal"
+			>
+				<LoginInterface setShowLogin={setShowLogin} />
+			</CSSTransition>
 		</>
 	);
 }
