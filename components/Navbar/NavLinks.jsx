@@ -1,4 +1,5 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -6,26 +7,34 @@ import Bar from '@mui/icons-material/LocalBar';
 import CakeIcon from '@mui/icons-material/Cake';
 import EventIcon from '@mui/icons-material/Event';
 import Flower from '@mui/icons-material/LocalFlorist';
-
-import Link from 'next/link';
-import Image from 'next/image';
 import LoginInterface from '../Login/Login';
+import Alert from '../Misc/Alert';
 
-import { UserContext } from '../../context/Users';
-
+import { auth } from '../../lib/firebase/firebase';
 import signOut from '../../lib/firebase/signOut';
 
-const NavItem = ({ children, services = 0, href = '' }) => {
+const NavItem = ({
+	children,
+	services = 0,
+	href = '',
+	setShowLogin,
+	setOpen,
+}) => {
+	const router = useRouter();
 	return (
-		<Link href={href} scroll={false}>
-			<div
-				className={`p-3 lg:p-0 lg:py-2 border lg:border-none w-full text-gray-500 uppercase tracking-wider lg:text-gray-200 lg:text-center transition-all duration-150 hover:text-[blue] ${
-					services ? 'h-[3rem] flex items-center gap-4 lg:text-gray-600' : ''
-				}`}
-			>
-				{children}
-			</div>
-		</Link>
+		<div
+			className={`p-3 lg:p-0 lg:py-2 border lg:border-none w-full text-gray-500 uppercase tracking-wider lg:text-gray-200 lg:text-center transition-all duration-150 hover:text-[blue] ${
+				services ? 'h-[3rem] flex items-center gap-4 lg:text-gray-600' : ''
+			}`}
+			onClick={(e) => {
+				e.preventDefault();
+				if (services && !auth.currentUser) {
+					setOpen(true);
+				} else router.push(href, null, { scroll: false });
+			}}
+		>
+			{children}
+		</div>
 	);
 };
 
@@ -35,9 +44,20 @@ export default function NavLinks({ hidden }) {
 	const openLogin = () => {
 		setShowLogin((prev) => !prev);
 	};
-	const user = useContext(UserContext);
+
+	const [open, setOpen] = useState(false);
+
 	return (
 		<>
+			<div className="w-screen fixed">
+				<Alert
+					open={open}
+					severity={'info'}
+					setOpen={setOpen}
+					msg={'Please login to continue'}
+				/>
+			</div>
+
 			<div
 				className={`${
 					hidden
@@ -61,19 +81,39 @@ export default function NavLinks({ hidden }) {
 							services ? 'h-[12rem]' : 'h-0'
 						} lg:fixed lg:top-16 lg:w-56 lg:pl-4 overflow-hidden transition-all duration-500 w-full bg-gray-100 font-normal services text-sm`}
 					>
-						<NavItem services={1} href="/wedding">
+						<NavItem
+							services={1}
+							setOpen={setOpen}
+							href="/wedding"
+							setShowLogin={setShowLogin}
+						>
 							<Flower />
 							Weddings
 						</NavItem>
-						<NavItem services={1}>
+						<NavItem
+							services={1}
+							setOpen={setOpen}
+							href="/wedding"
+							setShowLogin={setShowLogin}
+						>
 							<Bar />
 							Social Gathering
 						</NavItem>
-						<NavItem services={1}>
+						<NavItem
+							services={1}
+							setOpen={setOpen}
+							href="/wedding"
+							setShowLogin={setShowLogin}
+						>
 							<CakeIcon />
 							Birthdays
 						</NavItem>
-						<NavItem services={1}>
+						<NavItem
+							services={1}
+							setOpen={setOpen}
+							href="/wedding"
+							setShowLogin={setShowLogin}
+						>
 							<EventIcon />
 							Corporate Events
 						</NavItem>
@@ -81,7 +121,7 @@ export default function NavLinks({ hidden }) {
 				</div>
 				<NavItem>Contact</NavItem>
 
-				{user ? <Logout /> : <Login openLogin={openLogin} />}
+				{auth.currentUser ? <Logout /> : <Login openLogin={openLogin} />}
 			</div>
 			<LoginInterface showLogin={showLogin} setShowLogin={setShowLogin} />
 		</>

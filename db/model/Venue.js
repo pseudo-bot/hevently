@@ -39,12 +39,6 @@ const VenueSchema = new Schema({
 	},
 });
 
-let Venue;
+export let WeddingVenue = models.WeddingVenue || model('WeddingVenue', VenueSchema);
+export let SocialVenue = models.SocialVenue || model('SocialVenue', VenueSchema);
 
-if (models.Venue) {
-	Venue = model('Venue');
-} else {
-	Venue = model('Venue', VenueSchema);
-}
-
-export default models.Venue || model.Venue('Venue', VenueSchema);

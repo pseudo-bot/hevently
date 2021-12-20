@@ -64,14 +64,6 @@ const Images = ({ position }) => {
 const Wedding = ({ venues }) => {
 	const [open, setOpen] = useState(false);
 
-	const handleClose = (event, reason) => {
-		if (reason === 'clickaway') {
-			return;
-		}
-
-		setOpen(false);
-	};
-
 	const {
 		eventData: { venue },
 	} = useContext(WeddingContext);
@@ -97,11 +89,14 @@ const Wedding = ({ venues }) => {
 
 	return (
 		<div className="w-screen">
-			{position === 0 && !venue ? (
-				<div className="z-50">
-					<Alert open={open} handleClose={handleClose} severity={"warning"} msg={"Please select a venue to continue"}/>
-				</div>
-			) : null}
+			<div className="z-50">
+				<Alert
+					open={open}
+					setOpen={setOpen}
+					severity={'warning'}
+					msg={'Please select a venue to continue'}
+				/>
+			</div>
 
 			<div className="fixed formbg w-full h-screen right-0"></div>
 
