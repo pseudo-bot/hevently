@@ -5,17 +5,15 @@ export default async function createUserHandler(req, res) {
 	await dbConnect();
 
 	const { method } = req;
-	const { uid } = req.body;
+	const { uid, email } = req.body;
 
-	switch (req) {
+	switch (method) {
 		case 'POST':
 			try {
 				const user = await User.updateOne(
 					{ uid },
 					{
-						$set: {
-							uid,
-						},
+						$set: { uid, email },
 					},
 					{ upsert: true }
 				);
@@ -27,7 +25,7 @@ export default async function createUserHandler(req, res) {
 			break;
 
 		default:
-			res.status(403).json({ ok: false, msg: 'Access denied' });
+			res.status(403).json({error: "ACCESS DENIED"})
 			break;
 	}
 }
