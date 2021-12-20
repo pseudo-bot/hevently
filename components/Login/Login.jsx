@@ -154,6 +154,7 @@ export default function Modal({ setShowLogin }) {
 													</IconButton>
 												</InputAdornment>
 											}
+											label="Password"
 										/>
 									</FormControl>
 								</div>
