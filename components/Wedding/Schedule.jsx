@@ -8,6 +8,8 @@ const Schedule = () => {
   const {
     eventData: { startDate, endDate },
   } = useContext(WeddingContext);
+  console.log(startDate);
+  console.log(endDate);
   return (
     <div>
       <Question heading="Schedule event" search={false} />
@@ -35,7 +37,7 @@ const Date = ({ startDate, endDate }) => {
           id="start-date"
           disabled
           value={startDate}
-          className=" bg-gray-50 rounded border border-gray-300  text-base outline-none text-gray-700 py-1 px-3"
+          className=" bg-gray-50 rounded border border-gray-300  text-base outline-none text-gray-700 py-1 px-3  w-36"
         />
       </div>
       <div>
@@ -51,7 +53,7 @@ const Date = ({ startDate, endDate }) => {
           id="end-date"
           disabled
           value={endDate}
-          className="bg-gray-50 rounded border border-gray-300  text-base outline-none text-gray-700 py-1 px-3"
+          className="bg-gray-50 rounded border border-gray-300  text-base outline-none text-gray-700 py-1 px-3 w-36"
         />
       </div>
     </div>
