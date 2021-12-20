@@ -14,12 +14,7 @@ import Alert from '../Misc/Alert';
 import { auth } from '../../lib/firebase/firebase';
 import signOut from '../../lib/firebase/signOut';
 
-const NavItem = ({
-	children,
-	services = 0,
-	href = '',
-	setOpen,
-}) => {
+const NavItem = ({ children, services = 0, href = '', setOpen }) => {
 	const router = useRouter();
 	return (
 		<div
@@ -52,7 +47,7 @@ export default function NavLinks({ hidden }) {
 			<div className="w-screen fixed">
 				<Alert
 					open={open}
-					severity={'info'}
+					severity={'warning'}
 					setOpen={setOpen}
 					msg={'Please login to continue'}
 				/>
@@ -120,7 +115,11 @@ export default function NavLinks({ hidden }) {
 					</div>
 				</div>
 				<NavItem>Contact</NavItem>
-				{auth.currentUser ? <Logout /> : <Login openLogin={openLogin} />}
+				{auth.currentUser ? (
+					<NavItem href="/profile">Profile</NavItem>
+				) : (
+					<Login openLogin={openLogin} />
+				)}
 			</div>
 
 			<CSSTransition
@@ -134,20 +133,6 @@ export default function NavLinks({ hidden }) {
 		</>
 	);
 }
-
-const Logout = () => {
-	return (
-		<NavItem>
-			<div
-				onClick={async () => {
-					await signOut();
-				}}
-			>
-				Logout
-			</div>
-		</NavItem>
-	);
-};
 
 const Login = ({ openLogin }) => {
 	return (
