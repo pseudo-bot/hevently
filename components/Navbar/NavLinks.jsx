@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { CSSTransition } from 'react-transition-group';
+import { UserContext } from '../../context/Users';
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -11,15 +12,7 @@ import Flower from '@mui/icons-material/LocalFlorist';
 import LoginInterface from '../Login/Login';
 import Alert from '../Misc/Alert';
 
-import { auth } from '../../lib/firebase/firebase';
-import signOut from '../../lib/firebase/signOut';
-
-const NavItem = ({
-	children,
-	services = 0,
-	href = '',
-	setOpen,
-}) => {
+const NavItem = ({ children, services = 0, href = '', setOpen }) => {
 	const router = useRouter();
 	return (
 		<div
@@ -28,7 +21,7 @@ const NavItem = ({
 			}`}
 			onClick={(e) => {
 				e.preventDefault();
-				if (services && !auth.currentUser) {
+				if (services && !user) {
 					setOpen(true);
 				} else router.push(href, null, { scroll: false });
 			}}
@@ -39,6 +32,7 @@ const NavItem = ({
 };
 
 export default function NavLinks({ hidden }) {
+	const user = useContext(UserContext)
 	const [services, setServices] = useState(0);
 	const [showLogin, setShowLogin] = useState(false);
 	const openLogin = () => {
@@ -52,7 +46,7 @@ export default function NavLinks({ hidden }) {
 			<div className="w-screen fixed">
 				<Alert
 					open={open}
-					severity={'info'}
+					severity={'warning'}
 					setOpen={setOpen}
 					msg={'Please login to continue'}
 				/>
@@ -120,7 +114,11 @@ export default function NavLinks({ hidden }) {
 					</div>
 				</div>
 				<NavItem>Contact</NavItem>
-				{auth.currentUser ? <Logout /> : <Login openLogin={openLogin} />}
+				{user ? (
+					<NavItem href="/profile">Profile</NavItem>
+				) : (
+					<Login openLogin={openLogin} />
+				)}
 			</div>
 
 			<CSSTransition
@@ -134,20 +132,6 @@ export default function NavLinks({ hidden }) {
 		</>
 	);
 }
-
-const Logout = () => {
-	return (
-		<NavItem>
-			<div
-				onClick={async () => {
-					await signOut();
-				}}
-			>
-				Logout
-			</div>
-		</NavItem>
-	);
-};
 
 const Login = ({ openLogin }) => {
 	return (

@@ -3,17 +3,25 @@ import dbConnect from '../../db/utils/dbConnect.js';
 import { WeddingVenue } from '../../db/model/Venue';
 import { WeddingProvider } from '../../context/Wedding';
 import { auth } from '../../lib/firebase/firebase';
+import { UserContext } from '../../context/Users';
+import { useContext } from 'react';
+import { CircularProgress } from '@mui/material';
 
 export default ({ venues }) => {
+	const user = useContext(UserContext)
 	return (
 		<>
-			{auth.currentUser ? (
+			{user ? (
 				<WeddingProvider>
 					<div>
 						<Wedding venues={venues} />
 					</div>
 				</WeddingProvider>
-			) : <div className='flex h-screen w-screen fixed justify-center items-center text-xl text-center'>Please login to access site</div>}
+			) : (
+				<div className="flex h-screen w-screen fixed justify-center items-center text-xl text-center">
+					<CircularProgress />
+				</div>
+			)}
 		</>
 	);
 };
