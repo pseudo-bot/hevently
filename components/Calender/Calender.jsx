@@ -4,7 +4,11 @@ import { DateRange } from "react-date-range";
 import { useState } from "react";
 import moment from "moment";
 import { parseISO } from "date-fns";
+import { useContext } from "react";
+import { WeddingContext } from "../../context/Wedding";
 const Calender = () => {
+  const a = useContext(WeddingContext);
+  console.log(a);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const disabled = [
@@ -32,9 +36,15 @@ const Calender = () => {
     }
     return dateArray;
   }
+
   const handleSelect = (ranges) => {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
+    a.setStartDate(moment(ranges.selection.startDate).format("YYYY-MM-DD"));
+    a.eventData.startDate = moment(ranges.selection.startDate).format(
+      "YYYY-MM-DD"
+    );
+    a.setEndDate(moment(ranges.selection.endDate).format("YYYY-MM-DD"));
     console.log(moment(ranges.selection.startDate).format("YYYY-MM-DD"));
     console.log(moment(ranges.selection.endDate).format("YYYY-MM-DD"));
     const dates = getDates(
@@ -43,6 +53,7 @@ const Calender = () => {
     );
     console.log(dates);
   };
+
   return (
     <div className="relative">
       <div className="flex justify-center py-8">
