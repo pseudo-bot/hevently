@@ -14,6 +14,7 @@ import Alert from '../Misc/Alert';
 
 const NavItem = ({ children, services = 0, href = '', setOpen }) => {
 	const router = useRouter();
+	const user = useContext(UserContext);
 	return (
 		<div
 			className={`p-3 lg:p-0 lg:py-2 border lg:border-none w-full text-gray-500 uppercase tracking-wider lg:text-gray-200 lg:text-center transition-all duration-150 hover:text-[blue] ${
@@ -32,7 +33,7 @@ const NavItem = ({ children, services = 0, href = '', setOpen }) => {
 };
 
 export default function NavLinks({ hidden }) {
-	const user = useContext(UserContext)
+	const user = useContext(UserContext);
 	const [services, setServices] = useState(0);
 	const [showLogin, setShowLogin] = useState(false);
 	const openLogin = () => {
