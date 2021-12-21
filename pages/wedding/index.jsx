@@ -2,7 +2,6 @@ import Wedding from '../../components/Wedding/Wedding';
 import dbConnect from '../../db/utils/dbConnect.js';
 import { WeddingVenue } from '../../db/model/Venue';
 import { WeddingProvider } from '../../context/Wedding';
-import { auth } from '../../lib/firebase/firebase';
 import { UserContext } from '../../context/Users';
 import { useContext } from 'react';
 import { CircularProgress } from '@mui/material';
