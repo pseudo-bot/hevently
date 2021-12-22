@@ -11,7 +11,7 @@ const Schedule = () => {
   console.log(startDate);
   console.log(endDate);
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       <Question heading="Schedule event" search={false} />
       <Date startDate={startDate} endDate={endDate} />
       <Calender />
@@ -23,7 +23,7 @@ export default Schedule;
 
 const Date = ({ startDate, endDate }) => {
   return (
-    <div className="flex w-full justify-center flex-wrap gap-4 pt-6">
+    <div className="flex w-full justify-center flex-wrap gap-10 pt-6">
       <div>
         <label
           htmlFor="start-date"
@@ -37,7 +37,7 @@ const Date = ({ startDate, endDate }) => {
           id="start-date"
           disabled
           value={startDate}
-          className=" bg-gray-50 rounded border border-gray-300  text-base outline-none text-gray-700 py-1 px-3  w-36"
+          className=" bg-gray-50 rounded border border-gray-300  text-base outline-none text-gray-700 py-1 px-3 w-40"
         />
       </div>
       <div>
@@ -53,7 +53,7 @@ const Date = ({ startDate, endDate }) => {
           id="end-date"
           disabled
           value={endDate}
-          className="bg-gray-50 rounded border border-gray-300  text-base outline-none text-gray-700 py-1 px-3 w-36"
+          className="bg-gray-50 rounded border border-gray-300  text-base outline-none text-gray-700 py-1 px-3 w-40"
         />
       </div>
     </div>

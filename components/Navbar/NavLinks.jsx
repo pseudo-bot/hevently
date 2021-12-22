@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { CSSTransition } from 'react-transition-group';
 import { UserContext } from '../../context/Users';
+import Link from 'next/link';
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -9,26 +10,30 @@ import Bar from '@mui/icons-material/LocalBar';
 import CakeIcon from '@mui/icons-material/Cake';
 import EventIcon from '@mui/icons-material/Event';
 import Flower from '@mui/icons-material/LocalFlorist';
+import { Login as LoginIcon } from '@mui/icons-material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginInterface from '../Login/Login';
 import Alert from '../Misc/Alert';
 
-const NavItem = ({ children, services = 0, href = '', setOpen }) => {
-	const router = useRouter();
-	const user = useContext(UserContext);
+const NavItem = ({ login, children, href = '', home, profile}) => {
 	return (
-		<div
-			className={`p-3 lg:p-0 lg:py-2 border lg:border-none w-full text-gray-500 uppercase tracking-wider lg:text-gray-200 lg:text-center transition-all duration-150 hover:text-[blue] ${
-				services ? 'h-[3rem] flex items-center gap-4 lg:text-gray-600' : ''
-			}`}
-			onClick={(e) => {
-				e.preventDefault();
-				if (services && !user) {
-					setOpen(true);
-				} else router.push(href, null, { scroll: false });
-			}}
-		>
-			{children}
-		</div>
+		<Link href={href} scroll={false}>
+			<div
+				className={` ${
+					home ? 'lg:ml-auto' : ''
+				} p-3 lg:p-0 lg:py-2  lg:w-32 w-full text-gray-500 capitalize tracking-wider lg:text-gray-200 lg:text-center border-b lg:border-0 transition-all duration-150 hover:text-[blue] ${
+					login || profile
+						? 'bg-gray-50 lg:ml-auto lg:text-[blue] lg:rounded-full border-0 login'
+						: ''
+				}`}
+			>
+				<div className={`${login || profile ? 'flex' : ''} lg:justify-center gap-3`}>
+					{login ? <LoginIcon color="primary" /> : null}
+					{profile ? <AccountCircleIcon color="primary" /> : null}
+					{children}
+				</div>
+			</div>
+		</Link>
 	);
 };
 
@@ -58,65 +63,23 @@ export default function NavLinks({ hidden }) {
 					hidden
 						? 'opacity-0 lg:pointer-events-auto pointer-events-none lg:opacity-100'
 						: ''
-				} transition-all duration-300 absolute cursor-pointer bg-gray-50 top-16 right-0 shadow-lg flex flex-col w-56 items-center lg:relative lg:flex-row lg:w-[40rem] lg:gap-3 lg:top-0 lg:bg-transparent font-medium lg:shadow-none nav-links`}
+				} flex-auto transition-all duration-300 absolute cursor-pointer bg-gray-50 top-16 right-0 shadow-lg flex flex-col w-56 items-center lg:relative lg:flex-row lg:w-[40rem] lg:gap-6 lg:top-0 lg:bg-transparent font-medium lg:shadow-none nav-links`}
 			>
-				<NavItem href="/">Home</NavItem>
-
+				<NavItem href="/" home={true}>
+					Home
+				</NavItem>
 				<NavItem href="/about">About</NavItem>
-				<div
-					onClick={() => setServices(!services)}
-					className="w-full relative services-div"
-				>
-					<NavItem>Services</NavItem>
-					<div className="absolute top-3 right-4 lg:hidden ">
-						{services ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-					</div>
-					<div
-						className={`${
-							services ? 'h-[12rem]' : 'h-0'
-						} lg:fixed lg:top-16 lg:w-56 lg:pl-4 overflow-hidden transition-all duration-500 w-full bg-gray-100 font-normal services text-sm`}
-					>
-						<NavItem
-							services={1}
-							setOpen={setOpen}
-							href="/wedding"
-							setShowLogin={setShowLogin}
-						>
-							<Flower />
-							Weddings
-						</NavItem>
-						<NavItem
-							services={1}
-							setOpen={setOpen}
-							href="/wedding"
-							setShowLogin={setShowLogin}
-						>
-							<Bar />
-							Social Gathering
-						</NavItem>
-						<NavItem
-							services={1}
-							setOpen={setOpen}
-							href="/wedding"
-							setShowLogin={setShowLogin}
-						>
-							<CakeIcon />
-							Birthdays
-						</NavItem>
-						<NavItem
-							services={1}
-							setOpen={setOpen}
-							href="/wedding"
-							setShowLogin={setShowLogin}
-						>
-							<EventIcon />
-							Corporate Events
-						</NavItem>
-					</div>
-				</div>
-				<NavItem>Contact</NavItem>
+				<NavItem href="#contact">Contact</NavItem>
+				<Services
+					services={services}
+					setServices={setServices}
+					setOpen={setOpen}
+					setShowLogin={setShowLogin}
+				/>
 				{user ? (
-					<NavItem href="/profile">Profile</NavItem>
+					<NavItem href="/profile" profile={true}>
+						Profile
+					</NavItem>
 				) : (
 					<Login openLogin={openLogin} />
 				)}
@@ -136,8 +99,82 @@ export default function NavLinks({ hidden }) {
 
 const Login = ({ openLogin }) => {
 	return (
-		<NavItem>
+		<NavItem login={true}>
 			<div onClick={openLogin}>Login</div>
 		</NavItem>
+	);
+};
+
+const ServicesItem = ({ children, href = '', setOpen }) => {
+	const router = useRouter();
+	const user = useContext(UserContext);
+	return (
+		<div
+			className={`p-3 lg:p-0 lg:py-2 border-b w-full text-gray-500 uppercase tracking-wider lg:text-center transition-all duration-150 hover:text-[blue] h-[3rem] flex items-center gap-4 lg:text-gray-600`}
+			onClick={(e) => {
+				e.preventDefault();
+				if (!user) {
+					setOpen(true);
+				} else router.push(href, null, { scroll: false });
+			}}
+		>
+			{children}
+		</div>
+	);
+};
+
+const Services = ({ services, setServices, setOpen, setShowLogin }) => {
+	return (
+		<div
+			onClick={() => setServices(!services)}
+			className="w-full lg:w-32 relative services-div"
+		>
+			<NavItem>Services</NavItem>
+			<div className="absolute top-3 right-4 lg:hidden ">
+				{services ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+			</div>
+			<div
+				className={`${
+					services ? 'h-[12rem]' : 'h-0'
+				} lg:fixed lg:top-16 lg:w-56 lg:pl-4 overflow-hidden transition-all duration-500 w-full bg-gray-100 font-normal services text-sm`}
+			>
+				<ServicesItem
+					services={1}
+					setOpen={setOpen}
+					href="/wedding"
+					setShowLogin={setShowLogin}
+				>
+					<Flower />
+					Weddings
+				</ServicesItem>
+				<ServicesItem
+					services={1}
+					setOpen={setOpen}
+					href="/wedding"
+					setShowLogin={setShowLogin}
+				>
+					<Bar />
+					Social Gathering
+				</ServicesItem>
+				<ServicesItem
+					services={1}
+					setOpen={setOpen}
+					href="/wedding"
+					setShowLogin={setShowLogin}
+				>
+					<CakeIcon />
+					Birthdays
+				</ServicesItem>
+				<ServicesItem
+					services={1}
+					setOpen={setOpen}
+					href="/wedding"
+					setShowLogin={setShowLogin}
+				>
+					<EventIcon />
+					Corporate Events
+				</ServicesItem>
+			</div>
+		</div>
 	);
 };

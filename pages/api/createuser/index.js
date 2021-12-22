@@ -10,13 +10,7 @@ export default async function createUserHandler(req, res) {
 	switch (method) {
 		case 'POST':
 			try {
-				const user = await User.updateOne(
-					{ uid },
-					{
-						$set: { uid, email },
-					},
-					{ upsert: true }
-				);
+				const user = await User.create({ uid, email });
 
 				res.status(201).json({ ok: true, msg: 'New user created' });
 			} catch (err) {
@@ -25,7 +19,7 @@ export default async function createUserHandler(req, res) {
 			break;
 
 		default:
-			res.status(403).json({error: "ACCESS DENIED"})
+			res.status(403).json({ error: 'ACCESS DENIED' });
 			break;
 	}
 }

@@ -19,7 +19,7 @@ const ItemList = ({ list, value, weddingVenue }) => {
 	}, []);
 	
 	return (
-		<div className="flex flex-col gap-10 z-10 w-full">
+		<div className="flex flex-col gap-2 z-10 w-full">
 			{list
 				.filter((e) => {
 					if (value === '') return true;

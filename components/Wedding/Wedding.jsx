@@ -98,7 +98,7 @@ const Wedding = ({ venues }) => {
 				/>
 			</div>
 
-			<div className="fixed formbg w-full h-screen right-0"></div>
+			<div className="fixed w-full h-screen right-0"></div>
 
 			<div className="fixed w-2/5 hidden md:block left-0 h-screen z-10">
 				<Images position={position} />

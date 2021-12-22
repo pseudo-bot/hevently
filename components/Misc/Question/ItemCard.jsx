@@ -23,7 +23,7 @@ const ItemCard = ({
 }) => {
 	return (
 		<div data-aos="fade-up">
-			<div className="flex border-blue-400 rounded-md shadow-md bg-cgray-50 cursor-pointer transition-all duration-200 lg:items-center lg:flex-row relative h-full w-full p-4 flex-col gap-10 lg:gap-0">
+			<div className="flex rounded-md border bg-gray-50 cursor-pointer transition-all duration-200 lg:items-center lg:flex-row relative h-full w-full p-4 flex-col gap-10 lg:gap-0">
 				<div className="flex flex-col lg:w-[70%] w-full gap-2 px-2 order-3 lg:order-1">
 					<div className="text-xl text-gray-800 uppercase font-semibold tracking-wide">
 						{value}
