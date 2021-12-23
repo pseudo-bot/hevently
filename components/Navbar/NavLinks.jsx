@@ -69,7 +69,7 @@ export default function NavLinks({ hidden }) {
 					Home
 				</NavItem>
 				<NavItem href="/about">About</NavItem>
-				<NavItem href="#contact">Contact</NavItem>
+				<NavItem href="/#contact">Contact</NavItem>
 				<Services
 					services={services}
 					setServices={setServices}

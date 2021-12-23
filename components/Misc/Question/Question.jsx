@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextField } from '@mui/material';
+import { TextField, Divider } from '@mui/material';
 import ItemList from './ItemList';
 
 const Question = ({ list, heading, label, search, weddingVenue }) => {
@@ -18,9 +18,16 @@ const Question = ({ list, heading, label, search, weddingVenue }) => {
 				<>
 					<TextField
 						label={label}
-						variant="filled"
+						variant="outlined"
 						onChange={handleVenueChange}
+						sx={{
+							maxWidth: '30rem',
+							width: '100%',
+							marginInline: 'auto',
+						}}
+						helperText="Select location or search above"
 					/>
+					<Divider />
 					<ItemList list={list} value={value} weddingVenue={weddingVenue}/>
 				</>
 			) : null}

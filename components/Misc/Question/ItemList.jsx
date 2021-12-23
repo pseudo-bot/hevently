@@ -7,19 +7,22 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 
 const ItemList = ({ list, value, weddingVenue }) => {
-	const {
-		eventData: { venue },
-		setVenue,
-	} = useContext(WeddingContext);
+	if (weddingVenue) {
+		const {
+			eventData: { venue },
+			setVenue,
+		} = useContext(WeddingContext);
+	}
 
 	useEffect(() => {
 		Aos.init({
 			duration: 600,
+			mirror: true,
 		});
 	}, []);
-	
+
 	return (
-		<div className="flex flex-col gap-2 z-10 w-full">
+		<div className="flex flex-wrap gap-4 z-10 w-full justify-center">
 			{list
 				.filter((e) => {
 					if (value === '') return true;

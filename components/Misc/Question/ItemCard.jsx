@@ -22,8 +22,8 @@ const ItemCard = ({
 	handleBooking,
 }) => {
 	return (
-		<div data-aos="fade-up">
-			<div className="flex rounded-md border bg-gray-50 cursor-pointer transition-all duration-200 lg:items-center lg:flex-row relative h-full w-full p-4 flex-col gap-10 lg:gap-0">
+		<div className='md:w-[45%] w-full'>
+			<div className="flex rounded-md border bg-gray-50 cursor-pointer transition-all duration-200 lg:items-center lg:flex-row relative h-full p-4 flex-col gap-10 lg:gap-0">
 				<div className="flex flex-col lg:w-[70%] w-full gap-2 px-2 order-3 lg:order-1">
 					<div className="text-xl text-gray-800 uppercase font-semibold tracking-wide">
 						{value}
@@ -59,7 +59,7 @@ const ItemCard = ({
 						/>
 					</div>
 
-					<div className="flex gap-16">
+					<div className="flex gap-2 flex-col">
 						<div className="text-md text-gray-600 my-2">
 							<PeopleAltIcon
 								sx={{
@@ -69,7 +69,7 @@ const ItemCard = ({
 							/>
 							{capacity}
 						</div>
-						<div className='flex flex-col sm:flex-row sm:gap-10'>
+						<div className='flex gap-10'>
 							<div className="text-md text-gray-600 my-2">
 								<Dot
 									sx={{
