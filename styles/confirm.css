@@ -1,25 +1,26 @@
 .tick svg {
   width: 100px;
   display: block;
-  margin: 40px auto 0;
+  margin: 0 auto;
+  font-size: 100px;
 }
 .path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 0;
 }
 .path.circle {
-  -webkit-animation: dash 0.9s ease-in-out;
-  animation: dash 0.9s ease-in-out;
+  -webkit-animation: dash 1.9s ease-in-out;
+  animation: dash 1.9s ease-in-out;
 }
 .path.line {
   stroke-dashoffset: 1000;
-  -webkit-animation: dash 0.9s 0.35s ease-in-out forwards;
-  animation: dash 0.9s 0.35s ease-in-out forwards;
+  -webkit-animation: dash 1.9s 2.35s ease-in-out forwards;
+  animation: dash 1.9s 2.35s ease-in-out forwards;
 }
 .path.check {
   stroke-dashoffset: -100;
-  -webkit-animation: dash-check 0.9s 0.35s ease-in-out forwards;
-  animation: dash-check 0.9s 0.35s ease-in-out forwards;
+  -webkit-animation: dash-check 1.5s 1.3s ease-in-out forwards;
+  animation: dash-check 1.5s 1.3s ease-in-out forwards;
 }
 
 @-webkit-keyframes dash {

@@ -13,26 +13,15 @@ const Confirmation = ({ showConfirm, setShowConfirm }) => {
       >
         <div className="relative o myw-aut-6 mx-auto max-w-3xl bg-bgray-50 rounded-lg">
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-            <div className="flex items-center justify-between p-5 border-b border-solid border-blueGray-200 rounded-t text-center">
-              <h3 className="uppercase font-semibold text-[18px] tracking-wide z-10 mx-auto">
-                hi bro
-              </h3>
-              <button
-                className="text-gray-900 absolute right-6"
-                onClick={() => setShowConfirm(false)}
-              >
-                <CancelIcon fontSize="medium" />
-              </button>
-            </div>
-            {/*footer*/}
-            <div className="flex flex-col p-16 space-y-4 tick">
+            <div className="flex flex-col tick">
               <svg
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 130.2 130.2"
+                className="pt-6 pb-4"
               >
                 <circle
-                  class="path circle"
+                  className="path circle"
                   fill="none"
                   stroke="#73AF55"
                   stroke-width="6"
@@ -42,7 +31,7 @@ const Confirmation = ({ showConfirm, setShowConfirm }) => {
                   r="62.1"
                 />
                 <polyline
-                  class="path check"
+                  className="path check"
                   fill="none"
                   stroke="#73AF55"
                   stroke-width="6"
@@ -51,6 +40,23 @@ const Confirmation = ({ showConfirm, setShowConfirm }) => {
                   points="100.2,40.2 51.5,88.8 29.8,67.5 "
                 />
               </svg>
+              <div className="flex items-center justify-between  rounded-t text-center">
+                <h3 className="uppercase font-semibold text-[18px] tracking-wide z-10 mx-auto">
+                  Congratulations
+                </h3>
+              </div>
+              <div className="text-center text-sm text-gray-700 px-6 py-4">
+                <p>your Booking has been confirmed</p>
+                <p>check your email for details</p>
+              </div>
+              <div className="text-center pt-4 pb-6">
+                <a
+                  href="/"
+                  class="text-gray-50 bg-blue-500 hover:bg-blue-700  py-2 px-4 rounded-full transition-all duration-300 cursor-pointer"
+                >
+                  Back To Home
+                </a>
+              </div>
             </div>
           </div>
         </div>
