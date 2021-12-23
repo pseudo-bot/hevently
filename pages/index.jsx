@@ -1,31 +1,35 @@
-import Head from "next/head";
-import { useEffect } from "react";
+import Head from 'next/head';
+import { useEffect } from 'react';
 
-import Footer from "../components/Footer/Footer";
-import Home from "../components/Home/Home";
+import Footer from '../components/Footer/Footer';
+import Home from '../components/Home/Home';
 
 const useScript = (url) => {
-  useEffect(() => {
-    const script = document.createElement("script");
+	useEffect(() => {
+		const script = document.createElement('script');
 
-    script.src = url;
-    script.async = true;
+		script.src = url;
+		script.async = true;
 
-    document.body.appendChild(script);
+		document.body.appendChild(script);
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+		return () => {
+			document.body.removeChild(script);
+		};
+	}, []);
 };
 
 export default function Index() {
-  useScript("/scripts/script.js");
-  
-  return (
-    <>
-      <Home />
-      <Footer />
-    </>
-  );
+	useScript('/scripts/script.js');
+
+	return (
+		<>
+			<Head>
+				<title>hevently</title>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			</Head>
+			<Home />
+			<Footer />
+		</>
+	);
 }
