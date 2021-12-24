@@ -15,7 +15,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginInterface from '../Login/Login';
 import Alert from '../Misc/Alert';
 
-const NavItem = ({ login, children, href = '', home, profile}) => {
+const NavItem = ({ login, children, href = '', home, profile, onClick }) => {
 	return (
 		<Link href={href} scroll={false}>
 			<div
@@ -26,8 +26,13 @@ const NavItem = ({ login, children, href = '', home, profile}) => {
 						? 'bg-gray-50 lg:ml-auto lg:text-[blue] lg:rounded-full border-0 login'
 						: ''
 				}`}
+				onClick={() => (login ? onClick() : null)}
 			>
-				<div className={`${login || profile ? 'flex' : ''} lg:justify-center gap-3`}>
+				<div
+					className={`${
+						login || profile ? 'flex' : ''
+					} lg:justify-center gap-3`}
+				>
 					{login ? <LoginIcon color="primary" /> : null}
 					{profile ? <AccountCircleIcon color="primary" /> : null}
 					{children}
@@ -46,9 +51,27 @@ export default function NavLinks({ hidden }) {
 	};
 
 	const [open, setOpen] = useState(false);
+	const [openFail, setOpenFail] = useState(false);
+	const [openSuccess, setOpenSuccess] = useState(false);
 
 	return (
 		<>
+			<div className="w-screen fixed z-50">
+				<Alert
+					open={openFail}
+					severity={'error'}
+					setOpen={setOpenFail}
+					msg={'Error logging in, please try again'}
+				/>
+			</div>
+			<div className="w-screen fixed z-50">
+				<Alert
+					open={openSuccess}
+					severity={'success'}
+					setOpen={setOpenSuccess}
+					msg={'Logged in successfully'}
+				/>
+			</div>
 			<div className="w-screen fixed">
 				<Alert
 					open={open}
@@ -57,7 +80,6 @@ export default function NavLinks({ hidden }) {
 					msg={'Please login to continue'}
 				/>
 			</div>
-
 			<div
 				className={`${
 					hidden
@@ -69,7 +91,7 @@ export default function NavLinks({ hidden }) {
 					Home
 				</NavItem>
 				<NavItem href="/about">About</NavItem>
-				<NavItem href="#contact">Contact</NavItem>
+				<NavItem href="/#contact">Contact</NavItem>
 				<Services
 					services={services}
 					setServices={setServices}
@@ -84,14 +106,13 @@ export default function NavLinks({ hidden }) {
 					<Login openLogin={openLogin} />
 				)}
 			</div>
-
 			<CSSTransition
 				unmountOnExit
 				in={showLogin}
 				timeout={300}
 				classNames="modal"
 			>
-				<LoginInterface setShowLogin={setShowLogin} />
+				<LoginInterface setShowLogin={setShowLogin} setOpenSuccess={setOpenSuccess} setOpenFail={setOpenFail}/>
 			</CSSTransition>
 		</>
 	);
@@ -99,8 +120,8 @@ export default function NavLinks({ hidden }) {
 
 const Login = ({ openLogin }) => {
 	return (
-		<NavItem login={true}>
-			<div onClick={openLogin}>Login</div>
+		<NavItem login={true} onClick={openLogin}>
+			<div>Login</div>
 		</NavItem>
 	);
 };

@@ -19,7 +19,7 @@ export default function CustomizedSnackbars({ open, severity, msg, setOpen }) {
 		<Stack spacing={2} sx={{ width: '100%' }}>
 			<Snackbar
 				open={open}
-				autoHideDuration={4000}
+				autoHideDuration={5000}
 				onClose={handleClose}
 				anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
 			>
