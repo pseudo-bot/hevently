@@ -30,43 +30,43 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function GuestTable({ guestList, setGuestList }) {
-  const deleteGuest = (i) => {
-    guestList.splice(i, 1);
-    setGuestList(guestList);
-  };
-  return (
-    <TableContainer component={Paper}>
-      <Table
-        stickyHeader
-        sx={{ minWidth: 320, width: "100%", maxWidth: 700 }}
-        aria-label="Guest List"
-      >
-        <TableHead>
-          <TableRow>
-            <StyledTableCell align="center">Name</StyledTableCell>
-            <StyledTableCell align="center">Email</StyledTableCell>
-            <StyledTableCell align="center"></StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {guestList.map((row, index) => (
-            <StyledTableRow key={row.guest}>
-              <StyledTableCell scope="row" align="center">
-                {row.guest}
-              </StyledTableCell>
-              <StyledTableCell align="center">{row.email}</StyledTableCell>
-              <StyledTableCell align="center">
-                <div
-                  className="cursor-pointer"
-                  onClick={() => deleteGuest(index)}
-                >
-                  <Delete />
-                </div>
-              </StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
+	const deleteGuest = (i) => {
+		guestList.splice(i, 1);
+		setGuestList(guestList);
+	};
+	return (
+		<TableContainer component={Paper}>
+			<Table
+				stickyHeader
+				sx={{ minWidth: 320, width: '100%', maxWidth: 700 }}
+				aria-label="Guest List"
+			>
+				<TableHead>
+					<TableRow>
+						<StyledTableCell align="center">Name</StyledTableCell>
+						<StyledTableCell align="center">Email</StyledTableCell>
+						<StyledTableCell align="center"></StyledTableCell>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{guestList.map((row, index) => (
+						<StyledTableRow key={row.guest}>
+							<StyledTableCell scope="row" align="center">
+								{row.guest}
+							</StyledTableCell>
+							<StyledTableCell align="center">{row.email}</StyledTableCell>
+							<StyledTableCell align="center">
+								<div
+									className="cursor-pointer"
+									onClick={() => deleteGuest(index)}
+								>
+									<Delete />
+								</div>
+							</StyledTableCell>
+						</StyledTableRow>
+					))}
+				</TableBody>
+			</Table>
+		</TableContainer>
+	);
 }
