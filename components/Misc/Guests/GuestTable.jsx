@@ -30,10 +30,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function GuestTable({ guestList, setGuestList }) {
-  const deleteGuest = (i) => {
-    guestList.splice(i, 1);
-    setGuestList(guestList);
-  }
+	const deleteGuest = (i) => {
+		guestList.splice(i, 1);
+		setGuestList(guestList);
+	};
 	return (
 		<TableContainer component={Paper}>
 			<Table
@@ -56,7 +56,10 @@ export default function GuestTable({ guestList, setGuestList }) {
 							</StyledTableCell>
 							<StyledTableCell align="center">{row.email}</StyledTableCell>
 							<StyledTableCell align="center">
-								<div className="cursor-pointer" onClick={deleteGuest}>
+								<div
+									className="cursor-pointer"
+									onClick={() => deleteGuest(index)}
+								>
 									<Delete />
 								</div>
 							</StyledTableCell>
