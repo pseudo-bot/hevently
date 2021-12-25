@@ -5,7 +5,7 @@ import Venue from './Venue';
 import Schedule from './Schedule';
 import FormFooter from '../Misc/FormFooter';
 import Alert from '../Misc/Alert';
-import Guests from '../Misc/Guests';
+import Guests from '../Misc/Guests/Guests';
 
 import formCover from '../../public/form/form_cover.png';
 

@@ -4,14 +4,17 @@ import { CSSTransition } from 'react-transition-group';
 import { UserContext } from '../../context/Users';
 import Link from 'next/link';
 
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import Bar from '@mui/icons-material/LocalBar';
-import CakeIcon from '@mui/icons-material/Cake';
-import EventIcon from '@mui/icons-material/Event';
-import Flower from '@mui/icons-material/LocalFlorist';
-import { Login as LoginIcon } from '@mui/icons-material';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import {
+	Login as LoginIcon,
+	AccountCircle,
+	Event as EventIcon,
+	Cake as CakeIcon,
+	LocalFlorist as Flower,
+	LocalBar as Bar,
+	KeyboardArrowUp,
+	KeyboardArrowDown,
+} from '@mui/icons-material';
+
 import LoginInterface from '../Login/Login';
 import Alert from '../Misc/Alert';
 
@@ -34,7 +37,7 @@ const NavItem = ({ login, children, href = '', home, profile, onClick }) => {
 					} lg:justify-center gap-3`}
 				>
 					{login ? <LoginIcon color="primary" /> : null}
-					{profile ? <AccountCircleIcon color="primary" /> : null}
+					{profile ? <AccountCircle color="primary" /> : null}
 					{children}
 				</div>
 			</div>
@@ -112,7 +115,11 @@ export default function NavLinks({ hidden }) {
 				timeout={300}
 				classNames="modal"
 			>
-				<LoginInterface setShowLogin={setShowLogin} setOpenSuccess={setOpenSuccess} setOpenFail={setOpenFail}/>
+				<LoginInterface
+					setShowLogin={setShowLogin}
+					setOpenSuccess={setOpenSuccess}
+					setOpenFail={setOpenFail}
+				/>
 			</CSSTransition>
 		</>
 	);
@@ -152,7 +159,7 @@ const Services = ({ services, setServices, setOpen, setShowLogin }) => {
 		>
 			<NavItem>Services</NavItem>
 			<div className="absolute top-3 right-4 lg:hidden ">
-				{services ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+				{services ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
 			</div>
 			<div
 				className={`${
