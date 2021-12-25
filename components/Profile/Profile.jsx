@@ -5,6 +5,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import EventIcon from "@mui/icons-material/Event";
 import LogoutIcon from "@mui/icons-material/Logout";
 import logOut from "../../lib/firebase/signOut";
+import TextField from "@mui/material/TextField";
 
 const Profile = () => {
   const user = useContext(UserContext);
@@ -19,16 +20,16 @@ const Profile = () => {
   };
   return (
     <>
-      <div className="relative min-h-screen lg:flex mt-20">
+      <div className="relative min-h-screen lg:flex mt-16">
         <div className="text-gray-800 flex justify-end lg:hidden">
           <button className="p-4" onClick={handleClick}>
             <MenuIcon />
           </button>
         </div>
         <div
-          className={`bg-blue-700 sidebar text-gray-50 w-64 absolute inset-y-0 left-0 transform ${
+          className={`bg-gray-100 sidebar text-gray-50 w-64 absolute inset-y-0 left-0 transform ${
             sidenav ? "-translate-x-full" : ""
-          }  transition duration-200 ease-in-out lg:relative lg:-translate-x-0`}
+          }  transition duration-200 ease-in-out lg:relative lg:-translate-x-0 text-gray-600`}
         >
           <div className="py-4">
             <img
@@ -41,19 +42,19 @@ const Profile = () => {
           <nav>
             <a
               href="#"
-              className="flex py-4 px-4 gap-2 items-center hover:bg-blue-800 transition-all duration-200"
+              className="flex py-4 px-4 gap-2 items-center hover:bg-blue-500 hover:text-gray-50 transition-all duration-200"
             >
               <PersonIcon /> <span>Profile</span>
             </a>
             <a
               href="#"
-              className="flex py-4 px-4 gap-2 items-center hover:bg-blue-800 transition-all duration-200"
+              className="flex py-4 px-4 gap-2 items-center hover:bg-blue-500 hover:text-gray-50 transition-all duration-200"
             >
               <EventIcon /> <span>My Events</span>
             </a>
             <a
               href="/"
-              className="flex py-4 px-4 gap-2 items-center hover:bg-blue-800 transition-all duration-200"
+              className="flex py-4 px-4 gap-2 items-center hover:bg-blue-500 hover:text-gray-50 transition-all duration-200"
               onClick={signOut}
             >
               <LogoutIcon /> <span>Logout</span>
@@ -61,16 +62,25 @@ const Profile = () => {
           </nav>
         </div>
         <div className="flex-1">
-          <div className="bg-gray-100 min-h-screen p-10">
-            <div className="bg-gray-50 shadow-md rounded-lg p-6 mb-8">
+          <div className="bg-gray-50 min-h-screen p-10">
+            <div className="bg-gray-50  p-6 mb-8">
               <h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 pb-8">
                 Profile
               </h3>
               <div className="md:flex  justify-around">
                 <div className="flex flex-col space-y-6 text-gray-600 text-md md:text-lg tracking-wider">
-                  <p>
-                    Email : <span className="pl-4">{email}</span>{" "}
-                  </p>
+                  <div className="flex gap-4 items-center">
+                    <div>Email</div>
+                    <TextField
+                      id="filled-read-only-input"
+                      defaultValue={email}
+                      InputProps={{
+                        readOnly: true,
+                      }}
+                      variant="outlined"
+                      size="small"
+                    />
+                  </div>
                   <p>
                     Phone : <span className="pl-4">7017145453</span>{" "}
                   </p>
