@@ -7,6 +7,7 @@ export const WeddingProvider = ({ children }) => {
     venue: null,
     startDate: "",
     endDate: "",
+    guestList: [],
   });
   const setVenue = (venue) => {
     let newVenue = Object.assign({}, eventData);
@@ -26,9 +27,15 @@ export const WeddingProvider = ({ children }) => {
     setEventData(newEndDate);
   };
 
+  const setGuestList = (list) => {
+    let ob = Object.assign({}, eventData);
+    ob.guestList = list;
+    setEventData(ob);
+  }
+
   return (
     <WeddingContext.Provider
-      value={{ eventData, setVenue, setStartDate, setEndDate }}
+      value={{ eventData, setVenue, setStartDate, setEndDate, setGuestList }}
     >
       {children}
     </WeddingContext.Provider>

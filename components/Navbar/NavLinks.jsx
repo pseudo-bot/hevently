@@ -4,18 +4,21 @@ import { CSSTransition } from 'react-transition-group';
 import { UserContext } from '../../context/Users';
 import Link from 'next/link';
 
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import Bar from '@mui/icons-material/LocalBar';
-import CakeIcon from '@mui/icons-material/Cake';
-import EventIcon from '@mui/icons-material/Event';
-import Flower from '@mui/icons-material/LocalFlorist';
-import { Login as LoginIcon } from '@mui/icons-material';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import {
+	Login as LoginIcon,
+	AccountCircle,
+	Event as EventIcon,
+	Cake as CakeIcon,
+	LocalFlorist as Flower,
+	LocalBar as Bar,
+	KeyboardArrowUp,
+	KeyboardArrowDown,
+} from '@mui/icons-material';
+
 import LoginInterface from '../Login/Login';
 import Alert from '../Misc/Alert';
 
-const NavItem = ({ login, children, href = '', home, profile}) => {
+const NavItem = ({ login, children, href = '', home, profile, onClick }) => {
 	return (
 		<Link href={href} scroll={false}>
 			<div
@@ -26,10 +29,15 @@ const NavItem = ({ login, children, href = '', home, profile}) => {
 						? 'bg-gray-50 lg:ml-auto lg:text-[blue] lg:rounded-full border-0 login'
 						: ''
 				}`}
+				onClick={() => (login ? onClick() : null)}
 			>
-				<div className={`${login || profile ? 'flex' : ''} lg:justify-center gap-3`}>
+				<div
+					className={`${
+						login || profile ? 'flex' : ''
+					} lg:justify-center gap-3`}
+				>
 					{login ? <LoginIcon color="primary" /> : null}
-					{profile ? <AccountCircleIcon color="primary" /> : null}
+					{profile ? <AccountCircle color="primary" /> : null}
 					{children}
 				</div>
 			</div>
@@ -46,9 +54,27 @@ export default function NavLinks({ hidden }) {
 	};
 
 	const [open, setOpen] = useState(false);
+	const [openFail, setOpenFail] = useState(false);
+	const [openSuccess, setOpenSuccess] = useState(false);
 
 	return (
 		<>
+			<div className="w-screen fixed z-50">
+				<Alert
+					open={openFail}
+					severity={'error'}
+					setOpen={setOpenFail}
+					msg={'Error logging in, please try again'}
+				/>
+			</div>
+			<div className="w-screen fixed z-50">
+				<Alert
+					open={openSuccess}
+					severity={'success'}
+					setOpen={setOpenSuccess}
+					msg={'Logged in successfully'}
+				/>
+			</div>
 			<div className="w-screen fixed">
 				<Alert
 					open={open}
@@ -57,7 +83,6 @@ export default function NavLinks({ hidden }) {
 					msg={'Please login to continue'}
 				/>
 			</div>
-
 			<div
 				className={`${
 					hidden
@@ -84,14 +109,17 @@ export default function NavLinks({ hidden }) {
 					<Login openLogin={openLogin} />
 				)}
 			</div>
-
 			<CSSTransition
 				unmountOnExit
 				in={showLogin}
 				timeout={300}
 				classNames="modal"
 			>
-				<LoginInterface setShowLogin={setShowLogin} />
+				<LoginInterface
+					setShowLogin={setShowLogin}
+					setOpenSuccess={setOpenSuccess}
+					setOpenFail={setOpenFail}
+				/>
 			</CSSTransition>
 		</>
 	);
@@ -99,8 +127,8 @@ export default function NavLinks({ hidden }) {
 
 const Login = ({ openLogin }) => {
 	return (
-		<NavItem login={true}>
-			<div onClick={openLogin}>Login</div>
+		<NavItem login={true} onClick={openLogin}>
+			<div>Login</div>
 		</NavItem>
 	);
 };
@@ -131,7 +159,7 @@ const Services = ({ services, setServices, setOpen, setShowLogin }) => {
 		>
 			<NavItem>Services</NavItem>
 			<div className="absolute top-3 right-4 lg:hidden ">
-				{services ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+				{services ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
 			</div>
 			<div
 				className={`${

@@ -3,7 +3,10 @@ import CloseIcon from '@mui/icons-material/Close';
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillFacebook } from 'react-icons/ai';
 import { Divider } from '@mui/material';
-import googleAuth from '../../lib/firebase/googleAuth';
+import {
+	signInWithGoogle,
+	signInWithFb,
+} from '../../lib/firebase/authProvider';
 import Alert from '../Misc/Alert';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
@@ -14,7 +17,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import IconButton from '@mui/material/IconButton';
 import FormControl from '@mui/material/FormControl';
 
-export default function Modal({ setShowLogin }) {
+export default function Modal({ setShowLogin, setOpenFail, setOpenSuccess }) {
 	const [values, setValues] = React.useState({
 		amount: '',
 		password: '',
@@ -38,27 +41,8 @@ export default function Modal({ setShowLogin }) {
 		event.preventDefault();
 	};
 
-	const [open, setOpen] = useState(false);
-	const [openSuccess, setOpenSuccess] = useState(false);
-
 	return (
-		<div className='fixed'>
-			<div className="w-screen fixed z-50">
-				<Alert
-					open={open}
-					severity={'error'}
-					setOpen={setOpen}
-					msg={'Error logging in, please try again'}
-				/>
-			</div>
-			<div className="w-screen fixed z-50">
-				<Alert
-					open={openSuccess}
-					severity={'success'}
-					setOpen={setOpenSuccess}
-					msg={'Logged in successfully'}
-				/>
-			</div>
+		<div className="fixed">
 			<div
 				className={`justify-center items-center flex overflow-x-hidden fixed inset-0 z-50 outline-none focus:outline-none px-4`}
 			>
@@ -79,18 +63,6 @@ export default function Modal({ setShowLogin }) {
 						<div className="flex flex-col px-8 py-4 space-y-6">
 							<div>
 								<div className="relative my-2">
-									{/* <label
-                            for="email"
-                            className="leading-7 text-sm font-semibold text-gray-600"
-                          >
-                            Email
-                          </label>
-                          <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            className="w-full bg-gray-50 rounded border border-gray-300  text-base outline-none text-gray-700 py-1 px-3 leading-8"
-                            /> */}
 									<TextField
 										id="outlined-basic"
 										label="Email"
@@ -100,31 +72,6 @@ export default function Modal({ setShowLogin }) {
 									/>
 								</div>
 								<div className="relative my-4">
-									{/* <label
-                      for="password"
-                      className="leading-7 text-sm font-semibold text-gray-600"
-                    >
-                      Password
-                    </label>
-                    <div className="flex justify-between items-center w-full rounded border border-gray-300  text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                      <input
-                        type={passVis ? "text" : "password"}
-                        id="password"
-                        name="password"
-                        className=" outline-none border-none bg-bgray-50 "
-                      />
-                      <a
-                        onClick={handleVisibilty}
-                        className=" hover:cursor-pointer "
-                      >
-                        {" "}
-                        {visIcon ? (
-                          <VisibilityIcon className=" text-gray-600 " />
-                        ) : (
-                          <VisibilityOffIcon className=" text-gray-600 " />
-                        )}
-                      </a>
-                    </div> */}
 									<FormControl variant="outlined" fullWidth>
 										<InputLabel
 											htmlFor="outlined-adornment-password"
@@ -170,11 +117,11 @@ export default function Modal({ setShowLogin }) {
 								type="button"
 								onClick={async () => {
 									try {
-										await googleAuth();
-										setShowLogin(false);
+										await signInWithGoogle();
 										setOpenSuccess(true);
+										setShowLogin(false);
 									} catch (err) {
-										setOpen(true);
+										setOpenFail(true);
 									}
 								}}
 							>
@@ -191,7 +138,15 @@ export default function Modal({ setShowLogin }) {
 							<button
 								className="bg-blue-600 active:bg-gray-100 text-gray-50 px-8 py-2 rounded outline-none focus:outline-none capitalize shadow hover:shadow-md inline-flex items-center text-md transition-all duration-500  "
 								type="button"
-								onClick={() => setShowLogin(false)}
+								onClick={async () => {
+									try {
+										await signInWithFb();
+										setOpenSuccess(true);
+										setShowLogin(false);
+									} catch (err) {
+										setOpenFail(true);
+									}
+								}}
 							>
 								<div className="flex justify-center w-full gap-4 items-center">
 									<div>
