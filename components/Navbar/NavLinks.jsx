@@ -88,7 +88,7 @@ export default function NavLinks({ hidden }) {
 					hidden
 						? 'opacity-0 lg:pointer-events-auto pointer-events-none lg:opacity-100'
 						: ''
-				} flex-auto transition-all duration-300 absolute cursor-pointer bg-gray-50 top-16 right-0 shadow-lg flex flex-col w-56 items-center lg:relative lg:flex-row lg:w-[40rem] lg:gap-6 lg:top-0 lg:bg-transparent font-medium lg:shadow-none nav-links`}
+				} flex-auto transition-all duration-300 absolute cursor-pointer bg-gray-50 top-14 right-0 shadow-lg flex flex-col w-56 items-center lg:relative lg:flex-row lg:w-[40rem] lg:gap-6 lg:top-0 lg:bg-transparent font-medium lg:shadow-none nav-links`}
 			>
 				<NavItem href="/" home={true}>
 					Home
@@ -138,7 +138,7 @@ const ServicesItem = ({ children, href = '', setOpen }) => {
 	const user = useContext(UserContext);
 	return (
 		<div
-			className={`p-3 lg:p-0 lg:py-2 border-b w-full text-gray-500 uppercase tracking-wider lg:text-center transition-all duration-150 hover:text-[blue] h-[3rem] flex items-center gap-4 lg:text-gray-600`}
+			className={`p-3 lg:p-0 lg:py-2 border-b w-full text-gray-500 tracking-wider lg:text-center transition-all duration-150 hover:text-[blue] h-[3rem] flex items-center gap-4 lg:text-gray-600 capitalize`}
 			onClick={(e) => {
 				e.preventDefault();
 				if (!user) {
@@ -164,7 +164,7 @@ const Services = ({ services, setServices, setOpen, setShowLogin }) => {
 			<div
 				className={`${
 					services ? 'h-[12rem]' : 'h-0'
-				} lg:fixed lg:top-16 lg:w-56 lg:pl-4 overflow-hidden transition-all duration-500 w-full bg-gray-100 font-normal services text-sm`}
+				} lg:fixed lg:top-14 lg:w-56 lg:pl-4 overflow-hidden transition-all duration-500 w-full bg-gray-100 font-normal services text-sm`}
 			>
 				<ServicesItem
 					services={1}

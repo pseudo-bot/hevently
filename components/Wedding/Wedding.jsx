@@ -48,7 +48,7 @@ const Wedding = ({ venues }) => {
 				/>
 			</div>
 
-			<div className="fixed opacity-30 w-screen h-screen right-0">
+			<div className="fixed opacity-20 w-screen h-screen right-0">
 				<Image src={formCover} objectFit="cover" />
 			</div>
 

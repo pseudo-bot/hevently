@@ -29,6 +29,9 @@ body {
 .montserrat {
 	font-family: 'Montserrat Alternates';
 }
+.poppins {
+	font-family: 'Poppins';
+}
 
 @media screen and (max-width: 30rem) {
 	html {
@@ -95,8 +98,12 @@ body {
 }
 
 .trans-navbg {
-	background-image: none;
-	backdrop-filter: blur(10px);
+	background-color: transparent;
+	backdrop-filter: blur(1rem);
+}
+
+.trans-navbg ~ nav {
+	border-bottom: 1px solid #aaa;
 }
 
 /* Navbar end */
@@ -175,3 +182,4 @@ body {
 	opacity: 0;
 	transition: opacity 300ms;
 }
+

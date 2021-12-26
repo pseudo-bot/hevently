@@ -17,7 +17,7 @@ const Line = ({ hidden, cross = 0, right = 0 }) => {
 const Menubar = ({ click, hidden }) => {
 	return (
 		<div
-			className="lg:hidden w-10 h-10 bg-gray-100 rounded-full flex fixed flex-col items-center justify-evenly py-1.5 cursor-pointer group right-5"
+			className="lg:hidden w-9 h-9 bg-gray-100 rounded-full flex fixed flex-col items-center justify-evenly py-1.5 cursor-pointer group right-5"
 			onClick={click}
 		>
 			<Line hidden={hidden} />
