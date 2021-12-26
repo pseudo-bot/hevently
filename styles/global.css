@@ -93,17 +93,15 @@ body {
 	background-size: cover;
 }
 
-.layer {
-	background-image: url('/navbar.svg');
-}
-
-.trans-navbg {
+.in-cover {
 	background-color: transparent;
-	backdrop-filter: blur(1rem);
+	backdrop-filter: blur(0.75rem);
+	border-bottom: 1px solid #aaa;
 }
 
-.trans-navbg ~ nav {
-	border-bottom: 1px solid #aaa;
+.out-cover {
+	background-color: #3b82f6;
+	border-bottom-color: transparent;
 }
 
 /* Navbar end */
@@ -182,4 +180,3 @@ body {
 	opacity: 0;
 	transition: opacity 300ms;
 }
-
