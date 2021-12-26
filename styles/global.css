@@ -93,15 +93,15 @@ body {
 	background-size: cover;
 }
 
+.out-cover {
+	background-color: #3b82f6;
+	border-bottom-color: transparent;
+}
+
 .in-cover {
 	background-color: transparent;
 	backdrop-filter: blur(0.75rem);
 	border-bottom: 1px solid #aaa;
-}
-
-.out-cover {
-	background-color: #3b82f6;
-	border-bottom-color: transparent;
 }
 
 /* Navbar end */

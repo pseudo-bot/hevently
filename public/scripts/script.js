@@ -8,12 +8,12 @@ var options = {
 var intersection = new IntersectionObserver((entries) => {
 	entries.forEach((e) => {
 		if (e.isIntersecting) {
-			if (navbar.classList.contains('out-cover')) {
-				navbar.classList.remove('out-cover');
+			if (!navbar.classList.contains('in-cover')) {
+				navbar.classList.add('in-cover');
 			}
 		} else {
-			if (!navbar.classList.contains('out-cover')) {
-				navbar.classList.add('out-cover');
+			if (navbar.classList.contains('in-cover')) {
+				navbar.classList.remove('in-cover');
 			}
 		}
 	});

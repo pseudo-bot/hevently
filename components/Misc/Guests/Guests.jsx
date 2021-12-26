@@ -13,6 +13,7 @@ const Input = ({ label, helper, handleChange, error, value, icon }) => {
 			error={error}
 			helperText={error ? helper : null}
 			label={label}
+			autoComplete="off"
 			size="small"
 			sx={{
 				width: '100%',
@@ -90,7 +91,7 @@ const Guests = () => {
 			<div className="text-3xl relative montserrat font-semibold text-center text-gradient capitalize md:text-4xl">
 				Guest List
 			</div>
-			<div className="border flex flex-col gap-6 max-w-sm px-10 py-6 rounded-xl shadow-md w-full items-center">
+			<div className="border flex flex-col gap-6 max-w-sm px-10 py-6 rounded-xl shadow-md w-full items-center bg-gray-50">
 				<Input
 					label={'Name'}
 					helper={'Enter a valid name'}

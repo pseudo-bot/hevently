@@ -52,7 +52,7 @@ const Wedding = ({ venues }) => {
 				<Image src={formCover} objectFit="cover" />
 			</div>
 
-			<div className="absolute w-full right-0 py-32 flex items-center justify-center">
+			<div className="absolute w-full right-0 py-24 flex items-center justify-center">
 				{position === 0 ? <Venue venues={venues} /> : null}
 				{position === 1 ? <Schedule /> : null}
 				{position === 2 ? <Guests /> : null}
