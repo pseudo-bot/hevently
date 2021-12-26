@@ -47,3 +47,4 @@ export default function Modal({ showModal, setShowModal, title }) {
     </>
   );
 }
+
