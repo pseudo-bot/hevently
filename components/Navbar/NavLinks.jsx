@@ -47,7 +47,6 @@ const NavItem = ({ login, children, href = '', home, profile, onClick }) => {
 
 export default function NavLinks({ hidden }) {
 	const user = useContext(UserContext);
-	const [services, setServices] = useState(0);
 	const [showLogin, setShowLogin] = useState(false);
 	const openLogin = () => {
 		setShowLogin((prev) => !prev);
@@ -95,12 +94,7 @@ export default function NavLinks({ hidden }) {
 				</NavItem>
 				<NavItem href="/about">About</NavItem>
 				<NavItem href="/#contact">Contact</NavItem>
-				<Services
-					services={services}
-					setServices={setServices}
-					setOpen={setOpen}
-					setShowLogin={setShowLogin}
-				/>
+				<Services setOpen={setOpen} setShowLogin={setShowLogin} />
 				{user ? (
 					<NavItem href="/profile" profile={true}>
 						Profile
@@ -153,21 +147,17 @@ const ServicesItem = ({ children, href = '', setOpen }) => {
 
 const Services = ({ services, setServices, setOpen, setShowLogin }) => {
 	return (
-		<div
-			onClick={() => setServices(!services)}
-			className="w-full lg:w-32 relative services-div"
-		>
-			<NavItem>Services</NavItem>
+		<div className="w-full lg:w-32 relative services-div group">
+			<div className="p-3 lg:p-0 lg:py-2  lg:w-32 w-full text-gray-500 capitalize tracking-wider lg:text-gray-200 lg:text-center border-b lg:border-0 transition-all duration-150 hover:text-[blue]">
+				Services
+			</div>
 			<div className="absolute top-3 right-4 lg:hidden ">
 				{services ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
 			</div>
 			<div
-				className={`${
-					services ? 'h-[12rem]' : 'h-0'
-				} lg:fixed lg:top-14 lg:w-56 lg:pl-4 overflow-hidden transition-all duration-500 w-full bg-gray-100 font-normal services text-sm`}
+				className={`h-0 group-hover:h-48 lg:fixed lg:top-14 lg:w-56 lg:pl-4 overflow-hidden transition-all duration-300 w-full bg-gray-100 font-normal services text-sm`}
 			>
 				<ServicesItem
-					services={1}
 					setOpen={setOpen}
 					href="/wedding"
 					setShowLogin={setShowLogin}
@@ -176,7 +166,6 @@ const Services = ({ services, setServices, setOpen, setShowLogin }) => {
 					Weddings
 				</ServicesItem>
 				<ServicesItem
-					services={1}
 					setOpen={setOpen}
 					href="/wedding"
 					setShowLogin={setShowLogin}
@@ -185,7 +174,6 @@ const Services = ({ services, setServices, setOpen, setShowLogin }) => {
 					Social Gathering
 				</ServicesItem>
 				<ServicesItem
-					services={1}
 					setOpen={setOpen}
 					href="/wedding"
 					setShowLogin={setShowLogin}
@@ -194,7 +182,6 @@ const Services = ({ services, setServices, setOpen, setShowLogin }) => {
 					Birthdays
 				</ServicesItem>
 				<ServicesItem
-					services={1}
 					setOpen={setOpen}
 					href="/wedding"
 					setShowLogin={setShowLogin}

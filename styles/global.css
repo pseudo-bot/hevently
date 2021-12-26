@@ -101,7 +101,7 @@ body {
 .in-cover {
 	background-color: transparent;
 	backdrop-filter: blur(0.75rem);
-	border-bottom: 1px solid #aaa;
+	border-bottom-color: #aaa;
 }
 
 /* Navbar end */
@@ -166,6 +166,7 @@ body {
 }
 
 /* Animation */
+
 .modal-enter {
 	opacity: 0;
 }
