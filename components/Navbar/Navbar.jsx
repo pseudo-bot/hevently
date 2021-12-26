@@ -8,7 +8,7 @@ export default function Navbar() {
 		<>
 			<div className="w-full top-0 h-14 bg-blue-500 fixed z-50 navbar-bg transition-opacity duration-500"></div>
 			<nav className="bg-transparent h-14 fixed top-0 w-full flex items-center justify-center lg:justify-between px-12 shadow-lg z-50">
-				<div className="text-[40px] font-bold text-gray-200 tracking-wider dancing cursor-pointer">
+				<div className="text-[2.5rem] font-bold text-gray-200 tracking-wider dancing cursor-pointer">
 					hevently
 				</div>
 				<NavLinks hidden={hidden} />
