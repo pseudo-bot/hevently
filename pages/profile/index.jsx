@@ -1,11 +1,6 @@
 import Profile from '../../components/Profile/Profile';
-import { useContext, useEffect } from 'react';
-import { UserContext } from '../../context/Users';
 import { CircularProgress } from '@mui/material';
-import useSWR from 'swr';
-
-const fetcher = (url) =>
-	fetch(url, { method: 'GET' }).then((res) => res.json());
+import { useUser } from '../../lib/useUser';
 
 const Loading = () => {
 	return (
@@ -16,16 +11,10 @@ const Loading = () => {
 };
 
 const profilePage = () => {
-	const user = useContext(UserContext);
+	const { user, ok, error } = useUser();
 
-	const url = `/api/user/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/${
-		user && user.uid
-	}`;
-
-	const { data, error } = useSWR(url, fetcher);
-
-	if (data && !error) {
-		return <Profile user={data.user} />;
+	if (user && !error && ok) {
+		return <Profile user={user} />;
 	} else {
 		return <Loading />;
 	}
