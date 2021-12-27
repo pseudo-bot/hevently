@@ -1,7 +1,7 @@
 import * as React from "react";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
-
+import WcIcon from '@mui/icons-material/Wc';
 import { styled } from "@mui/material/styles";
 
 const CssTextField = styled(TextField)({
@@ -52,7 +52,7 @@ export default function SelectTextFields({edit}) {
 
   return (
     <div className="flex items-center justify-between">
-        <div className="text-gray-700 font-semibold tracking-wider ">Gender</div>
+        <div className="text-gray-700 font-semibold tracking-wider "> <span className="mr-1"><WcIcon/></span> Gender</div>
         <CssTextField
           id="outlined-select-gender"
           select

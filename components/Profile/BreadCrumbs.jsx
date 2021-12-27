@@ -5,7 +5,7 @@ export default function BasicBreadcrumbs() {
   return (
     <div role="presentation">
       <Breadcrumbs aria-label="breadcrumb" color='white'>
-       <a href="/">Home</a>
+       <a className='hover:underline' href="/">Home</a>
        <Typography className='text-gray-100'>Sarang Gupta</Typography>
       </Breadcrumbs>
     </div>

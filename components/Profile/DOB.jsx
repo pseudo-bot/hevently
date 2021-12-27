@@ -5,6 +5,7 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import { styled } from "@mui/material/styles";
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
@@ -35,7 +36,7 @@ export default function MaterialUIPickers({ edit }) {
 
   return (
     <div className="flex items-center justify-between">
-      <div className="text-gray-700 font-semibold tracking-wider ">DOB</div>
+      <div className="text-gray-700 font-semibold tracking-wider "> <span className="mr-1">< CalendarTodayIcon/></span> DOB</div>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DesktopDatePicker
           inputFormat="dd/MM/yyyy"

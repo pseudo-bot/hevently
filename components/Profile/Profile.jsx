@@ -20,7 +20,10 @@ import DOB from './DOB'
 import Button from "@mui/material/Button";
 import EventsTable from './EventsTable'
 import Gender from './Gender'
-
+import EmailIcon from '@mui/icons-material/Email';
+import CallIcon from '@mui/icons-material/Call';
+import LocationCityIcon from '@mui/icons-material/LocationCity';
+import HouseIcon from '@mui/icons-material/House';
 
 const drawerWidth = 240;
 
@@ -43,14 +46,14 @@ const CssTextField = styled(TextField)({
     },
   },
 });
-const UserData = ({ val, title, edit }) => {
+const UserData = ({ icon,val, title, edit }) => {
   const [value, setValue] = useState(val);
   const handleChange = (event) => {
     setValue(event.target.value);
   };
   return (
     <div className="flex items-center justify-between">
-      <div className="text-gray-800 font-semibold tracking-wider ">{title}</div>
+      <div className="text-gray-800 font-semibold tracking-wider  "> <span className="mr-1">{icon}</span> {title}</div>
       <CssTextField
         id="outlined-basic"
         value={value}
@@ -71,7 +74,8 @@ function ResponsiveDrawer(props) {
   const [disabledBtn, setDisabledBtn] = useState(true);
   const [edit, setEdit] = useState(false);
   
-
+ const {email, displayName, photoURL, phoneNumber, dob,}=props.userData
+  
  
   const handleDisabled = () => {
     setDisabledBtn(!disabledBtn);
@@ -91,11 +95,11 @@ function ResponsiveDrawer(props) {
     <div>
       <div className="py-4">
         <img
-          src="https://lh3.googleusercontent.com/a/AATXAJwJASpmFYqgQ4xsooCJsTZwwNMBTEOfI9LLDJac=s96-c"
+          src={photoURL}
           alt="..."
           className="rounded-full mx-auto w-16"
         />
-        <p className="text-center py-2">Sarang Gupta</p>
+        <p className="text-center py-2">{displayName}</p>
       </div>
       <Divider />
       <nav>
@@ -207,15 +211,15 @@ function ResponsiveDrawer(props) {
                 Profile
               </h3>
               <div>
-                <div className="flex justify-around flex-wrap space-y-6 lg:space-y-0 ">
-                  <div className="flex flex-col space-y-6 text-gray-600 text-md md:text-lg tracking-wider w-96 ">
-                     <UserData val='hi@gmail.com' title="Email" edit={edit} />
-                    <UserData val="554516321" title="Mobile" edit={edit} /> 
+                <div className="flex justify-center gap-12 flex-wrap">
+                  <div className="flex flex-col space-y-6 text-gray-600 text-md md:text-lg tracking-wider w-[26rem]">
+                     <UserData icon={<EmailIcon/>} val={email} title="Email" edit={edit} />
+                    <UserData icon={<CallIcon/>} val="554516321" title="Mobile" edit={edit} /> 
                   <Gender edit={edit}/>
                   </div>
-                  <div className="flex flex-col space-y-6 text-gray-600 text-md md:text-lg tracking-wider w-96">
-                    <UserData val="Rishikesh" title="City" edit={edit} />
-                    <UserData val="Uttarakhand" title="State" edit={edit} />
+                  <div className="flex flex-col space-y-6 text-gray-600 text-md md:text-lg tracking-wider w-[26rem] ">
+                    <UserData icon={<HouseIcon/>} val="Rishikesh" title="City" edit={edit} />
+                    <UserData icon={<LocationCityIcon/>}  val="Uttarakhand" title="State" edit={edit} />
                     <DOB edit={edit}/>
                   </div>
                 </div>
@@ -253,12 +257,13 @@ function ResponsiveDrawer(props) {
   );
 }
 
-ResponsiveDrawer.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
 
-export default ResponsiveDrawer;
+const Profile = ({user}) => {
+  return (
+    <div>
+      <ResponsiveDrawer userData={user} />
+    </div>
+  )
+}
+
+export default Profile
