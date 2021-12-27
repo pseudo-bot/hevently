@@ -1,5 +1,11 @@
 import { TextField, Divider, Button } from '@mui/material';
-import { Email, AccountCircle, Send, People } from '@mui/icons-material';
+import {
+	Email,
+	AccountCircle,
+	Send,
+	People,
+	Add,
+} from '@mui/icons-material';
 import { useState, useContext } from 'react';
 import { WeddingContext } from '../../../context/Wedding';
 import { SentimentDissatisfied as Sad } from '@mui/icons-material';
@@ -114,7 +120,7 @@ const Guests = () => {
 					error={emailError}
 					icon={'email'}
 				/>
-				<Button variant="contained" onClick={addGuest}>
+				<Button variant="contained" onClick={addGuest} endIcon={<Add />}>
 					<span className="poppins capitalize">Add guest</span>
 				</Button>
 			</div>
@@ -126,7 +132,14 @@ const Guests = () => {
 			/>
 
 			<div className="border justify-between text-gray-500 p-4 rounded-md flex w-full max-w-[700px]">
-				<Button endIcon={<People />} variant="outlined" disableElevation color="primary">{guestList.length}</Button>
+				<Button
+					endIcon={<People />}
+					variant="outlined"
+					disableElevation
+					color="primary"
+				>
+					{guestList.length}
+				</Button>
 				<Button
 					endIcon={<Send />}
 					variant="contained"

@@ -11,6 +11,7 @@ import '../styles/alpha.css';
 import 'swiper/css/bundle';
 
 function App({ Component, pageProps }) {
+
 	useEffect(() => {
 		Router.events.on('routeChangeComplete', () => {
 			window.scroll({
@@ -20,6 +21,7 @@ function App({ Component, pageProps }) {
 			});
 		});
 	}, []);
+
 	return (
 		<>
 			<UserProvider>

@@ -6,7 +6,8 @@ export default function Navbar() {
 	const [hidden, setHidden] = useState(1);
 	return (
 		<>
-			<nav className="h-14 border-b fixed top-0 w-full flex items-center justify-center navbar lg:justify-between px-12 shadow-lg z-50 transition-all duration-300 out-cover">
+			<div className="top-0 w-screen border-b fixed h-14 z-50 outer-cover navbar-bg"></div>
+			<nav className="h-14 fixed top-0 w-full flex items-center justify-center lg:justify-between px-12 shadow-lg z-50 transition-all duration-300">
 				<div className="text-[2.25rem] font-bold text-gray-200 tracking-wider dancing cursor-pointer">
 					hevently
 				</div>
@@ -16,5 +17,3 @@ export default function Navbar() {
 		</>
 	);
 }
-
-// bg-gradient-to-r from-indigo-500 to-indigo-700

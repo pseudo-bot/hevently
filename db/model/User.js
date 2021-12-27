@@ -1,16 +1,40 @@
 import { Schema, model, models } from 'mongoose';
 
 const UserSchema = new Schema({
-  uid: {
-    type: String, 
-    required: [true, "UID required"],
-    unique: true,
-  },
-  email: {
+	uid: {
+		type: String,
+		required: [true, 'UID required'],
+		unique: true,
+	},
+	email: {
+		type: String,
+		required: [true, 'Email required'],
+		unique: true,
+	},
+  displayName: {
     type: String,
-    required: [true, 'Email required'],
-    unique: true,
-  }
+  },
+	phoneNumber: {
+		type: String,
+	},
+	gender: {
+		type: String,
+	},
+	city: {
+		type: String,
+	},
+	state: {
+		type: String,
+	},
+	dob: {
+		type: Date,
+	},
+	photoURL: {
+		type: String,
+	},
+	events: {
+		type: Schema.Types.Mixed,
+	},
 });
 
 export default models.User || model('User', UserSchema);

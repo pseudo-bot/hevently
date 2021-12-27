@@ -24,19 +24,16 @@ const NavItem = ({ login, children, href = '', home, profile, onClick }) => {
 			<div
 				className={` ${
 					home ? 'lg:ml-auto' : ''
-				} p-3 lg:p-0 lg:py-2  lg:w-32 w-full text-gray-500 capitalize tracking-wider lg:text-gray-200 lg:text-center border-b lg:border-0 transition-all duration-150 hover:text-[blue] ${
-					login || profile
+				} p-3 lg:p-0 lg:py-2  lg:w-32 w-full text-gray-500 capitalize tracking-wider lg:text-gray-200 lg:text-center border-b lg:border-0 transition-all duration-150 hover:text-[blue] ${profile
 						? 'bg-gray-50 lg:ml-auto lg:text-[blue] lg:rounded-full border-0 login'
 						: ''
 				}`}
-				onClick={() => (login ? onClick() : null)}
 			>
 				<div
 					className={`${
-						login || profile ? 'flex' : ''
+						profile ? 'flex' : ''
 					} lg:justify-center gap-3`}
 				>
-					{login ? <LoginIcon color="primary" /> : null}
 					{profile ? <AccountCircle color="primary" /> : null}
 					{children}
 				</div>
@@ -121,9 +118,13 @@ export default function NavLinks({ hidden }) {
 
 const Login = ({ openLogin }) => {
 	return (
-		<NavItem login={true} onClick={openLogin}>
-			<div>Login</div>
-		</NavItem>
+		<div
+			onClick={openLogin}
+			className="p-3 lg:p-0 lg:py-2  lg:w-32 w-full text-gray-500 capitalize tracking-wider lg:text-center border-b lg:border-0 transition-all duration-150 hover:text-[blue] flex lg:justify-center gap-3 bg-gray-50 lg:ml-auto lg:text-[blue] lg:rounded-full border-0 login"
+		>
+			<LoginIcon color="primary" />
+			Login
+		</div>
 	);
 };
 

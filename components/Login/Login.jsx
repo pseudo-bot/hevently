@@ -7,7 +7,6 @@ import {
 	signInWithGoogle,
 	signInWithFb,
 } from '../../lib/firebase/authProvider';
-import Alert from '../Misc/Alert';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -42,7 +41,7 @@ export default function Modal({ setShowLogin, setOpenFail, setOpenSuccess }) {
 	};
 
 	return (
-		<div className="fixed">
+		<div className="fixed h-screen w-screen top-0 left-0">
 			<div
 				className={`justify-center items-center flex overflow-x-hidden fixed inset-0 z-50 outline-none focus:outline-none px-4`}
 			>

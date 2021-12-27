@@ -1,4 +1,4 @@
-var navbar = document.querySelector('.navbar');
+var navbar = document.querySelector('.navbar-bg');
 var cover = document.querySelector('.cover');
 
 var options = {
@@ -8,12 +8,12 @@ var options = {
 var intersection = new IntersectionObserver((entries) => {
 	entries.forEach((e) => {
 		if (e.isIntersecting) {
-			if (!navbar.classList.contains('in-cover')) {
-				navbar.classList.add('in-cover');
+			if (!navbar.classList.contains('inner-cover')) {
+				navbar.classList.add('inner-cover');
 			}
 		} else {
-			if (navbar.classList.contains('in-cover')) {
-				navbar.classList.remove('in-cover');
+			if (navbar.classList.contains('inner-cover')) {
+				navbar.classList.remove('inner-cover');
 			}
 		}
 	});
