@@ -29,8 +29,8 @@ body {
 .montserrat {
 	font-family: 'Montserrat Alternates';
 }
-.poppins{
-	font-family: 'poppins';
+.poppins {
+	font-family: 'Poppins';
 }
 
 @media screen and (max-width: 30rem) {
@@ -93,13 +93,15 @@ body {
 	background-size: cover;
 }
 
-.layer {
-	background-image: url('/navbar.svg');
+.outer-cover {
+	background-color: #3b82f6;
+	border-bottom-color: transparent;
 }
 
-.trans-navbg {
-	background-image: none;
-	backdrop-filter: blur(10px);
+.inner-cover {
+	background-color: transparent;
+	border-bottom-color: #aaa;
+	backdrop-filter: blur(12px);
 }
 
 /* Navbar end */
@@ -164,6 +166,7 @@ body {
 }
 
 /* Animation */
+
 .modal-enter {
 	opacity: 0;
 }

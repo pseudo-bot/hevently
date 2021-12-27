@@ -13,7 +13,9 @@ function Cover() {
 				hevently
 			</div>
 
-			<Explore />
+			<div>
+				
+			</div>
 
 			<div className="absolute bottom-10 animate-bounce cursor-pointer">
 				<Image

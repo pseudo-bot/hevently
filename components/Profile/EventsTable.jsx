@@ -69,7 +69,7 @@ function Row(props) {
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box
               sx={{ margin: 1 }}
-              className="flex justify-between items-center px-12"
+              className="flex justify-between items-center px-26"
             >
               <div>
                 {" "}

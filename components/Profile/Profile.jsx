@@ -5,8 +5,27 @@ import Button from "@mui/material/Button";
 import Drawer from './Drawer'
 import EventsTable from './EventsTable'
 import Divider from '@mui/material/Divider';
-import { fabClasses } from "@mui/material";
 import DOB from "./DOB"
+import { alpha, styled } from '@mui/material/styles';
+const CssTextField = styled(TextField)({
+  '& label.Mui-focused': {
+    color: 'blue',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'blue',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#444',
+    },
+    '&:hover fieldset': {
+      borderColor: '#444',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: 'blue',
+    },
+  },
+});
 const UserData = ({ val, title, edit }) => {
   const [value, setValue] = useState(val);
   const handleChange = (event) => {
@@ -14,29 +33,26 @@ const UserData = ({ val, title, edit }) => {
   };
   return (
     <div className="flex items-center justify-between">
-      <div className="text-gray-700 font-semibold tracking-wider ">{title}</div>
-      {/* <TextField
+      <div className="text-gray-800 font-semibold tracking-wider ">{title}</div>
+      <CssTextField
         id="outlined-basic"
         value={value}
         InputProps={{
           readOnly: edit ? false : true,
-          
-
-        }}
-        variant={`${edit ? "outlined" : "standard"}`}
+         }}
+        variant="outlined"
         className="w-72 bg-bgray-50"
         onChange={handleChange}
-        // disabled= {edit? false:true}
-        
-      /> */}
-       <input onClick={()=>{console.log("hello")}} value={value} disabled= {edit? false:true} onChange={handleChange} type="text" id="name" name="name" className={`rounded ${edit?'border':''}  border-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-500 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out w-72`}/>
+        focused={edit}
+        />
+       {/* <input onClick={()=>{console.log("hello")}} value={value} disabled= {edit? false:true} onChange={handleChange} type="text" id="name" name="name" className={`rounded ${edit?'border':''}  border-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-500 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out w-72`}/> */}
       </div>
    
   );
 };
 
-const Profile = () => {
-  const user = useContext(UserContext);
+const Profile = ({user}) => {
+  
   console.log(user);
   const { email, uid, displayName, photoURL } = user;
   const [disabledBtn, setDisabledBtn] = useState(true);

@@ -23,8 +23,8 @@ export default function MaterialUIPickers() {
           inputFormat="dd/MM/yyyy"
           value={value}
           onChange={handleChange}
-          renderInput={(params) => <TextField {...params} />}
-         className='w-72'
+          renderInput={(params) => <TextField  className="w-72 bg-bgray-50" {...params} />}
+         
         />
 
     </LocalizationProvider>
