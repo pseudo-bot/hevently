@@ -49,7 +49,7 @@ const Wedding = ({ venues }) => {
 			</div>
 
 			<div className="fixed opacity-20 w-screen h-screen right-0">
-				<Image src={formCover} objectFit="cover" />
+				<Image src={formCover} objectFit="cover" alt="form-background"/>
 			</div>
 
 			<div className="absolute w-full right-0 py-24 flex items-center justify-center">

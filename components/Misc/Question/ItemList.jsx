@@ -7,12 +7,14 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 
 const ItemList = ({ list, value, weddingVenue }) => {
+	let context;
 	if (weddingVenue) {
-		const {
-			eventData: { venue },
-			setVenue,
-		} = useContext(WeddingContext);
+		context = WeddingContext;
 	}
+	const {
+		eventData: { venue },
+		setVenue,
+	} = useContext(context);
 
 	useEffect(() => {
 		Aos.init({

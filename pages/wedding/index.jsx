@@ -6,7 +6,7 @@ import { UserContext } from '../../context/Users';
 import { useContext } from 'react';
 import { CircularProgress } from '@mui/material';
 
-export default ({ venues }) => {
+const WeddingPage = ({ venues }) => {
 	const user = useContext(UserContext)
 	return (
 		<>
@@ -24,6 +24,8 @@ export default ({ venues }) => {
 		</>
 	);
 };
+
+export default WeddingPage;
 
 export async function getStaticProps() {
 	dbConnect();

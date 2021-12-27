@@ -10,7 +10,7 @@ const Loading = () => {
 	);
 };
 
-const profilePage = () => {
+const ProfilePage = () => {
 	const { user, ok, error } = useUser();
 
 	if (user && !error && ok) {
@@ -20,4 +20,4 @@ const profilePage = () => {
 	}
 };
 
-export default profilePage;
+export default ProfilePage;

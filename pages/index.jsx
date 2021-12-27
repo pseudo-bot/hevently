@@ -16,7 +16,7 @@ const useScript = (url) => {
 		return () => {
 			document.body.removeChild(script);
 		};
-	}, []);
+	}, [url]);
 };
 
 export default function Index() {
