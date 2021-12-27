@@ -1,33 +1,58 @@
-import * as React from 'react';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import * as React from "react";
+import TextField from "@mui/material/TextField";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
 
-import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
+import { styled } from "@mui/material/styles";
 
+const CssTextField = styled(TextField)({
+  "& label.Mui-focused": {
+    color: "blue",
+  },
+  "& .MuiInput-underline:after": {
+    borderBottomColor: "blue",
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "#444",
+    },
+    "&:hover fieldset": {
+      borderColor: "#444",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "blue",
+    },
+  },
+});
 
-export default function MaterialUIPickers() {
-  const [value, setValue] = React.useState(new Date('2014-08-18T21:11:54'));
+export default function MaterialUIPickers({ edit }) {
+  const [value, setValue] = React.useState(new Date("2014-08-18T21:11:54"));
 
   const handleChange = (newValue) => {
     setValue(newValue);
   };
 
   return (
-   <div className='flex items-center justify-between'>
-       <div className="text-gray-700 font-semibold tracking-wider ">DOB</div>
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-    
+    <div className="flex items-center justify-between">
+      <div className="text-gray-700 font-semibold tracking-wider ">DOB</div>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DesktopDatePicker
           inputFormat="dd/MM/yyyy"
           value={value}
           onChange={handleChange}
-          renderInput={(params) => <TextField  className="w-72 bg-bgray-50" {...params} />}
-         
+          readOnly={edit?false:true}
+          renderInput={(params) => (
+            <CssTextField
+            focused={edit}
+            className="w-72 bg-bgray-50"
+            {...params}
+           
+              
+            />
+          )}
         />
-
-    </LocalizationProvider>
-   </div>
+      </LocalizationProvider>
+    </div>
   );
 }

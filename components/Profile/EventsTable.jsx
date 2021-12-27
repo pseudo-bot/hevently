@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import Ratings from './Ratings';
 
 function createData(
   name,
@@ -69,7 +70,7 @@ function Row(props) {
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box
               sx={{ margin: 1 }}
-              className="flex justify-between items-center px-26"
+              className="flex items-center justify-between px-24"
             >
               <div>
                 {" "}
@@ -84,13 +85,7 @@ function Row(props) {
                 </Typography>
               </div>
               <div>
-                {" "}
-                <a
-                  href="#"
-                  className="bg-blue-500 rounded-lg px-4 py-2 text-gray-50 hover:bg-blue-600 transition-all duration-300"
-                >
-                  Rate your Experience
-                </a>
+               <Ratings/>
               </div>
             </Box>
           </Collapse>
