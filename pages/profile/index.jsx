@@ -18,13 +18,14 @@ const Loading = () => {
 const profilePage = () => {
 	const user = useContext(UserContext);
 
-	const url = `/api/user/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/${
+	const { data, error } = useSWR(
 		user && user.uid
-	}`;
+			? `/api/user/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/${user.uid}`
+			: null,
+		fetcher
+	);
 
-	const { data, error } = useSWR(url, fetcher);
-
-	if (data && !error) {
+	if (data && !error && data.ok) {
 		return <Profile user={data.user} />;
 	} else {
 		return <Loading />;
