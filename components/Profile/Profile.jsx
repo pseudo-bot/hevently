@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -18,8 +17,8 @@ import { styled } from '@mui/material/styles';
 import TextField from "@mui/material/TextField";
 import DOB from './DOB'
 import Button from "@mui/material/Button";
-import EventsTable from './EventsTable'
-import Gender from './Gender'
+import EventsTable from './EventsTable';
+import Gender from './Gender';
 import EmailIcon from '@mui/icons-material/Email';
 import CallIcon from '@mui/icons-material/Call';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
@@ -101,7 +100,7 @@ function ResponsiveDrawer(props) {
         />
         <p className="text-center py-2">{displayName}</p>
       </div>
-      <Divider />
+      <Divider variant="middle" />
       <nav>
         <a
           href="#"
