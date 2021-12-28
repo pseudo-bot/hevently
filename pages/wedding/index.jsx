@@ -1,21 +1,21 @@
-import Wedding from '../../components/Wedding/Wedding';
 import dbConnect from '../../db/utils/dbConnect.js';
 import { WeddingVenue } from '../../db/model/Venue';
-import { WeddingProvider } from '../../context/Wedding';
+import { EventProvider } from '../../context/EventContext';
 import { UserContext } from '../../context/Users';
 import { useContext } from 'react';
 import { CircularProgress } from '@mui/material';
+import Event from '../../components/Events/Event';
 
 const WeddingPage = ({ venues }) => {
-	const user = useContext(UserContext)
+	const user = useContext(UserContext);
 	return (
 		<>
 			{user ? (
-				<WeddingProvider>
+				<EventProvider>
 					<div>
-						<Wedding venues={venues} />
+						<Event venues={venues} type="wedding" />
 					</div>
-				</WeddingProvider>
+				</EventProvider>
 			) : (
 				<div className="flex h-screen w-screen fixed justify-center items-center text-xl text-center">
 					<CircularProgress />

@@ -6,9 +6,9 @@ import { useState } from "react";
 import moment from "moment";
 import { parseISO } from "date-fns";
 import { useContext } from "react";
-import { WeddingContext } from "../../context/Wedding";
+import { EventContext } from "../../context/EventContext";
 const Calender = () => {
-  const eventContext = useContext(WeddingContext);
+  const eventContext = useContext(EventContext);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const disabled = [

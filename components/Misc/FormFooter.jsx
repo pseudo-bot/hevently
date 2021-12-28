@@ -29,8 +29,10 @@ const FormFooter = ({
 						variant="contained"
 						size="medium"
 						color="success"
+						endIcon={<Done />}
+						className="poppins capitalize"
 					>
-						<Done />
+						Confirm
 					</Button>
 				) : (
 					<Button onClick={nextPosition} variant="contained" size="medium">

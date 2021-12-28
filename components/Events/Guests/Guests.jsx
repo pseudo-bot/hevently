@@ -7,10 +7,10 @@ import {
 	Add,
 } from '@mui/icons-material';
 import { useState, useContext } from 'react';
-import { WeddingContext } from '../../../context/Wedding';
+import { EventContext } from '../../../context/EventContext';
 import { SentimentDissatisfied as Sad } from '@mui/icons-material';
 import GuestTable from './GuestTable';
-import Alert from '../Alert';
+import Alert from '../../Misc/Alert';
 
 const Input = ({ label, helper, handleChange, error, value, icon }) => {
 	return (
@@ -47,7 +47,7 @@ const Guests = () => {
 	const {
 		eventData: { guestList },
 		setGuestList,
-	} = useContext(WeddingContext);
+	} = useContext(EventContext);
 
 	const [email, setEmail] = useState('');
 	const [guest, setGuest] = useState('');
