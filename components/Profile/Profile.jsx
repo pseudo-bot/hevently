@@ -12,70 +12,74 @@ import PersonIcon from "@mui/icons-material/Person";
 import EventIcon from "@mui/icons-material/Event";
 import LogoutIcon from "@mui/icons-material/Logout";
 import logOut from "../../lib/firebase/signOut";
-import BreadCrumbs from './BreadCrumbs'
-import { styled } from '@mui/material/styles';
+import BreadCrumbs from "./BreadCrumbs";
+import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
-import DOB from './DOB'
+import DOB from "./DOB";
 import Button from "@mui/material/Button";
-import EventsTable from './EventsTable';
-import Gender from './Gender';
-import EmailIcon from '@mui/icons-material/Email';
-import CallIcon from '@mui/icons-material/Call';
-import LocationCityIcon from '@mui/icons-material/LocationCity';
-import HouseIcon from '@mui/icons-material/House';
+import EventsTable from "./EventsTable";
+import Gender from "./Gender";
+import EmailIcon from "@mui/icons-material/Email";
+import CallIcon from "@mui/icons-material/Call";
+import LocationCityIcon from "@mui/icons-material/LocationCity";
+import HouseIcon from "@mui/icons-material/House";
+import { useRouter } from "next/router";
+import Image from 'next/image';
 
 const drawerWidth = 240;
 
 const CssTextField = styled(TextField)({
-  '& label.Mui-focused': {
-    color: 'blue',
+  "& label.Mui-focused": {
+    color: "blue",
   },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: 'blue',
+  "& .MuiInput-underline:after": {
+    borderBottomColor: "blue",
   },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: '#444',
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "#444",
     },
-    '&:hover fieldset': {
-      borderColor: '#444',
+    "&:hover fieldset": {
+      borderColor: "#444",
     },
-    '&.Mui-focused fieldset': {
-      borderColor: 'blue',
+    "&.Mui-focused fieldset": {
+      borderColor: "blue",
     },
   },
 });
-const UserData = ({ icon,val, title, edit }) => {
+const UserData = ({ icon, val, title, edit }) => {
   const [value, setValue] = useState(val);
   const handleChange = (event) => {
     setValue(event.target.value);
   };
   return (
     <div className="flex items-center justify-between">
-      <div className="text-gray-800 font-semibold tracking-wider  "> <span className="mr-1">{icon}</span> {title}</div>
+      <div className="text-gray-800 font-semibold tracking-wider  ">
+        {" "}
+        <span className="mr-1">{icon}</span> {title}
+      </div>
       <CssTextField
         id="outlined-basic"
         value={value}
         InputProps={{
           readOnly: edit ? false : true,
-         }}
+        }}
         variant="outlined"
         className="w-72 bg-bgray-50"
         onChange={handleChange}
         focused={edit}
-        />
-      </div>
-   
+      />
+    </div>
   );
 };
 
 function ResponsiveDrawer(props) {
+  const router = useRouter();
   const [disabledBtn, setDisabledBtn] = useState(true);
   const [edit, setEdit] = useState(false);
-  
- const {email, displayName, photoURL, phoneNumber, dob,}=props.userData
-  
- 
+
+  const { email, displayName, photoURL, phoneNumber, dob } = props.userData;
+
   const handleDisabled = () => {
     setDisabledBtn(!disabledBtn);
     setEdit(!edit);
@@ -86,18 +90,17 @@ function ResponsiveDrawer(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  const signOut = () => {
-    logOut();
+  const signOut = async () => {
+    await logOut();
+    router.push("/");
   };
 
   const drawer = (
     <div>
-      <div className="py-4">
-        <img
-          src={photoURL}
-          alt="..."
-          className="rounded-full mx-auto w-16"
-        />
+      <div className="py-8">
+        <div className="w-full flex justify-center">
+          <Image src={photoURL} alt="Profile picture" className="rounded-full" width={64} height={64} />
+        </div>
         <p className="text-center py-2">{displayName}</p>
       </div>
       <Divider variant="middle" />
@@ -114,13 +117,12 @@ function ResponsiveDrawer(props) {
         >
           <EventIcon /> <span>My Events</span>
         </a>
-        <a
-          href="/"
+        <div
           className="flex py-4 px-4 gap-2 items-center hover:bg-blue-500 hover:text-gray-50 transition-all duration-200"
           onClick={signOut}
         >
           <LogoutIcon /> <span>Logout</span>
-        </a>
+        </div>
       </nav>
     </div>
   );
@@ -153,7 +155,7 @@ function ResponsiveDrawer(props) {
             <div className="text-[2.25rem] font-bold text-gray-200 tracking-wider dancing cursor-pointer">
               hevently
             </div>
-            <BreadCrumbs/>
+            <BreadCrumbs />
           </div>
         </Toolbar>
       </AppBar>
@@ -205,21 +207,41 @@ function ResponsiveDrawer(props) {
         <Toolbar />
         <div className="bg-gray-200 profile-bg">
           <div className=" min-h-screen ">
-            <div className="  p-6 mb-8" >
+            <div className="  p-6 mb-8">
               <h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 pb-8">
                 Profile
               </h3>
               <div>
                 <div className="flex justify-center gap-12 flex-wrap">
                   <div className="flex flex-col space-y-6 text-gray-600 text-md md:text-lg tracking-wider w-[26rem]">
-                     <UserData icon={<EmailIcon/>} val={email} title="Email" edit={edit} />
-                    <UserData icon={<CallIcon/>} val="554516321" title="Mobile" edit={edit} /> 
-                  <Gender edit={edit}/>
+                    <UserData
+                      icon={<EmailIcon />}
+                      val={email}
+                      title="Email"
+                      edit={edit}
+                    />
+                    <UserData
+                      icon={<CallIcon />}
+                      val="554516321"
+                      title="Mobile"
+                      edit={edit}
+                    />
+                    <Gender edit={edit} />
                   </div>
                   <div className="flex flex-col space-y-6 text-gray-600 text-md md:text-lg tracking-wider w-[26rem] ">
-                    <UserData icon={<HouseIcon/>} val="Rishikesh" title="City" edit={edit} />
-                    <UserData icon={<LocationCityIcon/>}  val="Uttarakhand" title="State" edit={edit} />
-                    <DOB edit={edit}/>
+                    <UserData
+                      icon={<HouseIcon />}
+                      val="Rishikesh"
+                      title="City"
+                      edit={edit}
+                    />
+                    <UserData
+                      icon={<LocationCityIcon />}
+                      val="Uttarakhand"
+                      title="State"
+                      edit={edit}
+                    />
+                    <DOB edit={edit} />
                   </div>
                 </div>
                 <div className="flex justify-center gap-4 pt-12 pb-4">
@@ -244,11 +266,14 @@ function ResponsiveDrawer(props) {
                 </div>
               </div>
             </div>
-            <Divider/>
+            <Divider />
             <h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 py-10">
-               My Events
-                </h3>
-           <div className="pb-12 w-3/4 mx-auto" id="events"> <EventsTable/></div>
+              My Events
+            </h3>
+            <div className="pb-12 w-3/4 mx-auto" id="events">
+              {" "}
+              <EventsTable />
+            </div>
           </div>
         </div>
       </Box>
@@ -256,14 +281,13 @@ function ResponsiveDrawer(props) {
   );
 }
 
-
-const Profile = ({user,events}) => {
-  console.log(events)
+const Profile = ({ user, events }) => {
+  console.log(events);
   return (
     <div>
       <ResponsiveDrawer userData={user} />
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;
