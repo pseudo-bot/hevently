@@ -257,8 +257,8 @@ function ResponsiveDrawer(props) {
 }
 
 
-const Profile = ({user}) => {
-  console.log(user);
+const Profile = ({user,events}) => {
+  console.log(events)
   return (
     <div>
       <ResponsiveDrawer userData={user} />

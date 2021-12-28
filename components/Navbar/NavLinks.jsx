@@ -20,7 +20,7 @@ import Alert from '../Misc/Alert';
 
 const NavItem = ({ login, children, href = '', home, profile, onClick }) => {
 	return (
-		<Link href={href} scroll={false}>
+		<Link href={href} scroll={false} passHref>
 			<div
 				className={` ${
 					home ? 'lg:ml-auto' : ''

@@ -7,12 +7,14 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 
 const ItemList = ({ list, value, weddingVenue }) => {
+	let context;
 	if (weddingVenue) {
-		const {
-			eventData: { venue },
-			setVenue,
-		} = useContext(WeddingContext);
+		context = WeddingContext;
 	}
+	const {
+		eventData: { venue },
+		setVenue,
+	} = useContext(context);
 
 	useEffect(() => {
 		Aos.init({
@@ -47,7 +49,7 @@ const ItemList = ({ list, value, weddingVenue }) => {
 						display,
 					}) => {
 						let selected = false;
-						if (venue === _id) selected = true;
+						if (venue && venue.id === _id) selected = true;
 						return (
 							<ItemCard
 								key={_id}
@@ -60,7 +62,13 @@ const ItemList = ({ list, value, weddingVenue }) => {
 								nonveg={nonveg}
 								display={display}
 								handleBooking={() => {
-									setVenue(_id);
+									setVenue({
+										id: _id,
+										value,
+										city,
+										address,
+										ratings,
+									});
 								}}
 								booked={selected}
 							/>

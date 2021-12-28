@@ -1,5 +1,6 @@
 import dbConnect from '../../../../db/utils/dbConnect';
 import User from '../../../../db/model/User';
+import UserEvents from '../../../../db/model/UserEvents';
 
 export default async function createUserHandler(req, res) {
 	await dbConnect();
@@ -14,6 +15,8 @@ export default async function createUserHandler(req, res) {
 				try {
 					// Check if user already exists
 					const user = await User.findOne({ uid });
+					const userEvents = await UserEvents.findOne({ uid });
+
 					if (user) {
 						res.status(200).json({
 							ok: true,
@@ -31,7 +34,13 @@ export default async function createUserHandler(req, res) {
 							city: null,
 							state: null,
 							dob: null,
-							events: [],
+						});
+						await UserEvents.create({
+							uid,
+							wedding: [],
+							corporate: [],
+							birthday: [],
+							social: [],
 						});
 						res.status(201).json({
 							ok: true,
@@ -39,12 +48,10 @@ export default async function createUserHandler(req, res) {
 						});
 					}
 				} catch (err) {
-					res
-						.status(400)
-						.json({
-							ok: false,
-							message: `User could not be added. Error: ${err}`,
-						});
+					res.status(400).json({
+						ok: false,
+						message: `User could not be added. Error: ${err}`,
+					});
 				}
 				break;
 

@@ -1,28 +1,35 @@
 import Image from 'next/image';
 import { useState, useContext } from 'react';
+import { WeddingContext } from '../../context/Wedding';
+import createEvent from '../../lib/createEvent.js';
 
 import Venue from './Venue';
 import Schedule from './Schedule';
 import FormFooter from '../Misc/FormFooter';
 import Alert from '../Misc/Alert';
 import Guests from '../Misc/Guests/Guests';
+import Confirm from '../Misc/Confirmation';
 
 import formCover from '../../public/form/form_cover.png';
 
-import { WeddingContext } from '../../context/Wedding';
-
 const Wedding = ({ venues }) => {
 	const [open, setOpen] = useState(false);
+	const [openDate, setOpenDate] = useState(false);
 
-	const {
-		eventData: { venue },
-	} = useContext(WeddingContext);
+	const [showConfirm, setShowConfirm] = useState(false);
+
+	const { eventData } = useContext(WeddingContext);
 
 	const [position, setPosition] = useState(0);
 
 	const nextPosition = () => {
-		if (!venue && position === 0) {
+		if (!eventData.venue && position === 0) {
 			setOpen(true);
+			return;
+		}
+
+		if ((!eventData.startDate || !eventData.endDate) && position === 1) {
+			setOpenDate(true);
 			return;
 		}
 
@@ -37,6 +44,19 @@ const Wedding = ({ venues }) => {
 		setPosition(position);
 	};
 
+	const handleSubmit = async () => {
+		try {
+			const eventCreate = await createEvent(eventData, 'wedding');
+			if (eventCreate) setShowConfirm(true);
+			else {
+				console.log('Error! Event not created');
+			}
+		} catch (err) {
+			console.log('Error! Event not created');
+			console.log(err);
+		}
+	};
+
 	return (
 		<div className="w-screen">
 			<div className="z-50">
@@ -48,20 +68,31 @@ const Wedding = ({ venues }) => {
 				/>
 			</div>
 
+			<div className="z-50">
+				<Alert
+					open={openDate}
+					setOpen={setOpenDate}
+					severity={'warning'}
+					msg={'Please select proper date to continue'}
+				/>
+			</div>
+
+			<Confirm showConfirm={showConfirm} />
+
 			<div className="fixed opacity-20 w-screen h-screen right-0">
-				<Image src={formCover} objectFit="cover" />
+				<Image src={formCover} objectFit="cover" alt="form-background" />
 			</div>
 
 			<div className="absolute w-full right-0 py-24 flex items-center justify-center">
 				{position === 0 ? <Venue venues={venues} /> : null}
 				{position === 1 ? <Schedule /> : null}
 				{position === 2 ? <Guests /> : null}
-				{position === 3 ? <Venue venues={venues} /> : null}
 
 				<FormFooter
 					nextPosition={nextPosition}
 					prevPosition={prevPosition}
 					position={position}
+					handleSubmit={handleSubmit}
 				/>
 			</div>
 		</div>
