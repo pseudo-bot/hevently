@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -94,48 +93,19 @@ function Row(props) {
     </React.Fragment>
   );
 }
+const rows = []; 
 
-Row.propTypes = {
-  row: PropTypes.shape({
-    type: PropTypes.number.isRequired,
-    endDate: PropTypes.number.isRequired,
-    startDate: PropTypes.number.isRequired,
-    details: PropTypes.arrayOf(
-      PropTypes.shape({
-        location: PropTypes.string.isRequired,
-        address: PropTypes.string.isRequired,
-        city: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    name: PropTypes.string.isRequired,
-    guests: PropTypes.number.isRequired,
-  }).isRequired,
-};
-
-const rows = [
-  createData(
-    "Sarang Wedding",
-    "Wedding",
-    "venue1",
-    "26/12/2021",
-    "29/12/2021",
-    150,
-    "Karamtoli Rd, Morabadi",
-    "Ranchi"
-  ),
-  createData(
-    "Sarang Birthday",
-    "Birthday",
-    "venue2",
-    "30/12/2021",
-    "30/12/2021",
-    50,
-    "St. Anne Lane, Tharpakhna",
-    "Mumbai"
-  ),
-];
-
-export default function CollapsibleTable() {
+export default function CollapsibleTable({eventsData}) {
+  
+  for( const events in eventsData) { 
+    const eventarr=eventsData[events];
+    if(Array.isArray(eventarr)){
+      eventarr.forEach(event => { 
+        rows.push(createData(events, events, event.venue.value, event.startDate, event.endDate, event.guestList.length, event.venue.address, event.venue.city));
+      });
+    }
+  }
+    
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
@@ -146,15 +116,16 @@ export default function CollapsibleTable() {
             <TableCell align="right">Event Type</TableCell>
             <TableCell align="right">Start Date</TableCell>
             <TableCell align="right">End Date</TableCell>
-            <TableCell align="right">Number of Guests</TableCell>
+            <TableCell align="right">Guests</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <Row key={row.name} row={row} />
+            <Row data={eventsData} key={row.name} row={row} />
           ))}
         </TableBody>
       </Table>
     </TableContainer>
   );
 }
+

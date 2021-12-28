@@ -28,9 +28,9 @@ const Event = ({ image, title, desc }) => {
 					objectFit="cover"
 					placeholder="blur"
 				/>
-				<div className="bg-[#000] w-full h-0 absolute opacity-60 group-hover:h-full transition-all duration-500"></div>
+				<div onClick={openModal} className="bg-[#000] w-full h-0 absolute opacity-60 group-hover:h-full transition-all duration-500"></div>
 				<div className="bg-gray-200 absolute w-14 h-14 opacity-0 transition-all duration-500 group-hover:opacity-80 rounded-full top-28 left-1/2 -translate-x-1/2 flex justify-center items-center">
-					<button onClick={openModal}>
+					<button  onClick={openModal}>
 						<Arrow fontSize="medium" />
 					</button>
 				</div>

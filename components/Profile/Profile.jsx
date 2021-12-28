@@ -272,7 +272,7 @@ function ResponsiveDrawer(props) {
             </h3>
             <div className="pb-12 w-3/4 mx-auto" id="events">
               {" "}
-              <EventsTable />
+              <EventsTable eventsData={props.eventsData} />
             </div>
           </div>
         </div>
@@ -282,10 +282,9 @@ function ResponsiveDrawer(props) {
 }
 
 const Profile = ({ user, events }) => {
-  console.log(events);
   return (
     <div>
-      <ResponsiveDrawer userData={user} />
+      <ResponsiveDrawer userData={user} eventsData={events} />
     </div>
   );
 };
