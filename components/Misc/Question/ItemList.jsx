@@ -49,7 +49,7 @@ const ItemList = ({ list, value, weddingVenue }) => {
 						display,
 					}) => {
 						let selected = false;
-						if (venue === _id) selected = true;
+						if (venue && venue.id === _id) selected = true;
 						return (
 							<ItemCard
 								key={_id}
@@ -62,7 +62,13 @@ const ItemList = ({ list, value, weddingVenue }) => {
 								nonveg={nonveg}
 								display={display}
 								handleBooking={() => {
-									setVenue(_id);
+									setVenue({
+										id: _id,
+										value,
+										city,
+										address,
+										ratings,
+									});
 								}}
 								booked={selected}
 							/>

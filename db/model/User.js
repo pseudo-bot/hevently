@@ -32,9 +32,6 @@ const UserSchema = new Schema({
 	photoURL: {
 		type: String,
 	},
-	events: {
-		type: Schema.Types.Mixed,
-	},
 });
 
 export default models.User || model('User', UserSchema);
