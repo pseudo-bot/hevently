@@ -1,6 +1,31 @@
-import React from "react";
+import React,{useState,useContext} from "react";
 import CancelIcon from "@mui/icons-material/Cancel";
-export default function Modal({ showModal, setShowModal, title }) {
+import { useRouter } from "next/router";
+import Alert from '../Misc/Alert';
+import {UserContext} from '../../context/Users'
+export default function Modal({ showModal, setShowModal, title,href }) {
+  const router = useRouter();
+  const user=useContext(UserContext); 
+  console.log(user);
+  const browseHandler=()=>{
+    if(user){
+      setShowModal(false);
+      router.push('/profile#events')
+    }
+    else{
+      
+    }
+   
+  }
+  const newHandler=()=>{
+    if(user){
+      setShowModal(false);
+      router.push(href)
+    }
+    else{ 
+      setShowModal(false);
+    }
+  }
   return (
     <>
       <div
@@ -26,14 +51,14 @@ export default function Modal({ showModal, setShowModal, title }) {
               <button
                 className="bg-blue-500 text-gray-50 hover:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
-                onClick={() => setShowModal(false)}
+                onClick={() => newHandler()}
               >
                 Create New Event
               </button>
               <button
                 className="bg-blue-500 text-gray-50 hover:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
-                onClick={() => setShowModal(false)}
+                onClick={() => browseHandler()}
               >
                 Browse Previous Event
               </button>
@@ -44,6 +69,12 @@ export default function Modal({ showModal, setShowModal, title }) {
       {showModal && (
         <div className="opacity-40 fixed inset-0 z-40 bg-gray-800"></div>
       )}
+      {/* <Alert
+					open={open}
+					severity={'warning'}
+					setOpen={setOpen}
+					msg={'Please login to continue'}
+				/> */}
     </>
   );
 }

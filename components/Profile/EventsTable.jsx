@@ -93,10 +93,10 @@ function Row(props) {
     </React.Fragment>
   );
 }
-const rows = []; 
+
 
 export default function CollapsibleTable({eventsData}) {
-  
+  const rows = []; 
   for( const events in eventsData) { 
     const eventarr=eventsData[events];
     if(Array.isArray(eventarr)){

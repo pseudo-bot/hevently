@@ -8,7 +8,7 @@ import corporate from '../../public/events/corporate.jpg';
 import social from '../../public/events/social.jpg';
 import birthday from '../../public/events/bday.jpg';
 
-const Event = ({ image, title, desc }) => {
+const Event = ({ image, title, desc,href }) => {
 	const [showModal, setShowModal] = useState(false);
 	const openModal = () => {
 		setShowModal((prev) => !prev);
@@ -36,7 +36,7 @@ const Event = ({ image, title, desc }) => {
 				</div>
 			</div>
 			<div className="text-justify px-10 z-10">{desc}</div>
-			<Modal showModal={showModal} setShowModal={setShowModal} title={title} />
+			<Modal showModal={showModal} setShowModal={setShowModal} title={title} href={href} />
 		</div>
 	);
 };
@@ -52,21 +52,25 @@ function Events() {
 					title="Weddings"
 					image={wedding}
 					desc="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi aut voluptatem blanditiis aspernatur modi nulla?"
+					href='/wedding'
 				/>
 				<Event
 					title="Social Gathering"
 					image={social}
 					desc="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi aut voluptatem blanditiis aspernatur modi nulla?"
+					href='/social'
 				/>
 				<Event
 					title="Birthdays"
 					image={birthday}
 					desc="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi aut voluptatem blanditiis aspernatur modi nulla?"
+					href='/birthday'
 				/>
 				<Event
 					title="Corporate Events"
 					image={corporate}
 					desc="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi aut voluptatem blanditiis aspernatur modi nulla?"
+					href='/corporate'
 				/>
 			</div>
 		</div>
