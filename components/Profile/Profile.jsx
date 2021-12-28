@@ -258,6 +258,7 @@ function ResponsiveDrawer(props) {
 
 
 const Profile = ({user}) => {
+  console.log(user);
   return (
     <div>
       <ResponsiveDrawer userData={user} />

@@ -84,7 +84,7 @@ function Row(props) {
                   {row.details[0].city}
                 </Typography>
               </div>
-              <div>
+              <div className="mt-4 md:mt-0">
                <Ratings/>
               </div>
             </Box>
