@@ -11,10 +11,10 @@ const Loading = () => {
 };
 
 const ProfilePage = () => {
-	const { user, ok, error } = useUser();
+	const { user, ok, error, events, eventError, eventOk } = useUser();
 
-	if (user && !error && ok) {
-		return <Profile user={user} />;
+	if (user && !error && ok && events && !eventError && eventOk) {
+		return <Profile user={user} events={events} />;
 	} else {
 		return <Loading />;
 	}

@@ -7,7 +7,8 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import logOut from '../../lib/firebase/signOut';
 import TextField from '@mui/material/TextField';
 
-const Profile = ({ user }) => {
+const Profile = ({ user, events }) => {
+	console.log(events);
 	const { email, displayName, photoURL } = user;
 	const [sidenav, setSidenav] = useState(true);
 	const handleClick = () => {

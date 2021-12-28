@@ -20,4 +20,4 @@ const UserEventsSchema = new Schema({
 	},
 });
 
-export default models.UserEvents || model('User_Events', UserEventsSchema);
+export default models.User_Events || model('User_Events', UserEventsSchema);
