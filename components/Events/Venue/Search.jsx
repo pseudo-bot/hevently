@@ -14,23 +14,19 @@ const Question = ({ list, heading, label, search, weddingVenue }) => {
 			<div className="text-3xl relative montserrat font-semibold text-center text-gradient capitalize md:text-4xl underline">
 				{heading}
 			</div>
-			{search ? (
-				<>
-					<TextField
-						label={label}
-						variant="outlined"
-						onChange={handleVenueChange}
-						sx={{
-							maxWidth: '30rem',
-							width: '100%',
-							marginInline: 'auto',
-						}}
-						helperText="Select location or search above"
-					/>
-					<Divider />
-					<ItemList list={list} value={value} weddingVenue={weddingVenue}/>
-				</>
-			) : null}
+			<TextField
+				label={label}
+				variant="outlined"
+				onChange={handleVenueChange}
+				sx={{
+					maxWidth: '30rem',
+					width: '100%',
+					marginInline: 'auto',
+				}}
+				helperText="Select location or search above"
+			/>
+			<Divider />
+			<ItemList list={list} value={value} weddingVenue={weddingVenue} />
 		</div>
 	);
 };

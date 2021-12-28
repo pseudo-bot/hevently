@@ -1,7 +1,7 @@
 import {useEffect} from 'react'
 
-import About from '../components/About/About'
-import Footer from '../components/Footer/Footer';
+import About from '../../components/About/About'
+import Footer from '../../components/Footer/Footer';
 
 const useScript = (url) => {
 	useEffect(() => {
