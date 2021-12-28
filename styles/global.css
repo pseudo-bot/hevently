@@ -181,3 +181,11 @@ body {
 	opacity: 0;
 	transition: opacity 300ms;
 }
+
+.profile-bg{
+	background-image: url('/form/formbg.svg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}

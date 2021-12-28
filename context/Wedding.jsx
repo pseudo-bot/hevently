@@ -28,7 +28,7 @@ export const WeddingProvider = ({ children }) => {
   };
 
   const setGuestList = (list) => {
-    let ob = Object.assign({}, eventData);
+    let ob = Object.assign({}, eventData); 
     ob.guestList = list;
     setEventData(ob);
   }
