@@ -168,7 +168,7 @@ const Services = ({ services, setServices, setOpen, setShowLogin }) => {
 				</ServicesItem>
 				<ServicesItem
 					setOpen={setOpen}
-					href="/wedding"
+					href="/social"
 					setShowLogin={setShowLogin}
 				>
 					<Bar />
@@ -176,7 +176,7 @@ const Services = ({ services, setServices, setOpen, setShowLogin }) => {
 				</ServicesItem>
 				<ServicesItem
 					setOpen={setOpen}
-					href="/wedding"
+					href="/birthday"
 					setShowLogin={setShowLogin}
 				>
 					<CakeIcon />
@@ -184,7 +184,7 @@ const Services = ({ services, setServices, setOpen, setShowLogin }) => {
 				</ServicesItem>
 				<ServicesItem
 					setOpen={setOpen}
-					href="/wedding"
+					href="/corporate"
 					setShowLogin={setShowLogin}
 				>
 					<EventIcon />
