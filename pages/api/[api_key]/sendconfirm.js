@@ -4,7 +4,7 @@ export default async function sendMail(req, res) {
 	const { method, body } = req;
 	const { api_key } = req.query;
 
-	const { emails } = body;
+	const { userEmail } = body;
 
 	if (api_key === process.env.NEXT_PUBLIC_CREATE_USER_KEY) {
 		switch (method) {
@@ -18,18 +18,18 @@ export default async function sendMail(req, res) {
 						},
 					});
 
-					let guestsMailOptions = {
+					let userMailOptions = {
 						from: process.env.NEXT_PUBLIC_EMAIL,
-						to: emails,
-						subject: 'Invite to attend the event',
-						text: `You have been invited to wedding.`,
+						to: userEmail,
+						subject: 'Event confirmation email',
+						text: `Thank you for using hevently. Your event has been created successfully. Please check below for more details.`,
 					};
 
-					transporter.sendMail(guestsMailOptions, (error, info) => {
+					transporter.sendMail(userMailOptions, (error, info) => {
 						if (error) {
 							res.status(500).json({
 								ok: false,
-								message: 'Error sending invitation mail to guests.',
+								message: 'Error sending confirmation mail to user.',
 								error,
 							});
 						} else {

@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import { useState, useContext } from 'react';
 import { EventContext } from '../../context/EventContext';
+import { UserContext } from '../../context/Users';
 import createEvent from '../../lib/createEvent.js';
+import sendConfirmation from '../../lib/sendConfirmation.js';
 
 import Venue from './Venue/Venue';
 import Schedule from './Schedule';
@@ -22,12 +24,10 @@ const headings = {
 const Wedding = ({ venues, type }) => {
 	const [open, setOpen] = useState(false);
 	const [openDate, setOpenDate] = useState(false);
-
 	const [showConfirm, setShowConfirm] = useState(false);
-
 	const { eventData } = useContext(EventContext);
-
 	const [position, setPosition] = useState(0);
+	const { email } = useContext(UserContext);
 
 	const nextPosition = () => {
 		if (!eventData.venue && position === 0) {
@@ -54,9 +54,15 @@ const Wedding = ({ venues, type }) => {
 	const handleSubmit = async () => {
 		try {
 			const eventCreate = await createEvent(eventData, type);
+			const emailConfirm = await sendConfirmation(email);
+
 			if (eventCreate) setShowConfirm(true);
 			else {
 				console.log('Error! Event not created');
+			}
+			if (emailConfirm) console.log('Confirmation email sent');
+			else {
+				console.log('Error! Confirmation email not sent');
 			}
 		} catch (err) {
 			console.log('Error! Event not created');
@@ -84,7 +90,7 @@ const Wedding = ({ venues, type }) => {
 				/>
 			</div>
 
-			<Confirm showConfirm={showConfirm} guestList={eventData.guestList}/>
+			<Confirm showConfirm={showConfirm} guestList={eventData.guestList} />
 
 			<div className="fixed opacity-20 w-screen h-screen right-0">
 				<Image src={formCover} objectFit="cover" alt="form-background" />

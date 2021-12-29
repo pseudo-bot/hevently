@@ -24,16 +24,13 @@ const NavItem = ({ children, href = '', home, profile, onClick }) => {
 			<div
 				className={` ${
 					home ? 'lg:ml-auto' : ''
-				} p-3 lg:p-0 lg:py-2  lg:w-32 w-full text-gray-500 capitalize tracking-wider lg:text-gray-200 lg:text-center border-b lg:border-0 transition-all duration-150 hover:text-[blue] ${profile
+				} p-3 lg:p-0 lg:py-2  lg:w-32 w-full text-gray-500 capitalize tracking-wider lg:text-gray-200 lg:text-center border-b lg:border-0 transition-all duration-150 hover:text-[blue] ${
+					profile
 						? 'bg-gray-50 lg:ml-auto lg:text-[blue] lg:rounded-full border-0 login'
 						: ''
 				}`}
 			>
-				<div
-					className={`${
-						profile ? 'flex' : ''
-					} lg:justify-center gap-3`}
-				>
+				<div className={`${profile ? 'flex' : ''} lg:justify-center gap-3`}>
 					{profile ? <AccountCircle color="primary" /> : null}
 					{children}
 				</div>
@@ -84,7 +81,7 @@ export default function NavLinks({ hidden, setHidden }) {
 					hidden
 						? 'opacity-0 lg:pointer-events-auto pointer-events-none lg:opacity-100'
 						: ''
-				} flex-auto transition-all duration-300 absolute cursor-pointer bg-gray-50 top-14 right-0 shadow-lg flex flex-col w-56 items-center lg:relative lg:flex-row lg:w-[40rem] lg:gap-6 lg:top-0 lg:bg-transparent font-medium lg:shadow-none nav-links`}
+				} flex-auto transition-all duration-300 absolute cursor-pointer bg-gray-50 top-16 right-0 shadow-lg flex flex-col w-52 items-center lg:relative lg:flex-row lg:w-[40rem] lg:gap-6 lg:top-0 lg:bg-transparent font-medium lg:shadow-none nav-links`}
 				onClick={() => setHidden(true)}
 			>
 				<NavItem href="/" home={true}>
@@ -150,14 +147,19 @@ const ServicesItem = ({ children, href = '', setOpen }) => {
 const Services = ({ services, setServices, setOpen, setShowLogin }) => {
 	return (
 		<div className="w-full lg:w-32 relative services-div group">
-			<div className="p-3 lg:p-0 lg:py-2  lg:w-32 w-full text-gray-500 capitalize tracking-wider lg:text-gray-200 lg:text-center border-b lg:border-0 transition-all duration-150 hover:text-[blue]">
+			<div
+				className="p-3 lg:p-0 lg:py-2  lg:w-32 w-full text-gray-500 capitalize tracking-wider lg:text-gray-200 lg:text-center border-b lg:border-0 transition-all duration-150 hover:text-[blue]"
+				onClick={(event) => {
+					event.stopPropagation();
+				}}
+			>
 				Services
 			</div>
 			<div className="absolute top-3 right-4 lg:hidden ">
 				{services ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
 			</div>
 			<div
-				className={`h-0 group-hover:h-48 lg:fixed lg:top-14 lg:w-56 lg:pl-4 overflow-hidden transition-all duration-300 w-full bg-gray-100 font-normal services text-sm`}
+				className={`h-0 group-hover:h-48 lg:fixed lg:top-16 lg:w-56 lg:pl-4 overflow-hidden transition-all duration-300 w-full bg-gray-100 font-normal services text-sm`}
 			>
 				<ServicesItem
 					setOpen={setOpen}
