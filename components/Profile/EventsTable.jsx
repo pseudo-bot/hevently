@@ -96,12 +96,13 @@ function Row(props) {
 
 
 export default function CollapsibleTable({eventsData}) {
+  console.log(eventsData);
   const rows = []; 
   for( const events in eventsData) { 
     const eventarr=eventsData[events];
     if(Array.isArray(eventarr)){
       eventarr.forEach(event => { 
-        rows.push(createData(events, events, event.venue.value, event.startDate, event.endDate, event.guestList.length, event.venue.address, event.venue.city));
+        rows.push(createData(event.eventName, events, event.venue.value, event.startDate, event.endDate, event.guestList.length, event.venue.address, event.venue.city));
       });
     }
   }

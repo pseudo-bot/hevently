@@ -19,7 +19,7 @@ const CssTextField = styled(TextField)({
       borderColor: "#444",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "blue",
+      borderColor: "#0384fc",
     },
   },
 });

@@ -1,31 +1,35 @@
-import React,{useState,useContext} from "react";
+import React, { useState, useContext } from "react";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { useRouter } from "next/router";
-import Alert from '../Misc/Alert';
-import {UserContext} from '../../context/Users'
-export default function Modal({ showModal, setShowModal, title,href }) {
+import Alert from "../Misc/Alert";
+import { UserContext } from "../../context/Users";
+export default function Modal({
+  showModal,
+  setShowModal,
+  title,
+  href,
+  setOpen,
+}) {
   const router = useRouter();
-  const user=useContext(UserContext); 
-  console.log(user);
-  const browseHandler=()=>{
-    if(user){
+  const user = useContext(UserContext);
+  const browseHandler = () => {
+    if (user) {
       setShowModal(false);
-      router.push('/profile#events')
-    }
-    else{
-      
-    }
-   
-  }
-  const newHandler=()=>{
-    if(user){
+      router.push("/profile#events");
+    } else {
       setShowModal(false);
-      router.push(href)
+      setOpen(true);
     }
-    else{ 
+  };
+  const newHandler = () => {
+    if (user) {
       setShowModal(false);
+      router.push(href);
+    } else {
+      setShowModal(false);
+      setOpen(true);
     }
-  }
+  };
   return (
     <>
       <div
@@ -69,13 +73,6 @@ export default function Modal({ showModal, setShowModal, title,href }) {
       {showModal && (
         <div className="opacity-40 fixed inset-0 z-40 bg-gray-800"></div>
       )}
-      {/* <Alert
-					open={open}
-					severity={'warning'}
-					setOpen={setOpen}
-					msg={'Please login to continue'}
-				/> */}
     </>
   );
 }
-
