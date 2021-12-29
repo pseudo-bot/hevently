@@ -84,7 +84,7 @@ const Wedding = ({ venues, type }) => {
 				/>
 			</div>
 
-			<Confirm showConfirm={showConfirm} />
+			<Confirm showConfirm={showConfirm} guestList={eventData.guestList}/>
 
 			<div className="fixed opacity-20 w-screen h-screen right-0">
 				<Image src={formCover} objectFit="cover" alt="form-background" />

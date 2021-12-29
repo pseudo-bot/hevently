@@ -1,12 +1,32 @@
-import React from 'react';
-import CancelIcon from '@mui/icons-material/Cancel';
+import React, { useState } from 'react';
 import Confetti from 'react-confetti';
 import useWindowSize from 'react-use/lib/useWindowSize';
 import { Button } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
 import Link from 'next/link';
+import sendMail from '../../lib/sendMail';
+import { Send, Done } from '@mui/icons-material';
 
-const Confirmation = ({ showConfirm, setShowConfirm }) => {
+const Confirmation = ({ showConfirm, guestList }) => {
 	const { width, height } = useWindowSize();
+	const [loading, setLoading] = useState(false);
+	const [invite, setInvite] = useState(true);
+	const [error, setError] = useState(false);
+
+	const sendInvites = async () => {
+		if (!invite) return;
+		setLoading(true);
+		const res = await sendMail(guestList);
+		setLoading(false);
+
+		if (res) {
+			setInvite(false);
+		} else {
+			console.log('Error! Invites not sent');
+			setError(true);
+		}
+	};
+
 	return (
 		<>
 			{showConfirm && (
@@ -21,12 +41,12 @@ const Confirmation = ({ showConfirm, setShowConfirm }) => {
 			>
 				<div className="relative mx-auto max-w-3xl bg-bgray-50 rounded-lg">
 					<div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-						<div className="flex flex-col tick">
+						<div className="flex flex-col">
 							<svg
 								version="1.1"
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 130.2 130.2"
-								className="pt-6 pb-4"
+								className="pt-6 pb-4 tick"
 							>
 								<circle
 									className="path circle"
@@ -53,15 +73,27 @@ const Confirmation = ({ showConfirm, setShowConfirm }) => {
 									Congratulations
 								</h3>
 							</div>
-							<div className="text-center capitalize text-sm text-gray-700 px-6 py-4">
-								<p>your Booking has been confirmed</p>
-								<p>check your email for details</p>
+							<div className="text-center text-sm text-gray-700 px-6 py-4">
+								<p>Your booking has been confirmed.</p>
+								<p>Check your email for additional details.</p>
 							</div>
-							<div className="text-center pt-4 pb-6">
+							<div className="text-center flex py-6 items-center justify-center flex-col gap-4 mx-auto">
+								<LoadingButton
+									variant="contained"
+									className="poppins capitalize tracking-wider"
+									color={error ? 'error' : invite ? 'secondary' : 'success'}
+									onClick={sendInvites}
+									loading={loading}
+									endIcon={invite ? <Send /> : <Done />}
+									disabled={guestList && guestList.length === 0}
+								>
+									{invite && !error ? 'Send Invites' : 'Invites Sent'}
+									{error && 'Error'}
+								</LoadingButton>
 								<Link href="/" passHref>
 									<Button
 										variant="contained"
-										className="poppins capitalize tracking-wider"
+										className="w-full poppins capitalize tracking-wider"
 									>
 										Home
 									</Button>

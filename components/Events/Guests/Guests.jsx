@@ -5,6 +5,7 @@ import {
 	Send,
 	People,
 	Add,
+	Delete,
 } from '@mui/icons-material';
 import { useState, useContext } from 'react';
 import { EventContext } from '../../../context/EventContext';
@@ -84,6 +85,10 @@ const Guests = () => {
 
 	const [open, setOpen] = useState();
 
+	const deleteGuests = () => {
+		setGuestList([]);
+	}
+
 	return (
 		<div className="flex flex-col gap-10 w-full px-10 items-center">
 			<div className="w-screen fixed z-50">
@@ -141,11 +146,14 @@ const Guests = () => {
 					{guestList.length}
 				</Button>
 				<Button
-					endIcon={<Send />}
+					endIcon={<Delete />}
 					variant="contained"
 					className="capitalize poppins"
+					onClick={deleteGuests}
+					color="error"
+					disabled={guestList.length === 0}
 				>
-					Invite
+					Delete all
 				</Button>
 			</div>
 			<div className="w-full max-w-[700px]">

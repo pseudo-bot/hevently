@@ -11,7 +11,7 @@ export default function Navbar() {
 				<div className="text-[2.25rem] font-bold text-gray-200 tracking-wider dancing cursor-pointer">
 					hevently
 				</div>
-				<NavLinks hidden={hidden} />
+				<NavLinks hidden={hidden} setHidden={setHidden}/>
 				<Menubar hidden={hidden} click={() => setHidden(!hidden)} />
 			</nav>
 		</>

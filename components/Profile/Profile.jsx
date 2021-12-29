@@ -227,13 +227,13 @@ function ResponsiveDrawer(props) {
                     <div className="flex flex-col space-y-6 text-gray-600 text-md md:text-lg tracking-wider w-[26rem]">
                       <UserData
                         icon={<EmailIcon />}
-                        val={userVal.email}
+                        val={''}
                         title="Email"
                         edit={edit}
                       />
                       <UserData
                         icon={<CallIcon />}
-                        val={userVal.phone}
+                        val={''}
                         title="Mobile"
                         edit={edit}
                       />
@@ -242,13 +242,13 @@ function ResponsiveDrawer(props) {
                     <div className="flex flex-col space-y-6 text-gray-600 text-md md:text-lg tracking-wider w-[26rem] ">
                       <UserData
                         icon={<HouseIcon />}
-                        val={userVal.city}
+                        val={''}
                         title="City"
                         edit={edit}
                       />
                       <UserData
                         icon={<LocationCityIcon />}
-                        val={userVal.state}
+                        val={''}
                         title="State"
                         edit={edit}
                       />

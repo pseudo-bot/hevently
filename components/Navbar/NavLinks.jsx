@@ -18,7 +18,7 @@ import {
 import LoginInterface from '../Login/Login';
 import Alert from '../Misc/Alert';
 
-const NavItem = ({ login, children, href = '', home, profile, onClick }) => {
+const NavItem = ({ children, href = '', home, profile, onClick }) => {
 	return (
 		<Link href={href} scroll={false} passHref>
 			<div
@@ -42,7 +42,7 @@ const NavItem = ({ login, children, href = '', home, profile, onClick }) => {
 	);
 };
 
-export default function NavLinks({ hidden }) {
+export default function NavLinks({ hidden, setHidden }) {
 	const user = useContext(UserContext);
 	const [showLogin, setShowLogin] = useState(false);
 	const openLogin = () => {
@@ -85,6 +85,7 @@ export default function NavLinks({ hidden }) {
 						? 'opacity-0 lg:pointer-events-auto pointer-events-none lg:opacity-100'
 						: ''
 				} flex-auto transition-all duration-300 absolute cursor-pointer bg-gray-50 top-14 right-0 shadow-lg flex flex-col w-56 items-center lg:relative lg:flex-row lg:w-[40rem] lg:gap-6 lg:top-0 lg:bg-transparent font-medium lg:shadow-none nav-links`}
+				onClick={() => setHidden(true)}
 			>
 				<NavItem href="/" home={true}>
 					Home
