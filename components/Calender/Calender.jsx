@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { EventContext } from "../../context/EventContext";
 const Calender = () => {
   const eventContext = useContext(EventContext);
+  console.log(eventContext);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const disabled = [
