@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar/Navbar";
 import { UserProvider } from "../context/Users";
+import { ProfileProvider } from "../context/Profile";
 import { useEffect } from "react";
 import Router, { useRouter } from "next/router";
 
@@ -27,8 +28,10 @@ function App({ Component, pageProps }) {
   return (
     <>
       <UserProvider>
-        {check || <Navbar />}
-        <Component {...pageProps} />
+        <ProfileProvider>
+          {check || <Navbar />}
+          <Component {...pageProps} />
+        </ProfileProvider>
       </UserProvider>
     </>
   );
