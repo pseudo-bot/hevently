@@ -7,12 +7,20 @@ import { CircularProgress } from "@mui/material";
 import Event from "../../components/Events/Event";
 import EventName from "../../components/Misc/EventName";
 import { useState } from "react";
+import Head from "next/head";
 
 const BirthdayPage = ({ venues }) => {
   const user = useContext(UserContext);
   const [showModal, setShowModal] = useState(true);
   return (
     <>
+    <Head>
+        <title>hevently | Birthday</title>
+        <meta
+          name="description"
+          content="book your venue and celebrate your birthday"
+        />
+      </Head>
       {user ? (
         <EventProvider>
           <div>
