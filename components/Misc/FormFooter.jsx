@@ -1,15 +1,17 @@
-import { Button, Fab } from '@mui/material';
+import { Button } from '@mui/material';
 import {
 	KeyboardArrowLeft,
 	KeyboardArrowRight,
 	Done,
 } from '@mui/icons-material';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 const FormFooter = ({
 	nextPosition,
 	prevPosition,
 	position,
 	handleSubmit,
+	loading,
 }) => {
 	return (
 		<>
@@ -24,16 +26,17 @@ const FormFooter = ({
 					<KeyboardArrowLeft />
 				</Button>
 				{position === 2 ? (
-					<Button
+					<LoadingButton
 						onClick={handleSubmit}
 						variant="contained"
 						size="medium"
 						color="success"
 						endIcon={<Done />}
 						className="poppins capitalize"
+						loading={loading}
 					>
 						Confirm
-					</Button>
+					</LoadingButton>
 				) : (
 					<Button onClick={nextPosition} variant="contained" size="medium">
 						<KeyboardArrowRight />

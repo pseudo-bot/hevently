@@ -28,6 +28,7 @@ const Wedding = ({ venues, type }) => {
 	const { eventData } = useContext(EventContext);
 	const [position, setPosition] = useState(0);
 	const { email } = useContext(UserContext);
+	const [loading, setLoading] = useState(false);
 
 	const nextPosition = () => {
 		if (!eventData.venue && position === 0) {
@@ -53,11 +54,14 @@ const Wedding = ({ venues, type }) => {
 
 	const handleSubmit = async () => {
 		try {
+			setLoading(true);
 			const eventCreate = await createEvent(eventData, type);
 			const emailConfirm = await sendConfirmation(email);
+			setLoading(false);
 
-			if (eventCreate) setShowConfirm(true);
-			else {
+			if (eventCreate) {
+				setShowConfirm(true);
+			} else {
 				console.log('Error! Event not created');
 			}
 			if (emailConfirm) console.log('Confirmation email sent');
@@ -108,6 +112,8 @@ const Wedding = ({ venues, type }) => {
 					prevPosition={prevPosition}
 					position={position}
 					handleSubmit={handleSubmit}
+					loading={loading}
+					setLoading={setLoading}
 				/>
 			</div>
 		</div>
