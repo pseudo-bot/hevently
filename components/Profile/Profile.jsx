@@ -72,6 +72,7 @@ const UserData = ({ icon, val, title, edit }) => {
         className="w-72 bg-bgray-50"
         onChange={handleChange}
         focused={edit}
+        autoComplete = "no"
       />
     </div>
   );

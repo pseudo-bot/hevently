@@ -18,7 +18,7 @@ const CorporatePage = ({ venues }) => {
         <title>hevently | Corporate Events</title>
         <meta
           name="description"
-          content="book your venue for corporate events like Seminars, conferences, Company milestone events, Product launch events, Charity events, etc."
+          content="Through hevently book your venue for corporate events like Seminars, conferences, Company milestone events, Product launch events, Charity events, etc."
         />
       </Head>
       {user ? (

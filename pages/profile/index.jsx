@@ -30,7 +30,7 @@ const ProfilePage = () => {
 					<title>hevently | Profile</title>
 					<meta
 						name="description"
-						content="profile page of hevently where you can browse your profile and upcoming events you have booked"
+						content="This is profile page of hevently where you can browse your profile and upcoming events you have booked"
 					/>
 				</Head>
 				<Profile user={user} events={events} />

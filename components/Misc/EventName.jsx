@@ -38,6 +38,7 @@ const EventName = ({ showModal, setShowModal, title }) => {
 								value={value}
 								onChange={handleChange}
 								size="small"
+								autoComplete = "no"
 							/>
 							<Button onClick={handleClick} variant="contained">
 								Submit
