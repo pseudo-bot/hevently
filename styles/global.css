@@ -201,3 +201,7 @@ body {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
+
+.event-card{
+	background-color:#fff;
+}
