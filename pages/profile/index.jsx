@@ -17,7 +17,11 @@ const ProfilePage = () => {
 	const { user, ok, error, events, eventError, eventOk } = useUser();
 	const { setProfileData } = useContext(ProfileContext);
   
-	if (user) setProfileData(user);
+	if (user) {
+		console.log(user);
+		setProfileData(user);
+	}
+
 
 	if (user && !error && ok && events && !eventError && eventOk) {
 		return (
