@@ -116,25 +116,25 @@ body {
 	filter: brightness(0.5);
 }
 
-.swiper {
+.client-swiper {
 	width: 100%;
 	padding-top: 50px;
 	padding-bottom: 50px;
 	max-width: 70rem;
 }
 
-.swiper-slide {
+.client-swiper .swiper-slide {
 	display: flex;
 	justify-content: center;
 	border-radius: 10px;
 }
 
-.swiper-slide div {
+.client-swiper .swiper-slide div {
 	opacity: 0.9;
 	filter: blur(1px);
 }
 
-.swiper-slide-active div {
+.client-swiper .swiper-slide-active div {
 	filter: blur(0px);
 	opacity: 1;
 	background: white;

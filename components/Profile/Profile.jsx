@@ -81,6 +81,7 @@ function ResponsiveDrawer(props) {
 	const [edit, setEdit] = useState(false);
 
 	const { email, displayName, photoURL } = props.userData;
+	console.log(photoURL);
 
 	const handleDisabled = () => {
 		setDisabledBtn(!disabledBtn);

@@ -40,60 +40,60 @@ export default function App() {
 				<div className="dancing capitalize text-5xl md:text-7xl text-gray-200 font-bold text-center my-10">
 					Our Clients
 				</div>
-				<Swiper
-					effect={'coverflow'}
-					grabCursor={true}
-					centeredSlides={true}
-					slidesPerView={1}
-					autoplay={{
-						delay: 4000,
-						disableOnInteraction: false,
-					}}
-					breakpoints={{
-						720: {
-							slidesPerView: 2,
-						},
-						980: {
-							slidesPerView: 3,
-						},
-					}}
-					coverflowEffect={{
-						rotate: 0,
-						stretch: 0,
-						depth: 100,
-						modifier: 2,
-						slideShadows: false,
-					}}
-					loop={true}
-					pagination={true}
-					className="swiper"
-				>
-					<SwiperSlide>
-						<Review
-							review="Best website very helpful in managing events i the best one yet. The bestest feature my wedding great because this site exits wow"
-							name="Will Bates"
-							profile={will}
-							work="Worker at Linux"
-						/>
-					</SwiperSlide>
-					<SwiperSlide>
-						<Review
-							review="Best website very helpful in managing events i the best one yet. The bestest feature my wedding great because this site exits wow"
-							name="Tinus Lorva"
-							profile={tinus}
-							work="NVIDIA Enthusiast"
-						/>
-					</SwiperSlide>
-					<SwiperSlide>
-						<Review
-							review="Best website very helpful in managing events i the best one yet. The bestest feature my wedding great because this site exits wow"
-							name="Alicia"
-							profile={alicia}
-							work="CEO Moueser"
-						/>
-					</SwiperSlide>
-				</Swiper>
-			</div>
+					<Swiper
+						effect={'coverflow'}
+						grabCursor={true}
+						centeredSlides={true}
+						slidesPerView={1}
+						autoplay={{
+							delay: 4000,
+							disableOnInteraction: false,
+						}}
+						breakpoints={{
+							720: {
+								slidesPerView: 2,
+							},
+							980: {
+								slidesPerView: 3,
+							},
+						}}
+						coverflowEffect={{
+							rotate: 0,
+							stretch: 0,
+							depth: 100,
+							modifier: 2,
+							slideShadows: false,
+						}}
+						loop={true}
+						pagination={true}
+						className="client-swiper"
+					>
+						<SwiperSlide>
+							<Review
+								review="Best website very helpful in managing events i the best one yet. The bestest feature my wedding great because this site exits wow"
+								name="Will Bates"
+								profile={will}
+								work="Worker at Linux"
+							/>
+						</SwiperSlide>
+						<SwiperSlide>
+							<Review
+								review="Best website very helpful in managing events i the best one yet. The bestest feature my wedding great because this site exits wow"
+								name="Tinus Lorva"
+								profile={tinus}
+								work="NVIDIA Enthusiast"
+							/>
+						</SwiperSlide>
+						<SwiperSlide>
+							<Review
+								review="Best website very helpful in managing events i the best one yet. The bestest feature my wedding great because this site exits wow"
+								name="Alicia"
+								profile={alicia}
+								work="CEO Moueser"
+							/>
+						</SwiperSlide>
+					</Swiper>
+				</div>
 		</>
 	);
 }
