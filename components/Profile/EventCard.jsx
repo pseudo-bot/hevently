@@ -5,15 +5,15 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Divider from "@mui/material/Divider";
 import moment from "moment";
-import React, { useRef, useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
 import SwiperCore, { Pagination } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination"
 
 SwiperCore.use([Pagination]);
 
-const Event = ({ eventType, key, event }) => {
+const Event = ({ eventType, key, event,disabled }) => {
   return (
     <div key={key} className="rounded-md border p-6 text-gray-700 event-card">
       <div className="flex justify-between items-center">
@@ -23,7 +23,7 @@ const Event = ({ eventType, key, event }) => {
           </div>
           <div className="text-md capitalize text-gray-500">{eventType}</div>
         </div>
-        <div className="flex flex-col gap-2 text-gray-600 font-medium">
+        <div className="flex  flex-col gap-2 text-gray-600 font-medium">
           <div>From : {event.startDate}</div>
           <div>To : {event.endDate}</div>
         </div>
@@ -64,7 +64,7 @@ const Event = ({ eventType, key, event }) => {
           <Ratings />
         </div>
         <div>
-          <Button variant="contained" color="error" startIcon={<DeleteIcon />}>
+          <Button disabled={disabled} variant="contained" color="error" startIcon={<DeleteIcon />}>
             Cancel
           </Button>
         </div>
@@ -93,7 +93,7 @@ const EventCard = ({title,id, eventsData }) => {
   }
   return (
     <div className="pb-6">
-      <div id={id} className="px-4">
+      <div id={id} className="px-4 mx-auto max-w-md md:max-w-2xl lg:max-w-full ">
         <h3 className="text-xl font-semibold py-6 text-gray-700 tracking-wider">{title}</h3>
         <Swiper
           className="event-swiper"
@@ -104,10 +104,10 @@ const EventCard = ({title,id, eventsData }) => {
             clickable: true,
           }}
           breakpoints={{
-            720: {
+            900: {
               slidesPerView: 2,
             },
-            980: {
+            1250: {
               slidesPerView: 3,
             },
           }}
@@ -119,6 +119,7 @@ const EventCard = ({title,id, eventsData }) => {
                   eventType={event.props.eventType}
                   key={index}
                   event={event.props.event}
+                  disabled={false}
                 />
               </SwiperSlide>
             );
@@ -129,6 +130,7 @@ const EventCard = ({title,id, eventsData }) => {
                   eventType={event.props.eventType}
                   key={index}
                   event={event.props.event}
+                  disabled={true}
                 />
               </SwiperSlide>
             );

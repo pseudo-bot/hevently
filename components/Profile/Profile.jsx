@@ -88,7 +88,7 @@ function ResponsiveDrawer(props) {
   const handleDisabled = () => {
     setDisabledBtn(!disabledBtn);
     setEdit(!edit);
-    console.log(userVal);
+
   };
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -244,9 +244,9 @@ function ResponsiveDrawer(props) {
                     <div className="flex flex-col space-y-6 text-gray-600 text-md md:text-lg tracking-wider w-[26rem]">
                       <UserData
                         icon={<EmailIcon />}
-                        val={""}
+                        val={email}
                         title="Email"
-                        edit={edit}
+                        edit={false}
                       />
                       <UserData
                         icon={<CallIcon />}
