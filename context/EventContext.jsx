@@ -39,6 +39,7 @@ export const EventProvider = ({ children }) => {
     setEventData(ob);
   };
 
+  
   return (
     <EventContext.Provider
       value={{

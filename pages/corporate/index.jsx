@@ -7,12 +7,20 @@ import { CircularProgress } from "@mui/material";
 import Event from "../../components/Events/Event";
 import EventName from "../../components/Misc/EventName";
 import { useState } from "react";
+import Head from "next/head";
 
 const CorporatePage = ({ venues }) => {
   const user = useContext(UserContext);
   const [showModal, setShowModal] = useState(true);
   return (
     <>
+    <Head>
+        <title>hevently | Corporate Events</title>
+        <meta
+          name="description"
+          content="book your venue for corporate events like Seminars, conferences, Company milestone events, Product launch events, Charity events, etc."
+        />
+      </Head>
       {user ? (
         <EventProvider>
           <div>

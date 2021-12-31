@@ -7,12 +7,21 @@ import { CircularProgress } from "@mui/material";
 import Event from "../../components/Events/Event";
 import EventName from "../../components/Misc/EventName";
 import { useState } from "react";
+import Head from "next/head";
 
 const SocialPage = ({ venues }) => {
   const user = useContext(UserContext);
   const [showModal, setShowModal] = useState(true);
   return (
     <>
+    <Head>
+        <title>hevently | Social Gathering</title>
+        <meta
+          name="description"
+          content="book your venue for social gathering events like Bar Crawl, Masquerade Party, Dance, Ceremonies, Galas etc."
+        />
+      </Head>
+
       {user ? (
         <EventProvider>
           <div>
