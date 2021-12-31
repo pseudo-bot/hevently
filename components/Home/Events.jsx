@@ -55,7 +55,7 @@ function Events() {
 	const [open, setOpen] = useState(false);
   return (
     <div className="relative px-4 py-1 pb-10 border top-0">
-      <div className="dancing text-5xl capitalize md:text-7xl text-gray-700 font-bold text-center my-8">
+      <div id="events" className="dancing text-5xl capitalize md:text-7xl text-gray-700 font-bold text-center my-8">
         events
       </div>
       <div className="flex flex-col gap-10 lg:flex-row lg:flex-wrap lg:justify-center lg:gap-20 items-center">
