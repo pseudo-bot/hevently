@@ -63,6 +63,7 @@ export default function SelectTextFields({edit}) {
           }}
           focused={edit}
           className="w-72 bg-bgray-50"
+          size="small"
         >
           {genders.map((option) => (
             <MenuItem key={option.value} value={option.value}>

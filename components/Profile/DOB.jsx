@@ -47,6 +47,7 @@ export default function MaterialUIPickers({ edit }) {
             <CssTextField
             focused={edit}
             className="w-72 bg-bgray-50"
+            size="small"
             {...params}
            
               

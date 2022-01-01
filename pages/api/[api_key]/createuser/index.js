@@ -26,13 +26,13 @@ export default async function createUserHandler(req, res) {
 						const newUser = await User.create({
 							uid,
 							email,
-							displayName: displayName || null,
-							phoneNumber: phoneNumber || null,
-							photoURL: photoURL || null,
-							gender: null,
-							city: null,
-							state: null,
-							dob: null,
+							displayName: displayName || '',
+							phoneNumber: phoneNumber || '',
+							photoURL: photoURL || '',
+							gender: '',
+							city: '',
+							state: '',
+							dob: '',
 						});
 						const newEvent = await UserEvents.create({
 							uid,

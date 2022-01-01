@@ -51,11 +51,7 @@ const CssTextField = styled(TextField)({
     },
   },
 });
-const UserData = ({ icon, val, title, edit }) => {
-  const [value, setValue] = useState(val);
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+const UserData = ({ icon, title, edit, handleChange,value }) => {
   return (
     <div className="flex items-center justify-between">
       <div className="text-gray-800 font-semibold tracking-wider  ">
@@ -67,12 +63,13 @@ const UserData = ({ icon, val, title, edit }) => {
         value={value}
         InputProps={{
           readOnly: edit ? false : true,
+          autoComplete: "off",
         }}
         variant="outlined"
         className="w-72 bg-bgray-50"
-        onChange={handleChange}
+        onChange={(e) => handleChange(e.target.value)}
         focused={edit}
-        autoComplete = "no"
+        size="small"
       />
     </div>
   );
@@ -83,13 +80,44 @@ function ResponsiveDrawer(props) {
   const [disabledBtn, setDisabledBtn] = useState(true);
   const [edit, setEdit] = useState(false);
 
-  const { email, displayName, photoURL } = props.userData;
+  const {
+    city,
+    dob,
+    gender,
+    state,
+    phoneNumber,
+    email,
+    displayName,
+    photoURL,
+  } = props.userData;
+  const [userCity, setUserCity] = useState(city);
+  const [userdDob, setUserDob] = useState(dob);
+  const [userGender, setUserGender] = useState(gender);
+  const [userState, setUserState] = useState(state);
+  const [userPhoneNumber, setUserPhoneNumber] = useState(phoneNumber);
 
-  const handleDisabled = () => {
+  
+  const onEdit = () => {
     setDisabledBtn(!disabledBtn);
     setEdit(!edit);
-
   };
+  const onSave = () => {
+    const ob = {
+      city: userCity,
+      dob: userdDob,
+      gender: userGender,
+      state: userState,
+      phoneNumber: userPhoneNumber,
+      email,
+      displayName,
+      photoURL,
+    };
+    props.setData(ob);
+    setDisabledBtn(!disabledBtn);
+    setEdit(!edit);
+    console.log(ob);
+  };
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -106,7 +134,7 @@ function ResponsiveDrawer(props) {
       <div className="py-8">
         <div className="w-full flex justify-center">
           <Image
-            src={photoURL || '/profile/user.png'}
+            src={photoURL || "/profile/user.png"}
             alt="Profile picture"
             className="rounded-full"
             width={64}
@@ -119,32 +147,32 @@ function ResponsiveDrawer(props) {
       <nav>
         <a
           href="#"
-          className="flex py-4 px-4 gap-2 items-center hover:bg-blue-500 hover:text-gray-50 transition-all duration-200"
+          className="flex py-4 px-4 gap-2 items-center hover:bg-[#fff] hover:text-blue-700 transition-all duration-200 m-2 rounded-full"
         >
           <PersonIcon /> <span>Profile</span>
         </a>
 
         <a
           href="#events"
-          className="flex py-4 px-4 gap-2 items-center hover:bg-blue-500 hover:text-gray-50 transition-all duration-200"
+          className="flex py-4 px-4 gap-2 items-center hover:bg-[#fff] hover:text-blue-700 transition-all duration-200 m-2 rounded-full"
         >
           <EventIcon /> <span>My Events</span>
         </a>
         <a
           href="#upcoming"
-          className="flex py-4 px-4 gap-2 items-center hover:bg-blue-500 hover:text-gray-50 transition-all duration-200"
+          className="flex py-4 px-4 gap-2 items-center hover:bg-[#fff] hover:text-blue-700 transition-all duration-200 m-2 rounded-full"
         >
           <EventAvailableIcon /> <span>Upcoming Events</span>
         </a>
         <a
           href="#completed"
-          className="flex py-4 px-4 gap-2 items-center hover:bg-blue-500 hover:text-gray-50 transition-all duration-200"
+          className="flex py-4 px-4 gap-2 items-center hover:bg-[#fff] hover:text-blue-700 transition-all duration-200 m-2 rounded-full"
         >
           <EventBusyIcon /> <span>Completed Events</span>
         </a>
 
         <div
-          className="flex py-4 absolute bottom-4 hover:cursor-pointer w-full px-4 gap-2 items-center hover:bg-blue-500 hover:text-gray-50 transition-all duration-200"
+          className="flex py-4 absolute bottom-4 hover:cursor-pointer px-4  gap-2 items-center  transition-all duration-200 hover:bg-red-500 left-1/2 -translate-x-1/2 w-4/5 rounded-full hover:text-[#fff] justify-center "
           onClick={signOut}
         >
           <LogoutIcon /> <span>Logout</span>
@@ -236,40 +264,43 @@ function ResponsiveDrawer(props) {
           <div className="">
             <div className=" min-h-screen ">
               <div className="  p-6 mb-8">
-                <h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 pb-8">
+                <h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 pb-12">
                   Profile
                 </h3>
                 <div>
-                  <div className="flex justify-center gap-12 flex-wrap">
+                  <div className="flex justify-center gap-12 md:gap-20 flex-wrap">
                     <div className="flex flex-col space-y-6 text-gray-600 text-md md:text-lg tracking-wider w-[26rem]">
                       <UserData
                         icon={<EmailIcon />}
-                        val={email}
+                        value={email}
                         title="Email"
                         edit={false}
                       />
                       <UserData
                         icon={<CallIcon />}
-                        val={""}
                         title="Mobile"
                         edit={edit}
+                        handleChange={setUserPhoneNumber}
+                        value={userPhoneNumber}
                       />
-                      <Gender edit={edit} />
+                      <Gender handleChange={setUserGender} edit={edit} />
                     </div>
                     <div className="flex flex-col space-y-6 text-gray-600 text-md md:text-lg tracking-wider w-[26rem] ">
                       <UserData
                         icon={<HouseIcon />}
-                        val={""}
                         title="City"
                         edit={edit}
+                        handleChange={setUserCity}
+                        value={userCity}
                       />
                       <UserData
                         icon={<LocationCityIcon />}
-                        val={""}
                         title="State"
                         edit={edit}
+                        handleChange={setUserState}
+                        value={userState}
                       />
-                      <DOB edit={edit} />
+                      <DOB handleChange={setUserDob} edit={edit} />
                     </div>
                   </div>
                   <div className="flex justify-center gap-4 pt-12 pb-4">
@@ -277,13 +308,13 @@ function ResponsiveDrawer(props) {
                       className="bg-blue-500 hover:bg-blue-700 capitalize text-md poppins"
                       variant="contained"
                       size="small"
-                      onClick={handleDisabled}
+                      onClick={onEdit}
                       disabled={disabledBtn ? false : true}
                     >
                       Edit
                     </Button>
                     <Button
-                      onClick={handleDisabled}
+                      onClick={onSave}
                       variant="contained"
                       className="poppins capitalize text-md bg-blue-500 hover:bg-blue-700"
                       size="small"
@@ -300,12 +331,12 @@ function ResponsiveDrawer(props) {
               </h3>
               <EventCard
                 title="Upcoming Events"
-                id="#upcoming"
+                id="upcoming"
                 eventsData={props.eventsData}
               />
               <EventCard
                 title="Completed Events"
-                id="#completed"
+                id="completed"
                 eventsData={props.eventsData}
               />
             </div>
@@ -325,13 +356,20 @@ const Loading = () => {
 };
 
 const Profile = ({ events }) => {
-  const { profileData: user } = useContext(ProfileContext);
+  const { profileData: user, setProfileData } = useContext(ProfileContext);
+
   if (!user) {
     return <Loading />;
   }
+  console.log(user);
+  console.log(events);
   return (
     <div>
-      <ResponsiveDrawer userData={user} eventsData={events} />
+      <ResponsiveDrawer
+        setData={setProfileData}
+        userData={user}
+        eventsData={events}
+      />
     </div>
   );
 };
