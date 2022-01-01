@@ -77,7 +77,7 @@ const Footer = () => {
               <div className="relative w-40 sm:w-auto  px-2">
                 <input
                   type="text"
-                  autoComplete="no"
+                  autoComplete="off"
                   placeholder="Email"
                   className="w-full bg-cgray-50 bg-opacity-50 rounded border-gray-400 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 focus:border-blue-500 outline-none text-gray-600 py-1 px-2 leading-8 transition-colors duration-200 ease-in-out text-base border-2"
                 />

@@ -6,6 +6,7 @@ class MyDocument extends Document {
 		return (
 			<Html>
 				<Head>
+				<link rel="icon" type="image/png" href="/icons/logo.png" />
 					<link
 						href="https://fonts.googleapis.com/css?family=Dancing+Script:regular,500,600,700"
 						rel="stylesheet"
