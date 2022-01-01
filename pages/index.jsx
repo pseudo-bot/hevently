@@ -28,7 +28,7 @@ export default function Index() {
         <title>hevently</title>
         <meta
           name="description"
-          content="hevently is website where you can book your venue for different types of events like wedding , birthdays , social gathering , corporate events , etc."
+          content="Hevently is website where you can book your venue for different types of events like wedding , birthdays , social gathering , corporate events , etc."
         />
       </Head>
       <Home />

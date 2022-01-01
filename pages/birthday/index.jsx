@@ -18,7 +18,7 @@ const BirthdayPage = ({ venues }) => {
         <title>hevently | Birthday</title>
         <meta
           name="description"
-          content="book your venue and celebrate your birthday"
+          content="Through hevently book your venue and celebrate your birthday"
         />
       </Head>
       {user ? (
