@@ -3,7 +3,7 @@ import { CircularProgress } from '@mui/material';
 import { useUser } from '../../lib/useUser';
 import Head from 'next/head';
 import { ProfileContext } from '../../context/Profile';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 const Loading = () => {
 	return (
@@ -14,16 +14,16 @@ const Loading = () => {
 };
 
 const ProfilePage = () => {
-	const { user, ok, error, events, eventError, eventOk } = useUser();
+	const { user, ok, events, eventOk } = useUser();
 	const { setProfileData } = useContext(ProfileContext);
-  
-	if (user) {
-		console.log(user);
-		setProfileData(user);
-	}
 
+	useEffect(() => {
+		if (user) {
+			setProfileData(user);
+		}
+	}, [user, setProfileData]);
 
-	if (user && !error && ok && events && !eventError && eventOk) {
+	if (user && ok && events && eventOk) {
 		return (
 			<>
 				<Head>
@@ -33,12 +33,19 @@ const ProfilePage = () => {
 						content="This is profile page of hevently where you can browse your profile and upcoming events you have booked"
 					/>
 				</Head>
-				<Profile user={user} events={events} />
+				<Profile events={events} />
 			</>
 		);
 	} else {
 		return (
 			<>
+				<Head>
+					<title>hevently | Profile</title>
+					<meta
+						name="description"
+						content="profile page of hevently where you can browse your profile and upcoming events you have booked"
+					/>
+				</Head>
 				<Loading />;
 			</>
 		);

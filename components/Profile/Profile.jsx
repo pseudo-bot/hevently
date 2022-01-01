@@ -84,7 +84,6 @@ function ResponsiveDrawer(props) {
   const [edit, setEdit] = useState(false);
 
   const { email, displayName, photoURL } = props.userData;
-  console.log(photoURL);
 
   const handleDisabled = () => {
     setDisabledBtn(!disabledBtn);
@@ -106,13 +105,13 @@ function ResponsiveDrawer(props) {
     <div className="bg-gray-100 h-full">
       <div className="py-8">
         <div className="w-full flex justify-center">
-          {/* <Image
-            src={photoURL}
+          <Image
+            src={photoURL || '/profile/user.png'}
             alt="Profile picture"
             className="rounded-full"
             width={64}
             height={64}
-          /> */}
+          />
         </div>
         <p className="text-center py-2">{displayName}</p>
       </div>

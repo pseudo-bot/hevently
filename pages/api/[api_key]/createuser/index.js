@@ -15,7 +15,6 @@ export default async function createUserHandler(req, res) {
 				try {
 					// Check if user already exists
 					const user = await User.findOne({ uid });
-					const userEvents = await UserEvents.findOne({ uid });
 
 					if (user) {
 						res.status(200).json({
@@ -24,7 +23,7 @@ export default async function createUserHandler(req, res) {
 						});
 					} else {
 						// Create user
-						await User.create({
+						const newUser = await User.create({
 							uid,
 							email,
 							displayName: displayName || null,
@@ -35,13 +34,17 @@ export default async function createUserHandler(req, res) {
 							state: null,
 							dob: null,
 						});
-						await UserEvents.create({
+						const newEvent = await UserEvents.create({
 							uid,
 							wedding: [],
 							corporate: [],
 							birthday: [],
 							social: [],
 						});
+
+						await newUser.save();
+						await newEvent.save();
+
 						res.status(201).json({
 							ok: true,
 							message: 'User created',

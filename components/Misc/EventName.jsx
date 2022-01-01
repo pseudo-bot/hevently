@@ -21,7 +21,7 @@ const EventName = ({ showModal, setShowModal, title }) => {
 			<div
 				className={` ${
 					showModal ? ' flex ' : 'hidden'
-				} justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none  px-5 animate__animated animate__fadeInDown top-16  `}
+				} justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none  px-5 animate__animated animate__fadeInDown top-16 `}
 			>
 				<div className="relative o myw-aut-6 mx-auto max-w-3xl bg-bgray-50 rounded-lg -top-16">
 					<div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
