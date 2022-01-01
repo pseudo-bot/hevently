@@ -160,36 +160,38 @@ function ResponsiveDrawer(props) {
       <nav>
         <a
           href="#"
-          className="flex py-4 px-4 gap-2 items-center hover:bg-[#fff] hover:text-blue-700 transition-all duration-200 m-2 rounded-full"
+          className="flex py-4 px-4 gap-2 items-center hover:bg-[#fff] hover:text-blue-700 transition-all duration-200 m-2 rounded-full hover:shadow-sm"
         >
           <PersonIcon /> <span>Profile</span>
         </a>
 
         <a
           href="#events"
-          className="flex py-4 px-4 gap-2 items-center hover:bg-[#fff] hover:text-blue-700 transition-all duration-200 m-2 rounded-full"
+          className="flex py-4 px-4 gap-2 items-center hover:bg-[#fff] hover:text-blue-700 transition-all duration-200 m-2 rounded-full hover:shadow-sm"
         >
           <EventIcon /> <span>My Events</span>
         </a>
         <a
           href="#upcoming"
-          className="flex py-4 px-4 gap-2 items-center hover:bg-[#fff] hover:text-blue-700 transition-all duration-200 m-2 rounded-full"
+          className="flex py-4 px-4 gap-2 items-center hover:bg-[#fff] hover:text-blue-700 transition-all duration-200 m-2 rounded-full hover:shadow-sm"
         >
           <EventAvailableIcon /> <span>Upcoming Events</span>
         </a>
         <a
           href="#completed"
-          className="flex py-4 px-4 gap-2 items-center hover:bg-[#fff] hover:text-blue-700 transition-all duration-200 m-2 rounded-full"
+          className="flex py-4 px-4 gap-2 items-center hover:bg-[#fff] hover:text-blue-700 transition-all duration-200 m-2 rounded-full hover:shadow-sm"
         >
           <EventBusyIcon /> <span>Completed Events</span>
         </a>
 
-        <div
-          className="flex py-4 absolute bottom-4 hover:cursor-pointer px-4  gap-2 items-center  transition-all duration-200 hover:bg-red-500 left-1/2 -translate-x-1/2 w-4/5 rounded-full hover:text-[#fff] justify-center "
+        <Button
+        variant="contained"
+          color="error"
+          className="flex py-3 absolute bottom-4 hover:cursor-pointer px-6  gap-2 items-center  transition-all duration-200 hover:bg-red-500 left-1/2 -translate-x-1/2 rounded-full hover:text-[#fff] justify-center hover:shadow-md"
           onClick={signOut}
         >
           <LogoutIcon /> <span>Logout</span>
-        </div>
+        </Button>
       </nav>
     </div>
   );

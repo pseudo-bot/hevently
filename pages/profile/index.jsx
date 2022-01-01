@@ -3,7 +3,7 @@ import { CircularProgress } from '@mui/material';
 import { useUser } from '../../lib/useUser';
 import Head from 'next/head';
 import { ProfileContext } from '../../context/Profile';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 const Loading = () => {
 	return (
@@ -16,14 +16,15 @@ const Loading = () => {
 const ProfilePage = () => {
 	const { user, ok, events, eventOk } = useUser();
 	const { setProfileData } = useContext(ProfileContext);
-
+	const [data, setData] = useState(null);
 	useEffect(() => {
 		if (user) {
+			setData(user);
 			setProfileData(user);
 		}
 	}, [user, setProfileData]);
 
-	if (user && ok && events && eventOk) {
+	if (data && ok && events && eventOk) {
 		return (
 			<>
 				<Head>

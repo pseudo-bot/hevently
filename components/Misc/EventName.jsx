@@ -64,7 +64,7 @@ const EventName = ({ showModal, setShowModal, title }) => {
         open={open}
         severity={"warning"}
         setOpen={setOpen}
-        msg={"Please Enter atleast 3 characters"}
+        msg={"Please enter atleast 3 characters"}
       />
     </>
   );
