@@ -19,7 +19,7 @@ const WeddingPage = ({ venues }) => {
         <title>hevently | Wedding</title>
         <meta
           name="description"
-          content="book your venue for celebrating weddings at different places of world"
+          content="Through hevently book your venue for celebrating weddings at different places of world"
         />
       </Head>
       {user ? (

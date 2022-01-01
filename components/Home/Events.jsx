@@ -9,7 +9,7 @@ import social from "../../public/events/social.jpg";
 import birthday from "../../public/events/bday.jpg";
 import Alert from "../Misc/Alert";
 
-const Event = ({ image, title, desc, href,setOpen }) => {
+const Event = ({ image, title, desc, href, setOpen }) => {
   const [showModal, setShowModal] = useState(false);
   const openModal = () => {
     setShowModal((prev) => !prev);
@@ -45,47 +45,51 @@ const Event = ({ image, title, desc, href,setOpen }) => {
         setShowModal={setShowModal}
         title={title}
         href={href}
-		setOpen={setOpen}
+        setOpen={setOpen}
       />
     </div>
   );
 };
 
 function Events() {
-	const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   return (
     <div className="relative px-4 py-1 pb-10 border top-0">
-      <div id="events" className="dancing text-5xl capitalize md:text-7xl text-gray-700 font-bold text-center my-8">
+      <div
+        id="events"
+        className="dancing text-5xl capitalize md:text-7xl text-gray-700 font-bold text-center my-8"
+      >
         events
       </div>
       <div className="flex flex-col gap-10 lg:flex-row lg:flex-wrap lg:justify-center lg:gap-20 items-center">
         <Event
           title="Weddings"
           image={wedding}
-          desc="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi aut voluptatem blanditiis aspernatur modi nulla?"
+          desc="
+          With every last detail taken care of, we're here to ensure the day you've always dreamed of will be the day you'll never forget."
           href="/wedding"
-		  setOpen={setOpen}
+          setOpen={setOpen}
         />
         <Event
           title="Social Gathering"
           image={social}
-          desc="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi aut voluptatem blanditiis aspernatur modi nulla?"
+          desc="From a show stopping engagement celebration to an epic surprise party, you dream it and we'll make it a reality."
           href="/social"
-		  setOpen={setOpen}
+          setOpen={setOpen}
         />
         <Event
           title="Birthdays"
           image={birthday}
-          desc="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi aut voluptatem blanditiis aspernatur modi nulla?"
+          desc="Make your or your near ones birthday special and unforgotable by connecting through us."
           href="/birthday"
-		  setOpen={setOpen}
+          setOpen={setOpen}
         />
         <Event
           title="Corporate Events"
           image={corporate}
-          desc="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi aut voluptatem blanditiis aspernatur modi nulla?"
+          desc="Wow your guests with a unique corporate experience that aligns with your company's mission and elevates your brand."
           href="/corporate"
-		  setOpen={setOpen}
+          setOpen={setOpen}
         />
       </div>
       <Alert

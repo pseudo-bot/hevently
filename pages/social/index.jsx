@@ -18,7 +18,7 @@ const SocialPage = ({ venues }) => {
         <title>hevently | Social Gathering</title>
         <meta
           name="description"
-          content="book your venue for social gathering events like Bar Crawl, Masquerade Party, Dance, Ceremonies, Galas etc."
+          content="Through hevently book your venue for social gathering events like Bar Crawl, Masquerade Party, Dance, Ceremonies, Galas etc."
         />
       </Head>
 
