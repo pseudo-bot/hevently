@@ -29,6 +29,8 @@ import EventCard from "./EventCard";
 import { ProfileContext } from "../../context/Profile";
 import EventBusyIcon from "@mui/icons-material/EventBusy";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
+import updateUser from "../../lib/updateUser.js";
+import { LoadingButton } from '@mui/lab'
 
 const drawerWidth = 240;
 
@@ -80,8 +82,9 @@ function ResponsiveDrawer(props) {
   const router = useRouter();
   const [disabledBtn, setDisabledBtn] = useState(true);
   const [edit, setEdit] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const {
+    uid,
     city,
     dob,
     gender,
@@ -97,13 +100,15 @@ function ResponsiveDrawer(props) {
   const [userState, setUserState] = useState(state);
   const [userPhoneNumber, setUserPhoneNumber] = useState(phoneNumber);
 
-  
   const onEdit = () => {
     setDisabledBtn(!disabledBtn);
     setEdit(!edit);
   };
-  const onSave = () => {
+
+  const onSave = async () => {
+    setLoading(true)
     const ob = {
+      uid,
       city: userCity,
       dob: userDob,
       gender: userGender,
@@ -116,7 +121,14 @@ function ResponsiveDrawer(props) {
     props.setData(ob);
     setDisabledBtn(!disabledBtn);
     setEdit(!edit);
-    console.log(ob);
+
+    const res = await updateUser(ob);
+    if (res) {
+      console.log('User updated succefully');
+    } else {
+      console.log('User not updated');
+    }
+    setLoading(false)
   };
 
   const { window } = props;
@@ -314,15 +326,16 @@ function ResponsiveDrawer(props) {
                     >
                       Edit
                     </Button>
-                    <Button
+                    <LoadingButton
                       onClick={onSave}
+                      loading={loading}
                       variant="contained"
                       className="poppins capitalize text-md bg-blue-500 hover:bg-blue-700"
                       size="small"
                       disabled={disabledBtn ? true : false}
                     >
                       Save
-                    </Button>
+                    </LoadingButton>
                   </div>
                 </div>
               </div>
