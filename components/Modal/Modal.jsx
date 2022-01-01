@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { useRouter } from "next/router";
-import Alert from "../Misc/Alert";
 import { UserContext } from "../../context/Users";
 import 'animate.css';
 
