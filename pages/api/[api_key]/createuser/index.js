@@ -42,9 +42,6 @@ export default async function createUserHandler(req, res) {
 							social: [],
 						});
 
-						await newUser.save();
-						await newEvent.save();
-
 						res.status(201).json({
 							ok: true,
 							message: 'User created',
