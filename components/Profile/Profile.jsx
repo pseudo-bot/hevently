@@ -70,6 +70,7 @@ const UserData = ({ icon, title, edit, handleChange,value }) => {
         onChange={(e) => handleChange(e.target.value)}
         focused={edit}
         size="small"
+        type="email"
       />
     </div>
   );
@@ -91,7 +92,7 @@ function ResponsiveDrawer(props) {
     photoURL,
   } = props.userData;
   const [userCity, setUserCity] = useState(city);
-  const [userdDob, setUserDob] = useState(dob);
+  const [userDob, setUserDob] = useState(new Date());
   const [userGender, setUserGender] = useState(gender);
   const [userState, setUserState] = useState(state);
   const [userPhoneNumber, setUserPhoneNumber] = useState(phoneNumber);
@@ -104,7 +105,7 @@ function ResponsiveDrawer(props) {
   const onSave = () => {
     const ob = {
       city: userCity,
-      dob: userdDob,
+      dob: userDob,
       gender: userGender,
       state: userState,
       phoneNumber: userPhoneNumber,
@@ -283,7 +284,7 @@ function ResponsiveDrawer(props) {
                         handleChange={setUserPhoneNumber}
                         value={userPhoneNumber}
                       />
-                      <Gender handleChange={setUserGender} edit={edit} />
+                      <Gender value={userGender} handleChange={setUserGender} edit={edit} />
                     </div>
                     <div className="flex flex-col space-y-6 text-gray-600 text-md md:text-lg tracking-wider w-[26rem] ">
                       <UserData
@@ -300,7 +301,7 @@ function ResponsiveDrawer(props) {
                         handleChange={setUserState}
                         value={userState}
                       />
-                      <DOB handleChange={setUserDob} edit={edit} />
+                      <DOB value={userDob} handleChange={setUserDob} edit={edit} />
                     </div>
                   </div>
                   <div className="flex justify-center gap-4 pt-12 pb-4">
@@ -361,8 +362,6 @@ const Profile = ({ events }) => {
   if (!user) {
     return <Loading />;
   }
-  console.log(user);
-  console.log(events);
   return (
     <div>
       <ResponsiveDrawer

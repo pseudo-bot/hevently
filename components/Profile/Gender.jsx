@@ -26,10 +26,6 @@ const CssTextField = styled(TextField)({
 
 const genders = [
   {
-    value: "Select",
-    label: "Select",
-  },
-  {
     value: "Male",
     label: "Male",
   },
@@ -43,21 +39,15 @@ const genders = [
   },
 ];
 
-export default function SelectTextFields({edit}) {
-  const [gender, setGender] = React.useState("Select");
-
-  const handleChange = (event) => {
-    setGender(event.target.value);
-  };
-
+export default function SelectTextFields({edit,handleChange,value}) {
   return (
     <div className="flex items-center justify-between">
         <div className="text-gray-700 font-semibold tracking-wider "> <span className="mr-1"><WcIcon/></span> Gender</div>
         <CssTextField
           id="outlined-select-gender"
           select
-          value={gender}
-          onChange={handleChange}
+          value={value}
+          onChange={(e)=>handleChange(e.target.value)}
           InputProps={{
             readOnly: edit ? false : true,
           }}

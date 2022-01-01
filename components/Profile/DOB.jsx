@@ -1,4 +1,4 @@
-import * as React from "react";
+import React,{useState} from "react";
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
@@ -27,13 +27,7 @@ const CssTextField = styled(TextField)({
   },
 });
 
-export default function MaterialUIPickers({ edit }) {
-  const [value, setValue] = React.useState(new Date("2014-08-18T21:11:54"));
-
-  const handleChange = (newValue) => {
-    setValue(newValue);
-  };
-
+export default function MaterialUIPickers({ edit,handleChange,value }) {
   return (
     <div className="flex items-center justify-between">
       <div className="text-gray-700 font-semibold tracking-wider "> <span className="mr-1">< CalendarTodayIcon/></span> DOB</div>
@@ -41,7 +35,7 @@ export default function MaterialUIPickers({ edit }) {
         <DesktopDatePicker
           inputFormat="dd/MM/yyyy"
           value={value}
-          onChange={handleChange}
+          onChange={(newVal)=>handleChange(newVal)}
           readOnly={edit?false:true}
           renderInput={(params) => (
             <CssTextField
@@ -49,8 +43,6 @@ export default function MaterialUIPickers({ edit }) {
             className="w-72 bg-bgray-50"
             size="small"
             {...params}
-           
-              
             />
           )}
         />
