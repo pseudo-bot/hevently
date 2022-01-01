@@ -58,13 +58,13 @@ function About() {
             imagination.Our goal is to provide unparalleled event services and
             outstanding customer service.We take care of every detail so you can
             focus on what matters most, hosting a once in a lifetime experience
-            and unforgettable celebration. We plan wedding and events, we're
+            and unforgettable celebration. We plan wedding and events, we{"'"}re
             experts in perfecting the details and creating the extraordinary. We
             exist so that you can enjoy the fun parts of planning and leave the
             stress behind. Our clients are intensely busy professionals who
             depend on us to make their planning process stress-free and to
             discover what will make their day uniquely special. We make design
-            and planning simple for our clients - and simple isn't easy.
+            and planning simple for our clients - and simple isn{"'"}t easy.
           </p>
         </div>
       </div>
