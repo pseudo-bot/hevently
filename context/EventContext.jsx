@@ -9,6 +9,7 @@ export const EventProvider = ({ children }) => {
     startDate: "",
     endDate: "",
     guestList: [],
+    userRatings: null,
   });
   const setVenue = (venue) => {
     let newVenue = Object.assign({}, eventData);
@@ -38,7 +39,11 @@ export const EventProvider = ({ children }) => {
     ob.eventName = name;
     setEventData(ob);
   };
-
+  const setRatings = (ratings) => {
+    let ob = Object.assign({}, eventData);
+    ob.userRatings = ratings;
+    setEventData(ob);
+  };
   
   return (
     <EventContext.Provider
@@ -49,6 +54,7 @@ export const EventProvider = ({ children }) => {
         setEndDate,
         setGuestList,
         setEventName,
+        setRatings,
       }}
     >
       {children}

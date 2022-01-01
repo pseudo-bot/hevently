@@ -8,17 +8,23 @@ function Cover() {
 	const [mid, setMid] = useState(false);
 
 	useEffect(() => {
-		setTimeout(() => {
+		const startTime = setTimeout(() => {
 			setStart(true);
 		}, 0);
 
-		setTimeout(() => {
+		const midTime = setTimeout(() => {
 			setMid(true);
 		}, 1500);
 
-		setTimeout(() => {
+		const endTime = setTimeout(() => {
 			setEnd(true);
 		}, 3000);
+
+		return () => {
+			clearTimeout(startTime);
+			clearTimeout(midTime);
+			clearTimeout(endTime);
+		};
 	}, []);
 
 	return (
