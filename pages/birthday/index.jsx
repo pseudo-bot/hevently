@@ -14,7 +14,7 @@ const BirthdayPage = ({ venues }) => {
   const [showModal, setShowModal] = useState(true);
   return (
     <>
-    <Head>
+      <Head>
         <title>hevently | Birthday</title>
         <meta
           name="description"
@@ -26,17 +26,17 @@ const BirthdayPage = ({ venues }) => {
           <div>
             <Event type="birthday" venues={venues} />
           </div>
+          <EventName
+            showModal={showModal}
+            setShowModal={setShowModal}
+            title="Enter Event Name"
+          />
         </EventProvider>
       ) : (
         <div className="flex h-screen w-screen fixed justify-center items-center text-xl text-center">
           <CircularProgress />
         </div>
       )}
-      <EventName
-        showModal={showModal}
-        setShowModal={setShowModal}
-        title="Enter Event Name"
-      />
     </>
   );
 };
