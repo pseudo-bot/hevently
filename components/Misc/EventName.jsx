@@ -52,9 +52,8 @@ const EventName = ({ showModal, setShowModal, title }) => {
 							<Button
 								onClick={handleClick}
 								variant="contained"
-								className="capitalize poppins"
 							>
-								Confirm Event Name
+								<div className="poppins capitalize">Confirm Event Name</div>
 							</Button>
 						</div>
 					</div>

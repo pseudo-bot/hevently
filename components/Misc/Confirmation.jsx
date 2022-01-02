@@ -87,15 +87,17 @@ const Confirmation = ({ showConfirm, guestList }) => {
 									endIcon={invite ? <Send /> : <Done />}
 									disabled={guestList && guestList.length === 0}
 								>
-									{invite && !error ? 'Send Invites' : 'Invites Sent'}
-									{error && 'Error'}
+									<div className="poppins capitalize">
+										{invite && !error ? 'Send Invites' : 'Invites Sent'}
+										{error && 'Error'}
+									</div>
 								</LoadingButton>
 								<Link href="/" passHref>
 									<Button
 										variant="contained"
 										className="w-full poppins capitalize tracking-wider"
 									>
-										Home
+										<div className="poppins capitalize">Home</div>
 									</Button>
 								</Link>
 							</div>
