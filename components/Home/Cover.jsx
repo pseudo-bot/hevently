@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import 'animate.css';
 
@@ -31,15 +30,10 @@ function Cover() {
 		<div>
 			<div className="cover h-screen w-screen absolute parallax"></div>
 			<div className="relative h-screen flex items-center justify-center flex-col">
-				<div className="text-gray-50 text-[90px] dancing col md:text-[120px] font-bold animate__animated animate__bounceInDown absolute top-1/4">
+				<div className="cover-heading text-gray-50 text-[6.5rem] dancing col font-bold animate__animated animate__bounceInDown absolute top-1/4">
 					hevently
 				</div>
 				<div className="text-gray-50 font-medium tracking-wide kalam text-[1.8rem] flex flex-col gap-2 absolute top-1/2">
-					<div
-						className={`h-1 ${
-							start && mid && end ? 'w-full' : 'w-0'
-						} bg-gray-50 rounded-full my-4 transition-all duration-700 -translate-x-1/2 left-1/2 relative`}
-					></div>
 					{start ? (
 						<div className="animate__animated animate__fadeInLeft kalam text-center">
 							small team.
@@ -55,11 +49,6 @@ function Cover() {
 							a lifetime of happiness.
 						</div>
 					) : null}
-					<div
-						className={`h-1 ${
-							start && mid && end ? 'w-full' : 'w-0'
-						} bg-gray-50 rounded-full my-4 transition-all duration-700 -translate-x-1/2 left-1/2 relative`}
-					></div>
 				</div>
 				<div className="absolute bottom-10 cursor-pointer">
 					<div className="scroll"></div>

@@ -12,7 +12,7 @@ import Toolbar from "@mui/material/Toolbar";
 import PersonIcon from "@mui/icons-material/Person";
 import EventIcon from "@mui/icons-material/Event";
 import LogoutIcon from "@mui/icons-material/Logout";
-import logOut from "../../lib/firebase/signOut";
+import logOut from "../../config/firebase/signOut";
 import BreadCrumbs from "./BreadCrumbs";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
@@ -29,7 +29,7 @@ import EventCard from "./EventCard";
 import { ProfileContext } from "../../context/Profile";
 import EventBusyIcon from "@mui/icons-material/EventBusy";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
-import updateUser from "../../lib/updateUser.js";
+import updateUser from "../../config/updateUser.js";
 import { LoadingButton } from '@mui/lab'
 
 const drawerWidth = 240;

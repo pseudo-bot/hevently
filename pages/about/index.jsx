@@ -20,7 +20,7 @@ const useScript = (url) => {
 };
 
 function AboutPage() {
-  useScript("/scripts/script.js");
+  useScript("/scripts/intersection.js");
   return (
     <div>
       <Head>

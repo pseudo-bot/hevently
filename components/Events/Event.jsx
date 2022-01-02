@@ -2,8 +2,8 @@ import Image from 'next/image';
 import { useState, useContext } from 'react';
 import { EventContext } from '../../context/EventContext';
 import { UserContext } from '../../context/Users';
-import createEvent from '../../lib/createEvent.js';
-import sendConfirmation from '../../lib/sendConfirmation.js';
+import createEvent from '../../config/createEvent.js';
+import sendConfirmation from '../../config/sendConfirmation.js';
 
 import Venue from './Venue/Venue';
 import Schedule from './Schedule';

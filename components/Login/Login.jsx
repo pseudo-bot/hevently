@@ -6,7 +6,7 @@ import { Divider } from '@mui/material';
 import {
 	signInWithGoogle,
 	signInWithFb,
-} from '../../lib/firebase/authProvider';
+} from '../../config/firebase/authProvider';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';

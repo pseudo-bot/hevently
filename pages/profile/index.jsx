@@ -1,6 +1,6 @@
 import Profile from '../../components/Profile/Profile';
 import { CircularProgress } from '@mui/material';
-import { useUser } from '../../lib/useUser';
+import { useUser } from '../../hooks/useUser';
 import Head from 'next/head';
 import { ProfileContext } from '../../context/Profile';
 import { useContext, useEffect, useState } from 'react';
