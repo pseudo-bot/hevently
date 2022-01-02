@@ -187,7 +187,7 @@ function ResponsiveDrawer(props) {
         <Button
         variant="contained"
           color="error"
-          className="flex py-3 absolute bottom-4 hover:cursor-pointer px-6  gap-2 items-center  transition-all duration-200 hover:bg-red-500 left-1/2 -translate-x-1/2 rounded-full hover:text-[#fff] justify-center hover:shadow-md"
+          className="flex py-2 absolute bottom-4 hover:cursor-pointer px-6  gap-2 items-center  transition-all duration-200 hover:bg-red-500 left-1/2 -translate-x-1/2  hover:text-[#fff] justify-center"
           onClick={signOut}
         >
           <LogoutIcon /> <span>Logout</span>
