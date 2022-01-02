@@ -6,7 +6,7 @@ import Router, { useRouter } from "next/router";
 
 import "tailwindcss/tailwind.css";
 import "../styles/confirm.css";
-import "../styles/global.scss";
+import "../styles/global.css";
 
 import "swiper/css/bundle";
 

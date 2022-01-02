@@ -1,0 +1,237 @@
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Poppins;
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* fonts */
+
+.dancing {
+	font-family: 'dancing script';
+}
+
+.montserrat {
+	font-family: 'Montserrat Alternates';
+}
+.poppins {
+	font-family: 'Poppins';
+}
+.kalam {
+	font-family: 'kalam';
+}
+
+@media screen and (max-width: 30rem) {
+	html {
+		font-size: 13px;
+	}
+}
+
+/* Navbar */
+
+@media screen and (min-width: 1024px) {
+	.nav-links > div {
+		position: relative;
+		overflow: hidden;
+		transition: all 0.2s ease-in;
+	}
+	.nav-links > div::after {
+		content: '';
+		width: 0;
+		height: 3px;
+		position: absolute;
+		background-color: #ddd;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		transition: all 0.25s ease-in;
+		border-radius: 100vw;
+	}
+
+	.nav-links > div:hover {
+		color: #fff;
+	}
+
+	.nav-links > .login::after {
+		background-color: transparent;
+	}
+
+	.nav-links > .login:hover {
+		color: blue;
+		transform: scale(1.05);
+	}
+
+	.nav-links > div:hover::after {
+		width: 70%;
+	}
+
+	.services-div > div:hover {
+		color: #fff;
+	}
+
+	.services > * {
+		color: #666;
+	}
+}
+
+.spacer {
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.outer-cover {
+	background-color: #3b82f6;
+	border-bottom-color: transparent;
+	backdrop-filter: blur(12px);
+}
+
+.inner-cover {
+	background-color: transparent;
+	border-bottom-color: #aaa;
+	backdrop-filter: blur(12px);
+}
+
+/* Navbar end */
+
+/* Home page */
+
+.cover {
+	background-image: url('/events/cover2.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	filter: brightness(0.4);
+	background-attachment: fixed;
+}
+
+.scroll {
+	width: 40px;
+	height: 60px;
+	border: 3px solid #ddd;
+	border-radius: 60px;
+	position: relative;
+}
+
+.scroll::before {
+	content: '';
+	width: 8px;
+	height: 8px;
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #ddd;
+	border-radius: 50%;
+	opacity: 1;
+	animation: wheel 2.5s infinite;
+	-webkit-animation: wheel 2.5s infinite;
+}
+
+@keyframes wheel {
+	to {
+		opacity: 0;
+		top: 40px;
+	}
+}
+
+.client-swiper {
+	width: 100%;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	max-width: 70rem;
+}
+
+.client-swiper .swiper-slide {
+	display: flex;
+	justify-content: center;
+	border-radius: 10px;
+}
+
+.client-swiper .swiper-slide div {
+	opacity: 0.9;
+	filter: blur(1px);
+}
+
+.client-swiper .swiper-slide-active div {
+	filter: blur(0px);
+	opacity: 1;
+	background: white;
+}
+
+/* Form */
+
+.formbg {
+	background-image: url('/form/formbg.svg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+.form-footer {
+	backdrop-filter: blur(0.625rem);
+	background-image: none;
+}
+
+.text-gradient {
+	background-image: linear-gradient(
+		to right,
+		rgb(60, 126, 250),
+		rgb(51, 0, 190)
+	);
+	color: transparent;
+	background-clip: text;
+}
+
+/* Animation */
+
+.modal-enter {
+	opacity: 0;
+}
+.modal-enter-active {
+	opacity: 1;
+	transition: opacity 300ms;
+}
+.modal-exit {
+	opacity: 1;
+}
+.modal-exit-active {
+	opacity: 0;
+	transition: opacity 300ms;
+}
+
+/*  Profile */
+
+.profile-bg {
+	background-image: url('/form/form_cover.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+/* About */
+
+.aboutbg {
+	background-image: url('/about/aboutbg.jpg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.event-card {
+	background-color: #fff;
+}

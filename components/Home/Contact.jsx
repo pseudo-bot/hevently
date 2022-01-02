@@ -22,7 +22,7 @@ const Contact = () => {
                 ADDRESS
               </h2>
               <p className="mt-1 text-gray-900">
-                414,Ratu Road Ranchi,Jharkhand
+                414, Ratu Road Ranchi, Jharkhand
               </p>
             </div>
             <div className="lg:w-1/2 px-6 mt-4 lg:mt-0">
@@ -35,7 +35,7 @@ const Contact = () => {
               <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">
                 PHONE
               </h2>
-              <p className="leading-relaxed text-gray-900">9999999999</p>
+              <p className="leading-relaxed text-gray-900">9876543210</p>
             </div>
           </div>
         </div>

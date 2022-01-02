@@ -17,54 +17,55 @@ export default async function eventHandler(req, res) {
 							[body.type]: body.event,
 						},
 					}
-				);
+				).clone();
 
 				if (user) {
-					res.status(200).json({
+					return res.status(200).json({
 						ok: true,
 						message: 'Event list updated',
 					});
 				} else {
-					res.status(500).json({
+					return res.status(500).json({
 						ok: false,
 						message: 'Event not created',
 					});
 				}
 
-				break;
-
 			case 'GET':
 				const events = await UserEvents.findOne({ uid });
 
 				if (events) {
-					res.status(200).json({
+					return res.status(200).json({
 						ok: true,
 						message: 'Events retrieved',
 						events,
 					});
 				} else {
-					res.status(404).json({
+					return res.status(404).json({
 						ok: false,
 						message: 'Events not found',
 					});
 				}
-				break;
 
-			case 'PUT': 
-				const event = await UserEvents.findOne({ uid });
-
-				if (event) {
-					
-					res.status(200).json({
-						ok: true,
-						message: 'Events updated',
-					});
-				} else {
-					res.status(404).json({
-						ok: false,
-						message: 'Events not found',
-					});
-				}
+			case 'PUT':
+				const query = `${body.type}.uid`;
+				const updateQuery = `${body.type}.$.userRatings`;
+				await UserEvents.updateOne(
+					{ [query]: body.uid },
+					{ $set: { [updateQuery]: body.ratings } }, (err, user) => {
+						if (err) {
+							return res.status(500).json({
+								ok: false,
+								message: 'Event not updated',
+							});
+						} else {
+							return res.status(200).json({
+								ok: true,
+								message: 'Event updated',
+							});
+						}
+					}
+				).clone();
 				break;
 
 			default:
