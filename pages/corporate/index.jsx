@@ -14,7 +14,7 @@ const CorporatePage = ({ venues }) => {
   const [showModal, setShowModal] = useState(true);
   return (
     <>
-    <Head>
+      <Head>
         <title>hevently | Corporate Events</title>
         <meta
           name="description"
@@ -26,17 +26,17 @@ const CorporatePage = ({ venues }) => {
           <div>
             <Event type={"corporate"} venues={venues} />
           </div>
+          <EventName
+            showModal={showModal}
+            setShowModal={setShowModal}
+            title="Enter Event Name"
+          />
         </EventProvider>
       ) : (
         <div className="flex h-screen w-screen fixed justify-center items-center text-xl text-center">
           <CircularProgress />
         </div>
       )}
-      <EventName
-        showModal={showModal}
-        setShowModal={setShowModal}
-        title="Enter Event Name"
-      />
     </>
   );
 };

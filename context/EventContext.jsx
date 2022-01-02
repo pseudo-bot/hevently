@@ -1,9 +1,11 @@
 import { createContext, useState } from "react";
+import {v4 as uuidv4} from 'uuid';
 
 export const EventContext = createContext([]);
 
 export const EventProvider = ({ children }) => {
   const [eventData, setEventData] = useState({
+    uid: uuidv4(),
     eventName: "",
     venue: null,
     startDate: "",
@@ -44,7 +46,6 @@ export const EventProvider = ({ children }) => {
     ob.userRatings = ratings;
     setEventData(ob);
   };
-  
   return (
     <EventContext.Provider
       value={{

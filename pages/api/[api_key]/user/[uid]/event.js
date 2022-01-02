@@ -50,6 +50,23 @@ export default async function eventHandler(req, res) {
 				}
 				break;
 
+			case 'PUT': 
+				const event = await UserEvents.findOne({ uid });
+
+				if (event) {
+					
+					res.status(200).json({
+						ok: true,
+						message: 'Events updated',
+					});
+				} else {
+					res.status(404).json({
+						ok: false,
+						message: 'Events not found',
+					});
+				}
+				break;
+
 			default:
 				res.status(400).json({
 					ok: false,

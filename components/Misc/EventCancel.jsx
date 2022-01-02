@@ -5,7 +5,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function AlertDialog({open,setOpen}) {
+
+export default function AlertDialog({title,open,setOpen}) {
    
     const handleClose = () => {
       setOpen(false);
@@ -19,19 +20,18 @@ export default function AlertDialog({open,setOpen}) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
+        <DialogTitle className='poppins' id="alert-dialog-title">
+          {"Cancel Event"}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Let Google help apps determine location. This means sending anonymous
-            location data to Google, even when no apps are running.
+          <DialogContentText className='poppins' id="alert-dialog-description">
+           Are you sure  to cancel <b className='capitalize'>{title}?</b>
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose} autoFocus>
-            Agree
+        <DialogActions className='flex justify-between p-4'>
+          <Button className=' capitalize bg-gray-200 hover:bg-gray-100 text-gray-500 poppins' onClick={handleClose}>Back</Button>
+          <Button className='bg-red-500 hover:bg-red-600 poppins capitalize' variant='contained' onClick={handleClose} autoFocus>
+            Confirm
           </Button>
         </DialogActions>
       </Dialog>

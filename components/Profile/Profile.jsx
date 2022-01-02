@@ -95,7 +95,7 @@ function ResponsiveDrawer(props) {
     photoURL,
   } = props.userData;
   const [userCity, setUserCity] = useState(city);
-  const [userDob, setUserDob] = useState(new Date());
+  const [userDob, setUserDob] = useState(dob);
   const [userGender, setUserGender] = useState(gender);
   const [userState, setUserState] = useState(state);
   const [userPhoneNumber, setUserPhoneNumber] = useState(phoneNumber);
@@ -118,6 +118,7 @@ function ResponsiveDrawer(props) {
       displayName,
       photoURL,
     };
+    console.log(ob)
     props.setData(ob);
     setDisabledBtn(!disabledBtn);
     setEdit(!edit);
@@ -143,8 +144,11 @@ function ResponsiveDrawer(props) {
   };
 
   const drawer = (
-    <div className="bg-gray-100 h-full">
-      <div className="py-8">
+    <>
+    <div className="bg-gray-100 fixed w-[240px] h-screen"></div>
+    <div className="relative z-50 h-full">
+      
+      <div className="py-8 ">
         <div className="w-full flex justify-center">
           <Image
             src={photoURL || "/profile/user.png"}
@@ -184,16 +188,19 @@ function ResponsiveDrawer(props) {
           <EventBusyIcon /> <span>Completed Events</span>
         </a>
 
-        <Button
-        variant="contained"
-          color="error"
-          className="flex py-2 absolute bottom-4 hover:cursor-pointer px-6  gap-2 items-center  transition-all duration-200 hover:bg-red-500 left-1/2 -translate-x-1/2  hover:text-[#fff] justify-center"
-          onClick={signOut}
-        >
-          <LogoutIcon /> <span>Logout</span>
-        </Button>
+        <div className="fixed bottom-0 py-8 w-[240px] p-4 bg-bgray-100 ">
+          <Button
+          variant="contained"
+            color="error"
+            className="flex py-2 hover:cursor-pointer px-6  gap-2 items-center  transition-all duration-200 hover:bg-red-500 left-1/2 -translate-x-1/2  hover:text-[#fff] justify-center"
+            onClick={signOut}
+          >
+            <LogoutIcon /> <span>Logout</span>
+          </Button>
+        </div>
       </nav>
     </div>
+    </>
   );
 
   const container =
