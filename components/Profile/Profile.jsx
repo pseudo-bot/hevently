@@ -373,6 +373,7 @@ const Loading = () => {
 
 const Profile = ({ events }) => {
   const { profileData: user, setProfileData } = useContext(ProfileContext);
+  console.log(events);
 
   if (!user) {
     return <Loading />;
