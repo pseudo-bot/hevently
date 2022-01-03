@@ -1,38 +1,14 @@
 import { useState, useContext } from "react";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import { EventContext } from "../../context/EventContext";
 import "animate.css";
 import Alert from "../Misc/Alert";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { styled } from "@mui/material/styles";
 
-
-const CssTextField = styled(TextField)({
-	"& label.Mui-focused": {
-	  color: "blue",
-	},
-	"& .MuiInput-underline:after": {
-	  borderBottomColor: "blue",
-	},
-	"& .MuiOutlinedInput-root": {
-	  "& fieldset": {
-		borderColor: "#444",
-	  },
-	  "&:hover fieldset": {
-		borderColor: "#444",
-	  },
-	  "&.Mui-focused fieldset": {
-		borderColor: "#0384fc",
-	  },
-	},
-  });
-
-export default function AlertDialog({ showModal, setShowModal, title }) {
+export default function AlertDialog({ showModal, setShowModal }) {
   const [value, setValue] = useState("");
   const [open, setOpen] = useState(false);
   const { setEventName } = useContext(EventContext);
@@ -57,29 +33,34 @@ export default function AlertDialog({ showModal, setShowModal, title }) {
       <div>
         <Dialog
           open={showModal}
-          // onClose={handleClose}
+          sx={
+			  {
+				  zIndex: 40,
+			  }
+		  }
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle className="poppins" id="alert-dialog-title">
+          <DialogTitle className="poppins text-center" id="alert-dialog-title">
             {"Enter Event Name"}
           </DialogTitle>
           <DialogContent>
-            <CssTextField
-              required
-              id="outlined-required"
-              value={value}
-              onChange={handleChange}
-              size="small"
-              InputProps={{
-                autoComplete: "off",
-              }}
-			  className="border-none outline-none"
-            />
+            <div className="">
+              <div className="pt-2 pb-4 text-gray-600 text-sm italic font-medium">A name can give the vibe of your whole shindig</div>
+              <input
+                type="text"
+                name="text"
+                required
+                value={value}
+                onChange={handleChange}
+                autoComplete="off"
+                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
           </DialogContent>
-          <DialogActions className="flex justify-end p-4">
+          <DialogActions className="flex justify-center pt-2 pb-4">
             <Button
-              className="bg-green-500 hover:bg-green-600 poppins capitalize"
+              className="bg-green-500  hover:bg-green-600 poppins capitalize"
               variant="contained"
               onClick={handleClick}
               autoFocus

@@ -4,7 +4,7 @@ import useWindowSize from 'react-use/lib/useWindowSize';
 import { Button } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Link from 'next/link';
-import sendMail from '../../api/sendMail';
+import sendMail from '../../config/api/sendMail';
 import { Send, Done } from '@mui/icons-material';
 
 const Confirmation = ({ showConfirm, guestList }) => {

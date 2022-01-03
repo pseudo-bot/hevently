@@ -1,4 +1,4 @@
-import { auth } from '../config/firebase/firebase';
+import { auth } from '../firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 
 const createUser = () => {

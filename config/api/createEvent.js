@@ -1,4 +1,4 @@
-import { auth } from '../config/firebase/firebase';
+import { auth } from '../firebase/firebase';
 
 const createEvent = async (event, type) => {
 	const contentType = 'application/json';
