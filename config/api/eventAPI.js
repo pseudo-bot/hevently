@@ -30,7 +30,7 @@ const updateRatings = async (ratings, uid, type) => {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({ratings, uid, type}),
+				body: JSON.stringify({ ratings, uid, type }),
 			}
 		);
 		const res = await updateEvent.json();
@@ -39,26 +39,26 @@ const updateRatings = async (ratings, uid, type) => {
 		console.log(err);
 		return false;
 	}
-}
+};
 
 const deleteEvent = async (uid, type) => {
-  try {
-    const deleteEvent = await fetch(
-      `/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/user/${auth.currentUser.uid}/event`,
-      {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({uid, type}),
-      }
-    );
-    const res = await deleteEvent.json();
-    return res.ok;
-  } catch (err) {
-    console.log(err);
-    return false;
-  }
-}
+	try {
+		const deleteEvent = await fetch(
+			`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/user/${auth.currentUser.uid}/event`,
+			{
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ uid, type }),
+			}
+		);
+		const res = await deleteEvent.json();
+		return res.ok;
+	} catch (err) {
+		console.log(err);
+		return false;
+	}
+};
 
 export { createEvent, updateRatings, deleteEvent };

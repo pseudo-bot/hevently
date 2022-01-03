@@ -8,97 +8,107 @@ export default async function eventHandler(req, res) {
 	const { uid, api_key } = req.query;
 
 	if (api_key === process.env.NEXT_PUBLIC_CREATE_USER_KEY) {
-		switch (method) {
-			case 'POST':
-				await UserEvents.updateOne(
-					{ uid },
-					{
-						$push: {
-							[body.type]: body.event,
-						},
-					},
-					(err, result) => {
-						if (err) {
-							return res.status(500).json({
-								ok: false,
-								message: 'Event not created',
-							});
-						} else {
-							return res.status(200).json({
-								ok: true,
-								message: 'Event list updated',
-							});
+		try {
+			switch (method) {
+				case 'POST':
+					const user = await UserEvents.updateOne(
+						{ uid },
+						{
+							$push: {
+								[body.type]: body.event,
+							},
 						}
+					).clone();
+
+					if (!user) {
+						return res.status(500).json({
+							ok: false,
+							message: 'Event not created',
+						});
+					} else {
+						return res.status(200).json({
+							ok: true,
+							message: 'Event list updated',
+						});
 					}
-				).clone();
 
-			case 'GET':
-				const events = await UserEvents.findOne({ uid });
+				case 'GET':
+					const events = await UserEvents.findOne({ uid });
 
-				if (events) {
-					return res.status(200).json({
-						ok: true,
-						message: 'Events retrieved',
-						events,
-					});
-				} else {
-					return res.status(404).json({
+					if (events) {
+						return res.status(200).json({
+							ok: true,
+							message: 'Events retrieved',
+							events,
+						});
+					} else {
+						return res.status(404).json({
+							ok: false,
+							message: 'Events not found',
+						});
+					}
+
+				case 'PUT':
+					const query = `${body.type}.uid`;
+					const updateQuery = `${body.type}.$.userRatings`;
+					const ratingUpdate = await UserEvents.updateOne(
+						{ [query]: body.uid },
+						{ $set: { [updateQuery]: body.ratings } }
+					).clone();
+
+					if (!ratingUpdate) {
+						return res.status(500).json({
+							ok: false,
+							message: 'Event not updated',
+						});
+					} else {
+						return res.status(200).json({
+							ok: true,
+							message: 'Event updated',
+						});
+					}
+
+				case 'DELETE':
+					const deleteEvent = await UserEvents.updateOne(
+						{ uid },
+						{
+							$pull: {
+								[body.type]: {
+									uid: body.uid,
+								},
+							},
+						}
+					).clone();
+
+					if (!deleteEvent) {
+						return res.status(500).json({
+							ok: false,
+							message: 'Event not deleted',
+						});
+					} else {
+						return res.status(200).json({
+							ok: true,
+							message: 'Event deleted',
+						});
+					}
+
+				default:
+					res.status(400).json({
 						ok: false,
-						message: 'Events not found',
+						message: 'Bad request',
 					});
-				}
-
-			case 'PUT':
-				const query = `${body.type}.uid`;
-				const updateQuery = `${body.type}.$.userRatings`;
-				await UserEvents.updateOne(
-					{ [query]: body.uid },
-					{ $set: { [updateQuery]: body.ratings } },
-					(err, result) => {
-						if (err) {
-							return res.status(500).json({
-								ok: false,
-								message: 'Event not updated',
-							});
-						} else {
-							return res.status(200).json({
-								ok: true,
-								message: 'Event updated',
-							});
-						}
-					}
-				).clone();
-				break;
-
-			case 'DELETE':
-				await UserEvents.deleteOne(
-					{ [`${body.type}.uid`]: body.uid },
-					(err, result) => {
-						if (err) {
-							return res.status(500).json({
-								ok: false,
-								message: 'Event not deleted',
-							});
-						} else {
-							return res.status(200).json({
-								ok: true,
-								message: 'Event deleted',
-							});
-						}
-					}
-				).clone();
-
-			default:
-				res.status(400).json({
-					ok: false,
-					message: 'Bad request',
-				});
-				break;
+					break;
+			}
+		} catch (error) {
+			return res.status(500).json({
+				ok: false,
+				message: 'Internal server error',
+			});
 		}
 	} else {
-		res.status(400).json({
+		res.status(403).json({
 			ok: false,
-			message: 'Invalid request',
+			message: 'Forbidden',
 		});
 	}
 }

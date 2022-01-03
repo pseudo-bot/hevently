@@ -32,10 +32,9 @@ const FormFooter = ({
 						size="medium"
 						color="success"
 						endIcon={<Done />}
-						className="poppins capitalize"
 						loading={loading}
 					>
-						Confirm
+						<div className='capitalize'>Confirm</div>
 					</LoadingButton>
 				) : (
 					<Button onClick={nextPosition} variant="contained" size="medium">
