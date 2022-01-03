@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useState, useContext } from 'react';
 import { EventContext } from '../../context/EventContext';
 import { UserContext } from '../../context/Users';
-import createEvent from '../../config/api/createEvent.js';
+import {createEvent} from '../../config/api/eventAPI.js';
 import sendConfirmation from '../../config/api/sendConfirmation.js';
 
 import Venue from './Venue/Venue';

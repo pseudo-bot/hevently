@@ -10,26 +10,27 @@ export default async function eventHandler(req, res) {
 	if (api_key === process.env.NEXT_PUBLIC_CREATE_USER_KEY) {
 		switch (method) {
 			case 'POST':
-				const user = await UserEvents.updateOne(
+				await UserEvents.updateOne(
 					{ uid },
 					{
 						$push: {
 							[body.type]: body.event,
 						},
+					},
+					(err, result) => {
+						if (err) {
+							return res.status(500).json({
+								ok: false,
+								message: 'Event not created',
+							});
+						} else {
+							return res.status(200).json({
+								ok: true,
+								message: 'Event list updated',
+							});
+						}
 					}
 				).clone();
-
-				if (user) {
-					return res.status(200).json({
-						ok: true,
-						message: 'Event list updated',
-					});
-				} else {
-					return res.status(500).json({
-						ok: false,
-						message: 'Event not created',
-					});
-				}
 
 			case 'GET':
 				const events = await UserEvents.findOne({ uid });
@@ -52,7 +53,8 @@ export default async function eventHandler(req, res) {
 				const updateQuery = `${body.type}.$.userRatings`;
 				await UserEvents.updateOne(
 					{ [query]: body.uid },
-					{ $set: { [updateQuery]: body.ratings } }, (err, user) => {
+					{ $set: { [updateQuery]: body.ratings } },
+					(err, result) => {
 						if (err) {
 							return res.status(500).json({
 								ok: false,
@@ -67,6 +69,24 @@ export default async function eventHandler(req, res) {
 					}
 				).clone();
 				break;
+
+			case 'DELETE':
+				await UserEvents.deleteOne(
+					{ [`${body.type}.uid`]: body.uid },
+					(err, result) => {
+						if (err) {
+							return res.status(500).json({
+								ok: false,
+								message: 'Event not deleted',
+							});
+						} else {
+							return res.status(200).json({
+								ok: true,
+								message: 'Event deleted',
+							});
+						}
+					}
+				).clone();
 
 			default:
 				res.status(400).json({
