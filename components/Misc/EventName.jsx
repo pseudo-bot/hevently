@@ -60,12 +60,11 @@ export default function AlertDialog({ showModal, setShowModal }) {
           </DialogContent>
           <DialogActions className="flex justify-center pt-2 pb-4">
             <Button
-              className="bg-green-500  hover:bg-green-600 poppins capitalize"
-              variant="contained"
               onClick={handleClick}
               autoFocus
+              className="border-none outline-none hover:bg-[#fff]"
             >
-              Confirm
+              <div className=" bg-green-500 text-[#fff] px-4 py-2 rounded  hover:bg-green-600 poppins capitalize transition-all duration-300">Confirm</div>
             </Button>
           </DialogActions>
         </Dialog>
