@@ -20,6 +20,7 @@ const createUser = () => {
 				const status = await res.json();
 				console.log(status.message);
 			} catch (error) {
+				console.log(error);
 				console.log('Authentication failed. Cannot add user to database');
 			}
 		}
