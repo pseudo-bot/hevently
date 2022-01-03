@@ -10,7 +10,7 @@ import SwiperCore, { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import { useState } from "react";
-import EventCancel from "../Misc/EventCancel";
+import EventCancel from "../../Misc/EventCancel";
 import CloseIcon from "@mui/icons-material/Close";
 
 SwiperCore.use([Pagination]);
@@ -155,32 +155,32 @@ const EventCard = ({ title, id, eventsData }) => {
           }}
         >
           {title === "Upcoming Events"
-            ? upcoming.map((event, index) => {
-                return (
-                  <SwiperSlide key={index}>
-                    <Event
-                      eventType={event.props.eventType}
-                      key={index}
-                      event={event.props.event}
-                      disabled={false}
-                      isRating={false}
-                    />
-                  </SwiperSlide>
-                );
-              })
-            : completed.map((event, index) => {
-                return (
-                  <SwiperSlide key={index}>
-                    <Event
-                      eventType={event.props.eventType}
-                      key={index}
-                      event={event.props.event}
-                      disabled={true}
-                      isRating={true}
-                    />
-                  </SwiperSlide>
-                );
-              })}
+            ? (upcoming.length > 0 ? upcoming.map((event, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <Event
+                    eventType={event.props.eventType}
+                    key={index}
+                    event={event.props.event}
+                    disabled={false}
+                    isRating={false}
+                  />
+                </SwiperSlide>
+              );
+            }) : <div className="text-center">No Upcoming Events</div>)
+            : (completed.length > 0 ?completed.map((event, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <Event
+                    eventType={event.props.eventType}
+                    key={index}
+                    event={event.props.event}
+                    disabled={true}
+                    isRating={true}
+                  />
+                </SwiperSlide>
+              );
+            }): <div className="text-center">No Completed Events</div>)}
         </Swiper>
       </div>
     </div>
