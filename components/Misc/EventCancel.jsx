@@ -6,6 +6,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 
+
 export default function AlertDialog({title,open,setOpen}) {
    
     const handleClose = () => {
@@ -25,11 +26,11 @@ export default function AlertDialog({title,open,setOpen}) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText className='poppins' id="alert-dialog-description">
-           Are you sure  to cancel <b className='capitalize'>{title}?</b>
+           Are you sure you want to cancel <b className='capitalize'>{title}?</b>
           </DialogContentText>
         </DialogContent>
         <DialogActions className='flex justify-between p-4'>
-          <Button className=' capitalize bg-gray-200 hover:bg-gray-100 text-gray-500 poppins' onClick={handleClose}>Back</Button>
+          <Button className=' capitalize bg-gray-200 hover:bg-gray-100 text-gray-500 poppins' onClick={handleClose}>Cancel</Button>
           <Button className='bg-red-500 hover:bg-red-600 poppins capitalize' variant='contained' onClick={handleClose} autoFocus>
             Confirm
           </Button>

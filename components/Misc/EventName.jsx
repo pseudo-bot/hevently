@@ -1,73 +1,100 @@
-import { useState, useContext } from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import { EventContext } from '../../context/EventContext';
-import 'animate.css';
-import Alert from '../Misc/Alert';
+import { useState, useContext } from "react";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import { EventContext } from "../../context/EventContext";
+import "animate.css";
+import Alert from "../Misc/Alert";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import { styled } from "@mui/material/styles";
 
-const EventName = ({ showModal, setShowModal, title }) => {
-	const [value, setValue] = useState('');
-	const [open, setOpen] = useState(false);
-	const { setEventName } = useContext(EventContext);
-	const handleChange = (event) => {
-		setValue(event.target.value);
-	};
 
-	const handleClick = () => {
-		if (value.length <= 2) {
-			setOpen(true);
-		} else {
-			setEventName(value);
-			setShowModal(false);
-		}
-	};
+const CssTextField = styled(TextField)({
+	"& label.Mui-focused": {
+	  color: "blue",
+	},
+	"& .MuiInput-underline:after": {
+	  borderBottomColor: "blue",
+	},
+	"& .MuiOutlinedInput-root": {
+	  "& fieldset": {
+		borderColor: "#444",
+	  },
+	  "&:hover fieldset": {
+		borderColor: "#444",
+	  },
+	  "&.Mui-focused fieldset": {
+		borderColor: "#0384fc",
+	  },
+	},
+  });
 
-	return (
-		<>
-			{showModal && (
-				<div className="opacity-40 fixed inset-0 z-40 bg-gray-800"></div>
-			)}
-			<div
-				className={` ${
-					showModal ? ' flex ' : 'hidden'
-				} justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-40 outline-none focus:outline-none  px-5 animate__animated animate__fadeIn top-16 `}
-			>
-				<div className="relative o myw-aut-6 mx-auto max-w-3xl bg-bgray-50 rounded-lg -top-16">
-					<div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-						<div className="flex items-center justify-between p-3 border-b border-solid border-blueGray-200 rounded-t text-center">
-							<h3 className="capitalize dancing font-semibold text-3xl tracking-wide z-10 mx-auto">
-								{title}
-							</h3>
-						</div>
-						{/*footer*/}
-						<div className="flex flex-col px-10 py-8 space-y-6">
-							<TextField
-								required
-								id="outlined-required"
-								value={value}
-								onChange={handleChange}
-								size="small"
-								autoComplete="no"
-							/>
-							<Button
-								onClick={handleClick}
-								variant="contained"
-							>
-								<div className="poppins capitalize">Confirm Event Name</div>
-							</Button>
-						</div>
-					</div>
-				</div>
-			</div>
+export default function AlertDialog({ showModal, setShowModal, title }) {
+  const [value, setValue] = useState("");
+  const [open, setOpen] = useState(false);
+  const { setEventName } = useContext(EventContext);
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
 
-			<Alert
-				open={open}
-				severity={'warning'}
-				setOpen={setOpen}
-				msg={'Please enter atleast 3 characters'}
-			/>
-		</>
-	);
-};
+  const handleClick = () => {
+    if (value.length <= 2) {
+      setOpen(true);
+    } else {
+      setEventName(value);
+      setShowModal(false);
+    }
+  };
 
-export default EventName;
+  return (
+    <>
+      {showModal && (
+        <div className="opacity-40 fixed inset-0 z-40 bg-gray-800"></div>
+      )}
+      <div>
+        <Dialog
+          open={showModal}
+          // onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle className="poppins" id="alert-dialog-title">
+            {"Enter Event Name"}
+          </DialogTitle>
+          <DialogContent>
+            <CssTextField
+              required
+              id="outlined-required"
+              value={value}
+              onChange={handleChange}
+              size="small"
+              InputProps={{
+                autoComplete: "off",
+              }}
+			  className="border-none outline-none"
+            />
+          </DialogContent>
+          <DialogActions className="flex justify-end p-4">
+            <Button
+              className="bg-green-500 hover:bg-green-600 poppins capitalize"
+              variant="contained"
+              onClick={handleClick}
+              autoFocus
+            >
+              Confirm
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+      <Alert
+        open={open}
+        severity={"warning"}
+        setOpen={setOpen}
+        msg={"Please enter atleast 3 characters"}
+      />
+    </>
+  );
+}
