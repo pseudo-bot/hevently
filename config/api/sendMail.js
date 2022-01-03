@@ -1,4 +1,4 @@
-import { auth } from '../config/firebase/firebase';
+import { auth } from '../firebase/firebase';
 
 export default async function sendMail(guestlist, userEmail) {
 	const emails = guestlist.map((guest) => guest.email);

@@ -29,7 +29,6 @@ const BirthdayPage = ({ venues }) => {
           <EventName
             showModal={showModal}
             setShowModal={setShowModal}
-            title="Enter Event Name"
           />
         </EventProvider>
       ) : (
