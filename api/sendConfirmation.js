@@ -1,8 +1,10 @@
+import { auth } from '../config/firebase/firebase';
+
 export default async function sendMail(userEmail) {
 	const contentType = 'application/json';
 	try {
 		const confirm = await fetch(
-			`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/sendconfirm`,
+			`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/user/${auth.currentUser.uid}/confirmation`,
 			{
 				method: 'POST',
 				headers: {

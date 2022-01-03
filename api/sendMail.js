@@ -1,9 +1,11 @@
+import { auth } from '../config/firebase/firebase';
+
 export default async function sendMail(guestlist, userEmail) {
 	const emails = guestlist.map((guest) => guest.email);
 	const contentType = 'application/json';
 	try {
 		const invite = await fetch(
-			`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/sendmail`,
+			`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/user/${auth.currentUser.uid}/invitation`,
 			{
 				method: 'POST',
 				headers: {

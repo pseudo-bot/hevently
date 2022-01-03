@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
-import updateRatings from '../../config/updateRatings';
+import updateRatings from '../../api/updateRatings';
 
 export default function BasicRating({ uid, rating, setRating, type }) {
 	return (

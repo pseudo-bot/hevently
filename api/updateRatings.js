@@ -1,4 +1,4 @@
-import { auth } from './firebase/firebase';
+import { auth } from '../config/firebase/firebase';
 
 export default async function updateRatings(ratings, uid, type) {
 	try {
