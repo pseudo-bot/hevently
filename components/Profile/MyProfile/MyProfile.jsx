@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import EmailIcon from '@mui/icons-material/Email';
 import CallIcon from '@mui/icons-material/Call';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
@@ -9,7 +9,8 @@ import Gender from './Gender';
 import { Button, CircularProgress } from '@mui/material';
 import DOB from './DOB';
 import updateUser from '../../../config/api/updateUser';
-import { useUser } from '../../../hooks/useUser';
+import useUser from '../../../hooks/useUser';
+import { Edit, CloudDone } from '@mui/icons-material';
 
 const Loading = () => {
 	return (
@@ -23,26 +24,25 @@ const MyProfile = () => {
 	const [disabledBtn, setDisabledBtn] = useState(true);
 	const [edit, setEdit] = useState(false);
 	const [loading, setLoading] = useState(false);
-	const { user: userData, loading: loader } = useUser();
+	const [userCity, setUserCity] = useState('');
+	const [userDob, setUserDob] = useState('');
+	const [userGender, setUserGender] = useState('');
+	const [userState, setUserState] = useState('');
+	const [userPhoneNumber, setUserPhoneNumber] = useState('');
 
-	const {
-		uid = '',
-		city = '',
-		dob = '',
-		gender = '',
-		state = '',
-		phoneNumber = '',
-		email = '',
-		displayName = '',
-		photoURL = '',
-	} = userData || {};
-	const [userCity, setUserCity] = useState(city);
-	const [userDob, setUserDob] = useState(dob);
-	const [userGender, setUserGender] = useState(gender);
-	const [userState, setUserState] = useState(state);
-	const [userPhoneNumber, setUserPhoneNumber] = useState(phoneNumber);
+	const { user } = useUser();
 
-	if (loader) {
+	useEffect(() => {
+		if (user) {
+			setUserCity(user.city);
+			setUserDob(user.dob);
+			setUserGender(user.gender);
+			setUserState(user.state);
+			setUserPhoneNumber(user.phoneNumber);
+		}
+	}, [user]);
+
+	if (!user) {
 		return <Loading />;
 	}
 
@@ -54,17 +54,16 @@ const MyProfile = () => {
 	const onSave = async () => {
 		setLoading(true);
 		const ob = {
-			uid,
+			uid: user.uid,
 			city: userCity,
 			dob: userDob,
 			gender: userGender,
 			state: userState,
 			phoneNumber: userPhoneNumber,
-			email,
-			displayName,
-			photoURL,
+			email: user.email,
+			displayName: user.displayName,
+			photoURL: user.photoURL,
 		};
-		console.log(ob);
 		setDisabledBtn(!disabledBtn);
 		setEdit(!edit);
 
@@ -88,7 +87,7 @@ const MyProfile = () => {
 							<div className="flex flex-col space-y-6 text-gray-600 text-md md:text-lg tracking-wider w-[26rem]">
 								<UserData
 									icon={<EmailIcon />}
-									value={email}
+									value={user.email}
 									title="Email"
 									edit={false}
 								/>
@@ -123,15 +122,16 @@ const MyProfile = () => {
 								<DOB value={userDob} handleChange={setUserDob} edit={edit} />
 							</div>
 						</div>
-						<div className="flex justify-center gap-4 pt-12 pb-4">
+						<div className="flex justify-center gap-8 pt-12 pb-4">
 							<Button
 								className="bg-blue-500 hover:bg-blue-700 capitalize text-md poppins"
 								variant="contained"
 								size="small"
 								onClick={onEdit}
 								disabled={disabledBtn ? false : true}
+								endIcon={<Edit size="small"/>}
 							>
-								Edit
+								<div className='capitalize'>Edit</div>
 							</Button>
 							<LoadingButton
 								onClick={onSave}
@@ -140,8 +140,10 @@ const MyProfile = () => {
 								className="poppins capitalize text-md bg-blue-500 hover:bg-blue-700"
 								size="small"
 								disabled={disabledBtn ? true : false}
+								color="success"
+								endIcon={<CloudDone />}
 							>
-								Save
+								<div className='capitalize'>Save</div>
 							</LoadingButton>
 						</div>
 					</div>

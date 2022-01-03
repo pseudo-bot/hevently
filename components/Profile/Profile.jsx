@@ -9,8 +9,7 @@ import MyProfile from './MyProfile/MyProfile';
 import MyEvents from './MyEvents/MyEvents';
 import MyDrawer from './MyDrawer';
 import NavBar from './NavBar/NavBar';
-import { auth } from '../../config/firebase/firebase';
-import { useUser } from '../../hooks/useUser';
+import useUser from '../../hooks/useUser';
 
 const drawerWidth = 240;
 
@@ -93,6 +92,7 @@ function ResponsiveDrawer(props) {
 
 const Profile = () => {
 	const { user } = useUser();
+
 	return (
 		<div>
 			<ResponsiveDrawer userData={user} />

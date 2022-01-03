@@ -33,13 +33,13 @@ export default async function eventHandler(req, res) {
 					}
 
 				case 'GET':
-					const events = await UserEvents.findOne({ uid });
+					const event = await UserEvents.findOne({ uid });
 
-					if (events) {
+					if (event) {
 						return res.status(200).json({
 							ok: true,
 							message: 'Events retrieved',
-							events,
+							event,
 						});
 					} else {
 						return res.status(404).json({

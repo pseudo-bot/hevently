@@ -4,21 +4,30 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import {deleteEvent} from '../../config/api/eventAPI';
+import { deleteEvent } from '../../config/api/eventAPI';
+import { useContext } from 'react';
+import { UserContext } from '../../context/Users';
+import { useSWRConfig } from 'swr';
 
 export default function AlertDialog({ title, open, setOpen, type, uid }) {
+	const user = useContext(UserContext);
+	const { mutate } = useSWRConfig();
+
 	const handleClose = () => {
 		setOpen(false);
 	};
 
-  const handleDelete = async () => {
-    const res = await deleteEvent(uid, type);
-    if (res) {
-      setOpen(false);
-    } else {
-      console.log('Event not deleted');
-    }
-  };
+	const handleDelete = async () => {
+		const res = await deleteEvent(uid, type);
+		mutate(
+			`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/user/${user.uid}/event`
+		);
+		if (res) {
+			setOpen(false);
+		} else {
+			console.log('Event not deleted');
+		}
+	};
 
 	return (
 		<div>

@@ -11,7 +11,7 @@ var parallax = () => {
 		return;
 	}
 	let scrollY = window.scrollY;
-	cover.style.backgroundPositionY = `${-scrollY * 0.5}px`;
+	cover.style.backgroundPositionY = `${-scrollY * 0.4}px`;
 };
 
 var intersection = new IntersectionObserver((entries) => {
