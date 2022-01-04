@@ -79,7 +79,7 @@ const Footer = () => {
                   type="text"
                   autoComplete="off"
                   placeholder="Email"
-                  className="w-full bg-cgray-50 bg-opacity-50 rounded border-gray-400 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 focus:border-blue-500 outline-none text-gray-600 py-1 px-2 leading-8 transition-colors duration-200 ease-in-out text-base border-2"
+                  className="w-full bg-[#fff] bg-opacity-50 rounded border-gray-400 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 focus:border-blue-500 outline-none text-gray-600 py-1 px-2 leading-8 transition-colors duration-200 ease-in-out text-base border-2"
                 />
               </div>
               <button className="flex-shrink-0 inline-flex bg-blue-500 py-2 px-4 focus:outline-none hover:bg-blue-600 rounded mt-2 border-2 border-blue-500 transition-all duration-300">

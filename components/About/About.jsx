@@ -1,10 +1,9 @@
 import Image from "next/image";
-import { useEffect } from "react";
-import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
-const Card = ({ name, fhref, ihref, lhref, desc , userPhoto}) => {
+const Card = ({ name, ghref, ihref, lhref, desc, userPhoto }) => {
   return (
     <div className="">
       <div className="max-w-sm rounded overflow-hidden shadow-lg pb-10">
@@ -14,20 +13,19 @@ const Card = ({ name, fhref, ihref, lhref, desc , userPhoto}) => {
             className="w-full"
             src={userPhoto}
             alt="Sunset in the mountains"
-            width="100"
-            height="150"
+            layout="fill"
           />
         </div>
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2 text-center">{name}</div>
-          <p className="text-gray-700 text-base">{desc}</p>
+          <div className="font-semibold text-gray-700 text-xl mb-2 text-center">{name}</div>
+          <p className="text-gray-700 text-justify poppins">{desc}</p>
         </div>
         <div className="px-6 pt-4 pb-2 flex justify-center">
           <a
             className="ml-3 text-gray-500 cursor-pointer hover:text-gray-800 mr-4"
-            href={fhref}
+            href={ghref}
           >
-            <FacebookIcon />
+            <GitHubIcon />
           </a>
           <a
             className="ml-3 text-gray-500 cursor-pointer hover:text-gray-800 mr-4"
@@ -56,7 +54,7 @@ function About() {
           <h1 className="text-5xl md:text-7xl text-center text-bookmark-blue capitalize font-extrabold dancing text-gray-50">
             About Hevently
           </h1>
-          <p className="md:text-[20px] text-center text-bookmark-grey mt-4 py-10 text-gray-50">
+          <p className="md:text-[20px] text-justify text-bookmark-grey mt-4 py-10 text-gray-50">
             Born at the intersection of clever and creative, hevently harnesses
             the power of emotion to make your most important day less stressful
             and more beautiful. At our core, we are a culture of action and
@@ -81,32 +79,29 @@ function About() {
         <div className="flex flex-col gap-10 lg:flex-row lg:flex-wrap lg:justify-center lg:gap-20 items-center">
           <Card
             name="Shivam Kumar"
-            fhref=""
+            ghref="https://github.com/pseudo-bot"
             ihref="https://www.instagram.com/_seevum/"
             lhref="https://www.linkedin.com/in/jas0210/"
-            desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Voluptatibus quia, nulla! Maiores et perferendis eaque,
-            exercitationem praesentium nihil."
+            desc="I am a CSE sophomore at BIT Mesra, a full stack developer 
+            with a passion for learning and creating new technologies."
             userPhoto="/about/user.jpg"
           />
           <Card
             name="Ravish Raj Tiwary"
-            fhref=""
+            ghref="https://github.com/ravishraj21"
             ihref="https://www.instagram.com/ravishraj21/"
             lhref="https://www.linkedin.com/in/ravish-raj-tiwary-9356831ba/"
-            desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Voluptatibus quia, nulla! Maiores et perferendis eaque,
-            exercitationem praesentium nihil."
+            desc="I am a CSE sophomore at BIT Mesra, a full stack developer 
+            with a passion for learning and creating new technologies."
             userPhoto="/about/user.jpg"
           />
           <Card
             name="Sarang Gupta"
-            fhref=""
+            ghref="https://github.com/Saranggupta11"
             ihref="https://www.instagram.com/sarang.gupta08/"
             lhref="https://www.linkedin.com/in/sarang-gupta-6b0aa31b7/"
-            desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Voluptatibus quia, nulla! Maiores et perferendis eaque,
-            exercitationem praesentium nihil."
+            desc="I am a CSE sophomore at BIT Mesra, a full stack developer 
+            with a passion for learning and creating new technologies."
             userPhoto="/about/user.jpg"
           />
         </div>
