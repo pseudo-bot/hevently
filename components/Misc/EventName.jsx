@@ -41,9 +41,9 @@ export default function AlertDialog({ showModal, setShowModal }) {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle className="poppins text-center" id="alert-dialog-title">
-            {"Enter Event Name"}
-          </DialogTitle>
+          <div className="poppins text-center text-xl pt-4 font-medium">
+            Event Name
+          </div>
           <DialogContent>
             <div className="">
               <div className="pt-2 pb-4 text-gray-600 text-sm italic font-medium">A name can give the vibe of your whole shindig</div>
@@ -58,14 +58,19 @@ export default function AlertDialog({ showModal, setShowModal }) {
               />
             </div>
           </DialogContent>
-          <DialogActions className="flex justify-center pt-2 pb-4">
+          <div className="flex justify-center pt-2 pb-4">
             <Button
               onClick={handleClick}
-              className="border-none outline-none hover:bg-[#fff]"
+              sx={{
+                backgroundColor:"rgb(34, 197, 94)",
+                ":hover": {
+                  backgroundColor: "rgb(22, 163, 74)",
+                },
+              }}
             >
-              <div className=" bg-green-500 text-[#fff] px-4 py-2 rounded  hover:bg-green-600 poppins capitalize transition-all duration-300">Confirm</div>
+              <div className=" text-[#fff] rounded  poppins capitalize transition-all duration-300">Confirm</div>
             </Button>
-          </DialogActions>
+          </div>
         </Dialog>
       </div>
       <Alert
