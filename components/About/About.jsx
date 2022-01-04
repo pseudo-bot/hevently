@@ -105,7 +105,7 @@ function About() {
             desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Voluptatibus quia, nulla! Maiores et perferendis eaque,
             exercitationem praesentium nihil."
-            userPhoto="/about/main.jpg"
+            userPhoto="/about/user.jpg"
           />
         </div>
       </div>
