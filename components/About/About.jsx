@@ -17,8 +17,8 @@ const Card = ({ name, ghref, ihref, lhref, desc, userPhoto }) => {
           />
         </div>
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2 text-center">{name}</div>
-          <p className="text-gray-700 text-base">{desc}</p>
+          <div className="font-semibold text-gray-700 text-xl mb-2 text-center">{name}</div>
+          <p className="text-gray-700 text-justify poppins">{desc}</p>
         </div>
         <div className="px-6 pt-4 pb-2 flex justify-center">
           <a
@@ -82,9 +82,8 @@ function About() {
             ghref="https://github.com/pseudo-bot"
             ihref="https://www.instagram.com/_seevum/"
             lhref="https://www.linkedin.com/in/jas0210/"
-            desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Voluptatibus quia, nulla! Maiores et perferendis eaque,
-            exercitationem praesentium nihil."
+            desc="I am a CSE sophomore at BIT Mesra, a full stack developer 
+            with a passion for learning and creating new technologies."
             userPhoto="/about/user.jpg"
           />
           <Card
@@ -92,9 +91,8 @@ function About() {
             ghref="https://github.com/ravishraj21"
             ihref="https://www.instagram.com/ravishraj21/"
             lhref="https://www.linkedin.com/in/ravish-raj-tiwary-9356831ba/"
-            desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Voluptatibus quia, nulla! Maiores et perferendis eaque,
-            exercitationem praesentium nihil."
+            desc="I am a CSE sophomore at BIT Mesra, a full stack developer 
+            with a passion for learning and creating new technologies."
             userPhoto="/about/user.jpg"
           />
           <Card
@@ -102,9 +100,8 @@ function About() {
             ghref="https://github.com/Saranggupta11"
             ihref="https://www.instagram.com/sarang.gupta08/"
             lhref="https://www.linkedin.com/in/sarang-gupta-6b0aa31b7/"
-            desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Voluptatibus quia, nulla! Maiores et perferendis eaque,
-            exercitationem praesentium nihil."
+            desc="I am a CSE sophomore at BIT Mesra, a full stack developer 
+            with a passion for learning and creating new technologies."
             userPhoto="/about/user.jpg"
           />
         </div>
