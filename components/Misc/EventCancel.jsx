@@ -5,20 +5,23 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { deleteEvent } from '../../config/api/eventAPI';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { UserContext } from '../../context/Users';
-import { useSWRConfig } from 'swr';
+import { mutate } from 'swr';
+import { LoadingButton } from '@mui/lab'
 
 export default function AlertDialog({ title, open, setOpen, type, uid }) {
 	const user = useContext(UserContext);
-	const { mutate } = useSWRConfig();
+	const [loading, setLoading] = useState(false);
 
 	const handleClose = () => {
 		setOpen(false);
 	};
 
 	const handleDelete = async () => {
+		setLoading(true);
 		const res = await deleteEvent(uid, type);
+		setLoading(false);
 		mutate(
 			`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/user/${user.uid}/event`
 		);
@@ -51,16 +54,16 @@ export default function AlertDialog({ title, open, setOpen, type, uid }) {
 						className=" capitalize bg-gray-200 hover:bg-gray-100 text-gray-500 poppins"
 						onClick={handleClose}
 					>
-						Cancel
+						<div className='capitalize'>Cancel</div>
 					</Button>
-					<Button
+					<LoadingButton
 						className="bg-red-500 hover:bg-red-600 poppins capitalize"
 						variant="contained"
 						onClick={handleDelete}
-						autoFocus
+						loading={loading}
 					>
-						Confirm
-					</Button>
+						<div className='capitalize'>Confirm</div>
+					</LoadingButton>
 				</DialogActions>
 			</Dialog>
 		</div>
