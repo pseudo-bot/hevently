@@ -1,14 +1,13 @@
-import { useState } from 'react';
 import EventCard from './EventCard';
-import { useUser } from '../../../hooks/useUser';
 import { CircularProgress } from '@mui/material';
+import useEvent from '../../../hooks/useEvent';
 
 const MyEvents = () => {
-	const { events, eventLoading } = useUser();
-
+	const { event } = useEvent();
+	
 	return (
 		<>
-			{eventLoading ? (
+			{!event ? (
 				<div className="flex h-[40vh] w-full relative justify-center items-center ">
 					<CircularProgress />
 				</div>
@@ -20,12 +19,12 @@ const MyEvents = () => {
 					<EventCard
 						title="Upcoming Events"
 						id="upcoming"
-						eventsData={events}
+						eventsData={event}
 					/>
 					<EventCard
 						title="Completed Events"
 						id="completed"
-						eventsData={events}
+						eventsData={event}
 					/>
 				</div>
 			)}
