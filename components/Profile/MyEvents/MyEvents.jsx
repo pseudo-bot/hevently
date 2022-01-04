@@ -12,7 +12,7 @@ const MyEvents = () => {
 					<CircularProgress />
 				</div>
 			) : (
-				<div>
+				<div className='pb-8'>
 					<h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 py-6">
 						My Events
 					</h3>
