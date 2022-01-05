@@ -8,18 +8,15 @@ const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
     color: "blue",
   },
-  "& .MuiInput-underline:after": {
-    borderBottomColor: "blue",
-  },
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
-      borderColor: "#444",
+      borderColor: "rgb(212, 212, 216)",
     },
     "&:hover fieldset": {
-      borderColor: "#444",
+      borderColor: "rgb(212, 212, 216)",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "#0384fc",
+      borderColor: "rgb(99, 102, 241)",
     },
   },
 });
@@ -50,6 +47,10 @@ export default function SelectTextFields({edit,handleChange,value}) {
           onChange={(e)=>handleChange(e.target.value)}
           InputProps={{
             readOnly: edit ? false : true,
+            sx: {
+              backgroundColor: "white",
+              color: "rgb(63, 63, 70)",
+            }
           }}
           focused={edit}
           className="w-72 bg-bgray-50"

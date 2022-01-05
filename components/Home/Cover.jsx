@@ -33,7 +33,7 @@ function Cover() {
 				<div className="cover-heading text-gray-50 text-[6.5rem] dancing col font-bold animate__animated animate__bounceInDown absolute top-1/4">
 					hevently
 				</div>
-				<div className="text-gray-50 font-medium tracking-wide kalam text-[1.8rem] flex flex-col gap-2 absolute top-1/2">
+				<div className="text-gray-50 tracking-wide kalam text-[1.8rem] flex flex-col gap-2 absolute top-1/2">
 					{start ? (
 						<div className="animate__animated animate__fadeInLeft kalam text-center">
 							small team.

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
 import { updateRatings } from '../../../config/api/eventAPI';
 
 export default function BasicRating({ uid, rating, setRating, type }) {
@@ -8,12 +7,11 @@ export default function BasicRating({ uid, rating, setRating, type }) {
 		<>
 			{rating ? (
 				<div>
-					<Typography component="legend">Thanks for Rating</Typography>
 					<Rating name="read-only" value={rating} readOnly />
 				</div>
 			) : (
 				<div>
-					<Typography component="legend">Rate your experience</Typography>
+					<div className='mb-2'>Rate your experience</div>
 					<Rating
 						name="simple-controlled"
 						value={rating}
