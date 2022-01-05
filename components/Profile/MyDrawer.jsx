@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Person,
   Event,
   Logout,
   EventAvailable,
   EventNote,
+  House,
 } from "@mui/icons-material/";
 import Image from "next/image";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import logOut from "../../config/firebase/signOut";
 import { useRouter } from "next/router";
+import Register from "../Misc/Register";
 
 const MyDrawer = ({ photoURL, displayName }) => {
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
   const router = useRouter();
 
   const signOut = async () => {
@@ -71,6 +77,16 @@ const MyDrawer = ({ photoURL, displayName }) => {
           >
             <EventAvailable /> <span>Completed Events</span>
           </a>
+          <div className="w-4/5 mx-auto">
+            <Divider variant="middle" />
+          </div>
+          <a
+            href="#completed"
+            className="flex py-2 px-4 gap-2 items-center  hover:text-blue-700 transition-all duration-200 m-2"
+            onClick={handleClickOpen}
+          >
+            <House /> <span>Register</span>
+          </a>
 
           <div className="fixed bottom-0 py-8 w-[240px] p-4 bg-[#fff] ">
             <Button
@@ -83,6 +99,7 @@ const MyDrawer = ({ photoURL, displayName }) => {
             </Button>
           </div>
         </nav>
+        <Register open={open} setOpen={setOpen} />
       </div>
     </>
   );
