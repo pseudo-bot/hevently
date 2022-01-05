@@ -4,10 +4,8 @@ import { DateRange } from "react-date-range";
 import { DateRangePicker } from "react-date-range";
 import { useState } from "react";
 import moment from "moment";
-import { parseISO } from "date-fns";
 import { useContext } from "react";
 import { EventContext } from "../../context/EventContext";
-import { useUser } from "../../hooks/useUser";
 
 function getDates(startDate, stopDate) {
   var dateArray = [];

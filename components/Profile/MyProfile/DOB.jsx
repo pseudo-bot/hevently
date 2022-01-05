@@ -5,46 +5,60 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import { styled } from "@mui/material/styles";
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
     color: "blue",
   },
-  "& .MuiInput-underline:after": {
-    borderBottomColor: "blue",
-  },
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
-      borderColor: "#444",
+      borderColor: "rgb(212, 212, 216)",
     },
     "&:hover fieldset": {
-      borderColor: "#444",
+      borderColor: "rgb(212, 212, 216)",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "#0384fc",
+      borderColor: "rgb(99, 102, 241)",
     },
   },
 });
 
-export default function MaterialUIPickers({ edit,handleChange,value }) {
+export default function MaterialUIPickers({ edit, handleChange, value }) {
   return (
     <div className="flex items-center justify-between">
-      <div className="text-gray-700 font-semibold tracking-wider "> <span className="mr-1">< CalendarTodayIcon/></span> DOB</div>
+      <div className="text-gray-700 font-semibold tracking-wider ">
+        {" "}
+        <span className="mr-1">
+          <CalendarTodayIcon />
+        </span>{" "}
+        DOB
+      </div>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DesktopDatePicker
           inputFormat="dd/MM/yyyy"
           value={value}
-          onChange={(newVal)=>handleChange(newVal)}
-          readOnly={edit?false:true}
-          renderInput={(params) => (
-            <CssTextField
-            focused={edit}
-            className="w-72 bg-bgray-50"
-            size="small"
-            {...params}
-            />
-          )}
+          onChange={(newVal) => handleChange(newVal)}
+          readOnly={edit ? false : true}
+          renderInput={(params) => {
+            console.log(params);
+            let newParams = Object.assign({}, params);
+            newParams.InputProps = {
+              ...params.InputProps,
+              sx: {
+                backgroundColor: "white",
+                color: "rgb(63, 63, 70)",
+              }
+            }
+            return (
+              <CssTextField
+                focused={edit}
+                className="w-72 bg-bgray-50"
+                size="small"
+                {...newParams}
+              />
+            );
+          }}
         />
       </LocalizationProvider>
     </div>

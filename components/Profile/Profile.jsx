@@ -28,7 +28,7 @@ function ResponsiveDrawer(props) {
 
 	return (
 		<>
-			<div className="h-screen w-screen fixed profile-bg opacity-30"></div>
+			<div className="h-screen w-screen fixed profile-bg z-0 opacity-50"></div>
 			<Box sx={{ display: 'flex' }}>
 				<CssBaseline />
 				<NavBar
