@@ -11,6 +11,7 @@ import DOB from "./DOB";
 import updateUser from "../../../config/api/updateUser";
 import useUser from "../../../hooks/useUser";
 import { Edit, CloudDone } from "@mui/icons-material";
+import Alert from "../../Misc/Alert";
 
 const Loading = () => {
   return (
@@ -29,6 +30,8 @@ const MyProfile = () => {
   const [userGender, setUserGender] = useState("");
   const [userState, setUserState] = useState("");
   const [userPhoneNumber, setUserPhoneNumber] = useState("");
+
+  const [open, setOpen] = useState(false);
 
   const { user } = useUser();
 
@@ -75,6 +78,7 @@ const MyProfile = () => {
       } else {
         console.log("User not updated");
       }
+      setOpen(true);
     }
     setLoading(false);
   };
@@ -150,6 +154,12 @@ const MyProfile = () => {
           </div>
         </div>
       </div>
+      <Alert
+        open={open}
+        severity={"success"}
+        setOpen={setOpen}
+        msg={"Data Saved  Successfully"}
+      />
     </div>
   );
 };

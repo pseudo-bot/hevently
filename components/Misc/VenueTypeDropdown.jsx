@@ -1,15 +1,13 @@
-import { useState } from "react";
 import { Listbox} from "@headlessui/react";
 import { SelectorIcon } from "@heroicons/react/solid";
 
-const people = [
+const venType = [
   { name: "Select" },
   { name: "Wedding Banquet" },
   { name: "Hotel/Restaurant" },
 ];
 
 export default function VenueTypeDropdown({value,setValue}) {
-  const [selected, setSelected] = useState(people[0]);
 
   return (
     <div className="">
@@ -18,14 +16,14 @@ export default function VenueTypeDropdown({value,setValue}) {
       >
         Venue Type
       </label>
-      <Listbox value={selected} onChange={setSelected}>
+      <Listbox value={value} onChange={setValue}>
         <div
           id="dropdown
         "
           className="relative mt-1"
         >
           <Listbox.Button className="w-full bg-white rounded border text-left border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-            <span>{selected.name}</span>
+            <span>{venType.name}</span>
             <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
               <SelectorIcon
                 className="w-5 h-5 text-gray-400"
@@ -34,7 +32,7 @@ export default function VenueTypeDropdown({value,setValue}) {
             </span>
           </Listbox.Button>
           <Listbox.Options className="absolute w-full py-1 mt-1 bg-[#fff] rounded-md shadow-lg ring-1 focus:outline-none text-sm">
-            {people.map((person, personIdx) => (
+            {venType.map((person, personIdx) => (
               <Listbox.Option
                 key={personIdx}
                 className={({ active }) =>

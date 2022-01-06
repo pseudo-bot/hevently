@@ -60,7 +60,12 @@ const SingleInput = ({ label, value, setValue }) => {
 };
 
 export default function AlertDialog({ open, setOpen }) {
-  const [venueType, setVenueType] = useState("");
+  const venType = [
+    { name: "Select" },
+    { name: "Wedding Banquet" },
+    { name: "Hotel/Restaurant" },
+  ];
+  const [venueType, setVenueType] = useState(venType[0]);
   const [venueName, setVenueName] = useState("");
   const [venueAddress, setVenueAddress] = useState("");
 
