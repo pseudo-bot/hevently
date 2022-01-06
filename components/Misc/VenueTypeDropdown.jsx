@@ -1,21 +1,19 @@
-import { Fragment, useState } from "react";
-import { Listbox, Transition } from "@headlessui/react";
-import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
+import { useState } from "react";
+import { Listbox} from "@headlessui/react";
+import { SelectorIcon } from "@heroicons/react/solid";
 
 const people = [
   { name: "Select" },
   { name: "Wedding Banquet" },
   { name: "Hotel/Restaurant" },
-  { name: "Other" },
 ];
 
-export default function VenueTypeDropdown() {
+export default function VenueTypeDropdown({value,setValue}) {
   const [selected, setSelected] = useState(people[0]);
 
   return (
     <div className="">
       <label
-        htmlFor="dropdown"
         className="leading-7 capitalize text-sm text-gray-600"
       >
         Venue Type
@@ -35,7 +33,7 @@ export default function VenueTypeDropdown() {
               />
             </span>
           </Listbox.Button>
-          <Listbox.Options className="absolute w-full py-1 mt-1 bg-[#fff] rounded-md shadow-lg ring-1 focus:outline-none text-sm" >
+          <Listbox.Options className="absolute w-full py-1 mt-1 bg-[#fff] rounded-md shadow-lg ring-1 focus:outline-none text-sm">
             {people.map((person, personIdx) => (
               <Listbox.Option
                 key={personIdx}
@@ -45,25 +43,9 @@ export default function VenueTypeDropdown() {
                 }
                 value={person}
               >
-                {({ selected, active }) => (
+                {() => (
                   <>
-                    <span
-                      className={`${
-                        selected ? "font-medium" : "font-normal"
-                      } block truncate`}
-                    >
-                      {person.name}
-                    </span>
-                    {selected ? (
-                      <span
-                        className={`${
-                          active ? "text-blue-600" : "text-blue-600"
-                        }
-                                absolute inset-y-0 left-0 flex items-center pl-3`}
-                      >
-                        <CheckIcon className="w-5 h-5" aria-hidden="true" />
-                      </span>
-                    ) : null}
+                    <span>{person.name}</span>
                   </>
                 )}
               </Listbox.Option>

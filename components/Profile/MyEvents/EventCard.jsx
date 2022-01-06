@@ -29,7 +29,7 @@ const NoEvent = ({ type }) => {
   );
 };
 
-const Event = ({ eventType, key, event, disabled, isRating }) => {
+const Event = ({ eventType, event, disabled, isRating }) => {
   const diff =
     moment(event.startDate, "YYYY-MM-DD").toDate().getDate() -
     new Date().getDate();
@@ -40,7 +40,7 @@ const Event = ({ eventType, key, event, disabled, isRating }) => {
   const [rating, setRating] = useState(event.userRatings);
   return (
     <div>
-      <div key={key} className="rounded-md border p-6 text-gray-700 event-card">
+      <div  className="rounded-md border p-6 text-gray-700 event-card">
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-1">
             <div className="text-lg uppercase font-bold">
@@ -180,7 +180,6 @@ const EventCard = ({ title, id, eventsData }) => {
                   <SwiperSlide key={index}>
                     <Event
                       eventType={event.props.eventType}
-                      key={index}
                       event={event.props.event}
                       disabled={false}
                       isRating={false}
@@ -197,7 +196,6 @@ const EventCard = ({ title, id, eventsData }) => {
                 <SwiperSlide key={index}>
                   <Event
                     eventType={event.props.eventType}
-                    key={index}
                     event={event.props.event}
                     disabled={true}
                     isRating={true}
