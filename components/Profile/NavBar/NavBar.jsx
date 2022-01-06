@@ -21,7 +21,7 @@ const NavBar = ({displayName,mobileOpen,setMobileOpen}) => {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
         }}
-        className="bg-blue-500 shadow-none"
+        className="bg-blue-500 shadow-lg"
       >
         <Toolbar>
           <IconButton
