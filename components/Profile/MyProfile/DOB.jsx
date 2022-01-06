@@ -2,7 +2,6 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
-
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import { styled } from "@mui/material/styles";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
@@ -38,10 +37,10 @@ export default function MaterialUIPickers({ edit, handleChange, value }) {
         <DesktopDatePicker
           inputFormat="dd/MM/yyyy"
           value={value}
+          maxDate={new Date()}
           onChange={(newVal) => handleChange(newVal)}
           readOnly={edit ? false : true}
           renderInput={(params) => {
-            console.log(params);
             let newParams = Object.assign({}, params);
             newParams.InputProps = {
               ...params.InputProps,

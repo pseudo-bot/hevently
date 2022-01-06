@@ -6,16 +6,14 @@ const people = [
   { name: "Select" },
   { name: "Wedding Banquet" },
   { name: "Hotel/Restaurant" },
-  { name: "Other" },
 ];
 
-export default function VenueTypeDropdown() {
+export default function VenueTypeDropdown({value,setValue}) {
   const [selected, setSelected] = useState(people[0]);
 
   return (
     <div className="">
       <label
-        htmlFor="dropdown"
         className="leading-7 capitalize text-sm text-gray-600"
       >
         Venue Type

@@ -5,7 +5,7 @@ import {
   Logout,
   EventAvailable,
   EventNote,
-  House,
+  HowToReg
 } from "@mui/icons-material/";
 import Image from "next/image";
 import Button from "@mui/material/Button";
@@ -85,7 +85,7 @@ const MyDrawer = ({ photoURL, displayName }) => {
             className="flex py-2 px-4 gap-2 items-center  hover:text-blue-700 transition-all duration-200 m-2"
             onClick={handleClickOpen}
           >
-            <House /> <span>Register</span>
+            <HowToReg /> <span>Register</span>
           </a>
 
           <div className="fixed bottom-0 py-8 w-[240px] p-4 bg-[#fff] ">

@@ -41,7 +41,6 @@ const CssTextField = styled(TextField)({
           onChange={(e) => handleChange(e.target.value)}
           focused={edit}
           size="small"
-          type="email"
         />
       </div>
     );
