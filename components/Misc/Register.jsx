@@ -2,6 +2,23 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import VenueTypeDropdown from "./VenueTypeDropdown";
 const DualInput = ({ label, phStart, phEnd }) => {
+  const venueData={
+    venueType: "",
+    venueName: "",
+    venueAddress: "",
+    venueCity: "",
+    venueMobile: "",
+    capacity: {
+      min: "",
+      max: ""
+    },
+    venueImage: "",
+    venuePrice: {
+      veg: "",
+      nonVeg: ""
+    },
+
+  }
   return (
     <div>
       <label
@@ -79,6 +96,7 @@ export default function AlertDialog({ open, setOpen }) {
           <SingleInput label="venue name" />
           <SingleInput label="address" />
           <SingleInput label="city" />
+          <SingleInput label="Mobile No" />
           <DualInput phStart={"Min"} phEnd={"Max"} label="capacity" />
           <SingleInput label="image url" />
           <DualInput
