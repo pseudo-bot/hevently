@@ -29,26 +29,17 @@ function Cover() {
 	return (
 		<div>
 			<div className="cover h-screen w-screen absolute parallax"></div>
-			<div className="relative h-screen flex items-center justify-center flex-col">
-				<div className="cover-heading text-gray-50 text-[6.5rem] dancing col font-bold animate__animated animate__bounceInDown absolute top-1/4">
+			<div className="relative h-screen flex items-center justify-center flex-col gap-20">
+				<div className="cover-heading text-gray-50 text-[6.5rem] dancing col font-bold animate__animated animate__bounceInDown ">
 					hevently
 				</div>
-				<div className="text-gray-50 tracking-wide kalam text-[1.8rem] flex flex-col gap-2 absolute top-1/2">
-					{start ? (
-						<div className="animate__animated animate__fadeInLeft kalam text-center">
-							small team.
-						</div>
-					) : null}
-					{mid ? (
-						<div className="animate__animated animate__fadeInLeft kalam text-center">
-							big moments.
-						</div>
-					) : null}
-					{end ? (
-						<div className="animate__animated animate__fadeInLeft kalam text-center">
-							a lifetime of happiness.
-						</div>
-					) : null}
+				<TagLine>you plan | we organize</TagLine>
+				<div className='relative w-full h-[7.2rem]'>
+					<div className="text-gray-50 tracking-wide kalam text-[1.8rem] flex flex-col gap-2 absolute w-full h-full">
+						{start ? <AnimateText>small team.</AnimateText> : null}
+						{mid ? <AnimateText>big moments.</AnimateText> : null}
+						{end ? <AnimateText>a lifetime of happiness.</AnimateText> : null}
+					</div>
 				</div>
 				<div className="absolute bottom-10 cursor-pointer">
 					<div className="scroll"></div>
@@ -60,10 +51,14 @@ function Cover() {
 
 export default Cover;
 
-const Explore = () => {
+const TagLine = ({ children }) => {
+	return <div className='text-gray-50 sm:text-5xl text-4xl font-semibold capitalize animate__animated animate__fadeIn relative ubuntu tracking-wide cover-heading'>{children}</div>;
+};
+
+const AnimateText = ({ children }) => {
 	return (
-		<div className="relative text-gray-50 text-xl z-10 border-2 w-36 flex items-center justify-center h-12 cursor-pointer rounded-full overflow-hidden backdrop-blur-md">
-			<div className="z-10 tracking-wide">Explore</div>
+		<div className="animate__animated animate__fadeInLeft text-2xl text-center text-semibold">
+			{children}
 		</div>
 	);
 };

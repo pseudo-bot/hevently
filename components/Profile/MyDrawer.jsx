@@ -28,7 +28,7 @@ const MyDrawer = ({ photoURL, displayName }) => {
 
   return (
     <>
-      <div className="bg-[#fff] shadow-md fixed w-[240px] h-screen"></div>
+      <div className="bg-[#fff] shadow-lg border-r fixed w-[240px] h-screen"></div>
       <div className="relative z-50 h-full">
         <div className="py-8 ">
           <div className="w-full flex justify-center">
