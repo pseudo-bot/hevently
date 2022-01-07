@@ -41,9 +41,6 @@ function Cover() {
 						{end ? <AnimateText>a lifetime of happiness.</AnimateText> : null}
 					</div>
 				</div>
-				<div className="absolute bottom-10 cursor-pointer">
-					<div className="scroll"></div>
-				</div>
 			</div>
 		</div>
 	);

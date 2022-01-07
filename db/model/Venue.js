@@ -1,6 +1,6 @@
 import { Schema, model, models } from 'mongoose';
 
-const VenueSchema = new Schema({
+const VenueSchema = new Schema({ // 9 - keys
 	value: {
 		type: String,
 		required: [true, 'No value'],
@@ -16,6 +16,7 @@ const VenueSchema = new Schema({
 	ratings: {
 		type: Number,
 		required: [true, 'No ratings'],
+		default: 0,
 	},
 	capacity: {
 		type: String,
@@ -36,6 +37,7 @@ const VenueSchema = new Schema({
 	bookings: {
 		type: Schema.Types.Mixed,
 		required: [true, 'No bookings'],
+		default: [],
 	},
 });
 

@@ -6,16 +6,34 @@ import {
 	CorporateVenue,
 } from '../../../../db/model/Venue';
 
-export default async function createUserHandler(req, res) {
+export default async function createVenue(req, res) {
 	await dbConnect();
 
 	const { method } = req;
 	const { api_key } = req.query;
+	const { venue, type } = req.body;
 
 	if (api_key === process.env.NEXT_PUBLIC_CREATE_USER_KEY) {
 		switch (method) {
-			case 'DELETE':
-        
+			case 'POST':
+				let Venue;
+				switch (type) {
+					case 'Wedding':
+						Venue = WeddingVenue;
+						break;
+					case 'Birthday':
+						Venue = BirthdayVenue;
+						break;
+					case 'Social':
+						Venue = SocialVenue;
+						break;
+					case 'Corporate':
+						Venue = CorporateVenue;
+						break;
+				}
+
+				const addVenue = await Venue.create(venue);
+				addVenue.save();
 
 			default:
 				res.status(405).json({ error: 'Invalid request' });
