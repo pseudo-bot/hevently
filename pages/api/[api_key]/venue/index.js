@@ -29,24 +29,33 @@ export default async function createVenue(req, res) {
 				Venue = CorporateVenue;
 				break;
 		}
-		switch (method) {
-			case 'POST':
-				const addVenue = await Venue.create(venue);
-				addVenue.save();
-				res.status(201).json({
-					ok: true,
-					message: 'Venue created',
-				});
-				break;
-			
-			case 'PUT':
-				const updateVenue = await Venue.updateOne({
-					
-				})
+		try {
+			switch (method) {
+				case 'POST':
+					const addVenue = await Venue.create(venue);
+					addVenue.save();
+					res.status(201).json({
+						ok: true,
+						message: 'Venue created',
+					});
+					break;
 
-			default:
-				res.status(405).json({ error: 'Invalid request' });
-				break;
+				case 'PUT':
+					const updateVenue = await Venue.findOne({ id: _id });
+					updateVenue.overwrite(venue);
+					updateVenue.save();
+
+					res.status(200).json({
+						ok: true,
+						message: 'Venue updated',
+					});
+
+				default:
+					res.status(405).json({ error: 'Invalid request' });
+					break;
+			}
+		} catch (error) {
+			res.status(500).json({ error });
 		}
 	} else {
 		res.status(403).json({ error: 'Forbidden' });

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Divider, Rating, Button } from '@mui/material';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import RoomIcon from '@mui/icons-material/Room';
@@ -19,7 +20,7 @@ const ItemCard = ({
 	handleBooking,
 }) => {
 	return (
-		<div className='md:w-[45%] w-full'>
+		<div className="md:w-[45%] w-full">
 			<div className="flex rounded-md border bg-gray-50 cursor-pointer transition-all duration-200 lg:items-center lg:flex-row relative h-full p-4 flex-col gap-10 lg:gap-0">
 				<div className="flex flex-col lg:w-[70%] w-full gap-2 px-2 order-3 lg:order-1">
 					<div className="text-xl text-gray-800 uppercase font-semibold tracking-wide">
@@ -66,7 +67,7 @@ const ItemCard = ({
 							/>
 							{capacity}
 						</div>
-						<div className='flex gap-10'>
+						<div className="flex gap-10">
 							<div className="text-md text-gray-600 my-2">
 								<Dot
 									sx={{
@@ -100,38 +101,25 @@ const ItemCard = ({
 						</div>
 					</div>
 
-					{booked ? (
-						<Button
-							variant="contained"
-							size="large"
-							sx={{
-								width: '120px',
-								marginInline: 'auto',
-								marginBlock: '1rem',
-							}}
-							onClick={handleBooking}
-							color='success'
-						>
-							Booked
-						</Button>
-					) : (
-						<Button
-							variant="contained"
-							size="large"
-							sx={{
-								width: '120px',
-								marginInline: 'auto',
-								marginBlock: '1rem',
-							}}
-							onClick={handleBooking}
-						>
-							Book
-						</Button>
-					)}
+					<Button
+						variant="contained"
+						size="large"
+						sx={{
+							width: '120px',
+							marginInline: 'auto',
+							marginBlock: '1rem',
+						}}
+						onClick={handleBooking}
+						color={booked ? 'success' : 'primary'}
+					>
+						<div className="capitalize">{booked ? 'Booked' : 'Book'}</div>
+					</Button>
 				</div>
 
 				<div className="w-full lg:w-[40%] overflow-hidden flex items-center justify-center order-2">
-					<Image src={display} height={200} width={300} objectFit="cover" alt='venue-image'/>
+					<div className="overflow-hidden h-[200px] border">
+						<img src={display} alt={display} className="object-cover" />
+					</div>
 				</div>
 			</div>
 		</div>

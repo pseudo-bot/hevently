@@ -43,7 +43,7 @@ const SocialPage = ({ venues }) => {
 
 export default SocialPage;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   dbConnect();
 
   let data = await SocialVenue.find({});

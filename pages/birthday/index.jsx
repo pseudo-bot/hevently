@@ -42,7 +42,7 @@ const BirthdayPage = ({ venues }) => {
 
 export default BirthdayPage;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   dbConnect();
 
   let data = await BirthdayVenue.find({});

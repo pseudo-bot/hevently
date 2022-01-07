@@ -42,7 +42,7 @@ const CorporatePage = ({ venues }) => {
 
 export default CorporatePage;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   dbConnect();
 
   let data = await CorporateVenue.find({});

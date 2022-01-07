@@ -38,7 +38,7 @@ const FormFooter = ({
 					</LoadingButton>
 				) : (
 					<Button onClick={nextPosition} variant="contained" size="medium">
-						<KeyboardArrowRight />
+						<div className='capitalize'>Continue</div><KeyboardArrowRight />
 					</Button>
 				)}
 			</div>
