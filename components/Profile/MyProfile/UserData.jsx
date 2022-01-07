@@ -28,6 +28,7 @@ const CssTextField = styled(TextField)({
         <CssTextField
           id="outlined-basic"
           value={value}
+          required
           InputProps={{
             readOnly: edit ? false : true,
             autoComplete: "off",

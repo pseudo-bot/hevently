@@ -44,6 +44,7 @@ export default function SelectTextFields({edit,handleChange,value}) {
           id="outlined-select-gender"
           select
           value={value}
+          required
           onChange={(e)=>handleChange(e.target.value)}
           InputProps={{
             readOnly: edit ? false : true,

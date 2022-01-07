@@ -9,7 +9,7 @@ import { UserContext } from "../../context/Users";
 import { mutate } from "swr";
 import { LoadingButton } from "@mui/lab";
 
-export default function AlertDialog({ title, open, setOpen, type, uid }) {
+export default function AlertDialog({ title, open, setOpen, type, uid, setAlertOpen }) {
   const user = useContext(UserContext);
   const [loading, setLoading] = useState(false);
 
@@ -26,6 +26,7 @@ export default function AlertDialog({ title, open, setOpen, type, uid }) {
     );
     if (res) {
       setOpen(false);
+      setAlertOpen(true);
     } else {
       console.log("Event not deleted");
     }
