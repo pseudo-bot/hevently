@@ -12,7 +12,8 @@ import "swiper/css/pagination";
 import { useState } from "react";
 import EventCancel from "../../Misc/EventCancel";
 import CloseIcon from "@mui/icons-material/Close";
-import { SentimentDissatisfied as Sad } from "@mui/icons-material";
+import { PlaylistAdd, PlaylistAddCheck } from "@mui/icons-material";
+import Alert from "../../Misc/Alert";
 
 SwiperCore.use([Pagination]);
 
@@ -20,16 +21,24 @@ const NoEvent = ({ type }) => {
   return (
     <div className="text-gray-400 tracking-wide flex flex-col items-center gap-8 text-2xl mt-5">
       <div className={`montserrat`}>No {type} Events</div>
-      <Sad
-        sx={{
-          fontSize: "5rem",
-        }}
-      />
+      {type === "Upcoming" ? (
+        <PlaylistAdd
+          sx={{
+            fontSize: "5rem",
+          }}
+        />
+      ) : (
+        <PlaylistAddCheck
+          sx={{
+            fontSize: "5rem",
+          }}
+        />
+      )}
     </div>
   );
 };
 
-const Event = ({ eventType, event, disabled, isRating }) => {
+const Event = ({ eventType, event, disabled, isRating, setAlertOpen }) => {
   const diff =
     moment(event.startDate, "YYYY-MM-DD").toDate().getDate() -
     new Date().getDate();
@@ -40,7 +49,7 @@ const Event = ({ eventType, event, disabled, isRating }) => {
   const [rating, setRating] = useState(event.userRatings);
   return (
     <div>
-      <div  className="rounded-md border p-6 text-gray-700 event-card">
+      <div className="rounded-md border p-6 text-gray-700 event-card">
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-1">
             <div className="text-lg uppercase font-bold">
@@ -120,6 +129,7 @@ const Event = ({ eventType, event, disabled, isRating }) => {
         title={event.eventName}
         open={open}
         setOpen={setOpen}
+        setAlertOpen={setAlertOpen}
         type={eventType}
         uid={event.uid}
       />
@@ -128,6 +138,8 @@ const Event = ({ eventType, event, disabled, isRating }) => {
 };
 
 const EventCard = ({ title, id, eventsData }) => {
+  const [alertOpen, setAlertOpen] = useState(false);
+
   const upcoming = [];
   const completed = [];
   for (const events in eventsData) {
@@ -184,6 +196,7 @@ const EventCard = ({ title, id, eventsData }) => {
                       event={event.props.event}
                       disabled={false}
                       isRating={false}
+                      setAlertOpen={setAlertOpen}
                     />
                   </SwiperSlide>
                 );
@@ -200,6 +213,7 @@ const EventCard = ({ title, id, eventsData }) => {
                     event={event.props.event}
                     disabled={true}
                     isRating={true}
+                    setAlertOpen={setAlertOpen}
                   />
                 </SwiperSlide>
               );
@@ -209,6 +223,12 @@ const EventCard = ({ title, id, eventsData }) => {
           )}
         </Swiper>
       </div>
+      <Alert
+        open={alertOpen}
+        severity={"success"}
+        setOpen={setAlertOpen}
+        msg={"Event Cancelled Successfully"}
+      />
     </div>
   );
 };

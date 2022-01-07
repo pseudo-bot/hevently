@@ -47,12 +47,14 @@ export default function MaterialUIPickers({ edit, handleChange, value }) {
               sx: {
                 backgroundColor: "white",
                 color: "rgb(63, 63, 70)",
+                fontFamily:'poppins'
               }
             }
             return (
               <CssTextField
                 focused={edit}
-                className="w-72 bg-bgray-50"
+                required
+                className="w-72"
                 size="small"
                 {...newParams}
               />

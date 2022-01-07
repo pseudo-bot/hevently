@@ -28,12 +28,14 @@ const CssTextField = styled(TextField)({
         <CssTextField
           id="outlined-basic"
           value={value}
+          required
           InputProps={{
             readOnly: edit ? false : true,
             autoComplete: "off",
             sx: {
               backgroundColor: "white",
-              color: "rgb(82, 82, 91)",
+              color: "rgb(63, 63, 70)",
+              fontFamily:'poppins'
             }
           }}
           variant="outlined"
