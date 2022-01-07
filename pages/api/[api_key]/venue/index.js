@@ -14,26 +14,35 @@ export default async function createVenue(req, res) {
 	const { venue, type } = req.body;
 
 	if (api_key === process.env.NEXT_PUBLIC_CREATE_USER_KEY) {
+		let Venue;
+		switch (type) {
+			case 'wedding':
+				Venue = WeddingVenue;
+				break;
+			case 'birthday':
+				Venue = BirthdayVenue;
+				break;
+			case 'social':
+				Venue = SocialVenue;
+				break;
+			case 'corporate':
+				Venue = CorporateVenue;
+				break;
+		}
 		switch (method) {
 			case 'POST':
-				let Venue;
-				switch (type) {
-					case 'Wedding':
-						Venue = WeddingVenue;
-						break;
-					case 'Birthday':
-						Venue = BirthdayVenue;
-						break;
-					case 'Social':
-						Venue = SocialVenue;
-						break;
-					case 'Corporate':
-						Venue = CorporateVenue;
-						break;
-				}
-
 				const addVenue = await Venue.create(venue);
 				addVenue.save();
+				res.status(201).json({
+					ok: true,
+					message: 'Venue created',
+				});
+				break;
+			
+			case 'PUT':
+				const updateVenue = await Venue.updateOne({
+					
+				})
 
 			default:
 				res.status(405).json({ error: 'Invalid request' });

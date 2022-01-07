@@ -92,6 +92,7 @@ const Event = ({ eventType, event, disabled, isRating }) => {
                 type={eventType}
                 rating={rating}
                 setRating={setRating}
+                event={event}
               />
             </div>
           ) : (
