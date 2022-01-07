@@ -1,56 +1,72 @@
-import { Listbox} from "@headlessui/react";
-import { SelectorIcon } from "@heroicons/react/solid";
+import * as React from "react";
+import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
+import { styled } from "@mui/material/styles";
 
-const venType = [
-  { name: "Select" },
-  { name: "Wedding Banquet" },
-  { name: "Hotel/Restaurant" },
+const CssTextField = styled(TextField)({
+  "& label.Mui-focused": {
+    color: "blue",
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "rgb(212, 212, 216)",
+    },
+    "&:hover fieldset": {
+      borderColor: "rgb(212, 212, 216)",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "rgb(99, 102, 241)",
+    },
+  },
+});
+
+const genders = [
+  {
+    value: "Wedding Venue",
+    label: "Wedding Venue",
+  },
+  {
+    value: "Birthday Venue",
+    label: "Birthday Venue",
+  },
+  {
+    value: "Social Gathering Venue",
+    label: "Social Gathering Venue",
+  },
+  {
+    value: "Corporate Event Venue",
+    label: "Corporate Event Venue",
+  }
 ];
 
-export default function VenueTypeDropdown({value,setValue}) {
-
+export default function SelectTextFields({handleChange,value}) {
   return (
-    <div className="">
-      <label
-        className="leading-7 capitalize text-sm text-gray-600"
-      >
+    <div>
+      <label className="leading-7 capitalize text-sm text-gray-600">
         Venue Type
-      </label>
-      <Listbox value={value} onChange={setValue}>
-        <div
-          id="dropdown
-        "
-          className="relative mt-1"
-        >
-          <Listbox.Button className="w-full bg-white rounded border text-left border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-            <span>{venType.name}</span>
-            <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-              <SelectorIcon
-                className="w-5 h-5 text-gray-400"
-                aria-hidden="true"
-              />
-            </span>
-          </Listbox.Button>
-          <Listbox.Options className="absolute w-full py-1 mt-1 bg-[#fff] rounded-md shadow-lg ring-1 focus:outline-none text-sm">
-            {venType.map((person, personIdx) => (
-              <Listbox.Option
-                key={personIdx}
-                className={({ active }) =>
-                  `${active ? "text-blue-800 bg-gray-100" : "text-gray-700"}
-                          cursor-default select-none relative py-2 pl-10 pr-4`
-                }
-                value={person}
-              >
-                {() => (
-                  <>
-                    <span>{person.name}</span>
-                  </>
-                )}
-              </Listbox.Option>
+        </label>
+      <div className="w-full">
+          <CssTextField
+            id="outlined-select-gender"
+            select
+            value={value}
+            onChange={(e)=>handleChange(e.target.value)}
+            InputProps={{
+              sx: {
+                backgroundColor: "white",
+                color: "rgb(63, 63, 70)",
+              }
+            }}
+            size="small"
+            fullWidth
+          >
+            {genders.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
             ))}
-          </Listbox.Options>
+          </CssTextField>
         </div>
-      </Listbox>
     </div>
   );
 }
