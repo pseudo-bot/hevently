@@ -45,7 +45,7 @@ export async function getStaticProps() {
 
 	let data = await WeddingVenue.find({});
 	let venues = JSON.parse(JSON.stringify(data));
-
+	
 	if (!venues) {
 		return {
 			notFound: true,

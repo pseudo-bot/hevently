@@ -20,7 +20,7 @@ SwiperCore.use([Pagination]);
 const NoEvent = ({ type }) => {
   return (
     <div className="text-gray-400 tracking-wide flex flex-col items-center gap-8 text-2xl mt-5">
-      <div className={`montserrat`}>No {type} Events</div>
+      <div className={`ubuntu font-light`}>No {type} Events</div>
       {type === "Upcoming" ? (
         <PlaylistAdd
           sx={{

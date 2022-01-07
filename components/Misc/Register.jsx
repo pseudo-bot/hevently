@@ -96,7 +96,7 @@ export default function AlertDialog({ open, setOpen }) {
 				capacity.start,
 				capacity.end
 			)}`,
-			display: venueImage,
+			display: 'https://via.placeholder.com/300x200',
 			veg: venuePrice.start,
 			nonveg: venuePrice.end,
 		};
@@ -165,7 +165,7 @@ export default function AlertDialog({ open, setOpen }) {
 						<div className=" capitalize text-gray-500">Cancel</div>
 					</Button>
 					<LoadingButton variant="contained" onClick={handleConfirm} loading={loading}>
-						<div className="capitalize text-gray-50">Confirm</div>
+						<div className="capitalize text-gray-50">{loading ? '' : 'Confirm'}</div>
 					</LoadingButton>
 				</div>
 			</Dialog>

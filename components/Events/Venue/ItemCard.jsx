@@ -117,9 +117,13 @@ const ItemCard = ({
 				</div>
 
 				<div className="w-full lg:w-[40%] overflow-hidden flex items-center justify-center order-2">
-					<div className="overflow-hidden h-[200px] border">
-						<img src={display} alt={display} className="object-cover" />
-					</div>
+					<Image
+						src={display}
+						height={200}
+						width={300}
+						objectFit="cover"
+						alt="venue-image"
+					/>
 				</div>
 			</div>
 		</div>
