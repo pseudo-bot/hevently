@@ -49,6 +49,7 @@ export default function SelectTextFields({handleChange,value}) {
           <CssTextField
             id="outlined-select-gender"
             select
+            required
             value={value}
             onChange={(e)=>handleChange(e.target.value)}
             InputProps={{

@@ -13,6 +13,7 @@ const DualInput = ({ label, phStart, phEnd, value, setValue }) => {
         <input
           type="text"
           autoComplete="off"
+          required
           placeholder={phStart}
           value={value.start}
           onChange={(e) => {
@@ -26,6 +27,7 @@ const DualInput = ({ label, phStart, phEnd, value, setValue }) => {
         <input
           type="text"
           autoComplete="off"
+          required
           placeholder={phEnd}
           value={value.end}
           onChange={(e) => {
@@ -51,6 +53,7 @@ const SingleInput = ({ label, value, setValue }) => {
         <input
           value={value}
           onChange={(e) => setValue(e.target.value)}
+          required
           autoComplete="off"
           className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:border-2 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
         />

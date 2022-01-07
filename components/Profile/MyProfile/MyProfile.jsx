@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import EmailIcon from "@mui/icons-material/Email";
 import CallIcon from "@mui/icons-material/Call";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
@@ -12,6 +12,7 @@ import updateUser from "../../../config/api/updateUser";
 import useUser from "../../../hooks/useUser";
 import { Edit, CloudDone } from "@mui/icons-material";
 import Alert from "../../Misc/Alert";
+import { validatePhone,validateName } from "../../../utils/validation";
 
 const Loading = () => {
   return (
@@ -32,6 +33,8 @@ const MyProfile = () => {
   const [userPhoneNumber, setUserPhoneNumber] = useState("");
 
   const [open, setOpen] = useState(false);
+  const [dataSuccess,setDataSuccess]=useState(false);
+  const [errMsg,setErrMsg]=useState("");
 
   const { user } = useUser();
 
@@ -67,11 +70,26 @@ const MyProfile = () => {
       displayName: user.displayName,
       photoURL: user.photoURL,
     };
-    if (ob.phoneNumber.length < 10 && typeof ob.phoneNumber) {
-      alert("Phone number must be 10 digits");
-    } else {
+    if (!validatePhone(ob.phoneNumber)) {
+      setErrMsg("Phone Number");
+      setDataSuccess(false);
+      setOpen(true);
+
+    }
+    else if(!validateName(ob.state)){
+      setErrMsg("State Name");
+      setDataSuccess(false);
+      setOpen(true);
+    }
+    else if(!validateName(ob.city)){
+      setErrMsg("City Name");
+      setDataSuccess(false);
+      setOpen(true);
+    }
+     else {
       setDisabledBtn(!disabledBtn);
       setEdit(!edit);
+      setDataSuccess(true);
       const res = await updateUser(ob);
       if (res) {
         console.log("User updated succefully");
@@ -81,6 +99,7 @@ const MyProfile = () => {
       setOpen(true);
     }
     setLoading(false);
+   
   };
   return (
     <div>
@@ -154,12 +173,23 @@ const MyProfile = () => {
           </div>
         </div>
       </div>
-      <Alert
-        open={open}
-        severity={"success"}
-        setOpen={setOpen}
-        msg={"Data Saved  Successfully"}
-      />
+     {
+        dataSuccess ?(
+          <Alert
+          open={open}
+          severity={"success"}
+          setOpen={setOpen}
+          msg={"Data Saved  Successfully"}
+        />
+        ):(
+          <Alert
+          open={open}
+          severity={"warning"}
+          setOpen={setOpen}
+          msg={`Please Enter Valid ${errMsg} `}
+        />
+        )
+     }
     </div>
   );
 };
