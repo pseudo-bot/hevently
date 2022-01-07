@@ -21,7 +21,7 @@ const createEvent = async (event, type) => {
 	}
 };
 
-const updateRatings = async (ratings, uid, type) => {
+const updateUserRatings = async (ratings, uid, type) => {
 	try {
 		const updateEvent = await fetch(
 			`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/user/${auth.currentUser.uid}/event`,
@@ -61,4 +61,24 @@ const deleteEvent = async (uid, type) => {
 	}
 };
 
-export { createEvent, updateRatings, deleteEvent };
+const updateEventRating = async (id, type, rating) => {
+	try {
+		const eventRatings = await fetch(
+			`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/user/${auth.currentUser.uid}/event`,
+			{
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ id, type, rating }),
+			}
+		);
+		const res = await eventRatings.json();
+		return res.ok;
+	} catch (err) {
+		console.log(err);
+		return false;
+	}
+};
+
+export { createEvent, updateUserRatings, deleteEvent, updateEventRating };

@@ -101,6 +101,7 @@ const Event = ({ eventType, event, disabled, isRating, setAlertOpen }) => {
                 type={eventType}
                 rating={rating}
                 setRating={setRating}
+                event={event}
               />
             </div>
           ) : (

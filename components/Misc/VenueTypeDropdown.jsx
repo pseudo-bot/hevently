@@ -20,54 +20,55 @@ const CssTextField = styled(TextField)({
   },
 });
 
-const genders = [
+const venType = [
   {
-    value: "Wedding Venue",
-    label: "Wedding Venue",
+    value: "Wedding",
+    label: "Wedding",
   },
   {
-    value: "Birthday Venue",
-    label: "Birthday Venue",
+    value: "Birthday",
+    label: "Birthday",
   },
   {
-    value: "Social Gathering Venue",
-    label: "Social Gathering Venue",
+    value: "Social",
+    label: "Social",
   },
   {
-    value: "Corporate Event Venue",
-    label: "Corporate Event Venue",
-  }
+    value: "Corporate",
+    label: "Corporate",
+  },
 ];
 
-export default function SelectTextFields({handleChange,value}) {
+export default function SelectTextFields({ handleChange, value }) {
   return (
     <div>
       <label className="leading-7 capitalize text-sm text-gray-600">
         Venue Type
-        </label>
+      </label>
       <div className="w-full">
-          <CssTextField
-            id="outlined-select-gender"
-            select
-            required
-            value={value}
-            onChange={(e)=>handleChange(e.target.value)}
-            InputProps={{
-              sx: {
-                backgroundColor: "white",
-                color: "rgb(63, 63, 70)",
-              }
-            }}
-            size="small"
-            fullWidth
-          >
-            {genders.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </CssTextField>
-        </div>
+        <CssTextField
+          id="outlined-select-gender"
+          select
+          required
+          value={value}
+          onChange={(e) => handleChange(e.target.value)}
+          InputProps={{
+            sx: {
+              backgroundColor: "white",
+              color: "rgb(63, 63, 70)",
+              fontFamily: "poppins",
+            },
+          }}
+          size="small"
+          fullWidth
+        >
+          {venType.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </CssTextField>
+      </div>
     </div>
   );
 }

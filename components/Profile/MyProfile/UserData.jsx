@@ -34,7 +34,8 @@ const CssTextField = styled(TextField)({
             autoComplete: "off",
             sx: {
               backgroundColor: "white",
-              color: "rgb(82, 82, 91)",
+              color: "rgb(63, 63, 70)",
+              fontFamily:'poppins'
             }
           }}
           variant="outlined"

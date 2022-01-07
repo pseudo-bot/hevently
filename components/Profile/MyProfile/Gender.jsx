@@ -51,6 +51,7 @@ export default function SelectTextFields({edit,handleChange,value}) {
             sx: {
               backgroundColor: "white",
               color: "rgb(63, 63, 70)",
+              fontFamily:'poppins'
             }
           }}
           focused={edit}

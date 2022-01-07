@@ -83,19 +83,19 @@ export default function AlertDialog({ open, setOpen }) {
     setOpen(false);
   };
   const handleConfirm = () => {
-    const obj = {
-      venueType,
-      venueName,
-      venueAddress,
-      venueCity,
-      venueMobile,
-      capacity,
-      venueImage,
-      venuePrice
-     };
-     console.log(obj);
-}
-
+    const venue = {
+      type: venueType.toLowerCase(),
+      value: venueName,
+      address: venueAddress,
+      city: venueCity,
+      capacity: `${capacity.start}-${capacity.end}`,
+      display: venueImage,
+      veg: venuePrice.start,
+      nonVeg: venuePrice.end,
+    };
+    console.log(venue);
+	setOpen(false);
+  };
 
   return (
     <div>

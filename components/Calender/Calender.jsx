@@ -32,7 +32,7 @@ export default function StaticDatePickerLandscape() {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <div className="flex pt-12 text-gray-700 flex-wrap justify-center gap-20">
+      <div className="flex px-10 pt-12 text-gray-700 flex-wrap justify-center gap-20">
         <StaticDatePicker
           orientation="landscape"
           openTo="day"
