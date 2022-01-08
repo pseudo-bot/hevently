@@ -7,6 +7,7 @@ import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import MyProfile from './MyProfile/MyProfile';
 import MyEvents from './MyEvents/MyEvents';
+import MyRegistration from './MyRegistration/MyRegistration';
 import MyDrawer from './MyDrawer';
 import NavBar from './NavBar/NavBar';
 import useUser from '../../hooks/useUser';
@@ -84,6 +85,8 @@ function ResponsiveDrawer(props) {
 					<MyProfile />
 					<Divider />
 					<MyEvents />
+					<Divider />
+					<MyRegistration/>
 				</Box>
 			</Box>
 		</>
