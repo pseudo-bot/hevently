@@ -1,6 +1,6 @@
 import { auth } from '../firebase/firebase';
 
-export async function addUserVenue(venue, uid) {
+export async function addUserVenue(venue) {
 	try {
 		const newVenue = await fetch(
 			`/api/user/${auth.currentUser.uid}/uservenue`,
@@ -9,7 +9,7 @@ export async function addUserVenue(venue, uid) {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({ venue, uid }),
+				body: JSON.stringify({ venue, uid: auth.currentUser.uid }),
 			}
 		);
 		const res = await newVenue.json();

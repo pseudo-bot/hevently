@@ -8,7 +8,8 @@ import Rupee from "@mui/icons-material/CurrencyRupee";
 import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
 import Register from './Register'
-const RegistrationCard = () => {
+const RegistrationCard = ({venue}) => {
+  console.log(venue)
   const [open, setOpen] = useState(false);
   const handleEdit = () => {
     setOpen(true);
@@ -22,7 +23,7 @@ const RegistrationCard = () => {
         <div className="bg-[#fff] rounded-md p-6 border">
           <div className="flex flex-col gap-2">
             <div className="text-xl text-gray-700 uppercase font-semibold tracking-wide">
-              CELEBRATION BANQUET HALL
+              {venue.value}
             </div>
             <div className="text-lg text-gray-600 tracking-wide flex">
               <LocationCityIcon
@@ -32,7 +33,7 @@ const RegistrationCard = () => {
                   marginTop: "4px",
                 }}
               />
-              Karamtoli Rd, Morabadi
+             {venue.address}
             </div>
             <div className="text-md text-gray-600 tracking-wide">
               <RoomIcon
@@ -42,7 +43,7 @@ const RegistrationCard = () => {
                   color: "blue",
                 }}
               />
-              Ranchi
+              {venue.city}
             </div>
             <Divider variant="middle" />
             <div className="font-semibold">Wedding Type</div>
@@ -55,7 +56,7 @@ const RegistrationCard = () => {
                     marginRight: "6px",
                   }}
                 />
-                50-100
+                {venue.capacity}
               </div>
               <div className="flex gap-10">
                 <div className="text-md text-gray-600 my-2">
@@ -71,7 +72,7 @@ const RegistrationCard = () => {
                       fontSize: 20,
                     }}
                   />
-                  1000
+                  {venue.veg}
                 </div>
                 <div className="text-md text-gray-600 my-2">
                   <Dot
@@ -86,7 +87,7 @@ const RegistrationCard = () => {
                       fontSize: 20,
                     }}
                   />
-                  10000
+                  {venue.nonveg}
                 </div>
               </div>
             </div>

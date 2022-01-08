@@ -81,6 +81,15 @@ const MyDrawer = ({ photoURL, displayName }) => {
             <Divider variant="middle" />
           </div>
           <a
+            href="#completed"
+            className="flex py-2 px-4 gap-2 items-center  hover:text-blue-700 transition-all duration-200 m-2"
+          >
+            <EventAvailable /> <span>My Registrations</span>
+          </a>
+          <div className="w-4/5 mx-auto">
+            <Divider variant="middle" />
+          </div>
+          <a
             href="#"
             className="flex py-2 px-4 gap-2 items-center  hover:text-blue-700 transition-all duration-200 m-2"
             onClick={handleClickOpen}

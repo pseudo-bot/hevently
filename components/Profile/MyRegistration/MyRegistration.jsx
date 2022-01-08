@@ -5,6 +5,7 @@ import SwiperCore, { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import { PlaylistAdd} from "@mui/icons-material";
+import useUserVenue from '../../../hooks/useUserVenue'
 
 
 SwiperCore.use([Pagination]);
@@ -23,6 +24,8 @@ const NoRegistration=()=>{
 }
 
 const MyRegistration = () => {
+  const {venues}=useUserVenue()
+  console.log(venues);
   return (
     <>
       <div className="px-4 pb-8 mx-auto max-w-md md:max-w-2xl lg:max-w-full ">
@@ -46,18 +49,13 @@ const MyRegistration = () => {
             },
           }}
         >
-          <SwiperSlide>
-            <RegistrationCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <RegistrationCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <RegistrationCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <RegistrationCard />
-          </SwiperSlide>
+         {venues.venues.length>0?venues.venues.map((venue,index)=>{
+            return(
+              <SwiperSlide key={index}>
+                <RegistrationCard venue={venue}/>
+              </SwiperSlide>
+            )
+         }):<NoRegistration/>}
         </Swiper>
       </div>
      

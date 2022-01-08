@@ -3,7 +3,6 @@ import Rating from '@mui/material/Rating';
 import { updateUserRatings, updateEventRating } from '../../../config/api/eventAPI';
 
 export default function BasicRating({ event, uid, rating, setRating, type }) {
-	console.log(event)
 	return (
 		<>
 			{rating ? (
