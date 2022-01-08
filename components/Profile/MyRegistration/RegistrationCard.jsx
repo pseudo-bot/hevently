@@ -8,23 +8,20 @@ import Rupee from "@mui/icons-material/CurrencyRupee";
 import CloseIcon from "@mui/icons-material/Close";
 import EditIcon from "@mui/icons-material/Edit";
 import Register from "./Register";
-import { deleteVenue } from "../../../config/api/venueAPI";
-import { deleteUserVenue } from "../../../config/api/userVenueAPI";
+// import { deleteVenue } from "../../../config/api/venueAPI";
+// import { deleteUserVenue } from "../../../config/api/userVenueAPI";
+import VenueCancel from '../../Misc/VenueCancel';
 
 const RegistrationCard = ({ venue }) => {
   const [open, setOpen] = useState(false);
-  const handleEdit = () => {
+  // const handleEdit = () => {
+  //   setOpen(true);
+  // };
+ 
+  const handleDelete=()=>{
     setOpen(true);
-  };
-  console.log(venue);
-  const handleDelete = async () => {
-    try {
-      await deleteUserVenue(venue.id);
-      await deleteVenue(venue.type, venue.id);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    console.log("delete");
+  }
   return (
     <>
       <div className="w-full">
@@ -115,7 +112,14 @@ const RegistrationCard = ({ venue }) => {
           </div>
         </div>
       </div>
-      <Register open={open} setOpen={setOpen} />
+      {/* <Register open={open} setOpen={setOpen} /> */}
+      <VenueCancel
+        title={venue.value}
+        open={open}
+        setOpen={setOpen}
+        type={venue.type}
+        uid={venue.id}
+      />
     </>
   );
 };
