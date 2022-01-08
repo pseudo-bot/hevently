@@ -15,6 +15,7 @@ export default function AlertDialog({
   title,
   open,
   setOpen,
+  venue,
   type,
   uid,
   setAlertOpen,

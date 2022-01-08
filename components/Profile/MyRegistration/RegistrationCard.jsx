@@ -116,6 +116,7 @@ const RegistrationCard = ({ venue }) => {
       <VenueCancel
         title={venue.value}
         open={open}
+		venue={venue}
         setOpen={setOpen}
         type={venue.type}
         uid={venue.id}
