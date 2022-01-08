@@ -30,16 +30,16 @@ const Footer = () => {
             </div>
             <div className="pt-2 pb-6 text-center">
               <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-                <a className="text-gray-500 cursor-pointer hover:text-gray-800 mr-4">
+                <a href="#" className="text-gray-500 cursor-pointer hover:text-gray-800 mr-4">
                   <FacebookIcon />
                 </a>
-                <a className="ml-3 text-gray-500 cursor-pointer hover:text-gray-800 mr-4">
+                <a href="#" className="ml-3 text-gray-500 cursor-pointer hover:text-gray-800 mr-4">
                   <TwitterIcon />
                 </a>
-                <a className="ml-3 text-gray-500 cursor-pointer hover:text-gray-800 mr-4">
+                <a href="#" className="ml-3 text-gray-500 cursor-pointer hover:text-gray-800 mr-4">
                   <InstagramIcon />
                 </a>
-                <a className="ml-3 text-gray-500 cursor-pointer hover:text-gray-800 mr-4">
+                <a href="#" className="ml-3 text-gray-500 cursor-pointer hover:text-gray-800 mr-4">
                   <LinkedInIcon />
                 </a>
               </span>
