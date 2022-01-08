@@ -9,15 +9,6 @@ import useUserVenue from "../../../hooks/useUserVenue";
 import { CircularProgress } from "@mui/material";
 
 SwiperCore.use([Pagination]);
-
-const Loading = () => {
-  return (
-    <div className="flex h-[40vh] w-full relative justify-center items-center text-xl text-center">
-      <CircularProgress />
-    </div>
-  );
-};
-
 const NoRegistration = () => {
   return (
     <div className="text-gray-400 pb-8 tracking-wide flex flex-col items-center gap-8 text-2xl mt-5">
