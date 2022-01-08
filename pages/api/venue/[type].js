@@ -47,17 +47,6 @@ export default async function createVenue(req, res) {
 				});
 				break;
 
-			case 'PUT':
-				const updateVenue = await Venue.findOne({ id: _id });
-				updateVenue.overwrite(venue);
-				updateVenue.save();
-
-				res.status(200).json({
-					ok: true,
-					message: 'Venue updated',
-				});
-				break;
-
 			default:
 				res.status(405).json({ error: 'Invalid request' });
 				break;

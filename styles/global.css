@@ -124,6 +124,10 @@ body {
 
 /* Home page */
 
+.logo-img:hover {
+  filter: drop-shadow(0 0 8px #999);
+}
+
 .cover {
   background-image: url("/events/cover2.jpg");
   background-size: cover;

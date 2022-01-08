@@ -28,7 +28,7 @@ export default function AlertDialog({ showModal, setShowModal }) {
   return (
     <>
       {showModal && (
-        <div className="opacity-40 fixed inset-0 z-40 bg-gray-800"></div>
+        <div className="opacity-10 fixed inset-0 z-40 bg-gray-50"></div>
       )}
       <div>
         <Dialog
@@ -77,7 +77,7 @@ export default function AlertDialog({ showModal, setShowModal }) {
         open={open}
         severity={"warning"}
         setOpen={setOpen}
-        msg={"Please enter atleast 3 characters"}
+        msg={"Please enter at least 3 characters"}
       />
     </>
   );
