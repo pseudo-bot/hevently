@@ -32,9 +32,9 @@ export default function StaticDatePickerLandscape() {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <div className="flex px-10 pt-12 text-gray-700 flex-wrap justify-center gap-20">
+      <div className="flex flex-wrap justify-center gap-20 pt-12 px-0 sm:px-10 ">
         <StaticDatePicker
-          orientation="landscape"
+          orientation="potrait"
           openTo="day"
           label="Start date"
           value={startDate}
@@ -46,7 +46,7 @@ export default function StaticDatePickerLandscape() {
           renderInput={(params) => <CssTextField {...params} />}
         />
         <StaticDatePicker
-          orientation="landscape"
+          orientation="potrait"
           openTo="day"
           label="End date"
           value={endDate}

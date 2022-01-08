@@ -96,8 +96,7 @@ const Event = ({ venues, type }) => {
 
 			<Confirm showConfirm={showConfirm} guestList={eventData.guestList} />
 
-			<div className="fixed opacity-20 w-screen h-screen right-0">
-				<Image src={formCover} objectFit="fill" alt="form-background" />
+			<div className="fixed opacity-20 w-screen profile-bg h-screen right-0">
 			</div>
 
 			<div className="absolute w-full right-0 py-24 flex items-center justify-center">
