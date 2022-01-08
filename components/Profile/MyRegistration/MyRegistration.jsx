@@ -25,7 +25,7 @@ const NoRegistration=()=>{
 const MyRegistration = () => {
   return (
     <>
-      <div className="p-8">
+      <div className="px-4 pb-8 mx-auto max-w-md md:max-w-2xl lg:max-w-full ">
         <h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 py-6 pb-12">
           My Registrations
         </h3>

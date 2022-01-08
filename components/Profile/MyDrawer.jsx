@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import logOut from "../../config/firebase/signOut";
 import { useRouter } from "next/router";
-import Register from "../Misc/Register";
+import Register from "./MyRegistration/Register";
 
 const MyDrawer = ({ photoURL, displayName }) => {
   const [open, setOpen] = useState(false);
@@ -81,7 +81,7 @@ const MyDrawer = ({ photoURL, displayName }) => {
             <Divider variant="middle" />
           </div>
           <a
-            href="#completed"
+            href="#"
             className="flex py-2 px-4 gap-2 items-center  hover:text-blue-700 transition-all duration-200 m-2"
             onClick={handleClickOpen}
           >
