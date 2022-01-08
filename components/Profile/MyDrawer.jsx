@@ -5,7 +5,7 @@ import {
   Logout,
   EventAvailable,
   EventNote,
-  HowToReg
+  HowToReg,
 } from "@mui/icons-material/";
 import Image from "next/image";
 import Button from "@mui/material/Button";
@@ -40,10 +40,14 @@ const MyDrawer = ({ photoURL, displayName }) => {
               height={64}
             />
           </div>
-          <p className="text-center py-2">{displayName}</p>
+          <div className="text-center py-2 capitalize">
+            {displayName === "" ? "User" : displayName}
+          </div>
         </div>
         <div className="pb-4">
-          <Divider variant="middle"><div className="text-gray-500">Profile</div></Divider>
+          <Divider variant="middle">
+            <div className="text-gray-500">Profile</div>
+          </Divider>
         </div>
         <nav>
           <a
@@ -79,10 +83,12 @@ const MyDrawer = ({ photoURL, displayName }) => {
           >
             <EventAvailable /> <span>Completed Events</span>
           </a>
-          
-            <div className="py-4">
-              <Divider variant="middle"><div className="text-gray-500">Registration</div></Divider>
-            </div>
+
+          <div className="py-4">
+            <Divider variant="middle">
+              <div className="text-gray-500">Registration</div>
+            </Divider>
+          </div>
           <a
             href="#"
             className="flex py-2 px-4 gap-2 items-center  hover:text-blue-700 transition-all duration-200 m-2"
