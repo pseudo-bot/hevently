@@ -4,11 +4,11 @@ import Dialog from "@mui/material/Dialog";
 import VenueTypeDropdown from "./VenueTypeDropdown";
 import { useState } from "react";
 import addVenue from "../../../config/api/venueAPI";
-import {addUserVenue} from '../../../config/api/userVenueAPI';
+import { addUserVenue } from "../../../config/api/userVenueAPI";
 import Alert from "../../Misc/Alert";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
-
+import {v4 as uuidv4} from 'uuid';
 
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
@@ -38,7 +38,7 @@ const DualInput = ({ label, phStart, phEnd, value, setValue }) => {
           type="text"
           autoComplete="off"
           required
-		  size="small"
+          size="small"
           placeholder={phStart}
           value={value.start}
           onChange={(e) => {
@@ -52,7 +52,7 @@ const DualInput = ({ label, phStart, phEnd, value, setValue }) => {
           type="text"
           autoComplete="off"
           required
-		  size="small"
+          size="small"
           placeholder={phEnd}
           value={value.end}
           onChange={(e) => {
@@ -78,8 +78,8 @@ const SingleInput = ({ label, value, setValue }) => {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           required
-		  size="small"
-		  fullWidth
+          size="small"
+          fullWidth
           autoComplete="off"
         />
       </div>
@@ -125,18 +125,20 @@ export default function AlertDialog({ open, setOpen }) {
       veg: venuePrice.start,
       nonveg: venuePrice.end,
     };
-    const res = await addVenue(venue, venueType.toLowerCase());
-	const addVenueData=await addUserVenue(venue);
+    const id = uuidv4();
+    const res = await addVenue(venue, venueType.toLowerCase(), id);
+    const res2 = await addUserVenue(venue, venueType.toLowerCase(), id);
+    
     setLoading(false);
 
-    if (res) {
+    if (res && res2) {
       setSuccess(true);
       setOpenAlert(true);
       setOpen(false);
     } else {
       setSuccess(false);
       setOpenAlert(true);
-	  setOpen(false);
+      setOpen(false);
     }
   };
 
@@ -214,21 +216,21 @@ export default function AlertDialog({ open, setOpen }) {
           </div>
         </Dialog>
       </div>
-	  {success ? (
-            <Alert
-              open={openAlert}
-              severity={"success"}
-              setOpen={setOpenAlert}
-              msg={"Venue added successfully"}
-            />
-          ) : (
-            <Alert
-              open={openAlert}
-              severity={"warning"}
-              setOpen={setOpenAlert}
-              msg={"Error adding venue"}
-            />
-          )}
+      {success ? (
+        <Alert
+          open={openAlert}
+          severity={"success"}
+          setOpen={setOpenAlert}
+          msg={"Venue added successfully"}
+        />
+      ) : (
+        <Alert
+          open={openAlert}
+          severity={"warning"}
+          setOpen={setOpenAlert}
+          msg={"Error adding venue"}
+        />
+      )}
     </>
   );
 }

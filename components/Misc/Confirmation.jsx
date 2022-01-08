@@ -22,7 +22,6 @@ const Confirmation = ({ showConfirm, guestList }) => {
 		if (res) {
 			setInvite(false);
 		} else {
-			console.log('Error! Invites not sent');
 			setError(true);
 		}
 	};

@@ -4,35 +4,48 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
-import { PlaylistAdd} from "@mui/icons-material";
-import useUserVenue from '../../../hooks/useUserVenue'
-
+import { PlaylistAdd } from "@mui/icons-material";
+import useUserVenue from "../../../hooks/useUserVenue";
+import { CircularProgress } from "@mui/material";
 
 SwiperCore.use([Pagination]);
 
-const NoRegistration=()=>{
-  return(
-    <div className="text-gray-400 tracking-wide flex flex-col items-center gap-8 text-2xl mt-5">
-    <div className={`ubuntu font-light`}>No Registrations</div>
+const Loading = () => {
+  return (
+    <div className="flex h-[40vh] w-full relative justify-center items-center text-xl text-center">
+      <CircularProgress />
+    </div>
+  );
+};
+
+const NoRegistration = () => {
+  return (
+    <div className="text-gray-400 pb-8 tracking-wide flex flex-col items-center gap-8 text-2xl mt-5">
+      <h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 py-6 pb-12">
+          My Registrations
+        </h3>
+      <div className={`ubuntu font-light`}>No Registrations</div>
       <PlaylistAdd
         sx={{
           fontSize: "5rem",
         }}
       />
-  </div>
+    </div>
   );
-}
+};
 
 const MyRegistration = () => {
-  const {venues}=useUserVenue()
-  console.log(venues);
+  const { venues: data } = useUserVenue();
+  if (!data) {
+    return <NoRegistration />
+  }
   return (
     <>
       <div className="px-4 pb-8 mx-auto max-w-md md:max-w-2xl lg:max-w-full ">
         <h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 py-6 pb-12">
           My Registrations
         </h3>
-         <Swiper
+        <Swiper
           className="event-swiper"
           slidesPerView={1}
           spaceBetween={30}
@@ -49,16 +62,17 @@ const MyRegistration = () => {
             },
           }}
         >
-         {venues.venues.length>0?venues.venues.map((venue,index)=>{
-            return(
-              <SwiperSlide key={index}>
-                <RegistrationCard venue={venue}/>
-              </SwiperSlide>
-            )
-         }):<NoRegistration/>}
+          {
+            data.venues.map((venue, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <RegistrationCard venue={venue} />
+                </SwiperSlide>
+              );
+            })
+          }
         </Swiper>
       </div>
-     
     </>
   );
 };

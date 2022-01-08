@@ -5,18 +5,25 @@ import RoomIcon from "@mui/icons-material/Room";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import Dot from "@mui/icons-material/CenterFocusStrong";
 import Rupee from "@mui/icons-material/CurrencyRupee";
-import CloseIcon from '@mui/icons-material/Close';
-import EditIcon from '@mui/icons-material/Edit';
-import Register from './Register'
-const RegistrationCard = ({venue}) => {
-  console.log(venue)
+import CloseIcon from "@mui/icons-material/Close";
+import EditIcon from "@mui/icons-material/Edit";
+import Register from "./Register";
+import { deleteUser } from "../../../config/api/venueAPI";
+import { deleteUserVenue } from "../../../config/api/userVenueAPI";
+
+const RegistrationCard = ({ venue }) => {
   const [open, setOpen] = useState(false);
   const handleEdit = () => {
     setOpen(true);
-  }
-  const handleDelete = () => {
-
-  }
+  };
+  // const handleDelete = async () => {
+  //   try {
+  //     await deleteUserVenue(venue.uid);
+  //     await deleteUser(venue.type, venue.uid);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
   return (
     <>
       <div className="w-full">
@@ -33,7 +40,7 @@ const RegistrationCard = ({venue}) => {
                   marginTop: "4px",
                 }}
               />
-             {venue.address}
+              {venue.address}
             </div>
             <div className="text-md text-gray-600 tracking-wide">
               <RoomIcon
@@ -46,7 +53,7 @@ const RegistrationCard = ({venue}) => {
               {venue.city}
             </div>
             <Divider variant="middle" />
-            <div className="font-semibold">Wedding Type</div>
+            <div className="font-semibold capitalize">{venue.type}</div>
 
             <div className="flex gap-2 flex-col">
               <div className="text-md text-gray-600 my-2">
@@ -93,16 +100,21 @@ const RegistrationCard = ({venue}) => {
             </div>
           </div>
           <div className="flex justify-end gap-4 py-4">
-            <Button onClick={handleEdit} startIcon={<EditIcon/>} variant="contained" color="primary">
+            {/* <Button disa onClick={handleEdit} startIcon={<EditIcon/>} variant="contained" color="primary">
               <div className="capitalize">Edit</div>
-            </Button>
-            <Button onClick={handleDelete} startIcon={<CloseIcon/>} variant="contained" color="error">
+            </Button> */}
+            {/* <Button
+              onClick={handleDelete}
+              startIcon={<CloseIcon />}
+              variant="contained"
+              color="error"
+            >
               <div className=" capitalize ">Delete</div>
-            </Button>
+            </Button> */}
           </div>
         </div>
       </div>
-      <Register open={open} setOpen={setOpen}/>
+      <Register open={open} setOpen={setOpen} />
     </>
   );
 };

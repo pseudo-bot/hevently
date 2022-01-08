@@ -47,6 +47,14 @@ export default async function createVenue(req, res) {
 				});
 				break;
 
+				case 'DELETE':
+					await Venue.deleteOne({uid: body.uid});
+					res.status(201).json({
+						ok: true,
+						message: 'Venue deleted',
+					});
+					break;
+
 			default:
 				res.status(405).json({ error: 'Invalid request' });
 				break;

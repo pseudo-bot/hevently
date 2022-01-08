@@ -25,7 +25,6 @@ const CssTextField = styled(TextField)({
 });
 export default function StaticDatePickerLandscape() {
   const eventContext = useContext(EventContext);
-  console.log(eventContext);
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());

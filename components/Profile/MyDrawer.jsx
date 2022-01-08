@@ -30,7 +30,7 @@ const MyDrawer = ({ photoURL, displayName }) => {
     <>
       <div className="bg-[#fff] shadow-lg border-r fixed w-[240px] h-screen"></div>
       <div className="relative z-50 h-full">
-        <div className="py-8 ">
+        <div className="py-8">
           <div className="w-full flex justify-center">
             <Image
               src={photoURL || "/profile/user.png"}
@@ -42,7 +42,9 @@ const MyDrawer = ({ photoURL, displayName }) => {
           </div>
           <p className="text-center py-2">{displayName}</p>
         </div>
-        <Divider variant="middle" />
+        <div className="pb-4">
+          <Divider variant="middle"><div className="text-gray-500">Profile</div></Divider>
+        </div>
         <nav>
           <a
             href="#"
@@ -77,6 +79,17 @@ const MyDrawer = ({ photoURL, displayName }) => {
           >
             <EventAvailable /> <span>Completed Events</span>
           </a>
+          
+            <div className="py-4">
+              <Divider variant="middle"><div className="text-gray-500">Registration</div></Divider>
+            </div>
+          <a
+            href="#"
+            className="flex py-2 px-4 gap-2 items-center  hover:text-blue-700 transition-all duration-200 m-2"
+            onClick={handleClickOpen}
+          >
+            <HowToReg /> <span>Register</span>
+          </a>
           <div className="w-4/5 mx-auto">
             <Divider variant="middle" />
           </div>
@@ -85,16 +98,6 @@ const MyDrawer = ({ photoURL, displayName }) => {
             className="flex py-2 px-4 gap-2 items-center  hover:text-blue-700 transition-all duration-200 m-2"
           >
             <EventAvailable /> <span>My Registrations</span>
-          </a>
-          <div className="w-4/5 mx-auto">
-            <Divider variant="middle" />
-          </div>
-          <a
-            href="#"
-            className="flex py-2 px-4 gap-2 items-center  hover:text-blue-700 transition-all duration-200 m-2"
-            onClick={handleClickOpen}
-          >
-            <HowToReg /> <span>Register</span>
           </a>
 
           <div className="fixed bottom-0 py-8 w-[240px] p-4 bg-[#fff] ">

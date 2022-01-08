@@ -9,7 +9,14 @@ import { UserContext } from "../../context/Users";
 import { mutate } from "swr";
 import { LoadingButton } from "@mui/lab";
 
-export default function AlertDialog({ title, open, setOpen, type, uid, setAlertOpen }) {
+export default function AlertDialog({
+  title,
+  open,
+  setOpen,
+  type,
+  uid,
+  setAlertOpen,
+}) {
   const user = useContext(UserContext);
   const [loading, setLoading] = useState(false);
 
@@ -21,9 +28,7 @@ export default function AlertDialog({ title, open, setOpen, type, uid, setAlertO
     setLoading(true);
     const res = await deleteEvent(uid, type);
     setLoading(false);
-    mutate(
-      `/api/user/${user.uid}/event`
-    );
+    mutate(`/api/user/${user.uid}/event`);
     if (res) {
       setOpen(false);
       setAlertOpen(true);
@@ -64,12 +69,12 @@ export default function AlertDialog({ title, open, setOpen, type, uid, setAlertO
             variant="contained"
             onClick={handleDelete}
             loading={loading}
-			sx={{
-				backgroundColor: "rgb(239, 68, 68)",
-				":hover": {
-				  backgroundColor: "rgb(220, 38, 38)",
-				},
-			  }}
+            sx={{
+              backgroundColor: "rgb(239, 68, 68)",
+              ":hover": {
+                backgroundColor: "rgb(220, 38, 38)",
+              },
+            }}
           >
             <div className="capitalize">Confirm</div>
           </LoadingButton>
