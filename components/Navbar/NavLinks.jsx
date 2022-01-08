@@ -81,7 +81,7 @@ export default function NavLinks({ hidden, setHidden }) {
 					hidden
 						? 'opacity-0 lg:pointer-events-auto pointer-events-none lg:opacity-100'
 						: ''
-				} flex-auto transition-all duration-300 absolute cursor-pointer bg-gray-50 top-16 right-0 shadow-lg flex flex-col w-52 items-center lg:relative lg:flex-row lg:w-[40rem] lg:gap-6 lg:top-0 lg:bg-transparent font-medium lg:shadow-none nav-links`}
+				} flex-auto transition-all duration-300 absolute cursor-pointer bg-gray-50 top-16 right-0 shadow-lg flex flex-col w-52 items-center lg:relative lg:flex-row lg:w-[40rem]  lg:top-0 lg:bg-transparent font-medium lg:shadow-none nav-links`}
 				onClick={() => setHidden(true)}
 			>
 				<NavItem href="/" home={true}>

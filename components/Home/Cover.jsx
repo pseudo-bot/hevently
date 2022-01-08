@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import 'animate.css';
+import Image from 'next/image'
+import logo from '../../public/logo.png'
 
 function Cover() {
 	const [start, setStart] = useState(false);
@@ -29,17 +31,23 @@ function Cover() {
 	return (
 		<div>
 			<div className="cover h-screen w-screen absolute parallax"></div>
-			<div className="relative h-screen flex items-center justify-center flex-col gap-20">
-				<div className="cover-heading text-gray-50 text-[5.5rem] md:text-[6.5rem] dancing col font-bold animate__animated animate__bounceInDown ">
+			<div className="relative h-screen flex items-center justify-center flex-col">
+				{/* <div className="cover-heading text-gray-50 text-[5.5rem] md:text-[6.5rem] dancing col font-bold animate__animated animate__bounceInDown ">
 					hevently
+				</div> */}
+				<div className='relative h-[32rem] w-[32rem] '>
+					<Image src={logo} layout='fill' alt="site-logo" objectFit='cover'/>
 				</div>
 				<TagLine>you plan | we organize</TagLine>
 				<div className='relative w-full h-[7.2rem]'>
-					<div className="text-gray-50 tracking-wide kalam text-[1.8rem] flex flex-col gap-2 absolute w-full h-full">
+					{/* <div className="text-gray-50 tracking-wide kalam text-[1.8rem] flex flex-col gap-2 absolute w-full h-full">
 						{start ? <AnimateText>small team.</AnimateText> : null}
 						{mid ? <AnimateText>big moments.</AnimateText> : null}
 						{end ? <AnimateText>a lifetime of happiness.</AnimateText> : null}
-					</div>
+					</div> */}
+				</div>
+				<div className="absolute bottom-10 cursor-pointer">
+					<div className="scroll"></div>
 				</div>
 			</div>
 		</div>
