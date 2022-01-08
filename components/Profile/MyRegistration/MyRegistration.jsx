@@ -13,8 +13,8 @@ const NoRegistration = () => {
   return (
     <div className="text-gray-400 pb-8 tracking-wide flex flex-col items-center gap-8 text-2xl mt-5">
       <h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 py-6 pb-12">
-          Venue Registrations
-        </h3>
+        Venue Registrations
+      </h3>
       <div className={`ubuntu font-light`}>No Registrations</div>
       <PlaylistAdd
         sx={{
@@ -27,8 +27,12 @@ const NoRegistration = () => {
 
 const MyRegistration = () => {
   const { venues: data } = useUserVenue();
+  console.log(data);
   if (!data) {
-    return <NoRegistration />
+    return <NoRegistration />;
+  }
+  if (data && data.venues.length === 0) {
+    return <NoRegistration />;
   }
   return (
     <>
@@ -53,15 +57,13 @@ const MyRegistration = () => {
             },
           }}
         >
-          {
-            data.venues.map((venue, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <RegistrationCard venue={venue} />
-                </SwiperSlide>
-              );
-            })
-          }
+          {data.venues.map((venue, index) => {
+            return (
+              <SwiperSlide key={index}>
+                <RegistrationCard venue={venue} />
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
     </>
