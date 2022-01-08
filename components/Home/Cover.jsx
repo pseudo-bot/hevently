@@ -7,8 +7,8 @@ function Cover() {
 		<div>
 			<div className="cover h-screen w-screen absolute parallax"></div>
 			<div className="relative h-screen flex items-center justify-center flex-col">
-				<div className='relative max-h-[32rem] max-w-[32rem] w-full h-full'>
-					<Image src={logo} layout='fill' alt="site-logo" objectFit='cover'/>
+				<div className='relative max-h-[32rem] max-w-[32rem] w-full h-full '>
+					<Image src={logo} layout='fill' alt="site-logo" objectFit='cover' className='cursor-pointer transition-all duration-500 logo-img'/>
 				</div>
 				<TagLine>you plan | we organize</TagLine>
 				<div className='relative w-full h-[7.2rem]'>
