@@ -9,20 +9,11 @@ import useUserVenue from "../../../hooks/useUserVenue";
 import { CircularProgress } from "@mui/material";
 
 SwiperCore.use([Pagination]);
-
-const Loading = () => {
-  return (
-    <div className="flex h-[40vh] w-full relative justify-center items-center text-xl text-center">
-      <CircularProgress />
-    </div>
-  );
-};
-
 const NoRegistration = () => {
   return (
     <div className="text-gray-400 pb-8 tracking-wide flex flex-col items-center gap-8 text-2xl mt-5">
       <h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 py-6 pb-12">
-          My Registrations
+          Venue Registrations
         </h3>
       <div className={`ubuntu font-light`}>No Registrations</div>
       <PlaylistAdd
@@ -43,7 +34,7 @@ const MyRegistration = () => {
     <>
       <div className="px-4 pb-8 mx-auto max-w-md md:max-w-2xl lg:max-w-full ">
         <h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 py-6 pb-12">
-          My Registrations
+          Venue Registrations
         </h3>
         <Swiper
           className="event-swiper"
