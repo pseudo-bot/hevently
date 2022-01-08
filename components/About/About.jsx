@@ -54,7 +54,7 @@ function About() {
           <h1 className="text-5xl md:text-7xl text-center text-bookmark-blue capitalize font-extrabold dancing text-gray-50">
             About Hevently
           </h1>
-          <p className="md:text-[20px] text-justify text-bookmark-grey mt-4 py-10 text-gray-50">
+          <div className="md:text-[20px] text-justify text-bookmark-grey mt-4 py-10 text-gray-50">
             Born at the intersection of clever and creative, hevently harnesses
             the power of emotion to make your most important day less stressful
             and more beautiful. At our core, we are a culture of action and
@@ -68,7 +68,7 @@ function About() {
             depend on us to make their planning process stress-free and to
             discover what will make their day uniquely special. We make design
             and planning simple for our clients - and simple isn{"'"}t easy.
-          </p>
+          </div>
         </div>
       </div>
 
