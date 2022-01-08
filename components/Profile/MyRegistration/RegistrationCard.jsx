@@ -53,52 +53,52 @@ const RegistrationCard = ({ venue }) => {
             <Divider variant="middle" />
             <div className="font-semibold capitalize">{venue.type}</div>
 
-            <div className="flex gap-2 flex-col">
-              <div className="text-md text-gray-600 my-2">
-                <PeopleAltIcon
-                  sx={{
-                    fontSize: 20,
-                    marginRight: "6px",
-                  }}
-                />
-                {venue.capacity}
-              </div>
-              <div className="flex gap-10">
-                <div className="text-md text-gray-600 my-2">
-                  <Dot
-                    sx={{
-                      fontSize: 20,
-                      marginRight: "6px",
-                      color: "green",
-                    }}
-                  />
-                  <Rupee
-                    sx={{
-                      fontSize: 20,
-                    }}
-                  />
-                  {venue.veg}
-                </div>
-                <div className="text-md text-gray-600 my-2">
-                  <Dot
-                    sx={{
-                      fontSize: 20,
-                      marginRight: "6px",
-                      color: "red",
-                    }}
-                  />
-                  <Rupee
-                    sx={{
-                      fontSize: 20,
-                    }}
-                  />
-                  {venue.nonveg}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-end gap-4 py-4">
-            {/* <Button disa onClick={handleEdit} startIcon={<EditIcon/>} variant="contained" color="primary">
+						<div className="flex gap-2 flex-col">
+							<div className="text-md text-gray-600 my-2">
+								<PeopleAltIcon
+									sx={{
+										fontSize: 20,
+										marginRight: '6px',
+									}}
+								/>
+								{venue.capacity}
+							</div>
+							<div className="flex gap-10">
+								<div className="text-md text-gray-600 my-2">
+									<Dot
+										sx={{
+											fontSize: 20,
+											marginRight: '6px',
+											color: 'green',
+										}}
+									/>
+									<Rupee
+										sx={{
+											fontSize: 20,
+										}}
+									/>
+									{venue.veg}
+								</div>
+								<div className="text-md text-gray-600 my-2">
+									<Dot
+										sx={{
+											fontSize: 20,
+											marginRight: '6px',
+											color: 'red',
+										}}
+									/>
+									<Rupee
+										sx={{
+											fontSize: 20,
+										}}
+									/>
+									{venue.nonveg}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div className="flex justify-end gap-4 py-4">
+						{/* <Button disa onClick={handleEdit} startIcon={<EditIcon/>} variant="contained" color="primary">
               <div className="capitalize">Edit</div>
             </Button> */}
             <Button

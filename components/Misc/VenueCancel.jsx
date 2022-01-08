@@ -20,21 +20,23 @@ export default function AlertDialog({
   setAlertOpen,
 }) {
   const [loading, setLoading] = useState(false);
+	const user = useContext(UserContext);
+
 
   const handleClose = () => {
     setOpen(false);
   };
 
   const handleDelete = async () => {
-    try {
-      await deleteUserVenue(venue.id);
-      await deleteVenue(venue.type, venue.id);
-    } catch (err) {
-      console.log(err);
-    }
+		try {
+			await deleteUserVenue(venue.id);
+			await deleteVenue(venue.type, venue.id);
+			mutate(`/api/user/${user.uid}/uservenue`);
+		} catch (err) {
+			console.log(err);
+		}
     setOpen(false);
-  };
-
+	};
   return (
     <div>
       <Dialog
