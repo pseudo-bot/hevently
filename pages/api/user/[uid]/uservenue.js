@@ -6,7 +6,7 @@ export default async function handleVenue(req, res) {
 
   const { method } = req;
   const { uid } = req.query;
-  const { venue } = req.body;
+  const { venue, id } = req.body;
 
   try {
     switch (method) {
@@ -40,7 +40,7 @@ export default async function handleVenue(req, res) {
       case "DELETE":
         await UserVenue.updateOne(
 					{ uid },
-					{ $pull: { venues: { id: body.id } } }
+					{ $pull: { venues: { id } } }
 				).clone();
 
         res.status(200).json({

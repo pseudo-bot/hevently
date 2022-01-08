@@ -11,7 +11,7 @@ export default async function createVenue(req, res) {
 
 	const { method } = req;
 	const { type } = req.query;
-	const { venue } = req.body;
+	const { venue, id } = req.body;
 
 	let Venue;
 	switch (type) {
@@ -48,7 +48,7 @@ export default async function createVenue(req, res) {
 				break;
 
 			case 'DELETE':
-				await Venue.deleteOne({ id: body.id });
+				await Venue.deleteOne({ id });
 
 				res.status(201).json({
 					ok: true,
