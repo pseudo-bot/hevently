@@ -9,7 +9,7 @@ export async function addUserVenue(venue, type, id) {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({ venue: {...venue, type, uid: id}, uid: auth.currentUser.uid }),
+				body: JSON.stringify({ venue: {...venue, type, id}, uid: auth.currentUser.uid }),
 			}
 		);
 		const res = await newVenue.json();
@@ -20,7 +20,7 @@ export async function addUserVenue(venue, type, id) {
 	}
 }
 
-export async function deleteUserVenue(uid) {
+export async function deleteUserVenue(id) {
 	try {
 		const newVenue = await fetch(
 			`/api/user/${auth.currentUser.uid}/uservenue`,
@@ -29,7 +29,7 @@ export async function deleteUserVenue(uid) {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({ uid }),
+				body: JSON.stringify({ id }),
 			}
 		);
 		const res = await newVenue.json();

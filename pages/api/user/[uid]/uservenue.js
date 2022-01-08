@@ -37,20 +37,11 @@ export default async function handleVenue(req, res) {
         });
         break;
 
-      case "PUT":
-        await UserVenue.updateOne(
-          { [`venues.uid`]: body.uid },
-          { $set: { [`venues.uid.$`]: venue } }
-        ).clone();
-
-        res.status(200).json({
-          ok: true,
-          message: "Venue updated",
-        });
-        break;
-
       case "DELETE":
-        await UserVenue.deleteOne({ [`venues.uid`]: body.uid });
+        await UserVenue.updateOne(
+					{ uid },
+					{ $pull: { venues: { id: body.id } } }
+				).clone();
 
         res.status(200).json({
           ok: true,

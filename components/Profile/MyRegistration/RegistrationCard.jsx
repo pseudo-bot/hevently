@@ -8,7 +8,7 @@ import Rupee from "@mui/icons-material/CurrencyRupee";
 import CloseIcon from "@mui/icons-material/Close";
 import EditIcon from "@mui/icons-material/Edit";
 import Register from "./Register";
-import { deleteUser } from "../../../config/api/venueAPI";
+import { deleteVenue } from "../../../config/api/venueAPI";
 import { deleteUserVenue } from "../../../config/api/userVenueAPI";
 
 const RegistrationCard = ({ venue }) => {
@@ -16,14 +16,15 @@ const RegistrationCard = ({ venue }) => {
   const handleEdit = () => {
     setOpen(true);
   };
-  // const handleDelete = async () => {
-  //   try {
-  //     await deleteUserVenue(venue.uid);
-  //     await deleteUser(venue.type, venue.uid);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  console.log(venue);
+  const handleDelete = async () => {
+    try {
+      await deleteUserVenue(venue.id);
+      await deleteVenue(venue.type, venue.id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <>
       <div className="w-full">
@@ -103,14 +104,14 @@ const RegistrationCard = ({ venue }) => {
             {/* <Button disa onClick={handleEdit} startIcon={<EditIcon/>} variant="contained" color="primary">
               <div className="capitalize">Edit</div>
             </Button> */}
-            {/* <Button
+            <Button
               onClick={handleDelete}
               startIcon={<CloseIcon />}
               variant="contained"
               color="error"
             >
               <div className=" capitalize ">Delete</div>
-            </Button> */}
+            </Button>
           </div>
         </div>
       </div>

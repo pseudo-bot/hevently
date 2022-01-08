@@ -18,16 +18,16 @@ export default async function addVenue(venue, type, id) {
 	}
 }
 
-export async function deleteVenue(type, uid) {
+export async function deleteVenue(type, id) {
 	try {
 		const newVenue = await fetch(
-			`/api/user/${type}`,
+			`/api/venue/${type}`,
 			{
 				method: 'DELETE',
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({ type, uid }),
+				body: JSON.stringify({ type, id}),
 			}
 		);
 		const res = await newVenue.json();

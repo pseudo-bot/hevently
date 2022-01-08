@@ -1,6 +1,10 @@
 import { Schema, model, models } from 'mongoose';
 
 const VenueSchema = new Schema({ // 9 - keys
+	id: {
+		type: String,
+		unique: true,
+	},
 	value: {
 		type: String,
 		required: [true, 'No value'],
