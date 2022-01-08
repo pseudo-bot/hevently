@@ -1,17 +1,15 @@
-import dbConnect from '../../db/utils/dbConnect.js';
-import { SocialVenue } from '../../db/model/Venue';
 import { EventProvider } from '../../context/EventContext';
-import { UserContext } from '../../context/Users';
-import { useContext } from 'react';
 import { CircularProgress } from '@mui/material';
 import Event from '../../components/Events/Event';
 import EventName from '../../components/Misc/EventName';
 import { useState } from 'react';
 import Head from 'next/head';
+import useVenue from '../../hooks/useVenue';
 
-const SocialPage = ({ venues }) => {
-	const user = useContext(UserContext);
+const SocialPage = () => {
 	const [showModal, setShowModal] = useState(true);
+	const { venues, loading } = useVenue('social');
+
 	return (
 		<>
 			<Head>
@@ -22,7 +20,7 @@ const SocialPage = ({ venues }) => {
 				/>
 			</Head>
 
-			{user ? (
+			{!loading ? (
 				<EventProvider>
 					<div>
 						<Event venues={venues} type={'social'} />
@@ -39,22 +37,3 @@ const SocialPage = ({ venues }) => {
 };
 
 export default SocialPage;
-
-export async function getStaticProps() {
-	await dbConnect();
-
-	let data = await SocialVenue.find({});
-	let venues = JSON.parse(JSON.stringify(data));
-
-	if (!venues) {
-		return {
-			notFound: true,
-		};
-	}
-	return {
-		props: {
-			venues,
-		},
-		revalidate: 10,
-	};
-}

@@ -5,7 +5,7 @@ export default async function sendMail(guestlist, userEmail) {
 	const contentType = 'application/json';
 	try {
 		const invite = await fetch(
-			`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/user/${auth.currentUser.uid}/invitation`,
+			`/api/user/${auth.currentUser.uid}/invitation`,
 			{
 				method: 'POST',
 				headers: {

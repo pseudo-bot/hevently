@@ -1,17 +1,15 @@
-import dbConnect from '../../db/utils/dbConnect.js';
-import { CorporateVenue } from '../../db/model/Venue';
 import { EventProvider } from '../../context/EventContext';
-import { UserContext } from '../../context/Users';
-import { useContext } from 'react';
 import { CircularProgress } from '@mui/material';
 import Event from '../../components/Events/Event';
 import EventName from '../../components/Misc/EventName';
 import { useState } from 'react';
 import Head from 'next/head';
+import useVenue from '../../hooks/useVenue';
 
-const CorporatePage = ({ venues }) => {
-	const user = useContext(UserContext);
+const CorporatePage = () => {
 	const [showModal, setShowModal] = useState(true);
+	const { venues, loading } = useVenue('corporate');
+
 	return (
 		<>
 			<Head>
@@ -21,7 +19,7 @@ const CorporatePage = ({ venues }) => {
 					content="Through hevently book your venue for corporate events like Seminars, conferences, Company milestone events, Product launch events, Charity events, etc."
 				/>
 			</Head>
-			{user ? (
+			{!loading ? (
 				<EventProvider>
 					<div>
 						<Event type={'corporate'} venues={venues} />
@@ -38,22 +36,3 @@ const CorporatePage = ({ venues }) => {
 };
 
 export default CorporatePage;
-
-export async function getStaticProps() {
-	await dbConnect();
-
-	let data = await CorporateVenue.find({});
-	let venues = JSON.parse(JSON.stringify(data));
-
-	if (!venues) {
-		return {
-			notFound: true,
-		};
-	}
-	return {
-		props: {
-			venues,
-		},
-		revalidate: 10,
-	};
-}

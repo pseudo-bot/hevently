@@ -8,7 +8,7 @@ export default function useUser() {
 
 	const { data, error } = useSWR(
 		user && user.uid
-			? `/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/user/${user.uid}`
+			? `/api/user/${user.uid}`
 			: null,
 		getFetcher
 	);

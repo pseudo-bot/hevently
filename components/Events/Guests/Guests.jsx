@@ -148,12 +148,11 @@ const Guests = () => {
 				<Button
 					endIcon={<Delete />}
 					variant="contained"
-					className="capitalize poppins"
 					onClick={deleteGuests}
 					color="error"
 					disabled={guestList.length === 0}
 				>
-					Delete all
+					<div className="capitalize">Delete all</div>
 				</Button>
 			</div>
 			<div className="w-full max-w-[700px]">

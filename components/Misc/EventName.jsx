@@ -62,7 +62,7 @@ export default function AlertDialog({ showModal, setShowModal }) {
             <Button
               onClick={handleClick}
               sx={{
-                backgroundColor:"rgb(34, 197, 94)",
+                backgroundColor:"#02a831",
                 ":hover": {
                   backgroundColor: "rgb(22, 163, 74)",
                 },

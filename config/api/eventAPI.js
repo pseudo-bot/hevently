@@ -4,7 +4,7 @@ const createEvent = async (event, type) => {
 	const contentType = 'application/json';
 	try {
 		const create = await fetch(
-			`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/user/${auth.currentUser.uid}/event`,
+			`/api/user/${auth.currentUser.uid}/event`,
 			{
 				method: 'POST',
 				headers: {
@@ -24,7 +24,7 @@ const createEvent = async (event, type) => {
 const updateUserRatings = async (ratings, uid, type) => {
 	try {
 		const updateEvent = await fetch(
-			`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/user/${auth.currentUser.uid}/event`,
+			`/api/user/${auth.currentUser.uid}/event`,
 			{
 				method: 'PUT',
 				headers: {
@@ -44,7 +44,7 @@ const updateUserRatings = async (ratings, uid, type) => {
 const deleteEvent = async (uid, type) => {
 	try {
 		const deleteEvent = await fetch(
-			`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/user/${auth.currentUser.uid}/event`,
+			`/api/user/${auth.currentUser.uid}/event`,
 			{
 				method: 'DELETE',
 				headers: {
@@ -64,7 +64,7 @@ const deleteEvent = async (uid, type) => {
 const updateEventRating = async (id, type, rating) => {
 	try {
 		const eventRatings = await fetch(
-			`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/user/${auth.currentUser.uid}/event`,
+			`/api/user/${auth.currentUser.uid}/event`,
 			{
 				method: 'PUT',
 				headers: {

@@ -7,7 +7,7 @@ const createUser = () => {
 		if (user) {
 			try {
 				const res = await fetch(
-					`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/createuser`,
+					`/api/createuser`,
 					{
 						method: 'POST',
 						headers: {

@@ -3,7 +3,7 @@ import { auth } from '../firebase/firebase';
 export default async function updateUser(user) {
 	try {
 		const updateUser = await fetch(
-			`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/user/${auth.currentUser.uid}`,
+			`/api/user/${auth.currentUser.uid}`,
 			{
 				method: 'PUT',
 				headers: {

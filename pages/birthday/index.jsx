@@ -1,17 +1,15 @@
-import dbConnect from '../../db/utils/dbConnect.js';
-import { BirthdayVenue } from '../../db/model/Venue';
 import { EventProvider } from '../../context/EventContext';
-import { UserContext } from '../../context/Users';
-import { useContext } from 'react';
 import { CircularProgress } from '@mui/material';
 import Event from '../../components/Events/Event';
 import EventName from '../../components/Misc/EventName';
 import { useState } from 'react';
 import Head from 'next/head';
+import useVenue from '../../hooks/useVenue';
 
-const BirthdayPage = ({ venues }) => {
-	const user = useContext(UserContext);
+const BirthdayPage = () => {
 	const [showModal, setShowModal] = useState(true);
+	const { venues, loading } = useVenue('birthday');
+
 	return (
 		<>
 			<Head>
@@ -21,7 +19,7 @@ const BirthdayPage = ({ venues }) => {
 					content="Through hevently book your venue and celebrate your birthday"
 				/>
 			</Head>
-			{user ? (
+			{!loading ? (
 				<EventProvider>
 					<div>
 						<Event type="birthday" venues={venues} />
@@ -38,22 +36,3 @@ const BirthdayPage = ({ venues }) => {
 };
 
 export default BirthdayPage;
-
-export async function getStaticProps() {
-	await dbConnect();
-
-	let data = await BirthdayVenue.find({});
-	let venues = JSON.parse(JSON.stringify(data));
-
-	if (!venues) {
-		return {
-			notFound: true,
-		};
-	}
-	return {
-		props: {
-			venues,
-		},
-		revalidate: 10,
-	};
-}

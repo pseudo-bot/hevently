@@ -1,17 +1,14 @@
-import dbConnect from '../../db/utils/dbConnect.js';
-import { WeddingVenue } from '../../db/model/Venue';
 import { EventProvider } from '../../context/EventContext';
-import { UserContext } from '../../context/Users';
-import { useContext } from 'react';
 import { CircularProgress } from '@mui/material';
 import Event from '../../components/Events/Event';
 import EventName from '../../components/Misc/EventName';
 import { useState } from 'react';
 import Head from 'next/head';
+import useVenue from '../../hooks/useVenue';
 
-const WeddingPage = ({ venues }) => {
-	const user = useContext(UserContext);
+const WeddingPage = () => {
 	const [showModal, setShowModal] = useState(true);
+	const { venues, loading } = useVenue('wedding');
 
 	return (
 		<>
@@ -22,7 +19,7 @@ const WeddingPage = ({ venues }) => {
 					content="Through hevently book your venue for celebrating weddings at different places of world"
 				/>
 			</Head>
-			{user ? (
+			{!loading ? (
 				<EventProvider>
 					<div>
 						<Event venues={venues} type="wedding" />
@@ -39,22 +36,3 @@ const WeddingPage = ({ venues }) => {
 };
 
 export default WeddingPage;
-
-export async function getStaticProps() {
-	await dbConnect();
-
-	let data = await WeddingVenue.find({});
-	let venues = JSON.parse(JSON.stringify(data));
-	
-	if (!venues) {
-		return {
-			notFound: true,
-		};
-	}
-	return {
-		props: {
-			venues,
-		},
-		revalidate: 10,
-	};
-}

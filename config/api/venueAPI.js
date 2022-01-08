@@ -1,13 +1,13 @@
 export default async function addVenue(venue, type) {
 	try {
 		const newVenue = await fetch(
-			`/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/venue`,
+			`/api/venue/${type}`,
 			{
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({ venue, type }),
+				body: JSON.stringify({ venue }),
 			}
 		);
 		const res = await newVenue.json();

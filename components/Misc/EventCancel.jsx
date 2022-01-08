@@ -22,7 +22,7 @@ export default function AlertDialog({ title, open, setOpen, type, uid, setAlertO
     const res = await deleteEvent(uid, type);
     setLoading(false);
     mutate(
-      `/api/${process.env.NEXT_PUBLIC_CREATE_USER_KEY}/user/${user.uid}/event`
+      `/api/user/${user.uid}/event`
     );
     if (res) {
       setOpen(false);

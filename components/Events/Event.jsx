@@ -21,7 +21,7 @@ const headings = {
 	birthday: 'Restaurants',
 };
 
-const Wedding = ({ venues, type }) => {
+const Event = ({ venues, type }) => {
 	const [open, setOpen] = useState(false);
 	const [openDate, setOpenDate] = useState(false);
 	const [showConfirm, setShowConfirm] = useState(false);
@@ -97,7 +97,7 @@ const Wedding = ({ venues, type }) => {
 			<Confirm showConfirm={showConfirm} guestList={eventData.guestList} />
 
 			<div className="fixed opacity-20 w-screen h-screen right-0">
-				<Image src={formCover} objectFit="cover" alt="form-background" />
+				<Image src={formCover} objectFit="fill" alt="form-background" />
 			</div>
 
 			<div className="absolute w-full right-0 py-24 flex items-center justify-center">
@@ -120,4 +120,4 @@ const Wedding = ({ venues, type }) => {
 	);
 };
 
-export default Wedding;
+export default Event;
