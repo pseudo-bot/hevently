@@ -19,5 +19,8 @@ const validateName = (name) => {
   let re = /^[a-zA-Z]{1,}$/;
   return re.test(name);
 };
-
-export { validateEmail, validatePhone, validateNumber, validateName };
+const validateGoogleDriveLink = (link) => {
+  let re = /^(http(s)?:\/\/)?((w){3}.)?drive.google.com\/file\/d\/[a-zA-Z0-9]{1,}/;
+  return re.test(link);
+}
+export { validateEmail, validatePhone, validateNumber, validateName, validateGoogleDriveLink };
