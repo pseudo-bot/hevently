@@ -30,7 +30,7 @@ function Cover() {
 		<div>
 			<div className="cover h-screen w-screen absolute parallax"></div>
 			<div className="relative h-screen flex items-center justify-center flex-col gap-20">
-				<div className="cover-heading text-gray-50 text-[6.5rem] dancing col font-bold animate__animated animate__bounceInDown ">
+				<div className="cover-heading text-gray-50 text-[5.5rem] md:text-[6.5rem] dancing col font-bold animate__animated animate__bounceInDown ">
 					hevently
 				</div>
 				<TagLine>you plan | we organize</TagLine>

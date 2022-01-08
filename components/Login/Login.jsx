@@ -7,38 +7,12 @@ import {
 	signInWithGoogle,
 	signInWithFb,
 } from '../../config/firebase/authProvider';
-import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import IconButton from '@mui/material/IconButton';
-import FormControl from '@mui/material/FormControl';
+import Login from './EmailLogin';
 
 export default function Modal({ setShowLogin, setOpenFail, setOpenSuccess }) {
-	const [values, setValues] = React.useState({
-		amount: '',
-		password: '',
-		weight: '',
-		weightRange: '',
-		showPassword: false,
-	});
-
-	const handleChange = (prop) => (event) => {
-		setValues({ ...values, [prop]: event.target.value });
-	};
-
-	const handleClickShowPassword = () => {
-		setValues({
-			...values,
-			showPassword: !values.showPassword,
-		});
-	};
-
-	const handleMouseDownPassword = (event) => {
-		event.preventDefault();
-	};
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const [register, setRegister] = useState(false);
 
 	return (
 		<div className="fixed h-screen w-screen top-0 left-0">
@@ -60,54 +34,45 @@ export default function Modal({ setShowLogin, setOpenFail, setOpenSuccess }) {
 						</div>
 						<hr className="border-t" />
 						<div className="flex flex-col px-8 py-4 space-y-6">
-							<div>
-								<div className="relative my-2">
-									<TextField
-										id="outlined-basic"
-										label="Email"
-										variant="outlined"
-										fullWidth
-										size="small"
-									/>
+							<Login
+								password={password}
+								email={email}
+								setEmail={setEmail}
+								setPassword={setPassword}
+								register={register}
+								setShowLogin={setShowLogin}
+								setOpenFail={setOpenFail}
+								setOpenSuccess={setOpenSuccess}
+							/>
+							{register ? (
+								<div className="text-gray-600 text-center text-sm">
+									Already a user?{' '}
+									<span
+										className="text-blue-600 cursor-pointer underline"
+										onClick={() => {
+											setEmail('');
+											setPassword('');
+											setRegister(false);
+										}}
+									>
+										Log in{' '}
+									</span>
 								</div>
-								<div className="relative my-4">
-									<FormControl variant="outlined" fullWidth>
-										<InputLabel
-											htmlFor="outlined-adornment-password"
-											size="small"
-										>
-											Password
-										</InputLabel>
-										<OutlinedInput
-											id="outlined-adornment-password"
-											type={values.showPassword ? 'text' : 'password'}
-											value={values.password}
-											size="small"
-											onChange={handleChange('password')}
-											endAdornment={
-												<InputAdornment position="end">
-													<IconButton
-														aria-label="toggle password visibility"
-														onClick={handleClickShowPassword}
-														onMouseDown={handleMouseDownPassword}
-														edge="end"
-													>
-														{values.showPassword ? (
-															<VisibilityOff />
-														) : (
-															<Visibility />
-														)}
-													</IconButton>
-												</InputAdornment>
-											}
-											label="Password"
-										/>
-									</FormControl>
+							) : (
+								<div className="text-gray-600 text-center text-sm">
+									Not a user?{' '}
+									<span
+										className="text-blue-600 cursor-pointer underline"
+										onClick={() => {
+											setEmail('');
+											setPassword('');
+											setRegister(true);
+										}}
+									>
+										Register
+									</span>
 								</div>
-								<button className="w-full text-gray-50 bg-orange-600 border-0 py-2 px-6 focus:outline-none hover:bg-orange-800 rounded text-md mt-2">
-									Log in
-								</button>
-							</div>
+							)}
 							<Divider>
 								<span className="font-semibold text-gray-600">OR</span>
 							</Divider>
