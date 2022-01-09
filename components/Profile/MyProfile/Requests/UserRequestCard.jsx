@@ -82,18 +82,18 @@ const Event = ({ eventType, event, setAlertOpen }) => {
         </div>
         <Divider variant="middle" />
         <div className="flex justify-between items-center pt-4 pb-2">
-          <Button variant="outlined" size="small">
-            <div className="capitalize text-xl">Pending</div>
+          <Button variant="outlined" size="normal">
+            <div className="capitalize text-lg">pending</div>
           </Button>
 
-          <Button
+          {/* <Button
             variant="contained"
             color="error"
             startIcon={<CloseIcon />}
             onClick={handleClickOpen}
           >
             <div>Cancel</div>
-          </Button>
+          </Button> */}
         </div>
       </div>
       <EventCancel
@@ -144,8 +144,8 @@ const UserRequestCard = ({ title, id, eventsData }) => {
               return (
                 <SwiperSlide key={index}>
                   <Event
-                    eventType={event.props.eventType}
-                    event={event.props.event}
+                    eventType={event.type}
+                    event={event}
                     disabled={false}
                     isRating={false}
                     setAlertOpen={setAlertOpen}

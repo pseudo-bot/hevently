@@ -20,7 +20,8 @@ export default async function sendMail(req, res) {
 					from: process.env.NEXT_PUBLIC_EMAIL,
 					to: emails,
 					subject: 'Invite to attend the event',
-					text: `You have been invited to wedding.`,
+					text: `We request you to be our guest at EventName .
+					Kindly be present on this ocassion to celebrate with us an ever-lasting bond of togetherness`,
 				};
 
 				transporter.sendMail(guestsMailOptions, (error, info) => {

@@ -6,34 +6,53 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { useContext, useState } from "react";
 import { mutate } from "swr";
 import { LoadingButton } from "@mui/lab";
+import {
+  rejectHostEvent,
+  approveHostEvent,
+} from "../../../../config/api/hostAPI";
+import { rejectUserEvent, approveUserEvent } from "../../../../config/api/eventAPI";
+import { UserContext } from "../../../../context/Users";
 
 export default function AlertDialog({
   title,
   open,
   setOpen,
-  type,
   uid,
-  setAlertOpen,
   msg,
-  accept
+  accept,
 }) {
-//   const user = useContext(UserContext);
+    const user = useContext(UserContext);
   const [loading, setLoading] = useState(false);
 
   const handleClose = () => {
     setOpen(false);
   };
-
-  const handleDelete = async () => {
+  const handleAccept = async () => {
     setLoading(true);
-    const res = await deleteEvent(uid, type);
+    const acceptHost = await approveHostEvent(user.uid, uid);
+    const acceptUser = await approveUserEvent(uid);
     setLoading(false);
-    mutate(`/api/user/${user.uid}/event`);
-    if (res) {
+
+    if (acceptHost && acceptUser) {
+      mutate(`api/host/${uid}`);
+      mutate(`api/user/${uid}/event`);
       setOpen(false);
-      setAlertOpen(true);
     } else {
-      console.log("Event not deleted");
+      alert("Something went wrong");
+    }
+  };
+  const handleDecline = async () => {
+    setLoading(true);
+    const rejectHost = await rejectHostEvent(user.uid, uid);
+    const rejectUser = await rejectUserEvent(uid);
+    setLoading(false);
+
+    if (rejectHost && rejectUser) {
+      mutate(`api/host/${uid}`);
+      mutate(`api/user/${uid}/event`);
+      setOpen(false);
+    } else {
+      alert("Something went wrong");
     }
   };
 
@@ -50,8 +69,7 @@ export default function AlertDialog({
         </DialogTitle>
         <DialogContent>
           <DialogContentText className="poppins" id="alert-dialog-description">
-            {msg}{" "}
-            <b className="capitalize">{title}?</b>
+            {msg} <b className="capitalize">{title}?</b>
           </DialogContentText>
         </DialogContent>
         <div className="flex justify-end gap-3 p-4">
@@ -65,14 +83,25 @@ export default function AlertDialog({
           >
             <div className=" capitalize text-gray-500">Cancel</div>
           </Button>
-          <LoadingButton
-            variant="contained"
-            onClick={handleDelete}
-            loading={loading}
-            color={accept?'success':'error'}
-          >
-            <div className="capitalize">Confirm</div>
-          </LoadingButton>
+          {accept ? (
+            <LoadingButton
+              variant="contained"
+              onClick={handleAccept}
+              loading={loading}
+              color="success"
+            >
+              <div className="capitalize">Confirm</div>
+            </LoadingButton>
+          ) : (
+            <LoadingButton
+              variant="contained"
+              onClick={handleDecline}
+              loading={loading}
+              color="error"
+            >
+              <div className="capitalize">Confirm</div>
+            </LoadingButton>
+          )}
         </div>
       </Dialog>
     </div>

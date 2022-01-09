@@ -1,10 +1,11 @@
 import HostRequestCard from "./HostRequestCard"
 import { CircularProgress } from '@mui/material';
-import useEvent from '../../../../hooks/useEvent';
+import useHost from '../../../../hooks/useHost';
 import { Divider } from '@mui/material';
 
 const HostRequests = () => {
-    const { event } = useEvent();
+    const { host:event } = useHost();
+	console.log(event);
 
     return (
         <div id="requests">

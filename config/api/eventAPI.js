@@ -72,7 +72,7 @@ const updateEventRating = async (id, type, rating) => {
 	}
 };
 
-const rejectEvent = async (eventId ) => {
+const rejectUserEvent = async (eventId) => {
 	try {
 		const rejectEvent = await fetch(`/api/user/${auth.currentUser.uid}/event`, {
 			method: 'DELETE',
@@ -89,7 +89,7 @@ const rejectEvent = async (eventId ) => {
 	}
 };
 
-const approveEvent = async (eventId) => {
+const approveUserEvent = async (eventId) => {
 	try {
 		const approveEvent = await fetch(
 			`/api/user/${auth.currentUser.uid}/event`,
@@ -111,8 +111,8 @@ const approveEvent = async (eventId) => {
 
 export {
 	createEvent,
-	rejectEvent,
-	approveEvent,
+	rejectUserEvent,
+	approveUserEvent,
 	updateUserRatings,
 	deleteEvent,
 	updateEventRating,

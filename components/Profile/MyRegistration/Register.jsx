@@ -143,11 +143,9 @@ export default function AlertDialog() {
     if (res && res2) {
       setSuccess(true);
       setOpenAlert(true);
-      setOpen(false);
     } else {
       setSuccess(false);
       setOpenAlert(true);
-      setOpen(false);
     }
   };
 
