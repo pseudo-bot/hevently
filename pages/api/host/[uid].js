@@ -90,7 +90,6 @@ export default async function createVenue(req, res) {
 				}
 		}
 	} catch (err) {
-		console.log(err);
 		return res.status(500).json({
 			ok: false,
 			message: 'Server error',

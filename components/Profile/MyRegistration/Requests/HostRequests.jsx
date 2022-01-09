@@ -5,7 +5,6 @@ import { Divider } from '@mui/material';
 
 const HostRequests = () => {
     const { host:event } = useHost();
-	console.log(event);
 
     return (
         <div id="requests">
@@ -15,7 +14,7 @@ const HostRequests = () => {
 				</div>
 			) : (
 				<div className='pb-8'>
-					<h3 className="text-3xl border-b-2  w-max mx-auto text-center font-semibold tracking-wider text-gray-600 py-6">
+					<h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 py-6">
 						Requests
 					</h3>
 					<HostRequestCard

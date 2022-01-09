@@ -3,8 +3,6 @@ import {
   Person,
   Event,
   Logout,
-  EventAvailable,
-  EventNote,
   HowToReg,
   PendingActions
 } from "@mui/icons-material/";
@@ -13,7 +11,6 @@ import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import logOut from "../../config/firebase/signOut";
 import { useRouter } from "next/router";
-import Register from "./MyRegistration/Register";
 import Link from 'next/link'
 
 const SidebarOption = ({

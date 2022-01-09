@@ -2,7 +2,6 @@ import { TextField, Divider, Button } from '@mui/material';
 import {
 	Email,
 	AccountCircle,
-	Send,
 	People,
 	Add,
 	Delete,

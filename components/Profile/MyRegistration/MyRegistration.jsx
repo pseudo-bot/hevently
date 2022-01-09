@@ -7,7 +7,6 @@ import "swiper/css/pagination";
 import { PlaylistAdd } from "@mui/icons-material";
 import useUserVenue from "../../../hooks/useUserVenue";
 import Divider from "@mui/material/Divider";
-import { CircularProgress } from "@mui/material";
 
 SwiperCore.use([Pagination]);
 const NoRegistration = () => {
