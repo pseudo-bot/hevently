@@ -13,6 +13,7 @@ import useUser from "../../../hooks/useUser";
 import { Edit, CloudDone } from "@mui/icons-material";
 import Alert from "../../Misc/Alert";
 import { validatePhone,validateName } from "../../../utils/validation";
+import Divider from "@mui/material/Divider";
 
 const Loading = () => {
   return (
@@ -190,6 +191,7 @@ const MyProfile = () => {
         />
         )
      }
+     <Divider/>
     </div>
   );
 };
