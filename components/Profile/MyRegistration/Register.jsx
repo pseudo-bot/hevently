@@ -134,7 +134,7 @@ export default function AlertDialog() {
     };
 
     const id = uuidv4();
-    const res = await addVenue(venue, venueType.toLowerCase(), id);
+    const res = await addVenue(venue, venueType.toLowerCase(), id, user.uid);
     const res2 = await addUserVenue(venue, venueType.toLowerCase(), id);
     mutate(`/api/user/${user.uid}/uservenue`);
 
@@ -143,11 +143,9 @@ export default function AlertDialog() {
     if (res && res2) {
       setSuccess(true);
       setOpenAlert(true);
-      setOpen(false);
     } else {
       setSuccess(false);
       setOpenAlert(true);
-      setOpen(false);
     }
   };
 

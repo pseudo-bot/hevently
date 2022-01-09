@@ -1,4 +1,4 @@
-export default async function addVenue(venue, type, id) {
+export default async function addVenue(venue, type, id, host) {
 	try {
 		const newVenue = await fetch(
 			`/api/venue/${type}`,
@@ -7,7 +7,7 @@ export default async function addVenue(venue, type, id) {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({ venue: {...venue, id} }),
+				body: JSON.stringify({ venue: {...venue, id, host} }),
 			}
 		);
 		const res = await newVenue.json();

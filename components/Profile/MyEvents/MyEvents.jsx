@@ -1,6 +1,7 @@
 import EventCard from './EventCard';
 import { CircularProgress } from '@mui/material';
 import useEvent from '../../../hooks/useEvent';
+import { Divider } from '@mui/material';
 
 const MyEvents = () => {
 	const { event } = useEvent();
@@ -26,6 +27,7 @@ const MyEvents = () => {
 					/>
 				</div>
 			)}
+			<Divider/>
 		</div>
 	);
 };
