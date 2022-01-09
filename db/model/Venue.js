@@ -1,9 +1,13 @@
 import { Schema, model, models } from 'mongoose';
 
-const VenueSchema = new Schema({ // 9 - keys
+const VenueSchema = new Schema({
+	// 11 - keys
 	id: {
 		type: String,
 		unique: true,
+	},
+	host: {
+		type: String,
 	},
 	value: {
 		type: String,
@@ -45,9 +49,11 @@ const VenueSchema = new Schema({ // 9 - keys
 	},
 });
 
-export let WeddingVenue = models.Wedding_Venue || model('Wedding_Venue', VenueSchema);
-export let SocialVenue = models.Social_Venue || model('Social_Venue', VenueSchema);
-export let BirthdayVenue = models.Birthday_Venue || model('Birthday_Venue', VenueSchema);
-export let CorporateVenue = models.Corporate_Venue || model('Corporate_Venue', VenueSchema);
-
-
+export let WeddingVenue =
+	models.Wedding_Venue || model('Wedding_Venue', VenueSchema);
+export let SocialVenue =
+	models.Social_Venue || model('Social_Venue', VenueSchema);
+export let BirthdayVenue =
+	models.Birthday_Venue || model('Birthday_Venue', VenueSchema);
+export let CorporateVenue =
+	models.Corporate_Venue || model('Corporate_Venue', VenueSchema);
