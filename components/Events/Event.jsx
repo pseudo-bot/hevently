@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { useState, useContext } from 'react';
 import { EventContext } from '../../context/EventContext';
 import { UserContext } from '../../context/Users';
@@ -12,7 +11,6 @@ import Alert from '../Misc/Alert';
 import Guests from './Guests/Guests';
 import Confirm from '../Misc/Confirmation';
 
-import formCover from '../../public/form/form_cover.png';
 
 const headings = {
 	wedding: 'Wedding Venue',

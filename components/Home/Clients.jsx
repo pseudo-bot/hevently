@@ -1,11 +1,10 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Quote from '@mui/icons-material/FormatQuoteRounded';
 import Image from 'next/image'
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-import SwiperCore, { EffectCoverflow, Pagination, Autoplay } from 'swiper';
+import SwiperCore, { EffectCoverflow, Autoplay } from 'swiper';
 
 import quote from '../../public/icons/quote.png';
 import will from '../../public/clients/will.jpg';

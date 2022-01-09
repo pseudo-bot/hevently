@@ -1,26 +1,18 @@
 import { useState } from "react";
-import { Divider, Rating, Button } from "@mui/material";
+import { Divider,Button } from "@mui/material";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import RoomIcon from "@mui/icons-material/Room";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import Dot from "@mui/icons-material/CenterFocusStrong";
 import Rupee from "@mui/icons-material/CurrencyRupee";
 import CloseIcon from "@mui/icons-material/Close";
-import EditIcon from "@mui/icons-material/Edit";
-import Register from "./Register";
-// import { deleteVenue } from "../../../config/api/venueAPI";
-// import { deleteUserVenue } from "../../../config/api/userVenueAPI";
+
 import VenueCancel from '../../Misc/VenueCancel';
 
 const RegistrationCard = ({ venue }) => {
   const [open, setOpen] = useState(false);
-  // const handleEdit = () => {
-  //   setOpen(true);
-  // };
- 
   const handleDelete=()=>{
     setOpen(true);
-    console.log("delete");
   }
   return (
     <>

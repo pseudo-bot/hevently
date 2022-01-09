@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Rating from '@mui/material/Rating';
-import { updateUserRatings, updateEventRating } from '../../../config/api/eventAPI';
+import { updateUserRatings } from '../../../config/api/eventAPI';
 
 export default function BasicRating({ event, uid, rating, setRating, type }) {
 	return (

@@ -67,10 +67,7 @@ export default async function eventHandler(req, res) {
         try {
           if (body.pending) {
             const event = await UserEvents.findOne({ uid }).clone();
-            console.log(event);
             const el = event.pending.find((e) => e.uid === body.eventId);
-            console.log(body.eventId);
-            console.log(el);
             await UserEvents.updateOne(
               { uid },
               { $pull: { pending: el } }
@@ -105,7 +102,6 @@ export default async function eventHandler(req, res) {
             }
           }
         } catch (error) {
-          console.log(error);
           return res.status(500).json({
             ok: false,
             message: "Error",
