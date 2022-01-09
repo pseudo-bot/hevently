@@ -6,6 +6,7 @@ import {
   EventAvailable,
   EventNote,
   HowToReg,
+  PendingActions
 } from "@mui/icons-material/";
 import Image from "next/image";
 import Button from "@mui/material/Button";
@@ -99,8 +100,8 @@ const MyDrawer = ({ photoURL, displayName, register, setRegister }) => {
           />
           <SidebarOption
             setRegister={setRegister}
-            title="Requests"
-            icon={<Event />}
+            title="Approval"
+            icon={<PendingActions />}
             divider={false}
             bookmark="requests"
           />
@@ -124,7 +125,7 @@ const MyDrawer = ({ photoURL, displayName, register, setRegister }) => {
             setRegister={setRegister}
             register={true}
             title="Requests"
-            icon={<Event />}
+            icon={<PendingActions />}
             divider={false}
             bookmark="requests"
           />
