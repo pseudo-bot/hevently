@@ -21,6 +21,7 @@ export default async function createVenue(req, res) {
 					return res.status(404).json({
 						ok: false,
 						message: 'Events not found',
+						host: {},
 					});
 				}
 				break;
