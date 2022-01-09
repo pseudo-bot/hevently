@@ -11,9 +11,9 @@ import { CircularProgress } from "@mui/material";
 SwiperCore.use([Pagination]);
 const NoRegistration = () => {
   return (
-    <div className="text-gray-400 pb-8 tracking-wide flex flex-col items-center gap-8 text-2xl mt-5">
-      <h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 py-6 pb-12">
-        Venue Registrations
+    <div className="text-gray-400 pb-8 tracking-wide flex flex-col items-center gap-8 text-2xl">
+      <h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600  pb-12">
+        Registrations
       </h3>
       <div className={`ubuntu font-light`}>No Registrations</div>
       <PlaylistAdd
@@ -27,7 +27,6 @@ const NoRegistration = () => {
 
 const MyRegistration = () => {
   const { venues: data } = useUserVenue();
-  console.log(data);
   if (!data) {
     return <NoRegistration />;
   }
@@ -35,10 +34,10 @@ const MyRegistration = () => {
     return <NoRegistration />;
   }
   return (
-    <>
+    <div id = "registrations">
       <div className="px-4 pb-8 mx-auto max-w-md md:max-w-2xl lg:max-w-full ">
-        <h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 py-6 pb-12">
-          Venue Registrations
+        <h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 py-4 pb-12">
+          Registrations
         </h3>
         <Swiper
           className="event-swiper"
@@ -66,7 +65,7 @@ const MyRegistration = () => {
           })}
         </Swiper>
       </div>
-    </>
+    </div>
   );
 };
 

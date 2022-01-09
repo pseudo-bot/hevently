@@ -6,7 +6,7 @@ const MyEvents = () => {
 	const { event } = useEvent();
 	
 	return (
-		<>
+		<div id="events">
 			{!event ? (
 				<div className="flex h-[40vh] w-full relative justify-center items-center ">
 					<CircularProgress />
@@ -18,17 +18,15 @@ const MyEvents = () => {
 					</h3>
 					<EventCard
 						title="Upcoming Events"
-						id="upcoming"
 						eventsData={event}
 					/>
 					<EventCard
 						title="Completed Events"
-						id="completed"
 						eventsData={event}
 					/>
 				</div>
 			)}
-		</>
+		</div>
 	);
 };
 

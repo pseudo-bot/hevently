@@ -13,8 +13,47 @@ import Divider from "@mui/material/Divider";
 import logOut from "../../config/firebase/signOut";
 import { useRouter } from "next/router";
 import Register from "./MyRegistration/Register";
+import Link from 'next/link'
 
-const MyDrawer = ({ photoURL, displayName }) => {
+const SidebarOption = ({
+  title,
+  icon,
+  divider = true,
+  register = false,
+  setRegister,
+  bookmark = "",
+}) => {
+  const router = useRouter();
+  return (
+    <>
+      <Link href={`#${bookmark}`} passHref>
+        <div
+          onClick={() => {
+            setRegister(register);
+          }}
+          className="cursor-pointer flex py-2 px-4 gap-2 items-center  hover:text-blue-700 transition-all duration-200 m-2"
+        >
+          {icon} <span>{title}</span>
+        </div>
+      </Link>
+      <div className="w-4/5 mx-auto">
+        {divider && <Divider variant="middle" />}
+      </div>
+    </>
+  );
+};
+
+const SidebarHeading = ({ title }) => {
+  return (
+    <div className="py-6">
+      <Divider variant="middle">
+        <div className="text-gray-500 capitalize">{title}</div>
+      </Divider>
+    </div>
+  );
+};
+
+const MyDrawer = ({ photoURL, displayName, register, setRegister }) => {
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
     setOpen(true);
@@ -30,7 +69,7 @@ const MyDrawer = ({ photoURL, displayName }) => {
     <>
       <div className="bg-[#fff] shadow-lg border-r fixed w-[240px] h-screen"></div>
       <div className="relative z-50 h-full">
-        <div className="py-8">
+        <div className="pt-8 pb-4">
           <div className="w-full flex justify-center">
             <Image
               src={photoURL || "/profile/user.png"}
@@ -44,67 +83,51 @@ const MyDrawer = ({ photoURL, displayName }) => {
             {displayName === "" ? "User" : displayName}
           </div>
         </div>
-        <div className="pb-4">
-          <Divider variant="middle">
-            <div className="text-gray-500">Profile</div>
-          </Divider>
-        </div>
         <nav>
-          <a
-            href="#"
-            className="flex py-2 px-4 gap-2 items-center  hover:text-blue-700 transition-all duration-200 m-2"
-          >
-            <Person /> <span>Profile</span>
-          </a>
-          <div className="w-4/5 mx-auto">
-            <Divider variant="middle" />
-          </div>
-          <a
-            href="#events"
-            className="flex py-2 px-4 gap-2 items-center  hover:text-blue-700 transition-all duration-200 m-2"
-          >
-            <Event /> <span>My Events</span>
-          </a>
-          <div className="w-4/5 mx-auto">
-            <Divider variant="middle" />
-          </div>
-          <a
-            href="#upcoming"
-            className="flex py-2 px-4 gap-2 items-center  hover:text-blue-700 transition-all duration-200 m-2"
-          >
-            <EventNote /> <span>Upcoming Events</span>
-          </a>
-          <div className="w-4/5 mx-auto">
-            <Divider variant="middle" />
-          </div>
-          <a
-            href="#completed"
-            className="flex py-2 px-4 gap-2 items-center  hover:text-blue-700 transition-all duration-200 m-2"
-          >
-            <EventAvailable /> <span>Completed Events</span>
-          </a>
+          <SidebarHeading title="profile" />
 
-          <div className="py-4">
-            <Divider variant="middle">
-              <div className="text-gray-500">Registration</div>
-            </Divider>
-          </div>
-          <a
-            href="#"
-            className="flex py-2 px-4 gap-2 items-center  hover:text-blue-700 transition-all duration-200 m-2"
-            onClick={handleClickOpen}
-          >
-            <HowToReg /> <span>Register</span>
-          </a>
-          <div className="w-4/5 mx-auto">
-            <Divider variant="middle" />
-          </div>
-          <a
-            href="#completed"
-            className="flex py-2 px-4 gap-2 items-center  hover:text-blue-700 transition-all duration-200 m-2"
-          >
-            <EventAvailable /> <span>My Registrations</span>
-          </a>
+          <SidebarOption
+            setRegister={setRegister}
+            title="Profile"
+            icon={<Person />}
+          />
+          <SidebarOption
+            setRegister={setRegister}
+            title="Events"
+            icon={<Event />}
+            bookmark="events"
+          />
+          <SidebarOption
+            setRegister={setRegister}
+            title="Requests"
+            icon={<Event />}
+            divider={false}
+            bookmark="requests"
+          />
+
+          <SidebarHeading title="registration" />
+
+          <SidebarOption
+            setRegister={setRegister}
+            register={true}
+            title="Register"
+            icon={<HowToReg />} 
+          />
+          <SidebarOption
+            setRegister={setRegister}
+            register={true}
+            title="Registrations"
+            icon={<Event />}
+            bookmark="registrations"
+          />
+          <SidebarOption
+            setRegister={setRegister}
+            register={true}
+            title="Requests"
+            icon={<Event />}
+            divider={false}
+            bookmark="requests"
+          />
 
           <div className="fixed bottom-0 py-8 w-[240px] p-4 bg-[#fff] ">
             <Button
@@ -117,7 +140,6 @@ const MyDrawer = ({ photoURL, displayName }) => {
             </Button>
           </div>
         </nav>
-        <Register open={open} setOpen={setOpen} />
       </div>
     </>
   );
