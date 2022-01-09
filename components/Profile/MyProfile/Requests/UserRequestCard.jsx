@@ -111,25 +111,7 @@ const Event = ({ eventType, event, setAlertOpen }) => {
 const UserRequestCard = ({ title, id, eventsData }) => {
   const [alertOpen, setAlertOpen] = useState(false);
 
-  const upcoming = [];
-  const completed = [];
-  for (const events in eventsData) {
-    const eventarr = eventsData[events];
-    if (Array.isArray(eventarr)) {
-      eventarr.map((event, index) => {
-        const diff =
-          moment(event.endDate, "YYYY-MM-DD").toDate().getDate() -
-          new Date().getDate();
-        if (diff >= 0) {
-          upcoming.push(<Event eventType={events} key={index} event={event} />);
-        } else {
-          completed.push(
-            <Event eventType={events} key={index} event={event} />
-          );
-        }
-      });
-    }
-  }
+  console.log(eventsData);
 
   return (
     <div className="pb-6">
@@ -157,8 +139,8 @@ const UserRequestCard = ({ title, id, eventsData }) => {
             },
           }}
         >
-          {upcoming.length > 0 ? (
-            upcoming.map((event, index) => {
+          {eventsData.pending.length > 0 ? (
+            eventsData.pending.map((event, index) => {
               return (
                 <SwiperSlide key={index}>
                   <Event
