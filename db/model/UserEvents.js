@@ -1,6 +1,6 @@
 import { Schema, model, models } from 'mongoose';
 
-const UserEventsSchema = new Schema({
+const UserEventSchema = new Schema({
 	uid: {
 		type: String,
 		required: [true, 'UID required'],
@@ -18,6 +18,9 @@ const UserEventsSchema = new Schema({
 	social: {
 		type: Schema.Types.Mixed,
 	},
+	pending: {
+		type: Schema.Types.Mixed,
+	}
 });
 
-export default models.User_Events || model('User_Events', UserEventsSchema);
+export default models.User_Events || model('User_Events', UserEventSchema);

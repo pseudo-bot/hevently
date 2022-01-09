@@ -3,6 +3,7 @@ import { useState, useContext } from 'react';
 import { EventContext } from '../../context/EventContext';
 import { UserContext } from '../../context/Users';
 import { createEvent } from '../../config/api/eventAPI.js';
+import { addHostEvent } from '../../config/api/hostAPI';
 import sendConfirmation from '../../config/api/sendConfirmation.js';
 
 import Venue from './Venue/Venue';
@@ -55,11 +56,12 @@ const Event = ({ venues, type }) => {
 	const handleSubmit = async () => {
 		try {
 			setLoading(true);
-			const eventCreate = await createEvent(eventData, type);
+			const eventCreate = await createEvent({...eventData, type}, type, true);
 			const emailConfirm = await sendConfirmation(email);
+			const addHost = await addHostEvent({...eventData, type});
 			setLoading(false);
 
-			if (eventCreate) {
+			if (eventCreate && addHost) {
 				setShowConfirm(true);
 			} else {
 				console.log('Error! Event not created');

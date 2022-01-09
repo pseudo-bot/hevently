@@ -1,18 +1,15 @@
 import { auth } from '../firebase/firebase';
 
-const createEvent = async (event, type) => {
+const createEvent = async (event, type, pending) => {
 	const contentType = 'application/json';
 	try {
-		const create = await fetch(
-			`/api/user/${auth.currentUser.uid}/event`,
-			{
-				method: 'POST',
-				headers: {
-					'Content-Type': contentType,
-				},
-				body: JSON.stringify({ event, type }),
-			}
-		);
+		const create = await fetch(`/api/user/${auth.currentUser.uid}/event`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': contentType,
+			},
+			body: JSON.stringify({ event, type, pending }),
+		});
 		const res = await create.json();
 		return res.ok;
 	} catch (e) {
@@ -23,16 +20,13 @@ const createEvent = async (event, type) => {
 
 const updateUserRatings = async (ratings, uid, type) => {
 	try {
-		const updateEvent = await fetch(
-			`/api/user/${auth.currentUser.uid}/event`,
-			{
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({ ratings, uid, type }),
-			}
-		);
+		const updateEvent = await fetch(`/api/user/${auth.currentUser.uid}/event`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ ratings, uid, type }),
+		});
 		const res = await updateEvent.json();
 		return res.ok;
 	} catch (err) {
@@ -43,16 +37,13 @@ const updateUserRatings = async (ratings, uid, type) => {
 
 const deleteEvent = async (uid, type) => {
 	try {
-		const deleteEvent = await fetch(
-			`/api/user/${auth.currentUser.uid}/event`,
-			{
-				method: 'DELETE',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({ uid, type }),
-			}
-		);
+		const deleteEvent = await fetch(`/api/user/${auth.currentUser.uid}/event`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ uid, type }),
+		});
 		const res = await deleteEvent.json();
 		return res.ok;
 	} catch (err) {
@@ -81,4 +72,48 @@ const updateEventRating = async (id, type, rating) => {
 	}
 };
 
-export { createEvent, updateUserRatings, deleteEvent, updateEventRating };
+const rejectEvent = async (eventId ) => {
+	try {
+		const rejectEvent = await fetch(`/api/user/${auth.currentUser.uid}/event`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ eventId, pending: true }),
+		});
+		const res = await rejectEvent.json();
+		return res.ok;
+	} catch (err) {
+		console.log(err);
+		return false;
+	}
+};
+
+const approveEvent = async (eventId) => {
+	try {
+		const approveEvent = await fetch(
+			`/api/user/${auth.currentUser.uid}/event`,
+			{
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ eventId, pending: true }),
+			}
+		);
+		const res = await approveEvent.json();
+		return res.ok;
+	} catch (err) {
+		console.log(err);
+		return false;
+	}
+};
+
+export {
+	createEvent,
+	rejectEvent,
+	approveEvent,
+	updateUserRatings,
+	deleteEvent,
+	updateEventRating,
+};

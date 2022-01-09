@@ -42,6 +42,7 @@ const ItemList = ({ list, value }) => {
 						veg,
 						nonveg,
 						display,
+						host,
 					}) => {
 						let selected = false;
 						if (venue && venue.id === _id) selected = true;
@@ -63,6 +64,7 @@ const ItemList = ({ list, value }) => {
 										city,
 										address,
 										ratings,
+										host,
 									});
 								}}
 								booked={selected}
