@@ -2,7 +2,6 @@ import LocationCityIcon from "@mui/icons-material/LocationCity";
 import RoomIcon from "@mui/icons-material/Room";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
-import moment from "moment";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination } from "swiper";
@@ -17,6 +16,7 @@ import {
 } from "@mui/icons-material";
 import Alert from "../../../Misc/Alert";
 import HostRequestConfirm from "./HostRequestConfirm";
+import { CircularProgress } from "@mui/material";
 
 SwiperCore.use([Pagination]);
 
@@ -44,20 +44,20 @@ const NoEvent = ({ type }) => {
 const Event = ({ eventType, event, setAlertOpen, isApproved }) => {
   const [open, setOpen] = useState(false);
   const [msg, setMsg] = useState("");
-  const [accept,setAccept]=useState(false)
+  const [accept, setAccept] = useState(false);
   const handleDelete = () => {
     setMsg("Are you sure you want to Delete");
-    setAccept(false)
+    setAccept(false);
     setOpen(true);
   };
   const handleDecline = () => {
     setMsg("Are you sure you want to Decline");
-    setAccept(false)
+    setAccept(false);
     setOpen(true);
   };
   const handleAccept = () => {
     setMsg("Are you sure you want to Accept");
-    setAccept(true)
+    setAccept(true);
     setOpen(true);
   };
   return (
@@ -109,9 +109,9 @@ const Event = ({ eventType, event, setAlertOpen, isApproved }) => {
         <div className="">
           {isApproved ? (
             <div className="flex justify-end items-center pt-4 pb-2">
-               <Button startIcon={<Check/>} variant="outlined" size="normal">
-            <div className="capitalize text-lg">Approved</div>
-          </Button>
+              <Button startIcon={<Check />} variant="outlined" size="normal">
+                <div className="capitalize text-lg">Approved</div>
+              </Button>
             </div>
           ) : (
             <div className="flex justify-end gap-4 items-center pt-4 pb-2">
@@ -152,16 +152,20 @@ const Event = ({ eventType, event, setAlertOpen, isApproved }) => {
 
 const HostRequestCard = ({ title, id, eventsData }) => {
   const [alertOpen, setAlertOpen] = useState(false);
-
-  console.log(eventsData);
-  const [isApproved, setIsApproved] = useState(false);
+  if (!eventsData) {
+    return (
+      <div className="flex h-[40vh] w-full relative justify-center items-center ">
+        <CircularProgress />
+      </div>
+    );
+  }
   return (
     <div className="pb-6">
       <div
         id={id}
         className="px-4 mx-auto max-w-md md:max-w-2xl lg:max-w-full "
       >
-        <h3 className="text-xl font-semibold py-6 text-gray-700 tracking-wider">
+        <h3 className="text-xl  font-semibold py-6 text-gray-700 tracking-wider">
           {title}
         </h3>
         <Swiper

@@ -4,13 +4,16 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useContext, useState } from "react";
-import { mutate } from "swr";
+import { useSWRConfig } from "swr";
 import { LoadingButton } from "@mui/lab";
 import {
   rejectHostEvent,
   approveHostEvent,
 } from "../../../../config/api/hostAPI";
-import { rejectUserEvent, approveUserEvent } from "../../../../config/api/eventAPI";
+import {
+  rejectUserEvent,
+  approveUserEvent,
+} from "../../../../config/api/eventAPI";
 import { UserContext } from "../../../../context/Users";
 
 export default function AlertDialog({
@@ -22,9 +25,9 @@ export default function AlertDialog({
   accept,
   client,
 }) {
-    const user = useContext(UserContext);
+  const user = useContext(UserContext);
   const [loading, setLoading] = useState(false);
-
+  const { mutate } = useSWRConfig();
   const handleClose = () => {
     setOpen(false);
   };
