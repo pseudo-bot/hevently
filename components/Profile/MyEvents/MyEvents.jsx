@@ -27,7 +27,7 @@ const MyEvents = () => {
 					/>
 				</div>
 			)}
-			<Divider/>
+			<Divider variant='middle'/>
 		</div>
 	);
 };
