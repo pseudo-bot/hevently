@@ -19,8 +19,8 @@ export default async function sendMail(req, res) {
 				let userMailOptions = {
 					from: process.env.NEXT_PUBLIC_EMAIL,
 					to: userEmail,
-					subject: 'Event confirmation email',
-					text: `Thank you for using hevently. Your event has been created successfully. Please check below for more details.`,
+					subject: 'Event request sent',
+					text: `Thank you for using hevently. Your event request has been successfully sent to venue owner. Please check below for more details.`,
 				};
 
 				transporter.sendMail(userMailOptions, (error, info) => {

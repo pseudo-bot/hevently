@@ -11,7 +11,9 @@ import MyRegistration from "./MyRegistration/MyRegistration";
 import MyDrawer from "./MyDrawer";
 import NavBar from "./NavBar/NavBar";
 import useUser from "../../hooks/useUser";
-import Register from './MyRegistration/Register';
+import Register from "./MyRegistration/Register";
+import UserRequests from "./MyProfile/Requests/UserRequests";
+import HostRequests from "./MyRegistration/Requests/HostRequests";
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
@@ -59,7 +61,12 @@ function ResponsiveDrawer(props) {
               },
             }}
           >
-            <MyDrawer photoURL={photoURL} displayName={displayName} register={register} setRegister={setRegister}/>
+            <MyDrawer
+              photoURL={photoURL}
+              displayName={displayName}
+              register={register}
+              setRegister={setRegister}
+            />
           </Drawer>
           <Drawer
             variant="permanent"
@@ -72,7 +79,12 @@ function ResponsiveDrawer(props) {
             }}
             open
           >
-            <MyDrawer photoURL={photoURL} displayName={displayName} register={register} setRegister={setRegister}/>
+            <MyDrawer
+              photoURL={photoURL}
+              displayName={displayName}
+              register={register}
+              setRegister={setRegister}
+            />
           </Drawer>
         </Box>
         <Box
@@ -87,11 +99,13 @@ function ResponsiveDrawer(props) {
             <>
               <MyProfile />
               <MyEvents />
+              <UserRequests />
             </>
           ) : (
             <>
-			<Register />				
+              <Register />
               <MyRegistration />
+              <HostRequests />
             </>
           )}
         </Box>

@@ -36,7 +36,7 @@ export const deleteHostEvent = async (uid, eventId) => {
 	}
 };
 
-export const rejectHost = async (uid, eventId) => {
+export const rejectHostEvent = async (uid, eventId) => {
 	try {
 		const deleteEvent = await fetch(
 			`/api/host/${uid}`,
@@ -56,7 +56,7 @@ export const rejectHost = async (uid, eventId) => {
 	}
 }
 
-export const approveHost = async (uid, eventId) => {
+export const approveHostEvent = async (uid, eventId) => {
 	try {
 		const deleteEvent = await fetch(
 			`/api/host/${uid}`,

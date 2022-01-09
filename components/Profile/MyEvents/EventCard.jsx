@@ -143,6 +143,9 @@ const EventCard = ({ title, id, eventsData }) => {
   const upcoming = [];
   const completed = [];
   for (const events in eventsData) {
+    if (events === "pending") {
+      continue;
+    }
     const eventarr = eventsData[events];
     if (Array.isArray(eventarr)) {
       eventarr.map((event, index) => {

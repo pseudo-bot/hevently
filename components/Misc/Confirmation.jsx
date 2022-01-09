@@ -73,7 +73,7 @@ const Confirmation = ({ showConfirm, guestList }) => {
 								</h3>
 							</div>
 							<div className="text-center text-sm text-gray-700 px-6 py-4">
-								<p>Your booking has been confirmed.</p>
+								<p>Your booking request has been sent .</p>
 								<p>Check your email for additional details.</p>
 							</div>
 							<div className="text-center flex py-6 items-center justify-center flex-col gap-4 mx-auto">

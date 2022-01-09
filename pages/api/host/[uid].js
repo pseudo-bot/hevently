@@ -66,7 +66,7 @@ export default async function createVenue(req, res) {
 				break;
 
 			case 'DELETE':
-				const deleteEvent = await UserEvents.updateOne(
+				const deleteEvent = await Host.updateOne(
 					{ uid },
 					{
 						$pull: {
