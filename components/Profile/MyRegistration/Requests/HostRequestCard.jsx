@@ -109,14 +109,9 @@ const Event = ({ eventType, event, setAlertOpen, isApproved }) => {
         <div className="">
           {isApproved ? (
             <div className="flex justify-end items-center pt-4 pb-2">
-              <Button
-                variant="contained"
-                color="error"
-                startIcon={<Close />}
-                onClick={handleDelete}
-              >
-                <div>Delete</div>
-              </Button>
+               <Button startIcon={<Check/>} variant="outlined" size="normal">
+            <div className="capitalize text-lg">Approved</div>
+          </Button>
             </div>
           ) : (
             <div className="flex justify-end gap-4 items-center pt-4 pb-2">
@@ -149,6 +144,7 @@ const Event = ({ eventType, event, setAlertOpen, isApproved }) => {
         setAlertOpen={setAlertOpen}
         type={eventType}
         uid={event.uid}
+        client={event.client}
       />
     </div>
   );
@@ -157,25 +153,7 @@ const Event = ({ eventType, event, setAlertOpen, isApproved }) => {
 const HostRequestCard = ({ title, id, eventsData }) => {
   const [alertOpen, setAlertOpen] = useState(false);
 
-  const upcoming = [];
-  const completed = [];
-  for (const events in eventsData) {
-    const eventarr = eventsData[events];
-    if (Array.isArray(eventarr)) {
-      eventarr.map((event, index) => {
-        const diff =
-          moment(event.endDate, "YYYY-MM-DD").toDate().getDate() -
-          new Date().getDate();
-        if (diff >= 0) {
-          upcoming.push(<Event eventType={events} key={index} event={event} />);
-        } else {
-          completed.push(
-            <Event eventType={events} key={index} event={event} />
-          );
-        }
-      });
-    }
-  }
+  console.log(eventsData);
   const [isApproved, setIsApproved] = useState(false);
   return (
     <div className="pb-6">
@@ -204,13 +182,13 @@ const HostRequestCard = ({ title, id, eventsData }) => {
           }}
         >
           {title === "Pending Request" ? (
-            upcoming.length > 0 ? (
-              upcoming.map((event, index) => {
+            eventsData.pending.length > 0 ? (
+              eventsData.pending.map((event, index) => {
                 return (
                   <SwiperSlide key={index}>
                     <Event
-                      eventType={event.props.eventType}
-                      event={event.props.event}
+                      eventType={event.type}
+                      event={event}
                       setAlertOpen={setAlertOpen}
                       isApproved={false}
                     />
@@ -220,13 +198,13 @@ const HostRequestCard = ({ title, id, eventsData }) => {
             ) : (
               <NoEvent type="Pending" />
             )
-          ) : completed.length > 0 ? (
-            completed.map((event, index) => {
+          ) : eventsData.approved.length > 0 ? (
+            eventsData.approved.map((event, index) => {
               return (
                 <SwiperSlide key={index}>
                   <Event
-                    eventType={event.props.eventType}
-                    event={event.props.event}
+                    eventType={event.type}
+                    event={event}
                     setAlertOpen={setAlertOpen}
                     isApproved={true}
                   />

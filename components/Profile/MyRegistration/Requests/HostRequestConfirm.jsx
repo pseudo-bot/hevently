@@ -20,6 +20,7 @@ export default function AlertDialog({
   uid,
   msg,
   accept,
+  client,
 }) {
     const user = useContext(UserContext);
   const [loading, setLoading] = useState(false);
@@ -30,7 +31,7 @@ export default function AlertDialog({
   const handleAccept = async () => {
     setLoading(true);
     const acceptHost = await approveHostEvent(user.uid, uid);
-    const acceptUser = await approveUserEvent(uid);
+    const acceptUser = await approveUserEvent(uid, client);
     setLoading(false);
 
     if (acceptHost && acceptUser) {
@@ -44,7 +45,7 @@ export default function AlertDialog({
   const handleDecline = async () => {
     setLoading(true);
     const rejectHost = await rejectHostEvent(user.uid, uid);
-    const rejectUser = await rejectUserEvent(uid);
+    const rejectUser = await rejectUserEvent(uid, client);
     setLoading(false);
 
     if (rejectHost && rejectUser) {

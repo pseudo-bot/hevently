@@ -5,7 +5,6 @@ import { UserContext } from '../../context/Users';
 import { createEvent } from '../../config/api/eventAPI.js';
 import { addHostEvent } from '../../config/api/hostAPI';
 import sendConfirmation from '../../config/api/sendConfirmation.js';
-
 import Venue from './Venue/Venue';
 import Schedule from './Schedule';
 import FormFooter from '../Misc/FormFooter';
@@ -23,6 +22,7 @@ const headings = {
 };
 
 const Event = ({ venues, type }) => {
+	const user = useContext(UserContext)
 	const [open, setOpen] = useState(false);
 	const [openDate, setOpenDate] = useState(false);
 	const [showConfirm, setShowConfirm] = useState(false);
@@ -55,15 +55,16 @@ const Event = ({ venues, type }) => {
 
 	const handleSubmit = async () => {
 		try {
+			const event = {...eventData, type, client: user.uid}
 			setLoading(true);
-			const eventCreate = await createEvent({...eventData, type}, type, true);
+			const eventCreate = await createEvent(event, type, true);
 			const emailConfirm = await sendConfirmation(email);
-			const addHost = await addHostEvent({...eventData, type});
+			const addHost = await addHostEvent(event);
 			setLoading(false);
 
 			if (eventCreate && addHost) {
 				setShowConfirm(true);
-			} else {
+			} else {				
 				console.log('Error! Event not created');
 			}
 			if (emailConfirm) console.log('Confirmation email sent');
@@ -72,7 +73,7 @@ const Event = ({ venues, type }) => {
 			}
 		} catch (err) {
 			console.log('Error! Event not created');
-			console.log(err);
+			console.log(err);	
 		}
 	};
 
