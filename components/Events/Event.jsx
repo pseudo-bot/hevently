@@ -58,6 +58,7 @@ const Event = ({ venues, type }) => {
         client: user.uid,
         clientEmail: user.email,
         created: Date.now(),
+        status: 'pending',
       };
       setLoading(true);
       const eventCreate = await createEvent(event, type, true);
