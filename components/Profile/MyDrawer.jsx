@@ -4,14 +4,24 @@ import {
   Event,
   Logout,
   HowToReg,
-  PendingActions
+  PendingActions,
 } from "@mui/icons-material/";
 import Image from "next/image";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import logOut from "../../config/firebase/signOut";
 import { useRouter } from "next/router";
-import Link from 'next/link'
+import Link from "next/link";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    top: "50%",
+    border: `2px solid ${theme.palette.background.paper}`,
+    
+  },
+}));
 
 const SidebarOption = ({
   title,
@@ -95,13 +105,15 @@ const MyDrawer = ({ photoURL, displayName, register, setRegister }) => {
             icon={<Event />}
             bookmark="events"
           />
-          <SidebarOption
-            setRegister={setRegister}
-            title="Approval"
-            icon={<PendingActions />}
-            divider={false}
-            bookmark="requests"
-          />
+          <StyledBadge badgeContent={"new"} color="error">
+            <SidebarOption
+              setRegister={setRegister}
+              title="Approval"
+              icon={<PendingActions />}
+              divider={false}
+              bookmark="requests"
+            />
+          </StyledBadge>
 
           <SidebarHeading title="registration" />
 
@@ -109,7 +121,7 @@ const MyDrawer = ({ photoURL, displayName, register, setRegister }) => {
             setRegister={setRegister}
             register={true}
             title="Register"
-            icon={<HowToReg />} 
+            icon={<HowToReg />}
           />
           <SidebarOption
             setRegister={setRegister}
@@ -118,14 +130,16 @@ const MyDrawer = ({ photoURL, displayName, register, setRegister }) => {
             icon={<Event />}
             bookmark="registrations"
           />
-          <SidebarOption
-            setRegister={setRegister}
-            register={true}
-            title="Requests"
-            icon={<PendingActions />}
-            divider={false}
-            bookmark="requests"
-          />
+          <StyledBadge badgeContent={"new"} color="error">
+            <SidebarOption
+              setRegister={setRegister}
+              register={true}
+              title="Requests"
+              icon={<PendingActions />}
+              divider={false}
+              bookmark="requests"
+            />
+          </StyledBadge>
 
           <div className="fixed bottom-0 py-8 w-[240px] p-4 bg-[#fff] ">
             <Button

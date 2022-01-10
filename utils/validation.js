@@ -16,11 +16,19 @@ const validateNumber = (number) => {
 };
 //validate name
 const validateName = (name) => {
-  let re = /^[a-zA-Z]{1,}$/;
+  let re = /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/;
   return re.test(name);
 };
 const validateGoogleDriveLink = (link) => {
-  let re = /^(http(s)?:\/\/)?((w){3}.)?drive.google.com\/file\/d\/[a-zA-Z0-9]{1,}/;
+  let re =
+    /^(http(s)?:\/\/)?((w){3}.)?drive.google.com\/file\/d\/[a-zA-Z0-9]{1,}/;
   return re.test(link);
-}
-export { validateEmail, validatePhone, validateNumber, validateName, validateGoogleDriveLink };
+};
+
+export {
+  validateEmail,
+  validatePhone,
+  validateNumber,
+  validateName,
+  validateGoogleDriveLink,
+};

@@ -17,6 +17,7 @@ import {
 import Alert from "../../../Misc/Alert";
 import HostRequestConfirm from "./HostRequestConfirm";
 import { CircularProgress } from "@mui/material";
+import { format } from "timeago.js";
 
 SwiperCore.use([Pagination]);
 
@@ -45,24 +46,19 @@ const Event = ({ eventType, event, setAlertOpen, isApproved }) => {
   const [open, setOpen] = useState(false);
   const [msg, setMsg] = useState("");
   const [accept, setAccept] = useState(false);
-  const handleDelete = () => {
-    setMsg("Are you sure you want to Delete");
-    setAccept(false);
-    setOpen(true);
-  };
   const handleDecline = () => {
-    setMsg("Are you sure you want to Decline");
+    setMsg("Are you sure you want to decline");
     setAccept(false);
     setOpen(true);
   };
   const handleAccept = () => {
-    setMsg("Are you sure you want to Accept");
+    setMsg("Are you sure you want to accept");
     setAccept(true);
     setOpen(true);
   };
   return (
     <div>
-      <div className="rounded-md border p-6 text-gray-700 event-card">
+      <div className="rounded-md border p-6 text-gray-700 event-card md:min-w-[30rem] md:max-w-[40rem] overflow-hidden">
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-1">
             <div className="text-lg uppercase font-bold">
@@ -106,15 +102,27 @@ const Event = ({ eventType, event, setAlertOpen, isApproved }) => {
           </div>
         </div>
         <Divider variant="middle" />
+        <div className="flex justify-between py-4 text-gray-500 italic ">
+          <Button variant="" size="normal">
+            <div className="text-sm italic lowercase text-gray-400">
+              {format(event.created)}
+            </div>
+          </Button>
+          <Button variant="" size="normal">
+            <div className="text-sm italic lowercase text-gray-400">
+              {event.clientEmail}
+            </div>
+          </Button>
+        </div>
         <div className="">
           {isApproved ? (
-            <div className="flex justify-end items-center pt-4 pb-2">
+            <div className="flex justify-end items-center py-2">
               <Button startIcon={<Check />} variant="outlined" size="normal">
                 <div className="capitalize text-lg">Approved</div>
               </Button>
             </div>
           ) : (
-            <div className="flex justify-end gap-4 items-center pt-4 pb-2">
+            <div className="flex justify-end gap-4 items-center py-4">
               <Button
                 variant="contained"
                 color="error"

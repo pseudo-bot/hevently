@@ -49,8 +49,8 @@ const Event = ({ eventType, event, disabled, isRating, setAlertOpen }) => {
   const [rating, setRating] = useState(event.userRatings);
   return (
     <div>
-      <div className="rounded-md border p-6 text-gray-700 event-card">
-        <div className="flex justify-between items-center">
+      <div className="rounded-md border p-6 text-gray-700 event-card md:min-w-[30rem] md:max-w-[40rem] overflow-hidden">
+        <div className="flex justify-between items-center gap-20">
           <div className="flex flex-col gap-1">
             <div className="text-lg uppercase font-bold">
               {event.eventName == "" ? eventType : event.eventName}
@@ -66,11 +66,11 @@ const Event = ({ eventType, event, disabled, isRating, setAlertOpen }) => {
           Guests : {event.guestList.length}
         </div>
         <Divider variant="middle" />
-        <div className="flex flex-col gap-1 py-2">
+        <div className="flex flex-col gap-1 py-2 w-full">
           <div className="uppercase font-semibold text-md ">
             {event.venue.value}
           </div>
-          <div className="flex items-center text-sm">
+          <div className="flex items-center text-sm w-full">
             {" "}
             <LocationCityIcon
               sx={{
