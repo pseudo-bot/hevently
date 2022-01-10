@@ -66,35 +66,40 @@ export default async function eventHandler(req, res) {
 			case 'PUT':
 				if (body.pending) {
 					const event = await UserEvents.findOne({ uid }).clone();
-					const el = event.pending.find(
-						(e) => e.uid == body.eventId
-					);
-					await UserEvents.updateOne({ uid }, { $pull: { pending: el } }).clone();
-					await UserEvents.updateOne({ uid }, { $push: { [el.type]: el } }).clone();
-					
+					const el = event.pending.find((e) => e.uid === body.eventId);
+					await UserEvents.updateOne(
+						{ uid },
+						{ $pull: { pending: el } }
+					).clone();
+					await UserEvents.updateOne(
+						{ uid },
+						{ $push: { [el.type]: el } }
+					).clone();
+
 					res.status(200).json({
 						ok: true,
 						message: 'Event updated',
 					});
-				}
-				else {const query = `${body.type}.uid`;
-				const updateQuery = `${body.type}.$.userRatings`;
-				const ratingUpdate = await UserEvents.updateOne(
-					{ [query]: body.uid },
-					{ $set: { [updateQuery]: body.ratings } }
-				).clone();
-
-				if (!ratingUpdate) {
-					return res.status(500).json({
-						ok: false,
-						message: 'Ratings not updated',
-					});
 				} else {
-					return res.status(200).json({
-						ok: true,
-						message: 'Ratings updated',
-					});
-				}}
+					const query = `${body.type}.uid`;
+					const updateQuery = `${body.type}.$.userRatings`;
+					const ratingUpdate = await UserEvents.updateOne(
+						{ [query]: body.uid },
+						{ $set: { [updateQuery]: body.ratings } }
+					).clone();
+
+					if (!ratingUpdate) {
+						return res.status(500).json({
+							ok: false,
+							message: 'Ratings not updated',
+						});
+					} else {
+						return res.status(200).json({
+							ok: true,
+							message: 'Ratings updated',
+						});
+					}
+				}
 
 				break;
 
