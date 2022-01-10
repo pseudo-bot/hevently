@@ -34,7 +34,7 @@ const Event = ({ eventType, event, setAlertOpen }) => {
   };
   return (
     <div>
-      <div className="rounded-md border p-6 text-gray-700 event-card">
+      <div className="rounded-md border p-6 text-gray-700 bg-[#fff]">
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-1">
             <div className="text-lg uppercase font-bold">
@@ -82,15 +82,6 @@ const Event = ({ eventType, event, setAlertOpen }) => {
           <Button variant="outlined" size="normal">
             <div className="capitalize text-lg">pending</div>
           </Button>
-
-          {/* <Button
-            variant="contained"
-            color="error"
-            startIcon={<CloseIcon />}
-            onClick={handleClickOpen}
-          >
-            <div>Cancel</div>
-          </Button> */}
         </div>
       </div>
       <EventCancel
@@ -137,7 +128,7 @@ const UserRequestCard = ({ title, id, eventsData }) => {
           {eventsData.pending.length > 0 ? (
             eventsData.pending.map((event, index) => {
               return (
-                <SwiperSlide key={index}>
+                <SwiperSlide className="h-1/2" key={index}>
                   <Event
                     eventType={event.type}
                     event={event}
