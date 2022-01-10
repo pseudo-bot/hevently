@@ -1,9 +1,7 @@
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import RoomIcon from "@mui/icons-material/Room";
-import Ratings from "../../MyEvents/Ratings";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
-import moment from "moment";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination } from "swiper";
@@ -11,8 +9,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { useState } from "react";
 import EventCancel from "../../../Misc/EventCancel";
-import CloseIcon from "@mui/icons-material/Close";
-import { PlaylistAdd, PlaylistAddCheck } from "@mui/icons-material";
+import { PlaylistAdd} from "@mui/icons-material";
 import Alert from "../../../Misc/Alert";
 
 SwiperCore.use([Pagination]);
@@ -110,8 +107,6 @@ const Event = ({ eventType, event, setAlertOpen }) => {
 
 const UserRequestCard = ({ title, id, eventsData }) => {
   const [alertOpen, setAlertOpen] = useState(false);
-
-  console.log(eventsData);
 
   return (
     <div className="pb-6">

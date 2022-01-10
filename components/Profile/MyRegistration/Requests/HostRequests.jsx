@@ -5,7 +5,6 @@ import { Divider } from '@mui/material';
 
 const HostRequests = () => {
     const { host:event } = useHost();
-	console.log(event);
 
     return (
         <div id="requests">

@@ -6,7 +6,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { deleteEvent } from "../../config/api/eventAPI";
 import { useContext, useState } from "react";
 import { UserContext } from "../../context/Users";
-import { mutate } from "swr";
+import { useSWRConfig } from "swr";
 import { LoadingButton } from "@mui/lab";
 
 export default function AlertDialog({
@@ -19,7 +19,7 @@ export default function AlertDialog({
 }) {
   const user = useContext(UserContext);
   const [loading, setLoading] = useState(false);
-
+  const { mutate } = useSWRConfig()
   const handleClose = () => {
     setOpen(false);
   };

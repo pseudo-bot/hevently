@@ -3,7 +3,6 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { deleteEvent } from "../../config/api/eventAPI";
 import { useContext, useState } from "react";
 import { UserContext } from "../../context/Users";
 import { mutate } from "swr";

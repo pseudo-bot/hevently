@@ -1,6 +1,5 @@
 import { LoadingButton } from "@mui/lab";
 import { Button } from "@mui/material";
-import Dialog from "@mui/material/Dialog";
 import VenueTypeDropdown from "./VenueTypeDropdown";
 import { useState } from "react";
 import addVenue from "../../../config/api/venueAPI";

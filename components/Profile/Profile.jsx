@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
 import MyProfile from "./MyProfile/MyProfile";

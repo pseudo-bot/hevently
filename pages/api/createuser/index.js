@@ -1,6 +1,7 @@
 import dbConnect from '../../../db/utils/dbConnect';
 import User from '../../../db/model/User';
 import UserEvents from '../../../db/model/UserEvents';
+import HostEvents from '../../../db/model/HostEvents';
 
 export default async function createUserHandler(req, res) {
 	await dbConnect();
@@ -34,14 +35,14 @@ export default async function createUserHandler(req, res) {
 					});
 					const newEvent = await UserEvents.create({
 						uid,
-						wedding: [],
-						corporate: [],
-						birthday: [],
-						social: [],
+					});
+					const newHost = await HostEvents.create({
+						uid,
 					});
 
 					newUser.save();
 					newEvent.save();
+					newHost.save();
 
 					res.status(201).json({
 						ok: true,

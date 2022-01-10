@@ -1,5 +1,4 @@
 import Profile from '../../components/Profile/Profile';
-import { CircularProgress } from '@mui/material';
 import Head from 'next/head';
 
 const ProfilePage = () => {
