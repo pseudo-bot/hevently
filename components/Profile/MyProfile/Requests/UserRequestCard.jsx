@@ -11,6 +11,7 @@ import { useState } from "react";
 import EventCancel from "../../../Misc/EventCancel";
 import { PlaylistAdd } from "@mui/icons-material";
 import Alert from "../../../Misc/Alert";
+import { CircularProgress } from "@mui/material";
 
 SwiperCore.use([Pagination]);
 
@@ -80,22 +81,14 @@ const Event = ({ eventType, event, setAlertOpen }) => {
         <Divider variant="middle" />
 
         <div className="flex justify-between items-center pt-4 pb-2">
-        <Button variant="" size="normal">
-            <div className="text-sm italic lowercase text-gray-400">1 hr ago</div>
+          <Button variant="" size="normal">
+            <div className="text-sm italic lowercase text-gray-400">
+              1 hr ago
+            </div>
           </Button>
           <Button variant="outlined" size="normal">
             <div className="capitalize text-lg">pending</div>
           </Button>
-          
-
-          {/* <Button
-            variant="contained"
-            color="error"
-            startIcon={<CloseIcon />}
-            onClick={handleClickOpen}
-          >
-            <div>Cancel</div>
-          </Button> */}
         </div>
       </div>
       <EventCancel
@@ -113,6 +106,13 @@ const Event = ({ eventType, event, setAlertOpen }) => {
 const UserRequestCard = ({ title, id, eventsData }) => {
   const [alertOpen, setAlertOpen] = useState(false);
 
+  if (!eventsData) {
+    return (
+      <div className="flex h-[40vh] w-full relative justify-center items-center ">
+        <CircularProgress />
+      </div>
+    );
+  }
   return (
     <div className="pb-6">
       <div
@@ -142,7 +142,7 @@ const UserRequestCard = ({ title, id, eventsData }) => {
           {eventsData.pending.length > 0 ? (
             eventsData.pending.map((event, index) => {
               return (
-                <SwiperSlide key={index}>
+                <SwiperSlide className="h-1/2" key={index}>
                   <Event
                     eventType={event.type}
                     event={event}

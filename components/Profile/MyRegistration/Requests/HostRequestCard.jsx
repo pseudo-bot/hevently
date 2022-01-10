@@ -17,6 +17,7 @@ import {
 import Alert from "../../../Misc/Alert";
 import HostRequestConfirm from "./HostRequestConfirm";
 import { CircularProgress } from "@mui/material";
+import { format } from "timeago.js";
 
 SwiperCore.use([Pagination]);
 
@@ -45,18 +46,13 @@ const Event = ({ eventType, event, setAlertOpen, isApproved }) => {
   const [open, setOpen] = useState(false);
   const [msg, setMsg] = useState("");
   const [accept, setAccept] = useState(false);
-  const handleDelete = () => {
-    setMsg("Are you sure you want to Delete");
-    setAccept(false);
-    setOpen(true);
-  };
   const handleDecline = () => {
-    setMsg("Are you sure you want to Decline");
+    setMsg("Are you sure you want to decline");
     setAccept(false);
     setOpen(true);
   };
   const handleAccept = () => {
-    setMsg("Are you sure you want to Accept");
+    setMsg("Are you sure you want to accept");
     setAccept(true);
     setOpen(true);
   };
@@ -108,10 +104,14 @@ const Event = ({ eventType, event, setAlertOpen, isApproved }) => {
         <Divider variant="middle" />
         <div className="flex justify-between py-4 text-gray-500 italic ">
           <Button variant="" size="normal">
-            <div className="text-sm italic lowercase text-gray-400">1 hr ago</div>
+            <div className="text-sm italic lowercase text-gray-400">
+              {format(event.created)}
+            </div>
           </Button>
           <Button variant="" size="normal">
-            <div className="text-sm italic lowercase text-gray-400">shivam66637@gmail.com </div>
+            <div className="text-sm italic lowercase text-gray-400">
+              {event.clientEmail}
+            </div>
           </Button>
         </div>
         <div className="">

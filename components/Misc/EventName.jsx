@@ -15,7 +15,7 @@ export default function AlertDialog({ showModal, setShowModal }) {
   };
 
   const handleClick = () => {
-    if (value.length <= 2) {
+    if (value.length < 3 || value.length > 20) {
       setOpen(true);
     } else {
       setEventName(value);
@@ -75,7 +75,7 @@ export default function AlertDialog({ showModal, setShowModal }) {
         open={open}
         severity={"warning"}
         setOpen={setOpen}
-        msg={"Please enter at least 3 characters"}
+        msg={"Event name must be between 3-20 characters"}
       />
     </>
   );

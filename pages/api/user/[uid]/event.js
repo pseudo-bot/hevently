@@ -44,7 +44,6 @@ export default async function eventHandler(req, res) {
         }
 
         break;
-
       case "GET":
         const event = await UserEvents.findOne({ uid }).clone();
 
