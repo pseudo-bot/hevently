@@ -80,8 +80,10 @@ const Event = ({ eventType, event, setAlertOpen }) => {
         <Divider variant="middle" />
 
         <div className="flex justify-between items-center pt-4 pb-2">
-        <Button variant="" size="normal">
-            <div className="text-sm italic lowercase text-gray-400">1 hr ago</div>
+          <Button variant="" size="normal">
+            <div className="text-sm italic lowercase text-gray-400">
+              1 hr ago
+            </div>
           </Button>
           <Button variant="outlined" size="normal">
             <div className="capitalize text-lg">pending</div>
@@ -102,9 +104,6 @@ const Event = ({ eventType, event, setAlertOpen }) => {
 
 const UserRequestCard = ({ title, id, eventsData }) => {
   const [alertOpen, setAlertOpen] = useState(false);
-  
-  console.log(eventsData);
-
   return (
     <div className="pb-6">
       <div
