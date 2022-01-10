@@ -121,8 +121,6 @@ export default function Register() {
   const user = useContext(UserContext);
 
   const handleConfirm = async () => {
-    setLoading(true);
-
     const venue = {
       value: venueName,
       address: venueAddress,
@@ -139,22 +137,25 @@ export default function Register() {
       setSuccess(false);
       setMsg("Please enter a valid venue name");
       setOpenAlert(true);
-      setLoading(false);
+      return;
     } else if (!validateName(venueCity)) {
       setSuccess(false);
       setMsg("Please enter a valid venue city");
       setOpenAlert(true);
-      setLoading(false);
+      return;
     } else if (!validatePhone(venueMobile)) {
       setSuccess(false);
       setMsg("Please enter a valid mobile number");
       setOpenAlert(true);
-      setLoading(false);
-    } else if (!validateNumber(capacity.start) && !validateNumber(capacity.end)) {
+      return;
+    } else if (
+      !validateNumber(capacity.start) &&
+      !validateNumber(capacity.end)
+    ) {
       setSuccess(false);
       setMsg("Please enter a valid capacity");
       setOpenAlert(true);
-      setLoading(false);
+      return;
     } else if (
       !validateNumber(venuePrice.start) &&
       !validateNumber(venuePrice.end)
@@ -162,13 +163,13 @@ export default function Register() {
       setSuccess(false);
       setMsg("Please enter a valid price");
       setOpenAlert(true);
-      setLoading(false);
+      return;
     } else {
+      setLoading(true);
       const id = uuidv4();
       res = await addVenue(venue, venueType.toLowerCase(), id, user.uid);
       res2 = await addUserVenue(venue, venueType.toLowerCase(), id);
       mutate(`/api/user/${user.uid}/uservenue`);
-
       setLoading(false);
     }
 
