@@ -44,7 +44,6 @@ export default async function eventHandler(req, res) {
         }
 
         break;
-
       case "GET":
         const event = await UserEvents.findOne({ uid }).clone();
 
@@ -116,9 +115,9 @@ export default async function eventHandler(req, res) {
           deleteEvent = await UserEvents.updateOne(
             { uid },
             {
-              $push: {
+              $pull: {
                 pending: {
-                  status: 'rejected',
+                  uid: body.eventId,
                 },
               },
             }
