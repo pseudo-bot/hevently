@@ -73,7 +73,7 @@ export default function AlertDialog({
         </DialogTitle>
         <DialogContent>
           <DialogContentText className="poppins" id="alert-dialog-description">
-            {msg} <b className="capitalize">{title}?</b>
+            <span>{msg}</span> <b className="capitalize">{title}?</b>
           </DialogContentText>
         </DialogContent>
         <div className="flex justify-end gap-3 p-4">

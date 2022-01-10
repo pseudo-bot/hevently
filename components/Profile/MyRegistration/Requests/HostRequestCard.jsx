@@ -46,18 +46,13 @@ const Event = ({ eventType, event, setAlertOpen, isApproved }) => {
   const [open, setOpen] = useState(false);
   const [msg, setMsg] = useState("");
   const [accept, setAccept] = useState(false);
-  const handleDelete = () => {
-    setMsg("Are you sure you want to Delete");
-    setAccept(false);
-    setOpen(true);
-  };
   const handleDecline = () => {
-    setMsg("Are you sure you want to Decline");
+    setMsg("Are you sure you want to decline");
     setAccept(false);
     setOpen(true);
   };
   const handleAccept = () => {
-    setMsg("Are you sure you want to Accept");
+    setMsg("Are you sure you want to accept");
     setAccept(true);
     setOpen(true);
   };
@@ -110,7 +105,7 @@ const Event = ({ eventType, event, setAlertOpen, isApproved }) => {
         <div className="flex justify-between py-4 text-gray-500 italic ">
           <Button variant="" size="normal">
             <div className="text-sm italic lowercase text-gray-400">
-              {format(Date.now() - event.created)};
+              {format(event.created)}
             </div>
           </Button>
           <Button variant="" size="normal">

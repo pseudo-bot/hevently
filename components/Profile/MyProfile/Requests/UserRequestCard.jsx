@@ -11,6 +11,7 @@ import { useState } from "react";
 import EventCancel from "../../../Misc/EventCancel";
 import { PlaylistAdd } from "@mui/icons-material";
 import Alert from "../../../Misc/Alert";
+import { CircularProgress } from "@mui/material";
 
 SwiperCore.use([Pagination]);
 
@@ -104,6 +105,14 @@ const Event = ({ eventType, event, setAlertOpen }) => {
 
 const UserRequestCard = ({ title, id, eventsData }) => {
   const [alertOpen, setAlertOpen] = useState(false);
+
+  if (!eventsData) {
+    return (
+      <div className="flex h-[40vh] w-full relative justify-center items-center ">
+        <CircularProgress />
+      </div>
+    );
+  }
   return (
     <div className="pb-6">
       <div
