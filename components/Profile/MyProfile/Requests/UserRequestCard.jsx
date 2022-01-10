@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { useState } from "react";
 import EventCancel from "../../../Misc/EventCancel";
-import { PlaylistAdd} from "@mui/icons-material";
+import { PlaylistAdd } from "@mui/icons-material";
 import Alert from "../../../Misc/Alert";
 
 SwiperCore.use([Pagination]);
@@ -19,10 +19,10 @@ const NoEvent = () => {
     <div className="text-gray-400 tracking-wide flex flex-col items-center gap-8 text-2xl mt-5">
       <div className={`ubuntu font-light`}>No Pending Requests</div>
       <PlaylistAdd
-          sx={{
-            fontSize: "5rem",
-          }}
-        />
+        sx={{
+          fontSize: "5rem",
+        }}
+      />
     </div>
   );
 };
@@ -34,7 +34,7 @@ const Event = ({ eventType, event, setAlertOpen }) => {
   };
   return (
     <div>
-      <div className="rounded-md border p-6 text-gray-700 bg-[#fff]">
+      <div className="rounded-md border p-6 text-gray-700 event-card md:min-w-[30rem] md:max-w-[40rem] overflow-hidden">
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-1">
             <div className="text-lg uppercase font-bold">
@@ -78,7 +78,11 @@ const Event = ({ eventType, event, setAlertOpen }) => {
           </div>
         </div>
         <Divider variant="middle" />
+
         <div className="flex justify-between items-center pt-4 pb-2">
+        <Button variant="" size="normal">
+            <div className="text-sm italic lowercase text-gray-400">1 hr ago</div>
+          </Button>
           <Button variant="outlined" size="normal">
             <div className="capitalize text-lg">pending</div>
           </Button>
@@ -94,7 +98,7 @@ const Event = ({ eventType, event, setAlertOpen }) => {
       />
     </div>
   );
-};  
+};
 
 const UserRequestCard = ({ title, id, eventsData }) => {
   const [alertOpen, setAlertOpen] = useState(false);

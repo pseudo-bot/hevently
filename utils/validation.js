@@ -23,6 +23,5 @@ const validateGoogleDriveLink = (link) => {
   let re = /^(http(s)?:\/\/)?((w){3}.)?drive.google.com\/file\/d\/[a-zA-Z0-9]{1,}/;
   return re.test(link);
 }
-//validate address
 
 export { validateEmail, validatePhone, validateNumber, validateName, validateGoogleDriveLink };
