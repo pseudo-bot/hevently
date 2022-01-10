@@ -116,9 +116,9 @@ export default async function eventHandler(req, res) {
           deleteEvent = await UserEvents.updateOne(
             { uid },
             {
-              $pull: {
+              $push: {
                 pending: {
-                  uid: body.eventId,
+                  status: 'rejected',
                 },
               },
             }

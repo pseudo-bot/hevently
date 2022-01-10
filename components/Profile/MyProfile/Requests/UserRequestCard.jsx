@@ -102,6 +102,8 @@ const Event = ({ eventType, event, setAlertOpen }) => {
 
 const UserRequestCard = ({ title, id, eventsData }) => {
   const [alertOpen, setAlertOpen] = useState(false);
+  
+  console.log(eventsData);
 
   return (
     <div className="pb-6">

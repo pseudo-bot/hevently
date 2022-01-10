@@ -96,8 +96,8 @@ const SingleInput = ({ label, value, setValue }) => {
 };
 
 export default function Register() {
-  const res = null;
-  const res2 = null;
+  let res = null;
+  let res2 = null;
   const [openAlert, setOpenAlert] = useState(false);
   const [success, setSuccess] = useState(false);
   const [msg, setMsg] = useState("");
@@ -192,6 +192,7 @@ export default function Register() {
       setVenueType("");
     } else {
       setSuccess(false);
+      setMsg("Something went wrong");
       setOpenAlert(true);
     }
   };
