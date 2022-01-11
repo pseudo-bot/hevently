@@ -15,9 +15,9 @@ export default function Modal({ setShowLogin, setOpenFail, setOpenSuccess }) {
 	const [register, setRegister] = useState(false);
 
 	return (
-		<div className="fixed h-screen w-screen top-0 left-0">
+		<div className="fixed h-screen w-screen inset-0 flex justify-center items-center">
 			<div
-				className={`justify-center items-center flex overflow-x-hidden fixed inset-0 z-50 outline-none focus:outline-none px-4`}
+				className={`justify-center items-center flex overflow-x-hidden z-50 outline-none focus:outline-none px-4 h-screen w-screen inset-0`}
 			>
 				<div className="relative mx-auto bg-bgray-50 rounded-lg">
 					<div className="border-0 rounded-lg shadow-md relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -132,7 +132,7 @@ export default function Modal({ setShowLogin, setOpenFail, setOpenSuccess }) {
 					</div>
 				</div>
 			</div>
-			<div className="opacity-40 fixed inset-0 z-40 bg-gray-800"></div>
+			<div className="opacity-40 fixed inset-0 h-screen w-screen z-40 bg-gray-800"></div>
 		</div>
 	);
 }

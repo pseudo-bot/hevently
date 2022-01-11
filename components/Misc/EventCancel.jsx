@@ -46,13 +46,15 @@ export default function AlertDialog({
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle className="poppins" id="alert-dialog-title">
-          {"Cancel Event"}
+        <DialogTitle id="alert-dialog-title">
+          <div>{"Cancel Event"}</div>
         </DialogTitle>
         <DialogContent>
-          <DialogContentText className="poppins" id="alert-dialog-description">
-            Are you sure you want to cancel{" "}
-            <b className="capitalize">{title}?</b>
+          <DialogContentText id="alert-dialog-description">
+            <div>
+              Are you sure you want to cancel{" "}
+              <b className="capitalize">{title}?</b>
+            </div>
           </DialogContentText>
         </DialogContent>
         <div className="flex justify-end gap-3 p-4">

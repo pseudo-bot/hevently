@@ -8,15 +8,17 @@ export default function Navbar() {
 	return (
 		<>
 			<div className="top-0 border-b w-full fixed h-16 z-50 outer-cover navbar-bg transition-all duration-300 shadow-lg"></div>
-			<nav className="h-16 fixed top-0 w-full flex items-center justify-center lg:justify-between px-12 z-50 transition-all duration-300 max-w-[80rem] left-1/2 -translate-x-1/2">
-				<Link passHref href='/'>
-					<div className="text-[2.25rem] font-bold text-gray-200 tracking-wider dancing cursor-pointer logo">
-						hevently
-					</div>
-				</Link>
-				<NavLinks hidden={hidden} setHidden={setHidden}/>
-				<Menubar hidden={hidden} click={() => setHidden(!hidden)} />
-			</nav>
+			<div className="fixed top-0 w-screen h-16 z-50 flex justify-center">
+				<nav className="h-full w-full flex items-center justify-center lg:justify-between px-12 transition-all duration-300 max-w-[80rem]">
+					<Link passHref href='/'>
+						<div className="text-[2.25rem] font-bold text-gray-200 tracking-wider dancing cursor-pointer logo">
+							hevently
+						</div>
+					</Link>
+					<NavLinks hidden={hidden} setHidden={setHidden}/>
+					<Menubar hidden={hidden} click={() => setHidden(!hidden)} />
+				</nav>
+			</div>
 		</>
 	);
 }
