@@ -5,10 +5,10 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useContext, useState } from "react";
 import { UserContext } from "../../context/Users";
-import { mutate } from "swr";
 import { LoadingButton } from "@mui/lab";
 import { deleteVenue } from "../../config/api/venueAPI";
 import { deleteUserVenue } from "../../config/api/userVenueAPI";
+import refetchData from "../../utils/refetchData";
 
 export default function AlertDialog({
   title,
@@ -22,18 +22,19 @@ export default function AlertDialog({
   const [loading, setLoading] = useState(false);
 	const user = useContext(UserContext);
 
-
   const handleClose = () => {
     setOpen(false);
   };
 
   const handleDelete = async () => {
 		try {
+      setLoading(true);
 			await deleteUserVenue(venue.id);
 			await deleteVenue(venue.type, venue.id);
-			mutate(`/api/user/${user.uid}/uservenue`);
+			refetchData(user.uid);
+      setLoading(false);
 		} catch (err) {
-			console.log(err);
+			alert('Cannot delete venue');
 		}
     setOpen(false);
 	};

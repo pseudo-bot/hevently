@@ -6,8 +6,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { deleteEvent } from "../../config/api/eventAPI";
 import { useContext, useState } from "react";
 import { UserContext } from "../../context/Users";
-import { useSWRConfig } from "swr";
 import { LoadingButton } from "@mui/lab";
+import refetchData from "../../utils/refetchData";
 
 export default function AlertDialog({
   title,
@@ -19,21 +19,22 @@ export default function AlertDialog({
 }) {
   const user = useContext(UserContext);
   const [loading, setLoading] = useState(false);
-  const { mutate } = useSWRConfig()
   const handleClose = () => {
     setOpen(false);
   };
 
   const handleDelete = async () => {
+    
     setLoading(true);
     const res = await deleteEvent(uid, type);
+    refetchData(user.uid);
     setLoading(false);
-    mutate(`/api/user/${user.uid}/event`);
+
     if (res) {
       setOpen(false);
       setAlertOpen(true);
     } else {
-      console.log("Event not deleted");
+      alert("Event not deleted");
     }
   };
 

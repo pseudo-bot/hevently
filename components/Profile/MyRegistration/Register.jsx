@@ -7,7 +7,6 @@ import Alert from "../../Misc/Alert";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import { v4 as uuidv4 } from "uuid";
-import { mutate } from "swr";
 import { UserContext } from "../../../context/Users";
 import { useContext } from "react";
 import Divider from "@mui/material/Divider";
@@ -16,6 +15,8 @@ import {
   validateNumber,
   validatePhone,
 } from "../../../utils/validation";
+import refetchData from "../../../utils/refetchData";
+
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
     color: "blue",
@@ -169,7 +170,7 @@ export default function Register() {
       const id = uuidv4();
       res = await addVenue(venue, venueType.toLowerCase(), id, user.uid);
       res2 = await addUserVenue(venue, venueType.toLowerCase(), id);
-      mutate(`/api/user/${user.uid}/uservenue`);
+      refetchData(user.uid);
       setLoading(false);
     }
 

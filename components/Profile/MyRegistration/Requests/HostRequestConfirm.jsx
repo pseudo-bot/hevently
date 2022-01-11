@@ -15,6 +15,7 @@ import {
   approveUserEvent,
 } from "../../../../config/api/eventAPI";
 import { UserContext } from "../../../../context/Users";
+import refetchData from "../../../../utils/refetchData";
 
 export default function AlertDialog({
   title,
@@ -35,11 +36,10 @@ export default function AlertDialog({
     setLoading(true);
     const acceptHost = await approveHostEvent(user.uid, uid);
     const acceptUser = await approveUserEvent(uid, client);
+    refetchData(user.uid);
     setLoading(false);
 
     if (acceptHost && acceptUser) {
-      mutate(`api/host/${uid}`);
-      mutate(`api/user/${uid}/event`);
       setOpen(false);
     } else {
       alert("Something went wrong");
@@ -49,11 +49,10 @@ export default function AlertDialog({
     setLoading(true);
     const rejectHost = await rejectHostEvent(user.uid, uid);
     const rejectUser = await rejectUserEvent(uid, client);
+    refetchData(user.uid);
     setLoading(false);
 
     if (rejectHost && rejectUser) {
-      mutate(`api/host/${uid}`);
-      mutate(`api/user/${uid}/event`);
       setOpen(false);
     } else {
       alert("Something went wrong");
