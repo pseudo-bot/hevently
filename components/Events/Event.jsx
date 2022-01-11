@@ -34,7 +34,7 @@ const Event = ({ venues, type }) => {
       return;
     }
 
-    if ((!eventData.startDate || !eventData.endDate) && position === 1) {
+    if ((!eventData.startDate || !eventData.endDate) && position === 1 || (eventData.startDate > eventData.endDate)) {
       setOpenDate(true);
       return;
     }
