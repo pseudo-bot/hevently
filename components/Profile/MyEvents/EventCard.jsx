@@ -43,11 +43,14 @@ const Event = ({ eventType, event, disabled, isRating, setAlertOpen }) => {
 	const diff =
 		moment(event.startDate, 'YYYY-MM-DD').toDate().getDate() -
 		new Date().getDate();
+
 	const [open, setOpen] = useState(false);
 	const handleClickOpen = () => {
 		setOpen(true);
 	};
+
 	const [rating, setRating] = useState(event.userRatings);
+  
 	return (
 		<div>
 			<div className="rounded-md border p-6 text-gray-700 event-card md:min-w-[24rem] md:max-w-[32rem] overflow-hidden">
