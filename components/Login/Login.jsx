@@ -124,7 +124,7 @@ export default function Modal({ setShowLogin, setOpenFail, setOpenSuccess }) {
 							</button>
 						</div>
 						<p className="text-center text-gray-600 text-xs my-4">
-							By siging in you agree to our{' '}
+							By signing in you agree to our{' '}
 							<a href="" className="text-blue-600 underline">
 								terms and conditions
 							</a>
