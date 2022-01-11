@@ -16,6 +16,8 @@ import {
   validatePhone,
 } from "../../../utils/validation";
 import refetchData from "../../../utils/refetchData";
+import Button from "@mui/material/Button";
+
 
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
@@ -198,6 +200,22 @@ export default function Register() {
       setOpenAlert(true);
     }
   };
+  const handleClear=()=>{
+    setVenueName("");
+    setVenueAddress("");
+    setVenueCity("");
+    setVenueMobile("");
+    setCapacity({
+      start: "",
+      end: "",
+    });
+    setVenueImage("");
+    setVenuePrice({
+      start: "",
+      end: "",
+    });
+    setVenueType("")
+  }
 
   return (
     <>
@@ -252,6 +270,16 @@ export default function Register() {
             />
           </div>
           <div className="flex justify-center gap-3 py-8">
+          <Button
+            sx={{
+              ":hover": {
+                backgroundColor: "rgb(244, 244, 245)",
+              },
+            }}
+            onClick={handleClear}
+          >
+            <div className=" capitalize text-gray-500">Clear</div>
+          </Button>
             <LoadingButton
               variant="contained"
               onClick={handleConfirm}
