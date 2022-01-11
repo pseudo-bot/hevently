@@ -5,17 +5,17 @@ import logo from '../../public/logo.png'
 function Cover() {
 	return (
 		<div>
-			<div className="cover h-screen w-screen absolute parallax"></div>
-			<div className="relative h-screen flex items-center justify-center flex-col">
-				<div className='relative max-h-[32rem] max-w-[32rem] w-full h-full '>
+			<div className="cover h-[48rem] w-screen absolute parallax"></div>
+			<div className="relative h-[48rem] flex items-center justify-center flex-col top-2">
+				<div className='relative max-h-[28rem] max-w-[28rem] w-full h-full '>
 					<Image src={logo} layout='fill' alt="site-logo" objectFit='cover' className='cursor-pointer transition-all duration-500 logo-img'/>
 				</div>
 				<TagLine>you plan | we organize</TagLine>
 				<div className='relative w-full h-[7.2rem]'>
 				</div>
-				<div className="absolute bottom-10 cursor-pointer">
+				{/* <div className="absolute bottom-4 cursor-pointer">
 					<div className="scroll"></div>
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);

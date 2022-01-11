@@ -75,8 +75,8 @@ const MyDrawer = ({ photoURL, displayName, register, setRegister }) => {
 
   return (
     <>
-      <div className="bg-[#fff] shadow-lg border-r fixed w-[240px] h-screen"></div>
-      <div className="relative z-50 h-full">
+      <div className="shadow-lg border-r fixed w-[240px]"></div>
+      <div className="relative z-50 h-max">
         <div className="pt-8 pb-4">
           <div className="w-full flex justify-center">
             <Image
@@ -141,7 +141,7 @@ const MyDrawer = ({ photoURL, displayName, register, setRegister }) => {
             />
           </StyledBadge>
 
-          <div className="fixed bottom-0 py-8 w-[240px] p-4 bg-[#fff] ">
+          <div className="my-16">
             <Button
               variant="contained"
               color="error"

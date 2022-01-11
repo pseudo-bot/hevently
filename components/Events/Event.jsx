@@ -62,22 +62,22 @@ const Event = ({ venues, type }) => {
       };
       setLoading(true);
       const eventCreate = await createEvent(event, type, true);
-      const emailConfirm = await sendConfirmation(email);
+      // const emailConfirm = await sendConfirmation(email);
       const addHost = await addHostEvent(event);
       setLoading(false);
 
       if (eventCreate && addHost) {
         setShowConfirm(true);
       } else {
-        console.log("Error! Event not created");
+        alert("Error! Event not created");
       }
-      if (emailConfirm) console.log("Confirmation email sent");
-      else {
-        console.log("Error! Confirmation email not sent");
-      }
+      // if (emailConfirm) alert("Confirmation email sent");
+      // else {
+      //   alert("Error! Confirmation email not sent");
+      // }
     } catch (err) {
-      console.log("Error! Event not created");
-      console.log(err);
+      alert("Error! Event not created");
+      alert(err);
     }
   };
 

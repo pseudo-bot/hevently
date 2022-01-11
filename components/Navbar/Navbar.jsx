@@ -7,8 +7,8 @@ export default function Navbar() {
 	const [hidden, setHidden] = useState(1);
 	return (
 		<>
-			<div className="top-0 w-screen border-b fixed h-16 z-50 outer-cover navbar-bg transition-all duration-300"></div>
-			<nav className="h-16 fixed top-0 w-full flex items-center justify-center lg:justify-between px-12 shadow-lg z-50 transition-all duration-300">
+			<div className="top-0 border-b w-full fixed h-16 z-50 outer-cover navbar-bg transition-all duration-300 shadow-lg"></div>
+			<nav className="h-16 fixed top-0 w-full flex items-center justify-center lg:justify-between px-12 z-50 transition-all duration-300 max-w-[80rem] left-1/2 -translate-x-1/2">
 				<Link passHref href='/'>
 					<div className="text-[2.25rem] font-bold text-gray-200 tracking-wider dancing cursor-pointer logo">
 						hevently

@@ -36,7 +36,7 @@ const Event = ({ eventType, event, setAlertOpen }) => {
 	};
 	return (
 		<div>
-			<div className="rounded-md border p-6 text-gray-700 event-card md:min-w-[30rem] md:max-w-[40rem] overflow-hidden">
+			<div className="rounded-md border p-6 text-gray-700 event-card md:min-w-[24rem] md:max-w-[32rem] overflow-hidden">
 				<div className="flex justify-between items-center">
 					<div className="flex flex-col gap-1">
 						<div className="text-lg uppercase font-bold">
@@ -138,13 +138,13 @@ const UserRequestCard = ({ title, id, eventsData }) => {
 						clickable: true,
 					}}
 					breakpoints={{
-						900: {
-							slidesPerView: 2,
+						1200: {
+						  slidesPerView: 2,
 						},
-						1250: {
-							slidesPerView: 3,
+						1450: {
+						  slidesPerView: 3,
 						},
-					}}
+					  }}
 				>
 					{eventsData.pending.length > 0 ? (
 						eventsData.pending.map((event, index) => {

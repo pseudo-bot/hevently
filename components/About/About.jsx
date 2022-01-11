@@ -12,7 +12,7 @@ const Card = ({ name, ghref, ihref, lhref, desc, userPhoto }) => {
           <Image
             className="w-full"
             src={userPhoto}
-            alt="Sunset in the mountains"
+            alt="Profile"
             layout="fill"
           />
         </div>
@@ -24,18 +24,24 @@ const Card = ({ name, ghref, ihref, lhref, desc, userPhoto }) => {
           <a
             className="ml-3 text-gray-500 cursor-pointer hover:text-gray-800 mr-4"
             href={ghref}
+            target='_blank'
+            rel="noopener noreferrer"
           >
             <GitHubIcon />
           </a>
           <a
             className="ml-3 text-gray-500 cursor-pointer hover:text-gray-800 mr-4"
             href={ihref}
+            target='_blank'
+            rel="noopener noreferrer"
           >
             <InstagramIcon />
           </a>
           <a
             className="ml-3 text-gray-500 cursor-pointer hover:text-gray-800 mr-4"
             href={lhref}
+            target='_blank'
+            rel="noopener noreferrer"
           >
             <LinkedInIcon />
           </a>
@@ -48,25 +54,20 @@ const Card = ({ name, ghref, ihref, lhref, desc, userPhoto }) => {
 function About() {
   return (
     <>
-      <div className="relative h-screen flex items-center justify-center ">
+      <div className="relative h-[40rem] flex items-center justify-center ">
         <div className="cover aboutbg h-full w-full absolute"></div>
-        <div className="sm:w-3/4 lg:w-5/12 mx-auto px-2 py-20 mt-20 z-20">
-          <h1 className="text-5xl md:text-7xl text-center text-bookmark-blue capitalize font-extrabold dancing text-gray-50">
-            About Hevently
+        <div className="relative h-[40rem] flex flex-col px-12 max-w-[80rem] py-20 mt-20 z-20 gap-10">
+          <h1 className="text-5xl md:text-7xl text-center text-bookmark-blue font-extrabold dancing text-gray-50 ">
+            About
           </h1>
           <div className="md:text-[20px] text-justify text-bookmark-grey mt-4 py-10 text-gray-50">
             Born at the intersection of clever and creative, hevently harnesses
             the power of emotion to make your most important day less stressful
-            and more beautiful. At our core, we are a culture of action and
-            imagination.Our goal is to provide unparalleled event services and
-            outstanding customer service.We take care of every detail so you can
+            and more beautiful. Our goal is to provide unparalleled event services and
+            outstanding customer service. We take care of every detail so you can
             focus on what matters most, hosting a once in a lifetime experience
             and unforgettable celebration. We plan wedding and events, we{"'"}re
-            experts in perfecting the details and creating the extraordinary. We
-            exist so that you can enjoy the fun parts of planning and leave the
-            stress behind. Our clients are intensely busy professionals who
-            depend on us to make their planning process stress-free and to
-            discover what will make their day uniquely special. We make design
+            experts in perfecting the details and creating the extraordinary. We make design
             and planning simple for our clients - and simple isn{"'"}t easy.
           </div>
         </div>

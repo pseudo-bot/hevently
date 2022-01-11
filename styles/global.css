@@ -132,7 +132,7 @@ body {
   background-image: url("/events/cover2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  filter: brightness(0.4);
+  filter: brightness(0.34);
   background-attachment: fixed;
 }
 

@@ -21,7 +21,7 @@ export default async function sendMail(req, res) {
 					to: emails,
 					subject: 'Invite to attend the event',
 					text: `We request you to be our guest at EventName .
-					Kindly be present on this ocassion to celebrate with us an ever-lasting bond of togetherness`,
+					Kindly be present on this occasion to celebrate with us an ever-lasting bond of togetherness`,
 				};
 
 				transporter.sendMail(guestsMailOptions, (error, info) => {

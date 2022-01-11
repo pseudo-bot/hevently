@@ -73,11 +73,11 @@ const Confirmation = ({ showConfirm, guestList }) => {
 								</h3>
 							</div>
 							<div className="text-center text-sm text-gray-700 px-6 py-4">
-								<p>Your booking request has been sent .</p>
-								<p>Check your email for additional details.</p>
+								<p>Your booking request has been sent successfully.</p>
+								<p>Please check your profile to know the status of your request. A confirmation email will be sent as soon as your request has been accepted</p>
 							</div>
 							<div className="text-center flex py-6 items-center justify-center flex-col gap-4 mx-auto">
-								<LoadingButton
+								{/* <LoadingButton
 									variant="contained"
 									className="poppins capitalize tracking-wider"
 									color={error ? 'error' : invite ? 'secondary' : 'success'}
@@ -90,7 +90,7 @@ const Confirmation = ({ showConfirm, guestList }) => {
 										{invite && !error ? 'Send Invites' : 'Invites Sent'}
 										{error && 'Error'}
 									</div>
-								</LoadingButton>
+								</LoadingButton> */}
 								<Link href="/" passHref>
 									<Button
 										variant="contained"

@@ -58,7 +58,7 @@ const Event = ({ eventType, event, setAlertOpen, isApproved }) => {
   };
   return (
     <div>
-      <div className="rounded-md border p-6 text-gray-700 event-card md:min-w-[30rem] md:max-w-[40rem] overflow-hidden">
+      <div className="rounded-md border p-6 text-gray-700 event-card md:min-w-[24rem] md:max-w-[32rem] overflow-hidden">
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-1">
             <div className="text-lg uppercase font-bold">
@@ -104,7 +104,7 @@ const Event = ({ eventType, event, setAlertOpen, isApproved }) => {
         <Divider variant="middle" />
         <div className="flex justify-between py-4 text-gray-500 italic ">
           <Button variant="" size="normal">
-            <div className="text-sm italic lowercase text-gray-400">
+            <div className="text-sm lowercase text-gray-400">
               {format(event.created)}
             </div>
           </Button>
@@ -185,10 +185,10 @@ const HostRequestCard = ({ title, id, eventsData }) => {
             clickable: true,
           }}
           breakpoints={{
-            900: {
+            1200: {
               slidesPerView: 2,
             },
-            1250: {
+            1450: {
               slidesPerView: 3,
             },
           }}
