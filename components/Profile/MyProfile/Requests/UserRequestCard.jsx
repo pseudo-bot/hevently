@@ -146,7 +146,7 @@ const UserRequestCard = ({ title, id, eventsData }) => {
 						},
 					  }}
 				>
-					{eventsData.pending.length > 0 ? (
+					{eventsData.pending && (eventsData.pending.length > 0) ? (
 						eventsData.pending.sort((a, b) => b.created - a.created).map((event, index) => {
 							return (
 								<SwiperSlide className="h-1/2" key={index}>

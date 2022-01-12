@@ -57,18 +57,11 @@ export default async function eventHandler(req, res) {
 			case 'GET':
 				const event = await UserEvents.findOne({ uid }).clone();
 
-				if (event) {
-					return res.status(200).json({
-						ok: true,
-						message: 'Events retrieved',
-						event,
-					});
-				} else {
-					return res.status(404).json({
-						ok: false,
-						message: 'Events not found',
-					});
-				}
+				return res.status(200).json({
+					ok: true,
+					message: 'Events retrieved',
+					event: event || {},
+				});
 
 				break;
 

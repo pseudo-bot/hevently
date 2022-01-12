@@ -12,20 +12,11 @@ export default async function createVenue(req, res) {
 		switch (method) {
 			case 'GET':
 				const host = await Host.findOne({ uid }).clone();
-				if (host) {
-					return res.status(200).json({
-						ok: true,
-						message: 'Events retrieved',
-						host,
-					});
-				} else {
-					return res.status(404).json({
-						ok: false,
-						message: 'Events not found',
-						host: {},
-					});
-				}
-				break;
+				return res.status(200).json({
+					ok: true,
+					message: 'Events retrieved',
+					host: host || {},
+				});
 
 			case 'POST':
 				const newEvent = await Host.updateOne(
