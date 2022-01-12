@@ -83,7 +83,7 @@ const Event = ({ eventType, event, setAlertOpen }) => {
 
 				<div className="flex justify-between items-center pt-4 pb-2">
 					<Button variant="" size="normal">
-						<div className="text-sm italic lowercase text-gray-400">
+						<div className="text-sm lowercase text-gray-400">
 							{format(event.created)}
 						</div>
 					</Button>
@@ -92,7 +92,7 @@ const Event = ({ eventType, event, setAlertOpen }) => {
 							<div className="capitalize text-lg">Pending</div>
 						</Button>
 					) : (
-						<Button variant="contained" size="normal" color="error">
+						<Button variant="outlined" size="normal" color="error">
 							<div className="capitalize text-lg">Rejected</div>
 						</Button>
 					)}
@@ -147,7 +147,7 @@ const UserRequestCard = ({ title, id, eventsData }) => {
 					  }}
 				>
 					{eventsData.pending.length > 0 ? (
-						eventsData.pending.map((event, index) => {
+						eventsData.pending.sort((a, b) => b.created - a.created).map((event, index) => {
 							return (
 								<SwiperSlide className="h-1/2" key={index}>
 									<Event

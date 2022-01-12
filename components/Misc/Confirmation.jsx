@@ -4,7 +4,6 @@ import useWindowSize from 'react-use/lib/useWindowSize';
 import { Button } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Link from 'next/link';
-import sendMail from '../../config/api/sendMail';
 import { Send, Done } from '@mui/icons-material';
 
 const Confirmation = ({ showConfirm, guestList }) => {
@@ -13,18 +12,7 @@ const Confirmation = ({ showConfirm, guestList }) => {
 	const [invite, setInvite] = useState(true);
 	const [error, setError] = useState(false);
 
-	const sendInvites = async () => {
-		if (!invite) return;
-		setLoading(true);
-		const res = await sendMail(guestList);
-		setLoading(false);
 
-		if (res) {
-			setInvite(false);
-		} else {
-			setError(true);
-		}
-	};
 
 	return (
 		<>
@@ -73,24 +61,11 @@ const Confirmation = ({ showConfirm, guestList }) => {
 								</h3>
 							</div>
 							<div className="text-center text-sm text-gray-700 px-6 py-4">
-								<p>Your booking request has been sent successfully.</p>
-								<p>Please check your profile to know the status of your request. A confirmation email will be sent as soon as your request has been accepted</p>
+								Your booking request has been sent successfully.
+								A confirmation email will be sent as soon as your request has been accepted.
 							</div>
 							<div className="text-center flex py-6 items-center justify-center flex-col gap-4 mx-auto">
-								{/* <LoadingButton
-									variant="contained"
-									className="poppins capitalize tracking-wider"
-									color={error ? 'error' : invite ? 'secondary' : 'success'}
-									onClick={sendInvites}
-									loading={loading}
-									endIcon={invite ? <Send /> : <Done />}
-									disabled={guestList && guestList.length === 0}
-								>
-									<div className="poppins capitalize">
-										{invite && !error ? 'Send Invites' : 'Invites Sent'}
-										{error && 'Error'}
-									</div>
-								</LoadingButton> */}
+
 								<Link href="/" passHref>
 									<Button
 										variant="contained"

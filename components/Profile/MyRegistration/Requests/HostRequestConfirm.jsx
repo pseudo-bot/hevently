@@ -16,8 +16,10 @@ import {
 } from "../../../../config/api/eventAPI";
 import { UserContext } from "../../../../context/Users";
 import refetchData from "../../../../utils/refetchData";
+import sendMail from "../../../../config/api/sendMail";
+import sendConfirmation from "../../../../config/api/sendConfirmation";
 
-export default function AlertDialog({
+export default function HostRequestConfirm({
   title,
   open,
   setOpen,
@@ -25,6 +27,8 @@ export default function AlertDialog({
   msg,
   accept,
   client,
+  guestList,
+  clientEmail
 }) {
   const user = useContext(UserContext);
   const [loading, setLoading] = useState(false);
@@ -37,14 +41,27 @@ export default function AlertDialog({
     const acceptHost = await approveHostEvent(user.uid, uid);
     const acceptUser = await approveUserEvent(uid, client);
     refetchData(user.uid);
-    setLoading(false);
 
     if (acceptHost && acceptUser) {
       setOpen(false);
+      if (guestList.length > 0) {
+        try {
+          const res = await sendMail(guestList);
+        } catch (error) {
+          alert("Error sending mail");
+        }
+      }
+      try {
+        const res2 = await sendConfirmation(clientEmail);
+      } catch (error) {
+        alert("Error sending mail");
+      }
     } else {
       alert("Something went wrong");
     }
+    setLoading(false);
   };
+
   const handleDecline = async () => {
     setLoading(true);
     const rejectHost = await rejectHostEvent(user.uid, uid);
