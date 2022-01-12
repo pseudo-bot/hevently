@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
 	Person,
 	Event,
@@ -12,6 +12,8 @@ import Divider from '@mui/material/Divider';
 import logOut from '../../config/firebase/signOut';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import useBadge from '../../hooks/useBadge';
+import { mutate } from 'swr';
 
 const SidebarOption = ({
 	title,
@@ -20,25 +22,30 @@ const SidebarOption = ({
 	register = false,
 	setRegister,
 	bookmark = '',
-  badge = false,
+	badge = false,
+	handleBadge,
 }) => {
-	const router = useRouter();
 	return (
 		<>
 			<Link href={`#${bookmark}`} passHref>
 				<div
 					onClick={() => {
 						setRegister(register);
+						if (badge) {
+							handleBadge();
+						}
 					}}
 					className="cursor-pointer flex py-2 px-4 gap-4 items-center  hover:text-blue-700 transition-all duration-200 m-2"
 				>
 					<div>
 						{icon} <span>{title}</span>
 					</div>
-					{badge && <div className='h-3 w-3 relative'>
-						<div className='absolute w-full h-full inset-0 bg-red-500 opacity-75 animate-ping rounded-full'></div>
-            <div className='h-3 w-3 relative rounded-full bg-red-500'></div>
-					</div>}
+					{badge && (
+						<div className="h-3 w-3 relative">
+							<div className="absolute w-full h-full inset-0 bg-red-500 opacity-75 animate-ping rounded-full"></div>
+							<div className="h-3 w-3 relative rounded-full bg-red-500"></div>
+						</div>
+					)}
 				</div>
 			</Link>
 			<div className="w-4/5 mx-auto">
@@ -64,10 +71,53 @@ const MyDrawer = ({ photoURL, displayName, register, setRegister }) => {
 		setOpen(true);
 	};
 	const router = useRouter();
+	const { data, uid } = useBadge();
+	const [approval, setApproval] = useState(false);
+	const [request, setRequest] = useState(false);
+
+	useEffect(() => {
+		if (data && Object.keys(data).length > 0) {
+			setApproval(data.approval);
+			setRequest(data.request);
+		}
+	}, [data]);
 
 	const signOut = async () => {
 		await logOut();
 		router.push('/');
+	};
+
+	const fetchBadge = async (approval, request) => {
+		await mutate(
+			`/api/user/${uid}/badge`,
+			{ ...data, approval, request },
+			false
+		);
+		await fetch(`/api/user/${uid}/badge`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				approval,
+				request,
+			}),
+		});
+		await mutate(`/api/user/${uid}/badge`);
+	};
+
+	const handleApprove = async () => {
+		if (uid) {
+			setApproval(false);
+			fetchBadge(false, request);
+		}
+	};
+
+	const handleRequest = async () => {
+		if (uid) {
+			setRequest(false);
+			fetchBadge(approval, false);
+		}
 	};
 
 	return (
@@ -108,7 +158,8 @@ const MyDrawer = ({ photoURL, displayName, register, setRegister }) => {
 						icon={<PendingActions />}
 						divider={false}
 						bookmark="requests"
-            badge={true}
+						badge={approval}
+						handleBadge={handleApprove}
 					/>
 
 					<SidebarHeading title="registration" />
@@ -133,7 +184,8 @@ const MyDrawer = ({ photoURL, displayName, register, setRegister }) => {
 						icon={<PendingActions />}
 						divider={false}
 						bookmark="requests"
-            badge={true}
+						badge={request}
+						handleBadge={handleRequest}
 					/>
 
 					<div className="my-16">

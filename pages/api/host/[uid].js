@@ -1,5 +1,6 @@
 import dbConnect from '../../../db/utils/dbConnect';
 import Host from '../../../db/model/HostEvents';
+import Badge from '../../../db/model/Badge';
 
 export default async function createVenue(req, res) {
 	await dbConnect();
@@ -37,6 +38,18 @@ export default async function createVenue(req, res) {
 					{ upsert: true }
 				).clone();
 
+				const badge = await Badge.updateOne(
+					{
+						uid,
+					},
+					{
+						$set: {
+							request: true,
+						},
+					},
+					{ upsert: true }
+				);
+
 				if (!newEvent) {
 					return res.status(500).json({
 						ok: false,
@@ -52,17 +65,15 @@ export default async function createVenue(req, res) {
 
 			case 'PUT':
 				const event = await Host.findOne({ uid }).clone();
-				const el = event.pending.find(
-					(e) => e.uid == body.eventId
-				)
+				const el = event.pending.find((e) => e.uid == body.eventId);
 				await Host.updateOne({ uid }, { $pull: { pending: el } });
 				await Host.updateOne({ uid }, { $push: { approved: el } });
-				
+
 				res.status(200).json({
 					ok: true,
 					message: 'Event updated',
 				});
-				
+
 				break;
 
 			case 'DELETE':

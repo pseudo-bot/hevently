@@ -1,19 +1,19 @@
 import { Schema, model, models } from "mongoose";
 
-const HostEventSchema = new Schema({
+const BadgeScheme = new Schema({
   uid: {
     type: String,
     required: [true, "UID required"],
     unique: true,
   },
   approval: {
-    type: Schema.Types.Mixed,
-    default: [],
+    type: Boolean,
+    default: false,
   },
-  requests: {
-    type: Schema.Types.Mixed,
-    default: [],
+  request: {
+    type: Boolean,
+    default: false,
   },
 });
 
-export default models.host_events || model("host_events", HostEventSchema);
+export default models.badge || model("badge", BadgeScheme);

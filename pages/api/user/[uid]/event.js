@@ -1,5 +1,6 @@
 import dbConnect from '../../../../db/utils/dbConnect';
 import UserEvents from '../../../../db/model/UserEvents';
+import Badge from '../../../../db/model/Badge';
 
 export default async function eventHandler(req, res) {
 	dbConnect();
@@ -31,6 +32,16 @@ export default async function eventHandler(req, res) {
 					).clone();
 				}
 
+				const badge = await Badge.updateOne(
+					{ uid },
+					{
+						$set: {
+							approval: true,
+						},
+					},
+					{ upsert: true }
+				);
+
 				if (!user) {
 					return res.status(500).json({
 						ok: false,
@@ -42,8 +53,6 @@ export default async function eventHandler(req, res) {
 						message: 'Event list updated',
 					});
 				}
-
-				break;
 
 			case 'GET':
 				const event = await UserEvents.findOne({ uid }).clone();
