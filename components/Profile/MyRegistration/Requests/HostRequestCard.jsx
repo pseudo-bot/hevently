@@ -153,6 +153,8 @@ const Event = ({ eventType, event, setAlertOpen, isApproved }) => {
         type={eventType}
         uid={event.uid}
         client={event.client}
+        guestList={event.guestList}
+        clientEmail={event.clientEmail}
       />
     </div>
   );
@@ -211,7 +213,7 @@ const HostRequestCard = ({ title, id, eventsData }) => {
               <NoEvent type="Pending" />
             )
           ) : eventsData.approved.length > 0 ? (
-            eventsData.approved.map((event, index) => {
+            eventsData.approved.sort((a, b) => b.created - a.created).map((event, index) => {
               return (
                 <SwiperSlide key={index}>
                   <Event

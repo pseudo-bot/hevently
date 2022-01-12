@@ -286,7 +286,7 @@ export default function Register() {
               loading={loading}
             >
               <div className="capitalize text-gray-50">
-                {loading ? "Loading" : "Confirm"}
+                {loading ? "" : "Confirm"}
               </div>
             </LoadingButton>
           </div>

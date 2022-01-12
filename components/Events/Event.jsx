@@ -3,7 +3,6 @@ import { EventContext } from "../../context/EventContext";
 import { UserContext } from "../../context/Users";
 import { createEvent } from "../../config/api/eventAPI.js";
 import { addHostEvent } from "../../config/api/hostAPI";
-import sendConfirmation from "../../config/api/sendConfirmation.js";
 import Venue from "./Venue/Venue";
 import Schedule from "./Schedule";
 import FormFooter from "../Misc/FormFooter";
@@ -62,7 +61,6 @@ const Event = ({ venues, type }) => {
       };
       setLoading(true);
       const eventCreate = await createEvent(event, type, true);
-      // const emailConfirm = await sendConfirmation(email);
       const addHost = await addHostEvent(event);
       setLoading(false);
 
@@ -71,10 +69,6 @@ const Event = ({ venues, type }) => {
       } else {
         alert("Error! Event not created");
       }
-      // if (emailConfirm) alert("Confirmation email sent");
-      // else {
-      //   alert("Error! Confirmation email not sent");
-      // }
     } catch (err) {
       alert("Error! Event not created");
       alert(err);
