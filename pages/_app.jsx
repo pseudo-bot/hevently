@@ -13,8 +13,9 @@ import "swiper/css/bundle";
 
 function App({ Component, pageProps }) {
   const router = useRouter();
-  const path = `/profile`;
-  const check = path === router.pathname;
+  const userPath = `/profile`;
+  const hostPath = `/host`;
+  const check = (userPath === router.pathname) || (hostPath === router.pathname);
 
   useEffect(() => {
     Router.events.on("routeChangeComplete", () => {

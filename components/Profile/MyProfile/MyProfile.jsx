@@ -6,7 +6,7 @@ import HouseIcon from "@mui/icons-material/House";
 import { LoadingButton } from "@mui/lab";
 import UserData from "./UserData";
 import Gender from "./Gender";
-import { Button, CircularProgress } from "@mui/material";
+import { Button } from "@mui/material";
 import DOB from "./DOB";
 import updateUser from "../../../config/api/updateUser";
 import useUser from "../../../hooks/useUser";
@@ -91,9 +91,9 @@ const MyProfile = () => {
       setDataSuccess(true);
       const res = await updateUser(ob);
       if (res) {
-        console.log("User updated succefully");
+        alert("User updated succefully");
       } else {
-        console.log("User not updated");
+        alert("User not updated");
       }
       setOpen(true);
     }
