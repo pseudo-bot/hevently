@@ -34,9 +34,7 @@ const Drawer = ({ userData }) => {
 		<div className="">
 			{/* <div className="h-screen w-screen fixed profile-bg z-0 opacity-50"></div> */}
 			<div
-				className={`border-r shadow-lg fixed w-[16rem] bg-gray-[#fff] h-screen min-h-max overflow-auto gap-10 overflow-x-hidden z-50 ${
-					open ? 'translate-x-0' : '-translate-x-full'
-				} transition-all duration-300 sidebar`}
+				className={`border-r shadow-lg fixed w-[16rem] bg-gray-[#fff] h-screen min-h-max overflow-auto gap-10 overflow-x-hidden z-50  transition-all duration-300 sidebar`}
 			>
 				<MyDrawer
 					photoURL={photoURL}

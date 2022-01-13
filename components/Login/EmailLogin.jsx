@@ -29,6 +29,7 @@ const Login = ({
   const [confirm, setConfirm] = useState("");
   const [values, setValues] = useState({
     showPassword: false,
+    showConfirm: false,
   });
 
   const handleClickShowPassword = () => {
@@ -37,6 +38,12 @@ const Login = ({
       showPassword: !values.showPassword,
     });
   };
+  const handleClickShowConfirm = () => {
+    setValues({
+      ...values,
+      showConfirm: !values.showConfirm,
+    });
+  }
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -105,7 +112,7 @@ const Login = ({
               </InputLabel>
               <OutlinedInput
                 id="outlined-adornment-password"
-                type={values.showPassword ? "text" : "password"}
+                type={values.showConfirm ? "text" : "password"}
                 value={confirm}
                 size="small"
                 InputProps={{
@@ -116,11 +123,11 @@ const Login = ({
                   <InputAdornment position="end">
                     <IconButton
                       aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
+                      onClick={handleClickShowConfirm}
                       onMouseDown={handleMouseDownPassword}
                       edge="end"
                     >
-                      {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                      {values.showConfirm ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
                 }

@@ -12,7 +12,7 @@ import updateUser from "../../../config/api/updateUser";
 import useUser from "../../../hooks/useUser";
 import { Edit, CloudDone } from "@mui/icons-material";
 import Alert from "../../Misc/Alert";
-import { validatePhone,validateName } from "../../../utils/validation";
+import { validatePhone, validateName } from "../../../utils/validation";
 import Divider from "@mui/material/Divider";
 
 const Loading = () => {
@@ -34,8 +34,8 @@ const MyProfile = () => {
   const [userPhoneNumber, setUserPhoneNumber] = useState("");
 
   const [open, setOpen] = useState(false);
-  const [dataSuccess,setDataSuccess]=useState(false);
-  const [errMsg,setErrMsg]=useState("");
+  const [dataSuccess, setDataSuccess] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
 
   const { user } = useUser();
 
@@ -71,23 +71,20 @@ const MyProfile = () => {
       displayName: user.displayName,
       photoURL: user.photoURL,
     };
-    if (!validatePhone(ob.phoneNumber)) {
+
+    if (!validatePhone(ob.phoneNumber) && ob.phoneNumber !== "") {
       setErrMsg("Phone Number");
       setDataSuccess(false);
       setOpen(true);
-
-    }
-    else if(!validateName(ob.state)){
+    } else if (!validateName(ob.state) && ob.state !== "") {
       setErrMsg("State Name");
       setDataSuccess(false);
       setOpen(true);
-    }
-    else if(!validateName(ob.city)){
+    } else if (!validateName(ob.city) && ob.city !== "") {
       setErrMsg("City Name");
       setDataSuccess(false);
       setOpen(true);
-    }
-     else {
+    } else {
       setDisabledBtn(!disabledBtn);
       setEdit(!edit);
       setDataSuccess(true);
@@ -100,7 +97,6 @@ const MyProfile = () => {
       setOpen(true);
     }
     setLoading(false);
-   
   };
   return (
     <div>
@@ -174,24 +170,22 @@ const MyProfile = () => {
           </div>
         </div>
       </div>
-     {
-        dataSuccess ?(
-          <Alert
+      {dataSuccess ? (
+        <Alert
           open={open}
           severity={"success"}
           setOpen={setOpen}
           msg={"Data Saved  Successfully"}
         />
-        ):(
-          <Alert
+      ) : (
+        <Alert
           open={open}
           severity={"warning"}
           setOpen={setOpen}
           msg={`Please Enter Valid ${errMsg} `}
         />
-        )
-     }
-     <Divider/>
+      )}
+      <Divider />
     </div>
   );
 };

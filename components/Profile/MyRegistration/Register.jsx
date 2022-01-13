@@ -17,7 +17,8 @@ import {
 } from "../../../utils/validation";
 import refetchData from "../../../utils/refetchData";
 import Button from "@mui/material/Button";
-
+import { PhotoCamera } from "@mui/icons-material";
+import InputAdornment from "@mui/material/InputAdornment";
 
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
@@ -78,7 +79,10 @@ const DualInput = ({ label, phStart, phEnd, value, setValue }) => {
   );
 };
 
-const SingleInput = ({ label, value, setValue }) => {
+const SingleInput = ({ label, value, setValue, isImage }) => {
+  const handleClick = () => {
+    console.log("clicked");
+  };
   return (
     <div>
       <label className="leading-7 capitalize text-sm text-gray-600">
@@ -92,6 +96,17 @@ const SingleInput = ({ label, value, setValue }) => {
           size="small"
           fullWidth
           autoComplete="off"
+          InputProps={{
+            endAdornment: (
+              isImage && (
+              <InputAdornment onClick={handleClick} position="end">
+                <div className="hover:cursor-pointer">
+                  <PhotoCamera />
+                </div>
+              </InputAdornment>
+              )
+            ),
+          }}
         />
       </div>
     </div>
@@ -200,7 +215,7 @@ export default function Register() {
       setOpenAlert(true);
     }
   };
-  const handleClear=()=>{
+  const handleClear = () => {
     setVenueName("");
     setVenueAddress("");
     setVenueCity("");
@@ -214,8 +229,8 @@ export default function Register() {
       start: "",
       end: "",
     });
-    setVenueType("")
-  }
+    setVenueType("");
+  };
 
   return (
     <>
@@ -233,21 +248,25 @@ export default function Register() {
               value={venueName}
               setValue={setVenueName}
               label="venue name"
+              isImage={false}
             />
             <SingleInput
               value={venueAddress}
               setValue={setVenueAddress}
               label="address"
+              isImage={false}
             />
             <SingleInput
               value={venueCity}
               setValue={setVenueCity}
               label="city"
+              isImage={false}
             />
             <SingleInput
               value={venueMobile}
               setValue={setVenueMobile}
               label="Mobile No"
+              isImage={false}
             />
             <DualInput
               value={capacity}
@@ -259,7 +278,8 @@ export default function Register() {
             <SingleInput
               value={venueImage}
               setValue={setVenueImage}
-              label="image url"
+              label="Image"
+              isImage={true}
             />
             <DualInput
               value={venuePrice}
@@ -270,16 +290,16 @@ export default function Register() {
             />
           </div>
           <div className="flex justify-center gap-3 py-8">
-          <Button
-            sx={{
-              ":hover": {
-                backgroundColor: "rgb(244, 244, 245)",
-              },
-            }}
-            onClick={handleClear}
-          >
-            <div className=" capitalize text-gray-500">Clear</div>
-          </Button>
+            <Button
+              sx={{
+                ":hover": {
+                  backgroundColor: "rgb(244, 244, 245)",
+                },
+              }}
+              onClick={handleClear}
+            >
+              <div className=" capitalize text-gray-500">Clear</div>
+            </Button>
             <LoadingButton
               variant="contained"
               onClick={handleConfirm}
