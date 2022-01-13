@@ -1,7 +1,7 @@
 import UserRequestCard from "./UserRequestCard"
-import { CircularProgress } from '@mui/material';
 import useEvent from '../../../../hooks/useEvent';
 import { Divider } from '@mui/material';
+import Loader from "../../../Misc/Loader";
 
 const UserRequests = () => {
     const { event } = useEvent();
@@ -10,7 +10,7 @@ const UserRequests = () => {
         <div id="requests">
 			{!event ? (
 				<div className="flex h-[40vh] w-full relative justify-center items-center ">
-					<CircularProgress />
+					<Loader />
 				</div>
 			) : (
 				<div className='pb-8'>

@@ -14,11 +14,12 @@ import { Edit, CloudDone } from "@mui/icons-material";
 import Alert from "../../Misc/Alert";
 import { validatePhone, validateName } from "../../../utils/validation";
 import Divider from "@mui/material/Divider";
+import Loader from "../../Misc/Loader";
 
 const Loading = () => {
   return (
     <div className="flex h-[40vh] w-full relative justify-center items-center text-xl text-center">
-      <CircularProgress />
+      <Loader/>
     </div>
   );
 };
