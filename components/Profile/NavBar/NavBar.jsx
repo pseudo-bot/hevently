@@ -4,16 +4,18 @@ import Link from 'next/link';
 const Navbar = ({ displayName, setOpen }) => {
 	return (
 		<>
-			<div className='-left-6 relative' onClick={() => {
-				setOpen(true)
-			}}>
-				<Menubar />
-			</div>
-			<Link passHref href="/">
-				<div className="text-[2.25rem] font-bold text-gray-100 tracking-wider dancing cursor-pointer logo">
-					hevently
+			<div className='flex items-center'>
+				<div className='-left-6 relative' onClick={() => {
+					setOpen(true)
+				}}>
+					<Menubar />
 				</div>
-			</Link>
+				<Link passHref href="/">
+					<div className="text-[2.25rem] font-bold text-gray-100 tracking-wider dancing cursor-pointer logo">
+						hevently
+					</div>
+				</Link>
+			</div>
 			<div className="text-gray-50 cursor-pointer">
 				<span className="hover:underline">Home</span> /{' '}
 				<span className="hover:underline">{displayName}</span>
