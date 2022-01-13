@@ -18,7 +18,7 @@ const Navbar = ({ displayName, setOpen }) => {
 			</div>
 			<div className="text-gray-50 cursor-pointer">
 				<span className="hover:underline">Home</span> /{' '}
-				<span className="hover:underline">{displayName}</span>
+				<span className="hover:underline">{displayName || 'User'}</span>
 			</div>
 		</>
 	);
