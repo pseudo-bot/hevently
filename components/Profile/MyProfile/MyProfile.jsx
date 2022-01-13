@@ -91,9 +91,9 @@ const MyProfile = () => {
       setDataSuccess(true);
       const res = await updateUser(ob);
       if (res) {
-        alert("User updated succefully");
+        console.log("User updated succefully");
       } else {
-        alert("User not updated");
+        console.log("User not updated");
       }
       setOpen(true);
     }

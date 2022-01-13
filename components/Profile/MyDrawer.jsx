@@ -5,6 +5,7 @@ import {
   Logout,
   HowToReg,
   PendingActions,
+  Home,
 } from "@mui/icons-material/";
 import Image from "next/image";
 import Button from "@mui/material/Button";
@@ -24,6 +25,7 @@ const SidebarOption = ({
   bookmark = "",
   badge = false,
   handleBadge,
+  isLogout = false,
 }) => {
   return (
     <>
@@ -34,7 +36,7 @@ const SidebarOption = ({
               handleBadge();
             }
           }}
-          className="cursor-pointer flex py-2 px-4 gap-4 items-center  hover:text-blue-700 transition-all duration-200 m-2"
+          className="cursor-pointer flex py-4 px-6 gap-4 items-center  hover:text-blue-700 transition-all duration-200 m-2"
         >
           <div>
             {icon} <span>{title}</span>
@@ -136,7 +138,8 @@ const MyDrawer = ({ photoURL, displayName, host = false }) => {
           {host ? (
             <>
               <SidebarHeading title="registration" />
-              <SidebarOption title="Home" icon={<HowToReg />} />
+              <SidebarOption title="Home" icon={<Home />} />
+              <SidebarOption title="Profile" icon={<Person />} />
               <SidebarOption title="Register" icon={<HowToReg />} />
 
               <SidebarOption
@@ -156,7 +159,7 @@ const MyDrawer = ({ photoURL, displayName, host = false }) => {
           ) : (
             <>
               <SidebarHeading title="profile" />
-              <SidebarOption title="Home" icon={<Person />} />
+              <SidebarOption title="Home" icon={<Home />} />
               <SidebarOption title="Profile" icon={<Person />} />
               <SidebarOption
                 title="Events"
@@ -166,20 +169,16 @@ const MyDrawer = ({ photoURL, displayName, host = false }) => {
               <SidebarOption
                 title="Approval"
                 icon={<PendingActions />}
-                divider={false}
                 bookmark="requests"
+                divider={false}
                 badge={approval}
                 handleBadge={handleApprove}
               />
             </>
           )}
 
-          <div className="my-16">
-            <Button
-              variant="outlined"
-              color="error"
-              onClick={signOut}
-            >
+          <div className="px-8 py-4">
+            <Button variant="contained" color="error" onClick={signOut}>
               <Logout /> <span>Logout</span>
             </Button>
           </div>

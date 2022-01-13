@@ -5,6 +5,7 @@ import Navbar from "./NavBar/NavBar";
 import useUser from "../../hooks/useUser";
 import Register from "./MyRegistration/Register";
 import HostRequests from "./MyRegistration/Requests/HostRequests";
+import MyProfile from "./MyProfile/MyProfile";
 
 const Drawer = ({ userData }) => {
   const displayName = userData ? userData.displayName : "";
@@ -55,6 +56,7 @@ const Drawer = ({ userData }) => {
           <Navbar displayName={displayName} setOpen={setOpen} />
         </div>
         <div>
+          <MyProfile/>
           <Register />
           <MyRegistration />
           <HostRequests />
