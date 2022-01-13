@@ -157,10 +157,10 @@ const EventCard = ({ title, id, eventsData }) => {
 					moment(event.endDate, 'YYYY-MM-DD').toDate().getDate() -
 					new Date().getDate();
 				if (diff >= 0) {
-					upcoming.push(<Event eventType={events} key={index} event={event} />);
+					upcoming.push({eventType: events, event: event, diff});
 				} else {
 					completed.push(
-						<Event eventType={events} key={index} event={event} />
+						{eventType: events, event: event, diff}
 					);
 				}
 			});
@@ -195,12 +195,12 @@ const EventCard = ({ title, id, eventsData }) => {
 				>
 					{title === 'Upcoming Events' ? (
 						upcoming.length > 0 ? (
-							upcoming.map((event, index) => {
+							upcoming.sort((a,b) => b.diff - a.diff).map((event, index) => {
 								return (
 									<SwiperSlide key={index}>
 										<Event
-											eventType={event.props.eventType}
-											event={event.props.event}
+											eventType={event.eventType}
+											event={event.event}
 											disabled={false}
 											isRating={false}
 											setAlertOpen={setAlertOpen}
@@ -212,12 +212,12 @@ const EventCard = ({ title, id, eventsData }) => {
 							<NoEvent type="Upcoming" />
 						)
 					) : completed.length > 0 ? (
-						completed.map((event, index) => {
+						completed.sort((a,b) => b.diff - a.diff).map((event, index) => {
 							return (
 								<SwiperSlide key={index}>
 									<Event
-										eventType={event.props.eventType}
-										event={event.props.event}
+										eventType={event.eventType}
+										event={event.event}
 										disabled={true}
 										isRating={true}
 										setAlertOpen={setAlertOpen}

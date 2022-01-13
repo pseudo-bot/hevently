@@ -1,19 +1,14 @@
 import { useState, useEffect } from 'react';
 import MyProfile from './MyProfile/MyProfile';
 import MyEvents from './MyEvents/MyEvents';
-import MyRegistration from './MyRegistration/MyRegistration';
 import MyDrawer from './MyDrawer';
 import Navbar from './NavBar/NavBar';
 import useUser from '../../hooks/useUser';
-import Register from './MyRegistration/Register';
 import UserRequests from './MyProfile/Requests/UserRequests';
-import HostRequests from './MyRegistration/Requests/HostRequests';
 
 const Drawer = ({ userData }) => {
 	const displayName = userData ? userData.displayName : '';
 	const photoURL = userData ? userData.photoURL : '';
-	const [mobile, setMobile] = useState(false);
-	const [register, setRegister] = useState(false);
 	const [open, setOpen] = useState(false);
 	const [width, setWidth] = useState(768);
 
@@ -48,8 +43,6 @@ const Drawer = ({ userData }) => {
 					<MyDrawer
 						photoURL={photoURL}
 						displayName={displayName}
-						register={register}
-						setRegister={setRegister}
 					/>
 				</div>
 			) : (
@@ -59,8 +52,6 @@ const Drawer = ({ userData }) => {
 					<MyDrawer
 						photoURL={photoURL}
 						displayName={displayName}
-						register={register}
-						setRegister={setRegister}
 					/>
 				</div>
 			)}
@@ -70,19 +61,9 @@ const Drawer = ({ userData }) => {
 					<Navbar displayName={displayName} setOpen={setOpen} />
 				</div>
 				<div>
-					{!register ? (
-						<>
 							<MyProfile />
 							<MyEvents />
 							<UserRequests />
-						</>
-					) : (
-						<>
-							<Register />
-							<MyRegistration />
-							<HostRequests />
-						</>
-					)}
 				</div>
 			</div>
 

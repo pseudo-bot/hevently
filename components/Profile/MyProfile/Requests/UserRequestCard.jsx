@@ -11,8 +11,8 @@ import { useState } from 'react';
 import EventCancel from '../../../Misc/EventCancel';
 import { PlaylistAdd } from '@mui/icons-material';
 import Alert from '../../../Misc/Alert';
-import { CircularProgress } from '@mui/material';
 import { format } from 'timeago.js';
+import Loader from '../../../Misc/Loader';
 
 SwiperCore.use([Pagination]);
 
@@ -116,7 +116,7 @@ const UserRequestCard = ({ title, id, eventsData }) => {
 	if (!eventsData) {
 		return (
 			<div className="flex h-[40vh] w-full relative justify-center items-center ">
-				<CircularProgress />
+				<Loader />
 			</div>
 		);
 	}

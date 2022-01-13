@@ -2,7 +2,7 @@ import Arrow from "@mui/icons-material/ArrowForwardIosRounded";
 import Image from "next/image";
 import { useState } from "react";
 import Modal from "../Modal/Modal";
-
+import { CSSTransition } from "react-transition-group";
 import wedding from "../../public/events/wedding.jpg";
 import corporate from "../../public/events/corporate.jpg";
 import social from "../../public/events/social.jpg";
@@ -31,7 +31,7 @@ const Event = ({ image, title, desc, href, setOpen }) => {
         />
         <div
           onClick={openModal}
-          className="bg-[#000] w-full h-0 absolute opacity-60 group-hover:h-full transition-all duration-500"
+          className="bg-[#000] w-full h-0 absolute opacity-60 group-kthover:h-full transition-all duration-500"
         ></div>
         <div className="bg-gray-200 absolute w-14 h-14 opacity-0 transition-all duration-500 group-hover:opacity-80 rounded-full top-28 left-1/2 -translate-x-1/2 flex justify-center items-center">
           <button onClick={openModal}>
@@ -40,13 +40,20 @@ const Event = ({ image, title, desc, href, setOpen }) => {
         </div>
       </div>
       <div className="text-justify px-10 z-10">{desc}</div>
-      <Modal
-        showModal={showModal}
+      <CSSTransition
+        unmountOnExit
+        in={showModal}
+        timeout={300}
+        classNames="modal"
+      >
+        <Modal
         setShowModal={setShowModal}
         title={title}
         href={href}
         setOpen={setOpen}
       />
+      </CSSTransition>
+      
     </div>
   );
 };
