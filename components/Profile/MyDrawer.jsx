@@ -121,8 +121,8 @@ const MyDrawer = ({ photoURL, displayName, register, setRegister }) => {
 	};
 
 	return (
-		<div className='w-[16rem] bg-[#fff] border-r shadow-lg fixed min-h-max h-screen overflow-auto'>
-			<div className="relative z-50 h-max">
+		<>
+			<div className="absolute z-50 w-[16rem] bg-[white] h-full">
 				<div className="pt-8 pb-4">
 					<div className="w-full flex justify-center">
 						<Image
@@ -198,7 +198,7 @@ const MyDrawer = ({ photoURL, displayName, register, setRegister }) => {
 					</div>
 				</nav>
 			</div>
-		</div>
+		</>
 	);
 };
 
