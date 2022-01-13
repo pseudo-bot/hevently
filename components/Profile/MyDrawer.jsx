@@ -121,8 +121,7 @@ const MyDrawer = ({ photoURL, displayName, register, setRegister }) => {
 	};
 
 	return (
-		<>
-			<div className="shadow-lg border-r fixed w-[240px]"></div>
+		<div className='w-[16rem] bg-[#fff] border-r shadow-lg fixed min-h-max h-screen overflow-auto'>
 			<div className="relative z-50 h-max">
 				<div className="pt-8 pb-4">
 					<div className="w-full flex justify-center">
@@ -140,7 +139,6 @@ const MyDrawer = ({ photoURL, displayName, register, setRegister }) => {
 				</div>
 				<nav>
 					<SidebarHeading title="profile" />
-
 					<SidebarOption
 						setRegister={setRegister}
 						title="Profile"
@@ -200,7 +198,7 @@ const MyDrawer = ({ photoURL, displayName, register, setRegister }) => {
 					</div>
 				</nav>
 			</div>
-		</>
+		</div>
 	);
 };
 
