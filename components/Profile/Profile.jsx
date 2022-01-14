@@ -40,7 +40,7 @@ const Drawer = ({ userData }) => {
       {/* <div className="h-screen w-screen fixed profile-bg z-0 opacity-50"></div> */}
       {width <= 770 ? (
         <div
-          className={`border-r shadow-lg fixed w-[16rem] bg-gray-[#fff] h-screen min-h-max overflow-auto gap-10 overflow-x-hidden z-[200] ${
+          className={`border-r shadow-lg fixed w-[16rem] bg-[#fff] h-screen min-h-max overflow-auto gap-10 overflow-x-hidden z-[200] ${
             open ? "translate-x-0" : "-translate-x-full"
           } transition-all duration-300 sidebar`}
         >
@@ -54,7 +54,7 @@ const Drawer = ({ userData }) => {
         </div>
       ) : (
         <div
-          className={`border-r shadow-lg fixed w-[16rem] bg-gray-[#fff] h-screen min-h-max overflow-auto gap-10 overflow-x-hidden z-50 transition-all duration-300 hidden md:block sidebar`}
+          className={`border-r shadow-lg fixed w-[16rem] bg-[#fff] h-screen min-h-max overflow-auto gap-10 overflow-x-hidden z-50 transition-all duration-300 hidden md:block sidebar`}
         >
           <MyDrawer
             photoURL={photoURL}
@@ -67,7 +67,7 @@ const Drawer = ({ userData }) => {
       )}
 
       <div className="md:ml-[16rem]">
-        <div className="bg-blue-500 flex justify-between px-8 items-center">
+        <div className="bg-blue-500 h-16 flex justify-between px-8 items-center">
           <Navbar displayName={displayName} setOpen={setOpen} />
         </div>
         <div>

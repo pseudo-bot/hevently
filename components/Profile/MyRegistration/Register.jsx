@@ -20,6 +20,7 @@ import {
   Person,
 } from "@mui/icons-material";
 import InputAdornment from "@mui/material/InputAdornment";
+import { CircularProgress } from "@mui/material";
 
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
@@ -128,8 +129,7 @@ const DualInput = ({ label, phStart, phEnd, value, setValue, type }) => {
   );
 };
 
-const SingleInput = ({ label, value, setValue, isImage, type }) => {
-  const handleClick = () => {};
+const SingleInput = ({ label, value, setValue, type }) => {
   return (
     <div>
       <label className="leading-7 capitalize text-sm text-gray-600">
@@ -166,19 +166,18 @@ export default function Register() {
     start: "",
     end: "",
   });
-  const [venueImage, setVenueImage] = useState("");
   const [venuePrice, setVenuePrice] = useState({
     start: "",
     end: "",
   });
-
+  const [imgLoader, setImgLoader] = useState(false);
   const [loading, setLoading] = useState(false);
   const user = useContext(UserContext);
-
-  const uploadImage = async () => {
-    if (!venueImage) return;
+  const uploadImage = async (image) => {
+    if (!image) return;
+    setImgLoader(true);
     const formData = new FormData();
-    formData.append("file", venueImage);
+    formData.append("file", image);
     formData.append("upload_preset", "kbsnvy1o");
     try {
       const res = await fetch(
@@ -189,11 +188,11 @@ export default function Register() {
         }
       );
       const data = await res.json();
-      setVenueImageUrl(data.secure_url);
+      setVenueImageUrl(() => data.secure_url);
     } catch (err) {
       alert("Error uploading image");
     }
-    setVenueImage("");
+    setImgLoader(false);
   };
   const handleConfirm = async () => {
     const venue = {
@@ -235,21 +234,7 @@ export default function Register() {
     if (res && res2) {
       setSuccess(true);
       setOpenAlert(true);
-
-      setVenueName("");
-      setVenueAddress("");
-      setVenueCity("");
-      setVenueMobile("");
-      setCapacity({
-        start: "",
-        end: "",
-      });
-      setVenueImage("");
-      setVenuePrice({
-        start: "",
-        end: "",
-      });
-      setVenueType("");
+      handleClear();
     } else {
       setSuccess(false);
       setMsg("Something went wrong");
@@ -265,20 +250,19 @@ export default function Register() {
       start: "",
       end: "",
     });
-    setVenueImage("");
+    setVenueImageUrl("");
     setVenuePrice({
       start: "",
       end: "",
     });
     setVenueType("");
-    setVenueImage("");
   };
 
   return (
     <>
       <div className="px-6 py-4">
         <div
-          className="px-4 border pt-4 pb-4 font-semibold tracking-wider text-gray-600 text-3xl text-center relative"
+          className="px-4 pt-4 pb-4 font-semibold tracking-wider text-gray-600 text-3xl text-center relative"
           id="alert-dialog-title"
         >
           {"Register Venue"}
@@ -338,70 +322,73 @@ export default function Register() {
                 onDragOver={(e) => {
                   e.preventDefault();
                 }}
-                onDrop={(e) => {
+                onDrop={async (e) => {
                   e.preventDefault();
                   if (e.dataTransfer.files.length > 1) {
                     alert("Select only one image");
                     return;
                   }
-                  setVenueImage(e.dataTransfer.files[0]);
+                  await uploadImage(e.target.files[0]);
                 }}
               >
-                <div className="space-y-1 text-center">
-                  {venueImage === "" ? (
-                    <svg
-                      className="mx-auto h-12 w-12 text-gray-400"
-                      stroke="currentColor"
-                      fill="none"
-                      viewBox="0 0 48 48"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  ) : null}
-                  <div className="flex text-sm text-gray-600">
-                    <label
-                      htmlFor="file-upload"
-                      className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500"
-                    >
-                      {venueImage === "" ? (
-                        <span>Upload a file</span>
-                      ) : (
-                        <span className="text-green-700 bg-green-200 px-3 py-1 border-2 border-green-600 rounded-md">
-                          Image Uploaded Successfully
-                        </span>
-                      )}
-                      <input
-                        id="file-upload"
-                        name="file-upload"
-                        type="file"
-                        className="sr-only"
-                        onChange={(e) => {
-                          if (e.target.files.length > 1) {
-                            alert("Select only one image");
-                            return;
-                          }
-                          setVenueImage(e.target.files[0]);
-                        }}
-                      />
-                    </label>
-                    {venueImage === "" ? (
-                      <p className="pl-1">or drag and drop</p>
+                {imgLoader ? (
+                  <CircularProgress />
+                ) : (
+                  <div className="space-y-1 text-center">
+                    {venueImageUrl === "" ? (
+                      <svg
+                        className="mx-auto h-12 w-12 text-gray-400"
+                        stroke="currentColor"
+                        fill="none"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                          strokeWidth={2}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    ) : null}
+                    <div className="flex text-sm text-gray-600">
+                      <label
+                        htmlFor="file-upload"
+                        className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500"
+                      >
+                        {venueImageUrl === "" ? (
+                          <span>Upload a file</span>
+                        ) : (
+                          <span className="text-green-700 bg-green-200 px-3 py-1 border-2 border-green-600 rounded-md">
+                            Image Added Successfully
+                          </span>
+                        )}
+                        <input
+                          id="file-upload"
+                          name="file-upload"
+                          type="file"
+                          className="sr-only"
+                          onChange={async (e) => {
+                            if (e.target.files.length > 1) {
+                              alert("Select only one image");
+                              return;
+                            }
+                            await uploadImage(e.target.files[0]);
+                          }}
+                        />
+                      </label>
+                      {venueImageUrl === "" ? (
+                        <p className="pl-1">or drag and drop</p>
+                      ) : null}
+                    </div>
+                    {venueImageUrl === "" ? (
+                      <p className="text-xs text-gray-500">
+                        PNG, JPG, GIF up to 5MB
+                      </p>
                     ) : null}
                   </div>
-                  {venueImage === "" ? (
-                    <p className="text-xs text-gray-500">
-                      PNG, JPG, GIF up to 5MB
-                    </p>
-                  ) : null}
-                </div>
+                )}
               </div>
-              <Button onClick={uploadImage}>Uplaod</Button>
             </div>
           </div>
           <div className="flex justify-center gap-3 py-8">
@@ -420,8 +407,8 @@ export default function Register() {
               onClick={handleConfirm}
               loading={loading}
             >
-              <div className="capitalize text-gray-50">
-                {loading ? "" : "Confirm"}
+              <div className="capitalize">
+                Confirm
               </div>
             </LoadingButton>
           </div>
