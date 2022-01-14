@@ -7,8 +7,7 @@ export default async function createUserHandler(req, res) {
 	await dbConnect();
 
 	const { method } = req;
-	const { uid, email, displayName, phoneNumber, photoURL, accountType } =
-		req.body.user;
+	const { uid, email, displayName, phoneNumber, photoURL, accountType } = req.body.user;
 
 	switch (method) {
 		case 'POST':
@@ -17,17 +16,9 @@ export default async function createUserHandler(req, res) {
 				const user = await User.findOne({ uid });
 
 				if (user) {
-					if (user.accountType === 'user' && accountType === 'admin') {
-						return res.status(200).json({
-							ok: true,
-							message: 'User is not a admin',
-							account: false,
-						});
-					}
 					res.status(200).json({
 						ok: true,
 						message: 'User already exists',
-						account: true,
 					});
 				} else {
 					// Create user

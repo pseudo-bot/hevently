@@ -15,8 +15,7 @@ const createUser = async (accountType) => {
           },
           body: JSON.stringify({ user: { ...user, accountType } }),
         });
-        const localData = await res.json();
-        // setData(localData);
+        const data = await res.json();
       } catch (error) {
         alert(error);
         alert("Authentication failed. Cannot add user to database");
