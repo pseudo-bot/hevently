@@ -11,26 +11,37 @@ const UserSchema = new Schema({
 		required: [true, 'Email required'],
 		unique: true,
 	},
-  displayName: {
-    type: String,
-  },
+	accountType: {
+		type: String,
+		default: 'user',
+	},
+	displayName: {
+		type: String,
+		default: '',
+	},
 	phoneNumber: {
 		type: String,
+		default: '',
 	},
 	gender: {
 		type: String,
+		default: '',
 	},
 	city: {
 		type: String,
+		default: '',
 	},
 	state: {
 		type: String,
+		default: '',
 	},
 	dob: {
 		type: Date,
+		default: '',
 	},
 	photoURL: {
 		type: String,
+		default: '',
 	},
 });
 

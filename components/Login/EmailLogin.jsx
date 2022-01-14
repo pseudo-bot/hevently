@@ -15,6 +15,7 @@ import FormControl from "@mui/material/FormControl";
 import Alert from "../Misc/Alert";
 import Tooltip from "@mui/material/Tooltip";
 import { validateEmail } from "../../utils/validation";
+import createUser from "../../config/api/createUser";
 
 const Login = ({
   email,
@@ -25,6 +26,7 @@ const Login = ({
   setShowLogin,
   setOpenSuccess,
   setOpenFail,
+  accountType,
 }) => {
   const [confirm, setConfirm] = useState("");
   const [values, setValues] = useState({
@@ -70,7 +72,7 @@ const Login = ({
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <Tooltip title="Password must be of atleast 6 characters" arrow>
+      <Tooltip title="Password must be at least 6 characters" arrow>
         <div className="relative my-4">
           <FormControl variant="outlined" fullWidth>
             <InputLabel htmlFor="outlined-adornment-password" size="small">
@@ -104,7 +106,7 @@ const Login = ({
       </Tooltip>
 
       {register ? (
-        <Tooltip title="Password must be of atleast 6 characters" arrow>
+        <Tooltip title="Password must be at least 6 characters" arrow>
           <div className="relative my-4">
             <FormControl variant="outlined" fullWidth>
               <InputLabel htmlFor="outlined-adornment-password" size="small">
@@ -154,6 +156,7 @@ const Login = ({
                     await registerUser(email, password);
                     setOpenSuccess(true);
                     setShowLogin(false);
+                    createUser(accountType)
                   } else {
                     setMsg("Please register to continue");
                     setOpen(true);

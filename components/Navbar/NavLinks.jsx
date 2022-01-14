@@ -18,6 +18,7 @@ import {
 import LoginInterface from "../Login/Login";
 import Alert from "../Misc/Alert";
 import Selection from "../Login/Selection";
+
 const NavItem = ({ children, href = "", home, profile, onClick }) => {
   return (
     <Link href={href} scroll={false} passHref>
@@ -52,7 +53,7 @@ export default function NavLinks({ hidden, setHidden }) {
   const [openFail, setOpenFail] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
 
-	const [status, setStatus] = useState('');
+	const [accountType, setAccountType] = useState('user');
 
   return (
     <>
@@ -108,7 +109,7 @@ export default function NavLinks({ hidden, setHidden }) {
         timeout={300}
         classNames="modal"
       >
-        <Selection setStatus={setStatus} setShowSelection={setShowSelection} setShowLogin={setShowLogin}/>
+        <Selection setStatus={setAccountType} setShowSelection={setShowSelection} setShowLogin={setShowLogin}/>
       </CSSTransition>
       <CSSTransition
         unmountOnExit
@@ -120,6 +121,7 @@ export default function NavLinks({ hidden, setHidden }) {
           setShowLogin={setShowLogin}
           setOpenSuccess={setOpenSuccess}
           setOpenFail={setOpenFail}
+          accountType={accountType}
         />
       </CSSTransition>
     </>

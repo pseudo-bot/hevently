@@ -1,6 +1,5 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import CreateUser from '../api/createUser';
 
 const firebaseConfig = {
 	apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -20,4 +19,3 @@ if (!getApps().length) {
 
 export const auth = getAuth();
 
-CreateUser();
