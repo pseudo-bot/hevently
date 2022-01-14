@@ -160,6 +160,7 @@ const Login = ({
                     await registerUser(email, password);
                     setOpenSuccess(true);
                     setShowLogin(false);
+                    createUser(accountType);
                   } else {
                     setMsg("Please register to continue");
                     setOpen(true);
