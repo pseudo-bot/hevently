@@ -19,6 +19,7 @@ import refetchData from "../../../utils/refetchData";
 import Button from "@mui/material/Button";
 import { PhotoCamera } from "@mui/icons-material";
 import InputAdornment from "@mui/material/InputAdornment";
+import Image from "next/image";
 
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
@@ -37,7 +38,7 @@ const CssTextField = styled(TextField)({
   },
 });
 
-const DualInput = ({ label, phStart, phEnd, value, setValue }) => {
+const DualInput = ({ label, phStart, phEnd, value, setValue, type }) => {
   return (
     <div>
       <label className="leading-7 capitalize text-sm text-gray-600">
@@ -45,7 +46,7 @@ const DualInput = ({ label, phStart, phEnd, value, setValue }) => {
       </label>
       <div className="flex gap-4">
         <CssTextField
-          type="text"
+          type={type}
           autoComplete="off"
           required
           fullWidth
@@ -60,7 +61,7 @@ const DualInput = ({ label, phStart, phEnd, value, setValue }) => {
           }}
         />
         <CssTextField
-          type="text"
+          type={type}
           autoComplete="off"
           required
           size="small"
@@ -79,7 +80,7 @@ const DualInput = ({ label, phStart, phEnd, value, setValue }) => {
   );
 };
 
-const SingleInput = ({ label, value, setValue, isImage }) => {
+const SingleInput = ({ label, value, setValue, isImage, type }) => {
   const handleClick = () => {
     console.log("clicked");
   };
@@ -91,20 +92,19 @@ const SingleInput = ({ label, value, setValue, isImage }) => {
       <div>
         <CssTextField
           value={value}
+          type={type}
           onChange={(e) => setValue(e.target.value)}
           required
           size="small"
           fullWidth
           autoComplete="off"
           InputProps={{
-            endAdornment: (
-              isImage && (
+            endAdornment: isImage && (
               <InputAdornment onClick={handleClick} position="end">
                 <div className="hover:cursor-pointer">
                   <PhotoCamera />
                 </div>
               </InputAdornment>
-              )
             ),
           }}
         />
@@ -138,6 +138,23 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
   const user = useContext(UserContext);
 
+  const uploadImage = async () => {
+    if (!venueImage) return;
+    const formData = new FormData();
+    formData.append("file", venueImage);
+    formData.append("upload_preset", "kbsnvy1o");
+    try {
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/hevently-sarang/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+    } catch (err) {
+      alert("Error uploading image");
+    }
+  };
   const handleConfirm = async () => {
     const venue = {
       value: venueName,
@@ -234,29 +251,32 @@ export default function Register() {
 
   return (
     <>
-      <div className="px-6">
-        <div className="bg-[#fff] shadow-lg border mt-8 rounded max-w-2xl w-full mx-auto">
-          <div
-            className="px-4 pt-4 pb-4 font-semibold tracking-wider text-gray-600 text-3xl text-center"
-            id="alert-dialog-title"
-          >
-            {"Register Venue"}
-          </div>
-          <div className="px-4 py-2">
+      <div className="px-6 py-4">
+        <div
+          className="px-4 border pt-4 pb-4 font-semibold tracking-wider text-gray-600 text-3xl text-center relative"
+          id="alert-dialog-title"
+        >
+          {"Register Venue"}
+        </div>
+        <div className="bg-[#fff] shadow-lg py-4 border mt-8 rounded max-w-2xl w-full mx-auto">
+          <div className="px-4 py-2 flex flex-col gap-4">
             <VenueTypeDropdown handleChange={setVenueType} value={venueType} />
             <SingleInput
+              type="text"
               value={venueName}
               setValue={setVenueName}
               label="venue name"
               isImage={false}
             />
             <SingleInput
+              type="text"
               value={venueAddress}
               setValue={setVenueAddress}
               label="address"
               isImage={false}
             />
             <SingleInput
+              type={"text"}
               value={venueCity}
               setValue={setVenueCity}
               label="city"
@@ -269,26 +289,81 @@ export default function Register() {
               isImage={false}
             />
             <DualInput
+              type={"number"}
               value={capacity}
               setValue={setCapacity}
               phStart={"Min"}
               phEnd={"Max"}
               label="capacity"
             />
-            <SingleInput
-              value={venueImage}
-              setValue={setVenueImage}
-              label="Image"
-              isImage={true}
-            />
             <DualInput
+              type={"number"}
               value={venuePrice}
               setValue={setVenuePrice}
               phStart={"veg"}
               phEnd={"non-veg"}
               label="price per plate"
             />
+            <div className="py-4">
+              <label className="block pb-2 text-sm text-gray-600">
+                Venue Image
+              </label>
+              <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                <div className="space-y-1 text-center">
+                  <svg
+                    className="mx-auto h-12 w-12 text-gray-400"
+                    stroke="currentColor"
+                    fill="none"
+                    viewBox="0 0 48 48"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <div className="flex text-sm text-gray-600">
+                    <label
+                      htmlFor="file-upload"
+                      className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                    >
+                      <span>Upload a file</span>
+                      <input
+                        id="file-upload"
+                        name="file-upload"
+                        type="file"
+                        className="sr-only"
+                        onChange={(e) => {
+                          if (e.target.files.length > 1) {
+                            alert("Select only one image");
+                            return;
+                          }
+
+                          setVenueImage(e.target.files[0]);
+                        }}
+                      />
+                    </label>
+                    <p className="pl-1">or drag and drop</p>
+                  </div>
+                  <p className="text-xs text-gray-500">
+                    PNG, JPG, GIF up to 10MB
+                  </p>
+                </div>
+              </div>
+              <Button onClick={uploadImage}>Uplaod</Button>
+            </div>
           </div>
+          <Image
+            src={
+              "https://res.cloudinary.com/hevently-sarang/image/upload/v1642151596/ucduyi0lih7bvitii3qp.png"
+            }
+            alt="..."
+            height={400}
+            width={400}
+          ></Image>
+
           <div className="flex justify-center gap-3 py-8">
             <Button
               sx={{

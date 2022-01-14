@@ -1,10 +1,10 @@
 import { EventProvider } from '../../context/EventContext';
-import { CircularProgress } from '@mui/material';
 import Event from '../../components/Events/Event';
 import EventName from '../../components/Misc/EventName';
 import { useState } from 'react';
 import Head from 'next/head';
 import useVenue from '../../hooks/useVenue';
+import Loader from '../../components/Misc/Loader';
 
 const BirthdayPage = () => {
 	const [showModal, setShowModal] = useState(true);
@@ -28,7 +28,7 @@ const BirthdayPage = () => {
 				</EventProvider>
 			) : (
 				<div className="flex h-screen w-screen fixed justify-center items-center text-xl text-center">
-					<CircularProgress />
+					<Loader/>
 				</div>
 			)}
 		</>

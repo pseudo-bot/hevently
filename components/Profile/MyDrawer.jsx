@@ -178,7 +178,8 @@ const MyDrawer = ({ photoURL, displayName, host = false }) => {
           )}
 
           <div className="px-8 py-4">
-            <Button variant="contained" color="error" onClick={signOut}>
+            <Button
+             variant="contained" color="error" onClick={signOut}>
               <Logout /> <span>Logout</span>
             </Button>
           </div>
