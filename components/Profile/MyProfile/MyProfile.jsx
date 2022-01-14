@@ -71,6 +71,7 @@ const MyProfile = () => {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
+      accountType:user.accountType
     };
 
     if (!validatePhone(ob.phoneNumber) && ob.phoneNumber !== "") {
@@ -91,9 +92,9 @@ const MyProfile = () => {
       setDataSuccess(true);
       const res = await updateUser(ob);
       if (res) {
-        alert("User updated succefully");
+        console.log("User updated succefully");
       } else {
-        alert("User not updated");
+        console.log("User not updated");
       }
       setOpen(true);
     }

@@ -52,6 +52,7 @@ export default function NavLinks({ hidden, setHidden }) {
   const [open, setOpen] = useState(false);
   const [openFail, setOpenFail] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
+  const [openWarn, setOpenWarn] = useState(false);
 
 	const [accountType, setAccountType] = useState('user');
 
@@ -63,6 +64,14 @@ export default function NavLinks({ hidden, setHidden }) {
           severity={"error"}
           setOpen={setOpenFail}
           msg={"Error logging in, please try again"}
+        />
+      </div>
+      <div className="w-screen fixed z-50">
+        <Alert
+          open={openWarn}
+          severity={"warning"}
+          setOpen={setOpenWarn}
+          msg={"User not authorized as admin"}
         />
       </div>
       <div className="w-screen fixed z-50">
@@ -122,6 +131,7 @@ export default function NavLinks({ hidden, setHidden }) {
           setOpenSuccess={setOpenSuccess}
           setOpenFail={setOpenFail}
           accountType={accountType}
+          setOpenWarn={setOpenWarn}
         />
       </CSSTransition>
     </>

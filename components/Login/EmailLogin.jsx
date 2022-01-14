@@ -45,7 +45,7 @@ const Login = ({
       ...values,
       showConfirm: !values.showConfirm,
     });
-  }
+  };
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -149,14 +149,18 @@ const Login = ({
         onClick={async () => {
           try {
             if (validateEmail(email)) {
-              if (password === confirm) {
+              if (!register) {
+                await loginUser(email, password);
+                setOpenSuccess(true);
+                setShowLogin(false);
+              } else if (password === confirm) {
                 const methods = await signInMethods(email);
                 if (methods.length === 0) {
                   if (register) {
                     await registerUser(email, password);
                     setOpenSuccess(true);
                     setShowLogin(false);
-                    createUser(accountType)
+                    createUser(accountType);
                   } else {
                     setMsg("Please register to continue");
                     setOpen(true);

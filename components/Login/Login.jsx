@@ -9,11 +9,37 @@ import {
 } from "../../config/firebase/authProvider";
 import Login from "./EmailLogin";
 import createUser from "../../config/api/createUser";
-
-export default function LoginUI({ setShowLogin, setOpenFail, setOpenSuccess, accountType }) {
+import logOut from "../../config/firebase/signOut";
+import { auth } from "../../config/firebase/firebase";
+export default function LoginUI({
+  setShowLogin,
+  setOpenFail,
+  setOpenSuccess,
+  accountType,
+  setOpenWarn,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(false);
+
+  const googleSignIn = async () => {
+    try {
+      await signInWithGoogle();
+      const res = await fetch(`/api/user/${auth.currentUser.uid}`);
+      const user = await res.json();
+      if (user.user.accountType === "user" && accountType === "admin") {
+        await logOut();
+        setOpenWarn(true);
+        setShowLogin(false);
+        return;
+      }
+      setOpenSuccess(true);
+      setShowLogin(false);
+      createUser(accountType);
+    } catch (err) {
+      setOpenFail(true);
+    }
+  };
 
   return (
     <div className="fixed h-screen w-screen inset-0 flex justify-center items-center">
@@ -81,16 +107,7 @@ export default function LoginUI({ setShowLogin, setOpenFail, setOpenSuccess, acc
               <button
                 className="bg-gray-50 active:bg-gray-100 text-gray-700 px-8 py-2 rounded outline-none focus:outline-none capitalize  shadow hover:shadow-md inline-flex items-center font-medium text-md transition-all duration-500 "
                 type="button"
-                onClick={async () => {
-                  try {
-                    await signInWithGoogle();
-                    setOpenSuccess(true);
-                    setShowLogin(false);
-                    createUser(accountType);
-                  } catch (err) {
-                    setOpenFail(true);
-                  }
-                }}
+                onClick={googleSignIn}
               >
                 <div className="flex justify-center w-full gap-4 items-center">
                   <div>

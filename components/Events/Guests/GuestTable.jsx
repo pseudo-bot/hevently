@@ -65,6 +65,7 @@ export default function GuestTable({ guestList, setGuestList }) {
 							</StyledTableCell>
 						</StyledTableRow>
 					))}
+
 				</TableBody>
 			</Table>
 		</TableContainer>

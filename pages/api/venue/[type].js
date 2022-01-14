@@ -61,6 +61,7 @@ export default async function createVenue(req, res) {
 				break;
 		}
 	} catch (error) {
+		console.log(error);
 		res.status(500).json({ error });
 	}
 }
