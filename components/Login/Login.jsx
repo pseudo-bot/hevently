@@ -26,13 +26,15 @@ export default function LoginUI({
     try {
       await signInWithGoogle();
       const res = await fetch(`/api/user/${auth.currentUser.uid}`);
-      const user = await res.json();
-      if (user.user.accountType === "user" && accountType === "admin") {
+      const data = await res.json();
+
+      if (data && data.user && data.user.accountType === "user" && accountType === "admin") {
         await logOut();
         setOpenWarn(true);
         setShowLogin(false);
         return;
       }
+
       setOpenSuccess(true);
       setShowLogin(false);
       createUser(accountType);
