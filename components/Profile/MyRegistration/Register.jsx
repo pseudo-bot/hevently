@@ -55,7 +55,7 @@ const DualInput = ({ label, phStart, phEnd, value, setValue, type }) => {
           value={value.start}
           onChange={(e) => {
             setValue({
-              start: e.target.value,
+              start: e.target.value < 0 ? 0 : e.target.value,
               end: value.end,
             });
           }}
@@ -71,7 +71,7 @@ const DualInput = ({ label, phStart, phEnd, value, setValue, type }) => {
           onChange={(e) => {
             setValue({
               start: value.start,
-              end: e.target.value,
+              end: e.target.value < 0 ? 0 : e.target.value,
             });
           }}
         />
@@ -122,7 +122,7 @@ export default function Register() {
   const [venueType, setVenueType] = useState("");
   const [venueName, setVenueName] = useState("");
   const [venueAddress, setVenueAddress] = useState("");
-
+  const [venueImageUrl, setVenueImageUrl] = useState("");
   const [venueCity, setVenueCity] = useState("");
   const [venueMobile, setVenueMobile] = useState("");
   const [capacity, setCapacity] = useState({
@@ -151,9 +151,13 @@ export default function Register() {
           body: formData,
         }
       );
+      const data = await res.json();
+      console.log(data);
+      setVenueImageUrl(data.secure_url);
     } catch (err) {
       alert("Error uploading image");
     }
+    setVenueImage("");
   };
   const handleConfirm = async () => {
     const venue = {
@@ -164,10 +168,11 @@ export default function Register() {
         capacity.start,
         capacity.end
       )}`,
-      display: "https://via.placeholder.com/300x200",
+      display: venueImageUrl,
       veg: venuePrice.start,
       nonveg: venuePrice.end,
     };
+    console.log(venue);
     if (!validateName(venueName)) {
       setSuccess(false);
       setMsg("Please enter a valid venue name");
@@ -183,23 +188,7 @@ export default function Register() {
       setMsg("Please enter a valid mobile number");
       setOpenAlert(true);
       return;
-    } else if (
-      !validateNumber(capacity.start) &&
-      !validateNumber(capacity.end)
-    ) {
-      setSuccess(false);
-      setMsg("Please enter a valid capacity");
-      setOpenAlert(true);
-      return;
-    } else if (
-      !validateNumber(venuePrice.start) &&
-      !validateNumber(venuePrice.end)
-    ) {
-      setSuccess(false);
-      setMsg("Please enter a valid price");
-      setOpenAlert(true);
-      return;
-    } else {
+    }  else {
       setLoading(true);
       const id = uuidv4();
       res = await addVenue(venue, venueType.toLowerCase(), id, user.uid);
@@ -247,6 +236,7 @@ export default function Register() {
       end: "",
     });
     setVenueType("");
+    setVenueImage("");
   };
 
   return (
@@ -308,7 +298,23 @@ export default function Register() {
               <label className="block pb-2 text-sm text-gray-600">
                 Venue Image
               </label>
-              <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+              <div
+                className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  console.log("dragging");
+                }}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  console.log("dropped");
+                  if (e.dataTransfer.files.length > 1) {
+                    alert("Select only one image");
+                    return;
+                  }
+                  setVenueImage(e.dataTransfer.files[0]);
+                  console.log(venueImage);
+                }}
+              >
                 <div className="space-y-1 text-center">
                   <svg
                     className="mx-auto h-12 w-12 text-gray-400"
@@ -327,9 +333,15 @@ export default function Register() {
                   <div className="flex text-sm text-gray-600">
                     <label
                       htmlFor="file-upload"
-                      className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                      className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500"
                     >
-                      <span>Upload a file</span>
+                      {venueImage === "" ? (
+                        <span>Upload a file</span>
+                      ) : (
+                        <span className="text-green-700 bg-green-200 px-3 py-1 border-2 border-green-600 rounded-md">
+                          Image Uploaded Successfully
+                        </span>
+                      )}
                       <input
                         id="file-upload"
                         name="file-upload"
@@ -340,30 +352,24 @@ export default function Register() {
                             alert("Select only one image");
                             return;
                           }
-
                           setVenueImage(e.target.files[0]);
                         }}
                       />
                     </label>
-                    <p className="pl-1">or drag and drop</p>
+                    {venueImage === "" ? (
+                      <p className="pl-1">or drag and drop</p>
+                    ) : null}
                   </div>
-                  <p className="text-xs text-gray-500">
-                    PNG, JPG, GIF up to 10MB
-                  </p>
+                  {venueImage === "" ? (
+                    <p className="text-xs text-gray-500">
+                      PNG, JPG, GIF up to 5MB
+                    </p>
+                  ) : null}
                 </div>
               </div>
               <Button onClick={uploadImage}>Uplaod</Button>
             </div>
           </div>
-          <Image
-            src={
-              "https://res.cloudinary.com/hevently-sarang/image/upload/v1642151596/ucduyi0lih7bvitii3qp.png"
-            }
-            alt="..."
-            height={400}
-            width={400}
-          ></Image>
-
           <div className="flex justify-center gap-3 py-8">
             <Button
               sx={{
