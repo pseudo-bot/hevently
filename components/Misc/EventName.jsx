@@ -4,7 +4,6 @@ import { EventContext } from "../../context/EventContext";
 import "animate.css";
 import Alert from "../Misc/Alert";
 import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
 import Link from "next/link";
 import Image from "next/image";
 import eventName from "../../public/modal/eventname.png";

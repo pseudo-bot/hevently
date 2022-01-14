@@ -5,7 +5,6 @@ import {
   Logout,
   HowToReg,
   PendingActions,
-  Home,
 } from "@mui/icons-material/";
 import Image from "next/image";
 import Button from "@mui/material/Button";
@@ -73,6 +72,7 @@ const MyDrawer = ({
   host = false,
   register,
   setRegister,
+  admin,
 }) => {
   const router = useRouter();
   const { data, uid } = useBadge();
@@ -164,31 +164,35 @@ const MyDrawer = ({
             handleBadge={handleApprove}
           />
 
-          <SidebarHeading title="registration" />
-          <SidebarOption
-            setRegister={setRegister}
-            register={true}
-            title="Register"
-            icon={<HowToReg />}
-          />
-
-          <SidebarOption
-            title="Registrations"
-            icon={<Event />}
-            bookmark="registrations"
-            setRegister={setRegister}
-            register={true}
-          />
-          <SidebarOption
-            title="Requests"
-            setRegister={setRegister}
-            register={true}
-            icon={<PendingActions />}
-            divider={false}
-            bookmark="requests"
-            badge={request}
-            handleBadge={handleRequest}
-          />
+          {admin ? (
+            <>
+              {" "}
+              <SidebarHeading title="registration" />
+              <SidebarOption
+                setRegister={setRegister}
+                register={true}
+                title="Register"
+                icon={<HowToReg />}
+              />
+              <SidebarOption
+                title="Registrations"
+                icon={<Event />}
+                bookmark="registrations"
+                setRegister={setRegister}
+                register={true}
+              />
+              <SidebarOption
+                title="Requests"
+                setRegister={setRegister}
+                register={true}
+                icon={<PendingActions />}
+                divider={false}
+                bookmark="requests"
+                badge={request}
+                handleBadge={handleRequest}
+              />
+            </>
+          ) : null}
 
           <div className="px-8 py-4">
             <Button variant="contained" color="error" onClick={signOut}>

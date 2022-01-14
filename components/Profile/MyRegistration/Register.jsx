@@ -10,10 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 import { UserContext } from "../../../context/Users";
 import { useContext } from "react";
 import Divider from "@mui/material/Divider";
-import {
-  validateName,
-  validatePhone,
-} from "../../../utils/validation";
+import { validateName, validatePhone } from "../../../utils/validation";
 import refetchData from "../../../utils/refetchData";
 import Button from "@mui/material/Button";
 import {
@@ -23,7 +20,6 @@ import {
   Person,
 } from "@mui/icons-material";
 import InputAdornment from "@mui/material/InputAdornment";
-import Image from "next/image";
 
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
@@ -133,9 +129,7 @@ const DualInput = ({ label, phStart, phEnd, value, setValue, type }) => {
 };
 
 const SingleInput = ({ label, value, setValue, isImage, type }) => {
-  const handleClick = () => {
-    console.log("clicked");
-  };
+  const handleClick = () => {};
   return (
     <div>
       <label className="leading-7 capitalize text-sm text-gray-600">
@@ -195,7 +189,6 @@ export default function Register() {
         }
       );
       const data = await res.json();
-      console.log(data);
       setVenueImageUrl(data.secure_url);
     } catch (err) {
       alert("Error uploading image");
@@ -215,7 +208,6 @@ export default function Register() {
       veg: venuePrice.start,
       nonveg: venuePrice.end,
     };
-    console.log(venue);
     if (!validateName(venueName)) {
       setSuccess(false);
       setMsg("Please enter a valid venue name");
@@ -345,17 +337,14 @@ export default function Register() {
                 className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"
                 onDragOver={(e) => {
                   e.preventDefault();
-                  console.log("dragging");
                 }}
                 onDrop={(e) => {
                   e.preventDefault();
-                  console.log("dropped");
                   if (e.dataTransfer.files.length > 1) {
                     alert("Select only one image");
                     return;
                   }
                   setVenueImage(e.dataTransfer.files[0]);
-                  console.log(venueImage);
                 }}
               >
                 <div className="space-y-1 text-center">

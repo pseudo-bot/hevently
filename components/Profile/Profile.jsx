@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import MyProfile from './MyProfile/MyProfile';
 import MyEvents from './MyEvents/MyEvents';
 import MyDrawer from './MyDrawer';
@@ -49,6 +49,7 @@ const Drawer = ({ userData }) => {
 						displayName={displayName}
 						register={register}
 						setRegister={setRegister}
+						admin={userData.accountType === 'admin'}
 					/>
 				</div>
 			) : (
@@ -60,6 +61,8 @@ const Drawer = ({ userData }) => {
 						displayName={displayName}
 						register={register}
 						setRegister={setRegister}
+						admin={userData.accountType === 'admin'}
+
 					/>
 				</div>
 			)}
@@ -75,13 +78,13 @@ const Drawer = ({ userData }) => {
 							<MyEvents />
 							<UserRequests />
 						</>
-					) : (
+					) : userData.accountType==='admin'?(
 						<>
 							<Register />
 							<MyRegistration />
 							<HostRequests />
 						</>
-					)}
+					):null}
 				</div>
 			</div>
 
