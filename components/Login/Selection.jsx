@@ -14,7 +14,7 @@ export default function Modal({ setShowSelection, setShowLogin, setStatus}) {
   const handleHost = () => {
     setShowSelection(false)
     setShowLogin(true)
-    setStatus('host')
+    setStatus('admin')
   };
 
   return (

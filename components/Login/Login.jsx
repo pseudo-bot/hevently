@@ -8,8 +8,9 @@ import {
   signInWithFb,
 } from "../../config/firebase/authProvider";
 import Login from "./EmailLogin";
+import createUser from "../../config/api/createUser";
 
-export default function Modal({ setShowLogin, setOpenFail, setOpenSuccess }) {
+export default function LoginUI({ setShowLogin, setOpenFail, setOpenSuccess, accountType }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(false);
@@ -19,7 +20,7 @@ export default function Modal({ setShowLogin, setOpenFail, setOpenSuccess }) {
       <div
         className={`justify-center items-center flex overflow-x-hidden z-50 outline-none focus:outline-none px-4 h-screen w-screen inset-0`}
       >
-        <div className="relative mx-auto bg-bgray-50 rounded-lg">
+        <div className="relative mx-auto bg-gray-50 rounded-lg">
           <div className="border-0 rounded-lg shadow-md relative flex flex-col w-full bg-white outline-none focus:outline-none">
             <div className="flex items-center justify-between pt-3 pb-3 rounded-t ">
               <h3 className=" capitalize font-semibold text-lg text-gray-900 tracking-wide z-10 mx-auto">
@@ -43,6 +44,7 @@ export default function Modal({ setShowLogin, setOpenFail, setOpenSuccess }) {
                 setShowLogin={setShowLogin}
                 setOpenFail={setOpenFail}
                 setOpenSuccess={setOpenSuccess}
+                accountType={accountType}
               />
               {register ? (
                 <div className="text-gray-600 text-center text-sm">
@@ -84,6 +86,7 @@ export default function Modal({ setShowLogin, setOpenFail, setOpenSuccess }) {
                     await signInWithGoogle();
                     setOpenSuccess(true);
                     setShowLogin(false);
+                    createUser(accountType);
                   } catch (err) {
                     setOpenFail(true);
                   }
@@ -107,6 +110,7 @@ export default function Modal({ setShowLogin, setOpenFail, setOpenSuccess }) {
                     await signInWithFb();
                     setOpenSuccess(true);
                     setShowLogin(false);
+                    createUser(accountType);
                   } catch (err) {
                     setOpenFail(true);
                   }

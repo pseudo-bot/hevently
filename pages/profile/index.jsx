@@ -1,7 +1,11 @@
 import Profile from '../../components/Profile/Profile';
 import Head from 'next/head';
+import { useContext } from 'react';
+import { UserContext } from '../../context/Users';
 
 const ProfilePage = () => {
+	const user = useContext(UserContext);
+
 	return (
 		<>
 			<Head>

@@ -43,6 +43,7 @@ const Drawer = ({ userData }) => {
 					<MyDrawer
 						photoURL={photoURL}
 						displayName={displayName}
+						host={false}
 					/>
 				</div>
 			) : (
@@ -52,6 +53,7 @@ const Drawer = ({ userData }) => {
 					<MyDrawer
 						photoURL={photoURL}
 						displayName={displayName}
+						host={false}
 					/>
 				</div>
 			)}

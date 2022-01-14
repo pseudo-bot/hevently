@@ -1,7 +1,7 @@
 import { auth } from '../firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 
-const createUser = () => {
+const createUser = (accountType) => {
 	const contentType = 'application/json';
 	onAuthStateChanged(auth, async (user) => {
 		if (user) {
@@ -14,14 +14,14 @@ const createUser = () => {
 							Accept: contentType,
 							'Content-Type': contentType,
 						},
-						body: JSON.stringify(user),
+						body: JSON.stringify({user: {...user, accountType}}),
 					}
 				);
-				const status = await res.json();
-				console.log(status.message);
+				const data = await res.json();
+				return data;
 			} catch (error) {
-				console.log(error);
-				console.log('Authentication failed. Cannot add user to database');
+				alert(error);
+				alert('Authentication failed. Cannot add user to database');
 			}
 		}
 	});
