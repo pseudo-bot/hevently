@@ -71,6 +71,7 @@ const MyProfile = () => {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
+      accountType:user.accountType
     };
 
     if (!validatePhone(ob.phoneNumber) && ob.phoneNumber !== "") {
