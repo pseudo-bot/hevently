@@ -51,7 +51,7 @@ export default function AlertDialog({ showModal, setShowModal }) {
             />
           </div>
           <div className="flex flex-col gap-2 px-10 pb-4">
-            <div className="text-gray-600 pt-4 text-sm italic font-medium">
+            <div className="text-gray-600 pt-4 pb-2 text-sm italic font-medium">
               A name can give the vibe of your whole celebration
             </div>
             <div>

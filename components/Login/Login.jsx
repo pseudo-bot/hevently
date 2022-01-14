@@ -9,8 +9,14 @@ import {
 } from "../../config/firebase/authProvider";
 import Login from "./EmailLogin";
 import createUser from "../../config/api/createUser";
+import logOut from "../../config/firebase/signOut";
 
-export default function LoginUI({ setShowLogin, setOpenFail, setOpenSuccess, accountType }) {
+      export default function LoginUI({
+  setShowLogin,
+  setOpenFail,
+  setOpenSuccess,
+  accountType,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(false);
@@ -86,7 +92,7 @@ export default function LoginUI({ setShowLogin, setOpenFail, setOpenSuccess, acc
                     await signInWithGoogle();
                     setOpenSuccess(true);
                     setShowLogin(false);
-                    createUser(accountType);
+                    createUser(accountType) ;
                   } catch (err) {
                     setOpenFail(true);
                   }

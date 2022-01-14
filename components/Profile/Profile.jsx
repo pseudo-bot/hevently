@@ -49,7 +49,7 @@ const Drawer = ({ userData }) => {
             displayName={displayName}
             register={register}
             setRegister={setRegister}
-            admin={userData.accountType === "admin"}
+            admin={userData && userData.accountType === "admin"}
           />
         </div>
       ) : (
@@ -61,7 +61,7 @@ const Drawer = ({ userData }) => {
             displayName={displayName}
             register={register}
             setRegister={setRegister}
-            admin={userData.accountType === "admin"}
+            admin={userData && userData.accountType === "admin"}
           />
         </div>
       )}
