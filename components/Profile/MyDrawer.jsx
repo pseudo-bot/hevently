@@ -38,7 +38,7 @@ const SidebarOption = ({
           }}
           className="cursor-pointer flex py-4 px-6 gap-4 items-center  hover:text-blue-700 transition-all duration-200 m-2"
         >
-          <div>
+          <div className="flex gap-3">
             {icon} <span>{title}</span>
           </div>
           {badge && (
@@ -195,8 +195,8 @@ const MyDrawer = ({
           ) : null}
 
           <div className="px-8 py-4">
-            <Button variant="contained" color="error" onClick={signOut}>
-              <Logout /> <span>Logout</span>
+            <Button variant="contained" color="error" onClick={signOut} startIcon={<Logout />}>
+              <span>Logout</span>
             </Button>
           </div>
         </nav>
