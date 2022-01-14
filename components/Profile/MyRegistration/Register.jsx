@@ -12,12 +12,16 @@ import { useContext } from "react";
 import Divider from "@mui/material/Divider";
 import {
   validateName,
-  validateNumber,
   validatePhone,
 } from "../../../utils/validation";
 import refetchData from "../../../utils/refetchData";
 import Button from "@mui/material/Button";
-import { PhotoCamera } from "@mui/icons-material";
+import {
+  CurrencyRupee,
+  CenterFocusStrong,
+  People,
+  Person,
+} from "@mui/icons-material";
 import InputAdornment from "@mui/material/InputAdornment";
 import Image from "next/image";
 
@@ -51,8 +55,32 @@ const DualInput = ({ label, phStart, phEnd, value, setValue, type }) => {
           required
           fullWidth
           size="small"
-          placeholder={phStart}
+          placeholder={label === "capacity" ? phStart : ""}
           value={value.start}
+          InputProps={{
+            startAdornment:
+              label === "capacity" ? null : (
+                <InputAdornment onClick={() => {}} position="end">
+                  <div className="hover:cursor-pointer">
+                    <CurrencyRupee />
+                  </div>
+                </InputAdornment>
+              ),
+            endAdornment:
+              label === "capacity" ? (
+                <InputAdornment onClick={() => {}} position="end">
+                  <div className="hover:cursor-pointer">
+                    <Person />
+                  </div>
+                </InputAdornment>
+              ) : (
+                <InputAdornment onClick={() => {}} position="end">
+                  <div className="hover:cursor-pointer">
+                    <CenterFocusStrong color="success" />
+                  </div>
+                </InputAdornment>
+              ),
+          }}
           onChange={(e) => {
             setValue({
               start: e.target.value < 0 ? 0 : e.target.value,
@@ -66,8 +94,32 @@ const DualInput = ({ label, phStart, phEnd, value, setValue, type }) => {
           required
           size="small"
           fullWidth
-          placeholder={phEnd}
+          placeholder={label === "capacity" ? phEnd : ""}
           value={value.end}
+          InputProps={{
+            startAdornment:
+              label === "capacity" ? null : (
+                <InputAdornment onClick={() => {}} position="end">
+                  <div className="hover:cursor-pointer">
+                    <CurrencyRupee />
+                  </div>
+                </InputAdornment>
+              ),
+            endAdornment:
+              label === "capacity" ? (
+                <InputAdornment onClick={() => {}} position="end">
+                  <div className="hover:cursor-pointer">
+                    <People />
+                  </div>
+                </InputAdornment>
+              ) : (
+                <InputAdornment onClick={() => {}} position="end">
+                  <div className="hover:cursor-pointer">
+                    <CenterFocusStrong color="error" />
+                  </div>
+                </InputAdornment>
+              ),
+          }}
           onChange={(e) => {
             setValue({
               start: value.start,
@@ -98,15 +150,6 @@ const SingleInput = ({ label, value, setValue, isImage, type }) => {
           size="small"
           fullWidth
           autoComplete="off"
-          InputProps={{
-            endAdornment: isImage && (
-              <InputAdornment onClick={handleClick} position="end">
-                <div className="hover:cursor-pointer">
-                  <PhotoCamera />
-                </div>
-              </InputAdornment>
-            ),
-          }}
         />
       </div>
     </div>
@@ -188,7 +231,7 @@ export default function Register() {
       setMsg("Please enter a valid mobile number");
       setOpenAlert(true);
       return;
-    }  else {
+    } else {
       setLoading(true);
       const id = uuidv4();
       res = await addVenue(venue, venueType.toLowerCase(), id, user.uid);
@@ -316,20 +359,22 @@ export default function Register() {
                 }}
               >
                 <div className="space-y-1 text-center">
-                  <svg
-                    className="mx-auto h-12 w-12 text-gray-400"
-                    stroke="currentColor"
-                    fill="none"
-                    viewBox="0 0 48 48"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                      strokeWidth={2}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  {venueImage === "" ? (
+                    <svg
+                      className="mx-auto h-12 w-12 text-gray-400"
+                      stroke="currentColor"
+                      fill="none"
+                      viewBox="0 0 48 48"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  ) : null}
                   <div className="flex text-sm text-gray-600">
                     <label
                       htmlFor="file-upload"

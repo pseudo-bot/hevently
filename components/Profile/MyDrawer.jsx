@@ -32,6 +32,7 @@ const SidebarOption = ({
       <Link href={`#${bookmark}`} passHref>
         <div
           onClick={() => {
+            setRegister(register);
             if (badge) {
               handleBadge();
             }
@@ -66,7 +67,13 @@ const SidebarHeading = ({ title }) => {
   );
 };
 
-const MyDrawer = ({ photoURL, displayName, host = false }) => {
+const MyDrawer = ({
+  photoURL,
+  displayName,
+  host = false,
+  register,
+  setRegister,
+}) => {
   const router = useRouter();
   const { data, uid } = useBadge();
   const [approval, setApproval] = useState(false);
@@ -135,51 +142,56 @@ const MyDrawer = ({ photoURL, displayName, host = false }) => {
           </div>
         </div>
         <nav>
-          {host ? (
-            <>
-              <SidebarHeading title="registration" />
-              <SidebarOption title="Home" icon={<Home />} />
-              <SidebarOption title="Profile" icon={<Person />} />
-              <SidebarOption title="Register" icon={<HowToReg />} />
+          <SidebarHeading title="profile" />
+          <SidebarOption
+            title="Profile"
+            setRegister={setRegister}
+            icon={<Person />}
+          />
+          <SidebarOption
+            title="Events"
+            setRegister={setRegister}
+            icon={<Event />}
+            bookmark="events"
+          />
+          <SidebarOption
+            title="Approval"
+            icon={<PendingActions />}
+            bookmark="requests"
+            divider={false}
+            setRegister={setRegister}
+            badge={approval}
+            handleBadge={handleApprove}
+          />
 
-              <SidebarOption
-                title="Registrations"
-                icon={<Event />}
-                bookmark="registrations"
-              />
-              <SidebarOption
-                title="Requests"
-                icon={<PendingActions />}
-                divider={false}
-                bookmark="requests"
-                badge={request}
-                handleBadge={handleRequest}
-              />
-            </>
-          ) : (
-            <>
-              <SidebarHeading title="profile" />
-              <SidebarOption title="Home" icon={<Home />} />
-              <SidebarOption title="Profile" icon={<Person />} />
-              <SidebarOption
-                title="Events"
-                icon={<Event />}
-                bookmark="events"
-              />
-              <SidebarOption
-                title="Approval"
-                icon={<PendingActions />}
-                bookmark="requests"
-                divider={false}
-                badge={approval}
-                handleBadge={handleApprove}
-              />
-            </>
-          )}
+          <SidebarHeading title="registration" />
+          <SidebarOption
+            setRegister={setRegister}
+            register={true}
+            title="Register"
+            icon={<HowToReg />}
+          />
+
+          <SidebarOption
+            title="Registrations"
+            icon={<Event />}
+            bookmark="registrations"
+            setRegister={setRegister}
+            register={true}
+          />
+          <SidebarOption
+            title="Requests"
+            setRegister={setRegister}
+            register={true}
+            icon={<PendingActions />}
+            divider={false}
+            bookmark="requests"
+            badge={request}
+            handleBadge={handleRequest}
+          />
 
           <div className="px-8 py-4">
-            <Button
-             variant="contained" color="error" onClick={signOut}>
+            <Button variant="contained" color="error" onClick={signOut}>
               <Logout /> <span>Logout</span>
             </Button>
           </div>

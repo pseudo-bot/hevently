@@ -5,12 +5,16 @@ import MyDrawer from './MyDrawer';
 import Navbar from './NavBar/NavBar';
 import useUser from '../../hooks/useUser';
 import UserRequests from './MyProfile/Requests/UserRequests';
+import Register from "./MyRegistration/Register";
+import MyRegistration from "./MyRegistration/MyRegistration";
+import HostRequests from './MyRegistration/Requests/HostRequests';
 
 const Drawer = ({ userData }) => {
 	const displayName = userData ? userData.displayName : '';
 	const photoURL = userData ? userData.photoURL : '';
 	const [open, setOpen] = useState(false);
 	const [width, setWidth] = useState(768);
+	const [register, setRegister] = useState(false);
 
 	useEffect(() => {
 		const sidebarClose = document.querySelector('.sidebar-close');
@@ -43,6 +47,8 @@ const Drawer = ({ userData }) => {
 					<MyDrawer
 						photoURL={photoURL}
 						displayName={displayName}
+						register={register}
+						setRegister={setRegister}
 					/>
 				</div>
 			) : (
@@ -52,6 +58,8 @@ const Drawer = ({ userData }) => {
 					<MyDrawer
 						photoURL={photoURL}
 						displayName={displayName}
+						register={register}
+						setRegister={setRegister}
 					/>
 				</div>
 			)}
@@ -61,9 +69,19 @@ const Drawer = ({ userData }) => {
 					<Navbar displayName={displayName} setOpen={setOpen} />
 				</div>
 				<div>
+				{!register ? (
+						<>
 							<MyProfile />
 							<MyEvents />
 							<UserRequests />
+						</>
+					) : (
+						<>
+							<Register />
+							<MyRegistration />
+							<HostRequests />
+						</>
+					)}
 				</div>
 			</div>
 
