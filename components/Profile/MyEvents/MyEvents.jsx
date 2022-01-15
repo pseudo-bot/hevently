@@ -4,9 +4,7 @@ import { Divider } from '@mui/material';
 import Loader from '../../Misc/Loader';
 
 const MyEvents = () => {
-	const { event, apiError, error, message } = useEvent();
-
-	console.table({ event, apiError, error, message });
+	const { event } = useEvent();
 
 	return (
 		<div id="events">

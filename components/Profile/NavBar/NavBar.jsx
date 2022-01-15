@@ -4,7 +4,7 @@ import Link from "next/link";
 const Navbar = ({ displayName, setOpen }) => {
   return (
     <>
-      <div className="flex h-full items-center shadow-lg">
+      <div className="flex h-full items-center">
         <div
           className="-left-6 relative"
           onClick={() => {

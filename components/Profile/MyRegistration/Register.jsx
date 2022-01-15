@@ -430,7 +430,7 @@ export default function Register() {
         />
       )}
       <div className="py-16">
-        <Divider />
+        <Divider variant="middle" />
       </div>
     </>
   );

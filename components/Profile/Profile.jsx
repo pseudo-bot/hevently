@@ -67,7 +67,7 @@ const Drawer = ({ userData }) => {
       )}
 
       <div className="md:ml-[16rem]">
-        <div className="bg-blue-500 h-16 flex justify-between px-8 items-center">
+        <div className="bg-blue-500 h-16 flex justify-between px-8 items-center shadow-lg">
           <Navbar displayName={displayName} setOpen={setOpen} />
         </div>
         <div>
