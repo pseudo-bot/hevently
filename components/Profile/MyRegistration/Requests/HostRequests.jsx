@@ -1,7 +1,7 @@
 import HostRequestCard from "./HostRequestCard"
-import { CircularProgress } from '@mui/material';
 import useHost from '../../../../hooks/useHost';
 import { Divider } from '@mui/material';
+import Loader from '../../../Misc/Loader';
 
 const HostRequests = () => {
     const { host:event } = useHost();
@@ -10,7 +10,7 @@ const HostRequests = () => {
         <div id="requests">
 			{!event ? (
 				<div className="flex h-[40vh] w-full relative justify-center items-center ">
-					<CircularProgress />
+					<Loader />
 				</div>
 			) : (
 				<div className='pb-8'>
@@ -27,7 +27,7 @@ const HostRequests = () => {
 					/>
 				</div>
 			)}
-			<Divider/>
+			<Divider variant="middle"/>
 		</div>
     )
 }

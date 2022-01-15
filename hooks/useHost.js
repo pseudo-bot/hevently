@@ -1,4 +1,4 @@
-import useSWR, { useSWRConfig } from 'swr';
+import useSWR from 'swr';
 import { useContext } from 'react';
 import { UserContext } from '../context/Users';
 import { getFetcher } from '../utils/fetcher';

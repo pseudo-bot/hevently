@@ -42,6 +42,7 @@ export default async function badgeHandler(req, res) {
 		res.status(500).json({
 			ok: false,
 			message: 'Server error',
+			error,
 		});
 	}
 }

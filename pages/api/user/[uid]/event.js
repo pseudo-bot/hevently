@@ -10,6 +10,16 @@ export default async function eventHandler(req, res) {
 
 	try {
 		switch (method) {
+			case 'GET':
+				const event = await UserEvents.findOne({ uid }).clone();
+				return res.status(200).json({
+					ok: true,
+					message: 'Events retrieved',
+					event: event || {},
+				});
+
+				break;
+
 			case 'POST':
 				let user;
 				if (body.pending) {
@@ -53,17 +63,6 @@ export default async function eventHandler(req, res) {
 						message: 'Event list updated',
 					});
 				}
-
-			case 'GET':
-				const event = await UserEvents.findOne({ uid }).clone();
-
-				return res.status(200).json({
-					ok: true,
-					message: 'Events retrieved',
-					event: event || {},
-				});
-
-				break;
 
 			case 'PUT':
 				try {
@@ -157,6 +156,7 @@ export default async function eventHandler(req, res) {
 		return res.status(500).json({
 			ok: false,
 			message: 'Internal server error',
+			error,
 		});
 	}
 }

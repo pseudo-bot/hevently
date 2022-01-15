@@ -69,8 +69,6 @@ const SidebarHeading = ({ title }) => {
 const MyDrawer = ({
   photoURL,
   displayName,
-  host = false,
-  register,
   setRegister,
   admin,
 }) => {
@@ -138,7 +136,7 @@ const MyDrawer = ({
             />
           </div>
           <div className="text-center py-2 capitalize">
-            {displayName === "" ? "User" : displayName}
+            {displayName === "" ? "user" : displayName}
           </div>
         </div>
         <nav>

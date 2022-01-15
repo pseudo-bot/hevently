@@ -4,8 +4,10 @@ import { Divider } from '@mui/material';
 import Loader from '../../Misc/Loader';
 
 const MyEvents = () => {
-	const { event } = useEvent();
-	
+	const { event, apiError, error } = useEvent();
+
+	console.table({ event, apiError, error });
+
 	return (
 		<div id="events">
 			{!event ? (
@@ -13,21 +15,15 @@ const MyEvents = () => {
 					<Loader />
 				</div>
 			) : (
-				<div className='pb-8'>
+				<div className="pb-8">
 					<h3 className="text-3xl text-center font-semibold tracking-wider text-gray-600 py-6">
 						Events
 					</h3>
-					<EventCard
-						title="Upcoming Events"
-						eventsData={event}
-					/>
-					<EventCard
-						title="Completed Events"
-						eventsData={event}
-					/>
+					<EventCard title="Upcoming Events" eventsData={event} />
+					<EventCard title="Completed Events" eventsData={event} />
 				</div>
 			)}
-			<Divider variant='middle'/>
+			<Divider variant="middle" />
 		</div>
 	);
 };
