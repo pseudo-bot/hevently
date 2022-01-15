@@ -19,6 +19,7 @@ export default function useEvent() {
 		loading: !error && !data,
 		error: error,
 		apiError: data && data.error,
+		message: data && data.message,
 	};
 }
 

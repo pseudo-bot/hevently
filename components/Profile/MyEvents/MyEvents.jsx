@@ -6,7 +6,7 @@ import Loader from '../../Misc/Loader';
 const MyEvents = () => {
 	const { event, apiError, error } = useEvent();
 
-	console.table({ event, apiError, error });
+	console.table({ event, apiError, error, message });
 
 	return (
 		<div id="events">
