@@ -129,7 +129,7 @@ export default function NavLinks({ hidden, setHidden }) {
         <LoginInterface
           setShowLogin={setShowLogin}
           setOpenSuccess={setOpenSuccess}
-          setOpenFail={setOpenFail}
+          setOpenFail={setOpenFail}z
           accountType={accountType}
           setOpenWarn={setOpenWarn}
         />

@@ -3,12 +3,12 @@ import Host from '../../../db/model/HostEvents';
 import Badge from '../../../db/model/Badge';
 
 export default async function createVenue(req, res) {
-	await dbConnect();
-
-	const { method, body } = req;
-	const { uid } = req.query;
-
 	try {
+		await dbConnect();
+
+		const { method, body } = req;
+		const { uid } = req.query;
+
 		switch (method) {
 			case 'GET':
 				const host = await Host.findOne({ uid }).clone();
@@ -91,11 +91,11 @@ export default async function createVenue(req, res) {
 					});
 				}
 		}
-	} catch (err) {
+	} catch (error) {
 		return res.status(500).json({
 			ok: false,
-			message: 'Server error',
-			err,
+			message: 'Server error host',
+			error,
 		});
 	}
 }

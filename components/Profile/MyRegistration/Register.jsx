@@ -226,7 +226,7 @@ export default function Register() {
       setLoading(true);
       const id = uuidv4();
       res = await addVenue(venue, venueType.toLowerCase(), id, user.uid);
-      res2 = await addUserVenue(venue, venueType.toLowerCase(), id);
+      if (res) res2 = await addUserVenue(venue, venueType.toLowerCase(), id);
       refetchData(user.uid);
       setLoading(false);
     }

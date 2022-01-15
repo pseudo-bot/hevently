@@ -1,7 +1,7 @@
 import { Schema, model, models } from 'mongoose';
 
 const VenueSchema = new Schema({
-	// 11 - keys
+	// 12 - keys
 	id: {
 		type: String,
 		unique: true,
@@ -56,9 +56,8 @@ const VenueSchema = new Schema({
 
 	},
 	bookings: {
-		type: Schema.Types.Mixed,
-		required: [true, 'No bookings'],
-		default: [],
+		type: Number,
+		default: 0,
 	},
 });
 

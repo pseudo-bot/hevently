@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Rating from '@mui/material/Rating';
-import { updateUserRatings } from '../../../config/api/eventAPI';
+import { updateUserRatings } from '../../../config/api/ratingsAPI';
 
 export default function BasicRating({ event, uid, rating, setRating, type }) {
 	return (
@@ -15,9 +15,9 @@ export default function BasicRating({ event, uid, rating, setRating, type }) {
 					<Rating
 						name="simple-controlled"
 						value={rating}
-						onChange={async (event, newValue) => {
+						onChange={async (e, newValue) => {
 							setRating(newValue);
-							const res = await updateUserRatings(newValue, uid, type);
+							const res = await updateUserRatings(uid, event.venue.id, type, newValue);
 							if (res) {
 								console.log('Ratings updated');
 							} else {

@@ -7,28 +7,28 @@ import {
 } from '../../../db/model/Venue';
 
 export default async function createVenue(req, res) {
-	await dbConnect();
-
-	const { method } = req;
-	const { type } = req.query;
-	const { venue, id } = req.body;
-
-	let Venue;
-	switch (type) {
-		case 'wedding':
-			Venue = WeddingVenue;
-			break;
-		case 'birthday':
-			Venue = BirthdayVenue;
-			break;
-		case 'social':
-			Venue = SocialVenue;
-			break;
-		case 'corporate':
-			Venue = CorporateVenue;
-			break;
-	}
 	try {
+		await dbConnect();
+
+		const { method } = req;
+		const { type } = req.query;
+		const { venue, id } = req.body;
+
+		let Venue;
+		switch (type) {
+			case 'wedding':
+				Venue = WeddingVenue;
+				break;
+			case 'birthday':
+				Venue = BirthdayVenue;
+				break;
+			case 'social':
+				Venue = SocialVenue;
+				break;
+			case 'corporate':
+				Venue = CorporateVenue;
+				break;
+		}
 		switch (method) {
 			case 'GET':
 				const venues = await Venue.find({});
@@ -61,7 +61,6 @@ export default async function createVenue(req, res) {
 				break;
 		}
 	} catch (error) {
-		console.log(error);
-		res.status(500).json({ error });
+		res.status(500).json({ ok: false, message: 'Server error fetching venues', error });
 	}
 }

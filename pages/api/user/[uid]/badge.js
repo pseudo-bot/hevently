@@ -1,9 +1,12 @@
 import Badge from '../../../../db/model/Badge';
+import dbConnect from '../../../../db/utils/dbConnect';
 
 export default async function badgeHandler(req, res) {
-	const { uid } = req.query;
-	const { method } = req;
 	try {
+		await dbConnect();
+		const { uid } = req.query;
+		const { method } = req;
+		
 		switch (method) {
 			case 'GET':
 				const badge = await Badge.findOne({ uid });

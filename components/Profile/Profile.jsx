@@ -77,7 +77,7 @@ const Drawer = ({ userData }) => {
               <MyEvents />
               <UserRequests />
             </>
-          ) : userData.accountType === "admin" ? (
+          ) : userData && userData.accountType === "admin" ? (
             <>
               <Register />
               <MyRegistration />

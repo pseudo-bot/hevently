@@ -33,7 +33,7 @@ const ItemList = ({ list, value }) => {
 				})
 				.map(
 					({
-						_id,
+						id,
 						value,
 						address,
 						city,
@@ -45,10 +45,10 @@ const ItemList = ({ list, value }) => {
 						host,
 					}) => {
 						let selected = false;
-						if (venue && venue.id === _id) selected = true;
+						if (venue && venue.id === id) selected = true;
 						return (
 							<ItemCard
-								key={_id}
+								key={id}
 								value={value}
 								city={city}
 								ratings={ratings}
@@ -59,7 +59,7 @@ const ItemList = ({ list, value }) => {
 								display={display}
 								handleBooking={() => {
 									setVenue({
-										id: _id,
+										id,
 										value,
 										city,
 										address,

@@ -2,12 +2,12 @@ import dbConnect from '../../../../db/utils/dbConnect';
 import User from '../../../../db/model/User';
 
 export default async function userHandler(req, res) {
-	await dbConnect();
-
-	const { method } = req;
-	const { uid } = req.query;
-
 	try {
+		await dbConnect();
+
+		const { method } = req;
+		const { uid } = req.query;
+
 		const user = await User.findOne({ uid });
 		switch (method) {
 			case 'GET':

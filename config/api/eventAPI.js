@@ -13,7 +13,7 @@ const createEvent = async (event, type, pending) => {
     const res = await create.json();
     return res.ok;
   } catch (e) {
-    console.log(e);
+    alert(e);
     return false;
   }
 };
@@ -30,7 +30,7 @@ const updateUserRatings = async (ratings, uid, type) => {
     const res = await updateEvent.json();
     return res.ok;
   } catch (err) {
-    console.log(err);
+    alert(err);
     return false;
   }
 };
@@ -47,27 +47,7 @@ const deleteEvent = async (uid, type) => {
     const res = await deleteEvent.json();
     return res.ok;
   } catch (err) {
-    console.log(err);
-    return false;
-  }
-};
-
-const updateEventRating = async (id, type, rating) => {
-  try {
-    const eventRatings = await fetch(
-      `/api/user/${auth.currentUser.uid}/event`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id, type, rating }),
-      }
-    );
-    const res = await eventRatings.json();
-    return res.ok;
-  } catch (err) {
-    console.log(err);
+    alert(err);
     return false;
   }
 };
@@ -84,7 +64,7 @@ const rejectUserEvent = async (eventId, client) => {
     const res = await rejectEvent.json();
     return res.ok;
   } catch (err) {
-    console.log(err);
+    alert(err);
     return false;
   }
 };
@@ -101,7 +81,7 @@ const approveUserEvent = async (eventId, client) => {
     const res = await approveEvent.json();
     return res.ok;
   } catch (err) {
-    console.log(err);
+    alert(err);
     return false;
   }
 };
@@ -112,5 +92,4 @@ export {
   approveUserEvent,
   updateUserRatings,
   deleteEvent,
-  updateEventRating,
 };
