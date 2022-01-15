@@ -21,8 +21,7 @@ export default async function sendMail(req, res) {
 						from: process.env.NEXT_PUBLIC_EMAIL,
 						to: emails,
 						subject: 'Invite to attend the event',
-						text: `We request you to be our guest at EventName .
-					Kindly be present on this occasion to celebrate with us an ever-lasting bond of togetherness`,
+						text: `We request you to be guest at our event. Kindly be present on this occasion to celebrate with us an ever-lasting bond of togetherness. Thank you.`,
 					};
 
 					transporter.sendMail(guestsMailOptions, (error, info) => {
