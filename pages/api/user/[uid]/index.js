@@ -7,10 +7,12 @@ export default async function userHandler(req, res) {
 
 		const { method } = req;
 		const { uid } = req.query;
+		
+		if (!method) method = 'GET';
 
-		const user = await User.findOne({ uid });
 		switch (method) {
 			case 'GET':
+				const user = await User.findOne({ uid }).clone();
 				res.status(200).json({
 					ok: true,
 					message: `User ${method}`,
@@ -19,14 +21,15 @@ export default async function userHandler(req, res) {
 				break;
 
 			case 'PUT':
-				if (user) {
-					user.overwrite(req.body);
-					user.save();
+				const updateUser = await User.findOne({ uid }).clone();
+				if (updateUser) {
+					updateUser.overwrite(req.body);
+					updateUser.save();
 
 					res.status(200).json({
 						ok: true,
 						message: `User ${method}`,
-						user,
+						user: updateUser,
 					});
 				} else {
 					res.status(404).json({

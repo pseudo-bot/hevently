@@ -73,6 +73,7 @@ export default function LoginUI({
                 setOpenFail={setOpenFail}
                 setOpenSuccess={setOpenSuccess}
                 accountType={accountType}
+                setOpenWarn={setOpenWarn}
               />
               {register ? (
                 <div className="text-gray-600 text-center text-sm">

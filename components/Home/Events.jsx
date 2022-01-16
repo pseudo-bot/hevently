@@ -31,7 +31,7 @@ const Event = ({ image, title, desc, href, setOpen }) => {
         />
         <div
           onClick={openModal}
-          className="bg-[#000] w-full h-0 absolute opacity-60 group-kthover:h-full transition-all duration-500"
+          className="bg-[#000] w-full h-0 absolute opacity-60 group-hover:h-full transition-all duration-500"
         ></div>
         <div className="bg-gray-200 absolute w-14 h-14 opacity-0 transition-all duration-500 group-hover:opacity-80 rounded-full top-28 left-1/2 -translate-x-1/2 flex justify-center items-center">
           <button onClick={openModal}>
@@ -87,7 +87,7 @@ function Events() {
         <Event
           title="Birthdays"
           image={birthday}
-          desc="Make your or your near ones birthday special and unforgotable by connecting through us."
+          desc="Make your or your near ones birthday special and unforgettable by connecting through us."
           href="/birthday"
           setOpen={setOpen}
         />
