@@ -5,12 +5,19 @@ import {
 	People,
 	Add,
 	Delete,
+	CloudUpload,
+	CloudDone,
 } from '@mui/icons-material';
 import { useState, useContext } from 'react';
 import { EventContext } from '../../../context/EventContext';
 import { SentimentDissatisfied as Sad } from '@mui/icons-material';
 import GuestTable from './GuestTable';
 import Alert from '../../Misc/Alert';
+import { styled } from '@mui/material/styles';
+import Papa from 'papaparse';
+const StyledInput = styled('input')({
+	display: 'none',
+});
 
 const Input = ({ label, helper, handleChange, error, value, icon }) => {
 	return (
@@ -53,6 +60,15 @@ const Guests = () => {
 	const [guest, setGuest] = useState('');
 	const [emailError, setEmailError] = useState(false);
 	const [nameError, setNameError] = useState(false);
+	const [upload, setUpload] = useState(false);
+
+	const handleCsv = (file) => {
+		const list = file.data.map((item) => {
+			return { guest: item[0], email: item[1] };
+		});
+		setGuestList(...guestList, list);
+		setUpload(true);
+	};
 
 	const addGuest = () => {
 		if (email && guest) {
@@ -86,7 +102,8 @@ const Guests = () => {
 
 	const deleteGuests = () => {
 		setGuestList([]);
-	}
+		setUpload(false);
+	};
 
 	return (
 		<div className="flex flex-col gap-10 w-full px-10 items-center">
@@ -124,9 +141,57 @@ const Guests = () => {
 					error={emailError}
 					icon={'email'}
 				/>
-				<Button variant="contained" onClick={addGuest} endIcon={<Add />}>
-					<span className="poppins capitalize">Add guest</span>
-				</Button>
+				<div className="flex gap-4">
+					<Button variant="contained" onClick={addGuest} endIcon={<Add />}>
+						<span className="poppins capitalize">Add guest</span>
+					</Button>
+					<label htmlFor="contained-button-file">
+						<StyledInput
+							id="contained-button-file"
+							accept=".csv"
+							type="file"
+							onClick={(e) => {
+								if (upload) e.preventDefault();
+							}}
+							onChange={(e) => {
+								if (e.target.files.length > 1) {
+									alert('Select only one file');
+									return;
+								}
+								try {
+									const file = e.target.files[0];
+									if (
+										file.name.substring(
+											file.name.length - 3,
+											file.name.length
+										) !== 'csv'
+									) {
+										alert('Only CSV files are allowed');
+										return;
+									}
+									Papa.parse(file, {
+										header: false,
+										complete: handleCsv,
+									});
+									e.target.value = null;
+								} catch (err) {
+									alert('Invalid file');
+								}
+							}}
+						/>
+						<Button
+							endIcon={upload ? <CloudDone color="success" /> : <CloudUpload />}
+							variant="outlined"
+							component="span"
+							color={upload ? 'success' : 'primary'}
+						>
+							{' '}
+							<div className="capitalize">
+								Upload <span className=" uppercase ">csv</span>
+							</div>
+						</Button>
+					</label>
+				</div>
 			</div>
 
 			<Divider

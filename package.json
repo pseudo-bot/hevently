@@ -6,9 +6,6 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "engines": {
-    "node": "14.x"
-  },
   "dependencies": {
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
@@ -30,6 +27,7 @@
     "mongoose": "^6.1.1",
     "next": "^12.0.7",
     "nodemailer": "^6.7.2",
+    "papaparse": "^5.3.1",
     "react": "^17.0.2",
     "react-confetti": "^6.0.1",
     "react-date-range": "^1.4.0",

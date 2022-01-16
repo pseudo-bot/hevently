@@ -17,7 +17,7 @@ import Alert from '../Misc/Alert';
 import Tooltip from '@mui/material/Tooltip';
 import { validateEmail } from '../../utils/validation';
 import createUser from '../../config/api/createUser';
-import { auth } from "../../config/firebase/firebase";
+import { auth } from '../../config/firebase/firebase';
 
 const Login = ({
 	email,
@@ -29,7 +29,8 @@ const Login = ({
 	setOpenSuccess,
 	setOpenFail,
 	accountType,
-  setOpenWarn,
+	setOpenWarn,
+	setLoading,
 }) => {
 	const [confirm, setConfirm] = useState('');
 	const [values, setValues] = useState({
@@ -54,25 +55,38 @@ const Login = ({
 		event.preventDefault();
 	};
 
-  const emailSignIn = async () => {
-    try {
-      await loginUser(email, password);
-      const res = await fetch(`/api/user/${auth.currentUser.uid}`);
-      const data = await res.json();
-      
-      if (data && data.user && data.user.accountType === "user" && accountType === "admin") {
-        await logOut();
-        setOpenWarn(true);
-        setShowLogin(false);
-        return;
-      }
+	const emailSignIn = async () => {
+		setLoading(true);
+		try {
+			const methods = await signInMethods(email);
+			if (methods.includes('password')) {
+				await loginUser(email, password);
+				const res = await fetch(`/api/user/${auth.currentUser.uid}`);
+				const data = await res.json();
 
-      setOpenSuccess(true);
-      setShowLogin(false);
-    } catch (err) {
-      setOpenFail(true);
-    }
-  };
+				if (
+					data &&
+					data.user &&
+					data.user.accountType === 'user' &&
+					accountType === 'admin'
+				) {
+					await logOut();
+					setOpenWarn(true);
+					setShowLogin(false);
+					return;
+				}
+
+				setOpenSuccess(true);
+				setShowLogin(false);
+			} else {
+				setMsg('Email not registered');
+				setOpen(true);
+			}
+		} catch (err) {
+			setOpenFail(true);
+		}
+		setLoading(false);
+	};
 
 	const [open, setOpen] = useState(false);
 	const [msg, setMsg] = useState('');
@@ -170,6 +184,7 @@ const Login = ({
 						: 'bg-orange-600 hover:bg-orange-800'
 				} border-0 py-2 px-6 focus:outline-none rounded text-md mt-2`}
 				onClick={async () => {
+					setLoading(true);
 					try {
 						if (validateEmail(email)) {
 							if (!register) {
@@ -195,8 +210,9 @@ const Login = ({
 						}
 					} catch (err) {
 						setMsg(err.message);
-            setOpen(true);
+						setOpen(true);
 					}
+					setLoading(false);
 				}}
 			>
 				{register ? 'Register' : 'Login'}

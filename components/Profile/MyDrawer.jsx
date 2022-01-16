@@ -135,7 +135,7 @@ const MyDrawer = ({
               height={64}
             />
           </div>
-          <div className="text-center py-2 capitalize">
+          <div className="text-center py-2">
             {displayName === "" ? "user" : displayName}
           </div>
         </div>

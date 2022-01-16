@@ -175,11 +175,11 @@ export default function Register() {
   const user = useContext(UserContext);
   const uploadImage = async (image) => {
     if (!image) return;
+    try {
     setImgLoader(true);
     const formData = new FormData();
     formData.append("file", image);
     formData.append("upload_preset", `${process.env.NEXT_PUBLIC_CLOUDINARY_PRESET}`);
-    try {
       const res = await fetch(
         `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUD_NAME}/image/upload`,
         {
@@ -328,7 +328,7 @@ export default function Register() {
                     alert("Select only one image");
                     return;
                   }
-                  await uploadImage(e.target.files[0]);
+                  await uploadImage(e.dataTransfer.files[0]);
                 }}
               >
                 {imgLoader ? (
@@ -368,6 +368,7 @@ export default function Register() {
                           name="file-upload"
                           type="file"
                           className="sr-only"
+                          accept="image/*"
                           onChange={async (e) => {
                             if (e.target.files.length > 1) {
                               alert("Select only one image");
