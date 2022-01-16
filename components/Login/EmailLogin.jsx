@@ -4,6 +4,7 @@ import {
 	loginUser,
 	signInMethods,
 } from '../../config/firebase/authProvider';
+import logOut from '../../config/firebase/signOut';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -16,6 +17,7 @@ import Alert from '../Misc/Alert';
 import Tooltip from '@mui/material/Tooltip';
 import { validateEmail } from '../../utils/validation';
 import createUser from '../../config/api/createUser';
+import { auth } from "../../config/firebase/firebase";
 
 const Login = ({
 	email,
@@ -57,7 +59,7 @@ const Login = ({
       await loginUser(email, password);
       const res = await fetch(`/api/user/${auth.currentUser.uid}`);
       const data = await res.json();
-
+      
       if (data && data.user && data.user.accountType === "user" && accountType === "admin") {
         await logOut();
         setOpenWarn(true);

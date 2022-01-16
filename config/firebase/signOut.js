@@ -6,6 +6,5 @@ export default async function logOut() {
 		await signOut(auth);
 	} catch (err) {
 		alert('Error signing out. Please try again later.');
-		console.log(err);
 	}
 }
