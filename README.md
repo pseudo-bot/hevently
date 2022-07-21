@@ -30,7 +30,7 @@
  <br/>
 
 ## TechStack  
- **Frontend**  -> NextJS, ReactJS, TailwindCSS, MUI
+ **Frontend**  -> NextJS, ReactJS, TailwindCSS
  <br/>
   **Backend** -> NextJS, NodeJS, MongoDB 
   <br/>
